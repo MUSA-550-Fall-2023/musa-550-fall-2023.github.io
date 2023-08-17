@@ -448,7 +448,7 @@ pre.text, pre.sourceCode, .cell-output pre {
   padding-right: 0.5rem;
 }
 
-.assignment-header {
+.assignment-header, .content-header {
   background-color: $orange-100;
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -564,4 +564,11 @@ pre.text, pre.sourceCode, .cell-output pre {
 .binder-favicon {
   width: 20px;
   height: 20px;
+}
+
+.content-dates {
+  font-style: italic;
+  font-size: 1.5rem;
+  margin-top: -0.85rem;
+  margin-bottom: 2rem;
 }

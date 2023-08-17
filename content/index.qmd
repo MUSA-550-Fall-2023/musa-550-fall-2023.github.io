@@ -1,15 +1,25 @@
 ---
 title: "Weekly Course Content"
+toc: false
 ---
-Each class session has a set of required readings that you should complete 
-before watching the lecture or working through the lesson.
 
-I’ve included a set of questions that might guide your reflection response. 
-You should not try to respond to all of these (or any of them if you don’t 
-want to)—they’ll just help you know what to look for and think about as you read.
+As detailed on the [schedule page](../schedule.qmd), the course will be broken up into 14 weeks of content, and each week will 
+have two lectures (cleverly labeled "A" and "B") that cover that week's unique 
+topic. Each week will have a recommended set of readings that will help reinforce
+the content. As we progress through the semester, you will be able 
+to access the weekly content on the sidebar of this page. For each week, you'll find 
+information about readings and topics, as well as links to the lecture slides. 
 
-Every class session also has a YouTube playlist of short recorded videos for 
-each of the lecture sections. The lecture slides are special HTML files made 
-with the R package {xaringan} (R can do so much!). On each class session page 
-you’ll buttons for opening the presentation in a new tab or for downloading a 
-PDF of the slides in case you want to print them or store them on your computer:
+## Lecture slides
+
+The lecture slides are Jupyter notebook files, a mix of executable Python 
+cells, text, and images. Students have a few different options to access
+the slide materials:
+
+1. The Jupyter notebook files for each week are stored in a repository that is available on [the course's GitHub homepage]({{< var github_org >}}). On the content page for each week, you will see a link to this repository. Once you navigate to the repository on GitHub, you can download the contents of the repository to your computer and work locally with the notebook files by [launching JupyterLab](/resource/install.html#launching-a-jupyter-notebook) on your laptop. To download the repository contents, look for the green "Code" button and select "Download ZIP":
+
+![](/files/download-zip-github.png){width=400 fig-align="center"}
+
+2. You can also open the lecture slides in an interactive, executable environment using the free [Binder service](https://mybinder.readthedocs.io/en/latest/). This service is hosted in the cloud, meaning that the code is not being executed locally on your laptop but instead on Binder's servers. This can be very convenient, since it doesn't require you to have the files downloaded to your laptop or your Python environment to be set up yet. On the content page for each week, look for the Binder logo ![](/files/binder-favicon.webp){width=24 fig-align="center"} for links to launch the lectures on Binder.
+
+3. On the content page for each week, there are also links to HTML versions of the lecture slides. Look for the {{< fa book-open-reader >}} icon for this version of the slides. Since they are displayed in the browser, they are NOT executable and cannot be changed. This version of the slides is a useful reference tool to look up how we did something in class. During class periods, we recommend that you use options #1 or #2 to view the slides, so that you can follow along and execute slides and participate in any in-class exercises or labs.

@@ -1,6 +1,5 @@
 ---
-title: Week 1
-toc: false
+title: "Week 1: Exploratory Data Science in Python"
 execute: 
   echo: false
 ---

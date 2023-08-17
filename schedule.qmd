@@ -179,7 +179,7 @@ data = (
 
 
 # Set up headers
-headers = ["", "", "", "Github Repo", "Static Slides", "Interactive Slides"]
+headers = ["", "", "", "Github Repo", "HTML Slides", "Executable Slides"]
 table = [
     '<table class="table schedule-table table-borderless table-responsive">',
 ]

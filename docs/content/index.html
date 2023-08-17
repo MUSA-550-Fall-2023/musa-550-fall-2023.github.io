@@ -65,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -162,9 +162,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -185,11 +183,25 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Each class session has a set of required readings that you should complete before watching the lecture or working through the lesson.</p>
-<p>I’ve included a set of questions that might guide your reflection response. You should not try to respond to all of these (or any of them if you don’t want to)—they’ll just help you know what to look for and think about as you read.</p>
-<p>Every class session also has a YouTube playlist of short recorded videos for each of the lecture sections. The lecture slides are special HTML files made with the R package {xaringan} (R can do so much!). On each class session page you’ll buttons for opening the presentation in a new tab or for downloading a PDF of the slides in case you want to print them or store them on your computer:</p>
+<p>As detailed on the <a href="../schedule.html">schedule page</a>, the course will be broken up into 14 weeks of content, and each week will have two lectures (cleverly labeled “A” and “B”) that cover that week’s unique topic. Each week will have a recommended set of readings that will help reinforce the content. As we progress through the semester, you will be able to access the weekly content on the sidebar of this page. For each week, you’ll find information about readings and topics, as well as links to the lecture slides.</p>
+<section id="lecture-slides" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-slides">Lecture slides</h2>
+<p>The lecture slides are Jupyter notebook files, a mix of executable Python cells, text, and images. Students have a few different options to access the slide materials:</p>
+<ol type="1">
+<li>The Jupyter notebook files for each week are stored in a repository that is available on <a href="?var:github_org">the course’s GitHub homepage</a>. On the content page for each week, you will see a link to this repository. Once you navigate to the repository on GitHub, you can download the contents of the repository to your computer and work locally with the notebook files by <a href="../resource/install.html#launching-a-jupyter-notebook">launching JupyterLab</a> on your laptop. To download the repository contents, look for the green “Code” button and select “Download ZIP”:</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../files/download-zip-github.png" class="img-fluid figure-img" width="400"></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li><p>You can also open the lecture slides in an interactive, executable environment using the free <a href="https://mybinder.readthedocs.io/en/latest/">Binder service</a>. This service is hosted in the cloud, meaning that the code is not being executed locally on your laptop but instead on Binder’s servers. This can be very convenient, since it doesn’t require you to have the files downloaded to your laptop or your Python environment to be set up yet. On the content page for each week, look for the Binder logo <img src="../files/binder-favicon.webp" class="img-fluid" data-fig-align="center" width="24"> for links to launch the lectures on Binder.</p></li>
+<li><p>On the content page for each week, there are also links to HTML versions of the lecture slides. Look for the <i class="fa-solid fa-book-open-reader" aria-label="book-open-reader"></i> icon for this version of the slides. Since they are displayed in the browser, they are NOT executable and cannot be changed. This version of the slides is a useful reference tool to look up how we did something in class. During class periods, we recommend that you use options #1 or #2 to view the slides, so that you can follow along and execute slides and participate in any in-class exercises or labs.</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
