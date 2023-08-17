@@ -1,0 +1,7 @@
+---
+title: "HW #1"
+execute: 
+  echo: false
+---
+
+{{< include _header.qmd >}}

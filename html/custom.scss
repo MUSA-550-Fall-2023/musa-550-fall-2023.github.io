@@ -1,0 +1,567 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Sans+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*-- scss:defaults --*/
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #ddd !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+// Plasma colors
+// viridisLite::viridis(7, option = "plasma", begin = 0, end = 0.9)
+
+// Viridis colors
+// viridisLite::viridis(6, option = "viridis", begin = 0, end = 1)
+$blue:   #0D0887 !default;  // Plasma[1]
+$indigo: #5601A4 !default;  // Plasma[2]
+$purple: #900DA4 !default;  // Plasma[3]
+$pink:   #BF3984 !default;  // Plasma[4]
+$red:    #E16462 !default;  // Plasma[5]
+$orange: #FFBD59 !default;  // Plasma[6]
+$yellow: #FCCE25 !default;  // Plasma[7]
+$green:  #7AD151 !default;  // Viridis[5]
+$teal:   #2A788E !default;  // Viridis[3]
+$cyan:   #22A884 !default;  // Viridis[4]
+
+// Sky colors (tailwind)
+$sky-50: #f0f9ff !default; 
+$sky-100: #e0f2fe !default; 
+$sky-200: #bae6fd !default; 
+$sky-300: #7dd3fc !default; 
+$sky-400: #38bdf8 !default; 
+$sky-500: #0ea5e9 !default; 
+$sky-600: #0284c7 !default; 
+$sky-700: #0369a1 !default; 
+$sky-800: #075985 !default; 
+$sky-900: #0c4a6e !default;
+
+// Green colors (tailwind)
+$green-50: #f0f9ff !default; 
+$green-100: #dcfce7 !default; 
+$green-200: #bbf7d0 !default; 
+$green-300: #86efac !default; 
+$green-400: #4ade80 !default; 
+$green-500: #22c55e !default; 
+$green-600: #16a34a !default; 
+$green-700: #15803d !default; 
+$green-800: #166534 !default; 
+$green-900: #14532d !default;
+
+// Orange colors (tailwind)
+$orange-50: #fff7ed !default; 
+$orange-100: #fef3c7 !default; 
+$orange-200: #fde68a !default; 
+$orange-300: #fcd34d !default; 
+$orange-400: #fbbf24 !default; 
+$orange-500: #f59e0b !default; 
+$orange-600: #d97706 !default; 
+$orange-700: #b45309 !default; 
+$orange-800: #92400e !default; 
+$orange-900: #78350f !default;
+
+$primary:       $orange-400 !default;
+$secondary:     $gray-500 !default;
+$success:       $green !default;
+$info:          $pink !default;
+$warning:       $yellow !default;
+$danger:        $orange !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$font-family-sans-serif:      Fira Sans Condensed, sans-serif !default;
+$font-family-serif:           Barlow, serif !default;  /* Not actually a serif font but whatever */
+
+$font-size-base:              1.2rem !default;
+$headings-font-weight:        700 !default;
+
+$h1-font-size: $font-size-base * 2.35;
+$h2-font-size: $font-size-base * 1.8;
+$h3-font-size: $font-size-base * 1.45;
+$h4-font-size: $font-size-base * 1.1;
+$h5-font-size: $font-size-base * 1;
+$h6-font-size: $font-size-base * 0.8;
+
+$toc-font-size: 0.95rem;
+$sidebar-font-size: 1.1rem;
+$sidebar-font-size-section: 0.95rem;
+$footer-font-size: 0.95rem;
+
+$link-color: $blue;
+$link-hover-color: $pink;
+
+// Inline code
+$code-bg: $gray-200 !default;
+$code-color: $gray-900 !default;
+
+
+
+/*-- scss:rules --*/
+h2 {
+  border-bottom: 1px solid $gray-500;
+}
+
+// ul,
+// ol {
+//   font-family: $font-family-serif;
+// }
+
+// Slightly bigger callouts
+.callout.callout-style-default .callout-body,
+.callout.callout-style-default > div.callout-header {
+  font-size: 1.1rem;
+}
+
+.callout-icon-container {
+  padding-top: 0 !important;
+}
+
+// Home page stuff
+.title-block {
+  margin: 1em 0;
+  border-bottom: 3px solid $gray-200;
+  padding-bottom: 3em;
+}
+
+.course-details {
+  margin: 0 0 1em;
+  border-bottom: 3px solid $gray-200;
+  padding-bottom: 1em;
+}
+
+.course-details h3 {
+  margin-top: 0;
+}
+
+.course-title {
+  font-size: 3.5rem;
+  margin-top: 0;
+}
+
+.course-subtitle {
+  font-size: 1.7rem;
+}
+
+.course-meta {
+  font-size: 1.2rem;
+  color: $gray-600;
+  margin-top: 2rem;
+}
+
+.course-details ul {
+  list-style: none;
+  text-indent: -0.7rem;
+  padding-left: 1.4rem;
+}
+
+.contact-policy p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.course-details-smaller li {
+  font-size: 1rem;
+}
+
+.course-details-smaller h3 {
+  font-size: 1.4rem;
+}
+
+
+// Active links in navbar and sidebar
+.navbar-dark .navbar-nav .show>.nav-link,
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+div.sidebar-item-container .active,
+div.sidebar-item-container .show>.nav-link,
+div.sidebar-item-container .sidebar-link>code{
+  color: $blue;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-brand:hover {
+  color: $blue;
+}
+
+.navbar .quarto-navbar-tools .quarto-navigation-tool:hover {
+  color: $blue !important;
+
+}
+
+
+// Footer stuff
+.nav-footer-left {
+  text-align: left;
+}
+
+.nav-footer-right {
+  text-align: right;
+}
+
+// Temporarily hide the middle div since it has unmodifiable GitHub links as of Quarto 1.3.something: https://github.com/quarto-dev/quarto-cli/issues/5283
+.nav-footer-center {
+  display: none;
+}
+
+.nav-footer-left {
+  flex-grow: 3;
+}
+
+
+
+.download-btn {
+  padding-top: 0.25rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+
+// Markdown reference page
+// No top margin on code blocks inside tables
+.table .sourceCode {
+  margin-top: 0;
+}
+
+.table h1 {
+  font-size: 2.1em;
+  margin-top: 0;
+}
+
+.table h2 {
+  font-size: 1.7em;
+  margin-top: 0;
+  border-bottom: 0;
+}
+
+.table h3 {
+  font-size: 1.3em;
+  margin-top: 0;
+}
+
+
+// News stuff
+.back-nav {
+  margin-bottom: 1.5rem;
+}
+
+.news .quarto-title-meta {
+  font-size: 1.1rem;
+  border-left: 5px solid $red;
+  padding: 0 0.5rem 1rem;
+  margin: 1rem 0 2.5rem;
+  background-color: lighten($red, 30%);
+}
+
+.news .quarto-categories {
+  padding-top: 0.5em;
+}
+
+
+// Content page stuff
+// Date bar
+.date-block {
+  font-size: 1.1rem;
+
+  p.date {
+    margin-bottom: 0 !important;
+  }
+}
+
+.bg-content {
+  background-color: $orange;
+}
+
+.bg-lesson {
+  background-color: $indigo;
+}
+
+.bg-assignment {
+  background-color: $purple;
+}
+
+.bg-example {
+  background-color: $pink;
+}
+
+// Slightly larger buttons
+p a.btn, .buttons span.btn {
+  font-size: 1.1rem;
+}
+
+.buttons .btn {
+  margin-bottom: 1rem;
+}
+
+main {
+  // No space after lists-within-lists
+  ol ol,
+  ul ul,
+  ol ul,
+  ul ol {
+    margin-bottom: 0em;
+  }
+
+  // But yes space after lists-within-lists when paragraphs are involved
+  ol p + ol,
+  ul p + ul,
+  ol p + ul,
+  ul p + ol {
+    margin-bottom: 1em;
+  }
+}
+
+
+// In Quarto 1.3.357 (and probably before), when column: XX is used on a page, 
+// the <main> element gets assigned the .page-columns class, and for whatever 
+// reason, <h1>s in that class get their bottom margin removed, so we have to 
+// add it back here
+main.page-columns > header > h1.title, 
+main.page-columns > header > .title.h1 {
+  margin-bottom: 1rem;
+}
+
+
+// Make callout text and icon bigger
+// .callout.callout-style-default {
+//   > div.callout-header,
+//   > .callout-body {
+//     font-size: 1rem;
+//   }
+//
+//   .callout-icon::before {
+//     height: 1rem;
+//     width: 1rem;
+//     background-size: 1rem 1rem;
+//   }
+// }
+
+// Increase font size in sidebar
+.sidebar-navigation .sidebar-section .sidebar-item,
+.sidebar-navigation .sidebar-item{
+  line-height: 1.2;
+  padding-bottom: 0.4rem;
+}
+
+.sidebar-item .sidebar-item-toggle .bi {
+  // The dongle for opening and closing sections
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+// Increase font size in TOC
+#TOC {
+  padding-bottom: 0.1em;
+}
+
+#toc-title {
+  font-weight: 700;
+}
+
+.sidebar nav[role="doc-toc"] > ul li a {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+
+  &.active {
+    border-left: 1px solid $orange;
+    color: $orange !important;
+  }
+}
+
+// Code stuff
+// Shrink blocks of code
+pre.text, pre.sourceCode, .cell-output pre {
+  font-size: 0.775em;
+}
+
+// Slight bottom margin to output
+.cell-output {
+  margin: 0 0 1em;
+}
+
+// Remove margin on pre in output
+// .cell-output pre {
+//   margin-bottom: 0;
+//   color: #ffffff;
+// }
+
+// Format output and plain text blocks like code
+.cell-output, pre.text {
+  border: none;
+  padding: .4em;
+  // background-color: $monokai-bg;
+  // border: 1px solid $monokai-bg;
+  border-radius: .25rem;
+}
+
+// pre.text {
+//   color: #ffffff;
+// }
+
+// Schedule table
+.schedule-table {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+.content-slides-binder > img {
+  width: 36px;
+  height: 36px;
+
+}
+
+.schedule-table td, .schedule-table th {
+  text-align: center;
+  width: 5%
+}
+
+.schedule-table td.col-week, .schedule-table td.col-repo, .schedule-table td.col-topic,
+.schedule-table td.col-slides-static, .schedule-table td.col-slides-binder  {
+  vertical-align: middle;
+}
+
+
+.schedule-table td.col-lecture, .schedule-table th.col-lecture {
+  width: 10%;
+  text-align: left;
+  min-width: 200px
+}
+
+.schedule-table td.col-week {
+  width: 5%;
+  text-align: left;
+
+}
+
+.schedule-table td.col-repo {
+  width: 5%;
+  text-align: center;
+
+}
+
+.assignment-table .assignment-icon-due, 
+.assignment-table .assignment-icon-assigned {
+  padding-right: 0.5rem;
+}
+
+.assignment-header {
+  background-color: $orange-100;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.assignment-header  .assignment-icon-due, 
+.assignment-header .assignment-icon-assigned {
+  padding-right: 0.5rem;
+}
+
+.schedule-table .content-assignment {
+  padding-left: 0.5rem;
+}
+
+.assignment-icon-due {
+  color: $red !important;
+}
+.assignment-icon-assigned {
+  color: $green !important;
+}
+
+
+
+.schedule-table td.col-topic, .schedule-table th.col-topic {
+  width: 30%;
+  text-align: left;
+  min-width: 200px
+}
+
+// Remove borders from schedule table
+.schedule-table  th, .schedule-table  td {
+    border: 0;
+    border-bottom-width: 0px !important;
+}
+
+.schedule-table tbody {
+  border-top: 0 !important;
+}
+.schedule-table thead {
+  border-bottom: 0 !important;
+}
+
+.schedule-table .week-header-row > td {
+  border-bottom-color: #d3d8dc;
+  border-bottom-style: solid;
+  border-bottom-width: 2px !important;
+  padding-top: 50px;
+}
+
+.schedule-table .week-header-row:nth-child(1) > td {
+  padding-top: 0px !important;
+}
+
+.schedule-table .lecture-row > td {
+  border-top-color: #d3d8dc;
+  border-top-style: solid;
+  border-top-width: 1px !important;
+  border-bottom-width: 1px !important;
+}
+
+
+
+
+
+// Schedule stuff
+.content-title {
+  font-weight: 700;
+  color: $orange;
+}
+
+.content-week {
+  font-weight: 700;
+}
+
+.content-note {
+  font-size: 0.8rem;
+  display: block;
+}
+
+.content-class {
+  font-size: 0.85em;
+}
+
+.content-flag {
+  font-weight: 700;
+  color: $pink;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  color: $gray-600;
+  text-decoration: none;
+
+}
+
+.quarto-navbar-tools {
+  padding-left: 20px;
+}
+
+.indented-callout {
+  margin-bottom: 2rem;
+  border-left: 4px solid $gray-300;
+  padding-left: 10px;
+}
+
+.assignment-check-back {
+  margin-top: 2rem;
+  font-style: italic;
+
+}
+
+.binder-favicon {
+  width: 20px;
+  height: 20px;
+}

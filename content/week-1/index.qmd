@@ -1,0 +1,8 @@
+---
+title: Week 1
+toc: false
+execute: 
+  echo: false
+---
+
+{{< include ../_header.qmd >}}

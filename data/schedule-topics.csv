@@ -1,0 +1,15 @@
+week,topic,module
+1,Exploratory Data Science in Python,Exploratory Data Science
+2,Data Visualization Fundamentals,Exploratory Data Science
+3,Geospatial Data Analysis and GeoPandas,Introduction to Geospatial Data Science
+4,"More Interactive Data Viz, Working with Raster Datasets",Introduction to Geospatial Data Science
+5,Working with APIs,Data Ingestion & Big Data
+6,Web Scraping,Data Ingestion & Big Data
+7,Analyzing and Visualizing Large Datasets,Data Ingestion & Big Data
+8,Case Study: Advanced Raster Analysis,Geospatial Data Science in the Wild
+9,"Case Study: OpenStreetMap, Urban Networks, and Interactive Web Maps",Geospatial Data Science in the Wild
+10,Case Study: Clustering Analysis in Python,Geospatial Data Science in the Wild
+11,Predictive Modeling Part 1: Home Prices in Philadelphia,Geospatial Data Science in the Wild
+12,Predictive Modeling Part 2: Space/time Rideshare Demand,Geospatial Data Science in the Wild
+13,"Github Pages, Web Servers, and Dash",From Exploration to Storytelling
+14,From Notebooks to the Web: Dashboarding with Panel and the HoloViz Ecosystem,From Exploration to Storytelling

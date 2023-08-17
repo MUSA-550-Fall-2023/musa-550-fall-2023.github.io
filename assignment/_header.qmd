@@ -1,0 +1,108 @@
+---
+execute: 
+  echo: false
+---
+
+```{r}
+input_file <- knitr::current_input()
+```
+
+```{python}
+import yaml
+import pandas as pd
+from pyprojroot.here import here
+from IPython.core.display import HTML
+
+# Main directory
+root_dir = here()
+
+# Get the file slug
+slug = r.input_file.split(".")[0]
+
+# Load the data
+data = pd.read_csv(root_dir / "data" / "assignments.csv").assign(
+        date=lambda df: pd.to_datetime(df.date),
+        date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
+    ).query(f"slug == '{slug}'")
+
+
+# Get the github classroom link
+classroom_links = data['classroom_link'].dropna().drop_duplicates()
+if (len(classroom_links)):
+  classroom_link = classroom_links.squeeze()
+  disabled = ""
+else:
+  classroom_link = None
+  disabled = "disabled"
+
+
+# Store different lines of html
+html = []
+
+html.append('<div class="assignment-header">')
+for task in ['assigned', 'due']:
+
+  # Get the data
+  df = data.query(f"task == '{task}'").squeeze()
+
+  if len(df):
+    if task == 'due':
+      text = f"Due on {df['date_formatted']} at 11:59 PM"
+      icon = """
+            <span class="assignment-icon-due">
+              <i class="fa-solid fa-circle-exclamation fa-sm"></i>
+            </span>"""
+    else:
+      text = f"Assigned on {df['date_formatted']}"
+      icon = """
+              <span class="assignment-icon-assigned">
+                <i class="fa-solid fa-star fa-sm"></i>
+              </span>
+            """
+
+    html.append(f"""
+              <div>
+                {icon}
+                <span>{text}</span>
+              </div>"""
+    )
+
+html.append("</div>")
+
+# Now do the github links
+html.append('<div class="assignment-header mt-2">')
+
+# Do the Github repo
+url = f"https://github.com/MUSA-550-Fall-2023/{slug}"
+html.append(
+  f"""
+  <div class="assignment-page-repo">
+    <i class="fa-brands fa-github fa-sm"></i>
+    &nbsp;<span>View materials:</span>&nbsp;
+    <a class="{disabled}" href="{url}">
+      MUSA-550-Fall-2023/{slug}
+    </a>
+  </div>"""
+)
+html.append(
+  f"""
+  <div class="assignment-page-repo">
+    <i class="fa-brands fa-github fa-sm"></i>
+    &nbsp;<span>Submission link:</span>&nbsp;
+    <a class="{disabled}" href="{classroom_link}">
+      GitHub classroom
+    </a>
+  </div>"""
+)
+
+html.append("</div>")
+
+
+
+
+# Check current date
+if classroom_link is None:
+  html.append("""<div class="assignment-check-back">Check back after the homework has been assigned for details.</div>""")
+
+HTML("\n".join(html))
+```

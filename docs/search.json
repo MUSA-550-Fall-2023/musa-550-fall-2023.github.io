@@ -1,0 +1,324 @@
+[
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Note\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGithub Repo\n\n\n\nStatic Slides\n\n\n\nInteractive Slides\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\n\n\n\nExploratory Data Science in Python\n\n\n\n\n\n\n\n\n\n\n\nWednesday, August 30\n\n\n\nLecture 1A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 assigned\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 6\n\n\n\nLecture 1B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\n\nData Visualization Fundamentals\n\n\n\n\n\n\n\n\n\n\n\nMonday, September 11\n\n\n\nLecture 2A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 13\n\n\n\nLecture 2B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\n\nGeospatial Data Analysis and GeoPandas\n\n\n\n\n\n\n\n\n\n\n\nMonday, September 18\n\n\n\nLecture 3A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 20\n\n\n\nLecture 3B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\n\nMore Interactive Data Viz, Working with Raster Datasets\n\n\n\n\n\n\n\n\n\n\n\nMonday, September 25\n\n\n\nLecture 4A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 27\n\n\n\nLecture 4B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\n\n\n\nWorking with APIs\n\n\n\n\n\n\n\n\n\n\n\nMonday, October 2\n\n\n\nLecture 5A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 4\n\n\n\nLecture 5B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\n\nWeb Scraping\n\n\n\n\n\n\n\n\n\n\n\nMonday, October 9\n\n\n\nLecture 6A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 11\n\n\n\nLecture 6B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\n\n\n\nAnalyzing and Visualizing Large Datasets\n\n\n\n\n\n\n\n\n\n\n\nMonday, October 16\n\n\n\nLecture 7A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 18\n\n\n\nLecture 7B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\n\nCase Study: Advanced Raster Analysis\n\n\n\n\n\n\n\n\n\n\n\nMonday, October 23\n\n\n\nLecture 8A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 25\n\n\n\nLecture 8B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\n\nCase Study: OpenStreetMap, Urban Networks, and Interactive Web Maps\n\n\n\n\n\n\n\n\n\n\n\nMonday, October 30\n\n\n\nLecture 9A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 1\n\n\n\nLecture 9B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\n\nCase Study: Clustering Analysis in Python\n\n\n\n\n\n\n\n\n\n\n\nMonday, November 6\n\n\n\nLecture 10A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 8\n\n\n\nLecture 10B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\n\n\n\nPredictive Modeling Part 1: Home Prices in Philadelphia\n\n\n\n\n\n\n\n\n\n\n\nMonday, November 13\n\n\n\nLecture 11A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #6 assigned\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 15\n\n\n\nLecture 11B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\n\n\n\nPredictive Modeling Part 2: Space/time Rideshare Demand\n\n\n\n\n\n\n\n\n\n\n\nMonday, November 20\n\n\n\nLecture 12A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, November 27\n\n\n\nLecture 12B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\n\n\n\nGithub Pages, Web Servers, and Dash\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 29\n\n\n\nLecture 13A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, December 4\n\n\n\nLecture 13B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #6 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal project proposal due\n\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\n\nFrom Notebooks to the Web: Dashboarding with Panel and the HoloViz Ecosystem\n\n\n\n\n\n\n\n\n\n\n\nWednesday, December 6\n\n\n\nLecture 14A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, December 11\n\n\n\nLecture 14B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinals period\n\n\n\n\n\n\n\n\n\n\nWednesday, December 20\n\n\n\nFinal project due"
+  },
+  {
+    "objectID": "resource/install.html",
+    "href": "resource/install.html",
+    "title": "Installing Python and inital set-up",
+    "section": "",
+    "text": "MUSA 550 relies on freely available software from the Python  open-source ecosystem. This guide will walk you through how to set up your computer for the course, including downloading and installing Python as well as the various packages you will need throughout the semester.\nBy the end of this guide, you’ll have Python installed, be able to launch a Jupyter notebook (the interface for running Python code), and will be writing your first Python code. Let’s get started!"
+  },
+  {
+    "objectID": "resource/install.html#step-1.-installing-python",
+    "href": "resource/install.html#step-1.-installing-python",
+    "title": "Installing Python and inital set-up",
+    "section": "Step 1. Installing Python",
+    "text": "Step 1. Installing Python\nThere are a number of different tools and ways to install Python for new users. In this course, we’ll be using a package manager called mamba to install Python and manage dependencies. In the Python ecosystem, package managers are especially useful, as they greatly simplify the installation process and ensure all of your dependencies will function properly.\nmamba is a drop-in replacement (meaning it has the same functionality) for a very popular Python package manager called conda. We’ll use mamba instead of conda because it has signficiantly better performance. In my experience, it’s not uncommon for it to sometimes take more than hour to install a list of Python packages with conda but only a few seconds for mamba to do the same.\n\n\n\n\n\n\nTip\n\n\n\nAnything you can do with the conda tool, you can do with the mamba tool. Outside this class, you’ll likely hear about conda more often, since it’s the more popular tool at the moment.\nAs you will see later, we will often refer to the conda documentation to learn about the key concepts behind conda/mamba and its main functionality.\n\n\nThe mamba tool allows you to easily install Python packages on your laptop using environments. An environment allows you to install packages for specific purposes and keep those packages isolated from any other Python packages that might be installed on your laptop. This is very useful, since different versions of packages often don’t work nicely together. We will create an environment for use during this class that includes all of the Python packages you will need in the course.\nIn this course, we will use the “mambaforge” distribution of Python, which includes Python, mamba, and a few other essential packages and dependencies. It also comes pre-configured with “conda-forge”, a popular, community-maintained server that makes the most popular Python packages available for download for free.\n\n\n\n\n\n\nNote\n\n\n\nThe mambaforge distribution is the mamba version of the popular “Miniconda” distribution, which is a free, minimal Python installation that just includes conda. Miniconda is a lightweight version of the full Anaconda distribution. The differences between the “mini” and “full” versions are outlined here.\nThe major difference is that the Anaconda distribution will install more than 1,500 of the most common scientific Python packages (many more than we need in this course) and will take up about 3 GB of disk space. Mambaforge/Miniconda will only install core Python dependencies (as well as mamba/conda) and will only take up a much smaller amount of disk space.\n\n\nThe following page contains the installation files for the mambaforge distribution:\nhttps://github.com/conda-forge/miniforge#mambaforge\nSelect the appropriate file for your computer’s operating system and click to download the file. The file should be named something like Mambaforge-Linux-*, Mambaforge-MacOSX-*, or Mambaforge-Windows-*.\nThe rest of the installation instructions will vary based on your operating system:\n\nWindows\n\nIn the file browser, double-click the .exe file that you downloaded.\nFollow the instructions on the screen. If you are unsure about any setting, accept the defaults. You can change them later.\n\nMacOS\n\nOpen the Terminal application.\nChange to the folder to the directory where the .sh installer file was downloaded (this is usually the “Downloads” folder) by running the following command in the Terminal app:\nbash Mambaforge-MacOSX-x86_64.sh\nor if you have a Mac with the new M2 chips, use:\nbash Mambaforge-MacOSX-arm64.sh\nFollow the instructions on the screen. If you are asked about if you “wish the installer to initialize Mambaforge by running conda init?”, type “yes”. This will ensure that mamba is an available command when you open up Terminal.\nIf you are unsure about any setting, accept the defaults. You can change them later.\nTo make the changes take effect, close and then re-open your terminal window."
+  },
+  {
+    "objectID": "resource/install.html#verify-that-your-python-installation-is-working",
+    "href": "resource/install.html#verify-that-your-python-installation-is-working",
+    "title": "Installing Python and inital set-up",
+    "section": "2. Verify that your Python installation is working",
+    "text": "2. Verify that your Python installation is working\nTo verify that the install worked, we will run mamba from the command line. The specifics of this will depend on your operating system:\n\nWindows\nOpen the Start menu, search for and open the “Miniforge Prompt”. This application provides a command line interface where the mamba tool is properly loaded, initialized, and ready to be used.\nNote that you cannot use the default “Command Prompt” application to use mamba because it doesn’t know how to load mamba properly.\nMacOS\nThe Terminal app should be used on MacOS to use mamba. You can also use any Terminal emulator (such as iTerm2). Simply open the Terminal application and the mamb command should be ready to use.\n\nNow, let’s test your installation. From the command line, run: mamba list. A list of installed packages should be printed to the screen if the installation was successful.\nAfter you’ve sucessfully installed the mambaforge distribution, you will have Python 3.10 installed with a default environment called “base”."
+  },
+  {
+    "objectID": "resource/install.html#create-your-first-python-environment",
+    "href": "resource/install.html#create-your-first-python-environment",
+    "title": "Installing Python and inital set-up",
+    "section": "3. Create your first Python environment",
+    "text": "3. Create your first Python environment\nThe mamba/conda tool allows us to easily install new Python packages and keep track of which ones we’ve already installed. I’ve put together a list of the packages we’ll need in this course (a group of packages is known as an environment in mamba-speak). Note that you’ll be using the command line (either the Miniforge Prompt in Windows or Terminal app in MacOS) to run mamba and create your environment.\nThroughout this course, we will maintain an environment called “musa-550-fall-2023” to install and manage all of the packages needed throughout the semester.\nThe packages in an environment are specified in a file typically called “environment.yml”. The environment file for this course is stored in the course-materials repository on Github and a copy is also stored in the cloud on anaconda.org.\nIt is recommended to create the ‘musa-550-fall-2023’ environment on your local computer using the environment file stored in the cloud on anaconda.org. The instructions to do so are as follows:\n\nFirst, we need to make sure the anaconda-client package is installed locally. This will ensure that mamba can interface with anaconda.org. From the command line (Miniforge Prompt on Windows or Terminal on MacOS), run:\nmamba install anaconda-client -n base\nThis will install the anaconda-client package into the default “base” environment.\nThen, create the musa-550-fall-2023 environment by running:\nmamba env create pennmusa/musa-550-fall-2023\nAfter this command finishes, all of the packages we need for the course should be installed. To verify this, you can run mamba env list from the command line to see the installed environments. If everything worked, you should now see the 'musa-550-fall-2023' environment listed.\n\n\n\n\n\n\n\nNote\n\n\n\nThis semester, we will be using Python version 3.10. More information about the different versions of Python is available here."
+  },
+  {
+    "objectID": "resource/install.html#activate-the-courses-environment",
+    "href": "resource/install.html#activate-the-courses-environment",
+    "title": "Installing Python and inital set-up",
+    "section": "4. Activate the course’s environment",
+    "text": "4. Activate the course’s environment\nOnce you’ve created your new environment and installed the Python packages for the course, you need to tell mamba to activate it (more mamba-speak) so that you can actually use the packages when you are writing Python code.\nTo activate the environment for this course, you can run the following from the command line (Miniforge Prompt on Windows or Terminal on MacOS):\nmamba activate musa-550-fall-2023\nNow, all of the packages in this environment will be available when we run Python.\n\n\n\n\n\n\nImportant\n\n\n\nIf you forget to activate the course’s environment, you will be using the default “base” environment. This has some of the packages we will need, but many will be missing. If you are trying to import Python packages and get a “ModuleNotFoundError” error, the active environoment is likely the issue!"
+  },
+  {
+    "objectID": "resource/install.html#launching-a-jupyter-notebook",
+    "href": "resource/install.html#launching-a-jupyter-notebook",
+    "title": "Installing Python and inital set-up",
+    "section": "5. Launching a Jupyter notebook",
+    "text": "5. Launching a Jupyter notebook\nThroughout the course, we will write, edit, and execute Python code in files called Jupyter notebooks. These files have an .ipynb extension. Notebooks are documents that combine live runnable code with narrative text, images, and interactive visualizations.\nAn application called JupyterLab is the recommended way to work with these notebook files. JupyterLab is a browser-based interface that allows users to execute Python in notebook files. It can also handle all sorts of additional file formats and even has a built-in command-line feature. The JupyterLab guide provides much more information about the features of JupyterLab — for the moment, we will just focus on launching our first notebook file.\n\n\n\n\n\n\nNote\n\n\n\nThere are other interfaces for working with Jupyter notebooks. The original Jupyter notebook application has since been replaced by the more powerful JupyterLab application. Popular code editors such as VS Code have also added support for Jupyter notebooks, although it is important to note that VS Code does not support all features of notebooks. For this reason, JupyterLab remains the recommended notebook interface.\n\n\nThe recommended approach for starting a notebook is to use the Miniforge Prompt on Windows or the Terminal app on MacOS. To do so, we simply need to activate our 'musa-550-fall-2023' environment and then start JupyterLab, which is included in the course’s environment.\nFrom the command line, first activate the environment:\nmamba activate musa-550-fall-2023\nand then launch JupyterLab\njupyter lab\nThis will create the local Jupyter server and should launch the JupyterLab dashboard in a browser. If it does not open in a browser, copy the link that is output by the command into your favorite browser. Typically, the server will be running at http://localhost:8888. The dashboard should like look something like this:\n\nOn the left, you’ll see a file browser for the files in the folder where you ran the jupyter lab command. On the right you will see the “Launcher”, which allows you to easily create various types of new files. Click on the “Python 3” button under the “Notebook” section and you’ll create your first notebook. Alternatively, you can use the File -&gt; New -&gt; Notebook option from the menu bar. The new notebook, entitled “Untitled.ipynb”, is created within the same directory.\nNow, let’s type the following into the first cell:\nprint(\"Hello, World!\")\nClick the ⏵ button in the menu bar of the notebook and you will run your first Python code in a notebook!\n\n\n\n\n\n\n\nTip\n\n\n\nThe Jupyter notebook section of the JupyterLab walks you through each step of working with notebook files in JupyterLab. Check it out here, or find more information in the JupyterLab guide."
+  },
+  {
+    "objectID": "resource/index.html",
+    "href": "resource/index.html",
+    "title": "Helpful resources",
+    "section": "",
+    "text": "This section includes a number of extra resources, cheatsheets, and guides related to software installation, Python, and other relevant topics."
+  },
+  {
+    "objectID": "resource/mamba.html",
+    "href": "resource/mamba.html",
+    "title": "Using mamba",
+    "section": "",
+    "text": "In this guide, we’ll outline some of the key concepts and common uses to get you up and running with mamba. A conda cheatsheet is also available under the “Cheatsheets” section in the left sidebar."
+  },
+  {
+    "objectID": "resource/mamba.html#key-concepts",
+    "href": "resource/mamba.html#key-concepts",
+    "title": "Using mamba",
+    "section": "Key Concepts",
+    "text": "Key Concepts\n\nCommands\nWe’ll be using the mamba tool through its command-line interface rather than a typical graphical user interface (GUI) application. If you are unfamiliar with the command line, this will take some getting used to but once you get the hang of it, it will make working with mamba and Python much easier.\nThe mamba command is the main interface for using the mamba tool for managing your Python packages. From the command line, you simply run:\nconda command [optional arguments will go here]\nwhere “command” is the name of the command you want to run. Commands exist to install new packages, create new environments, and much more.\n\n\nStarting and running mamba\nWe will run mamba from the command line but the specifics of this will depend on your operating system.\n\nWindows\nOpen the Start menu, search for and open the “Miniforge Prompt”. This application provides a command line interface where the mamba tool is properly load, initialized, and ready to be used. Note that you cannot use the default “Command Prompt” application to use mamba because it doesn’t know how to load mamba properly.\nMacOS\nThe Terminal app should be used on MacOS to use mamba. You can also use any Terminal emulator (such as iTerm2). Simply open the Terminal application and the mamba command should be ready to use.\n\n\n\nChannels\n“Channels” are the locations where packages are located. Channels are typically remote and hosted in the cloud. When you specify a channel, mamba will search the remote database for the right package and download it to your local computer.\nBy default, conda usually downloads packages from the defaults channel, which hosts thousands of packages and is managed by the makers of the Anaconda distribution. A full list of packages is available here.\nThe “mambaforge” distribution that we installed in this course is pre-configured to use a community-managed channel known as “conda-forge” instead of the “defaults” channel. Conda forge includes many of the packages on the “defaults” channel but also popular packages that are widely-used but not quite essential enough for the “defaults” channel. A list of maintained packages is available here.\nFor less well known packages, there is a higher likelihood the package will be hosted on conda forge. For that reason, we will prefer downloading and installing packages from conda forge in this course.\n\n\nEnvironments\nThe mamba tool not only lets you download and install packages, but you can group those packages together into environments. By default, the “mambaforge” Python distribution creates an environment named base. We will create a new environment specifically for this course that will hold all of the packages needed for the entire semester.\nEnvironments become particularly useful when working with lots of packages, packages that have a lot of dependencies, or packages that are difficult to install. When environments become too large, it can be difficult to install a new package that satisfies all of the existing package dependencies. For that reason, we will create a fresh, new environment to install the packages we need to use during this course.\n\n\nConda/mamba vs. pip\nThe other widely used method for installing packages is via the pip command. The commands are similar in a lot of ways but with some key differences. The pip command installs packages from the Python Package Index and is designed to install Python-only packages.\nThe main advantage of conda/mamba is that it is cross-platform and can handle dependencies that are written in C (or other languages) and will automatically handle the compiling process during installation. Many of the packages we use in this course have complex dependencies written in C, and mamba will make installation of these packages much easier.\nIn this course, we’ll be using mamba to install packages. Generally speaking, if you already are using mamba to manage environments, it’s best to try to install packages with mamba and if the package is not available, then try using pip.\nSee this article for more information about conda and pip."
+  },
+  {
+    "objectID": "resource/mamba.html#common-uses",
+    "href": "resource/mamba.html#common-uses",
+    "title": "Using mamba",
+    "section": "Common Uses",
+    "text": "Common Uses\nManaging environments and installing packages will be done by executing the mamba command in the command line. Below are some of the most common commands that we will use in this class.\n\n\n\n\n\n\nImportant\n\n\n\nAll of the examples below should be run in the Terminal app (MacOS) or Miniforge Prompt (Windows). See the Starting and running mamba section above for more detail.\n\n\n\nGetting help with the mamba command\nThe mamba command has a built-in help function. From the command line, run,\nmamba --help\nwhich will print out info about individual commands:\nusage: mamba [-h] [-V] command ...\n\nconda is a tool for managing and deploying applications, environments and packages.\n\nOptions:\n\npositional arguments:\n  command\n    clean             Remove unused packages and caches.\n    compare           Compare packages between conda environments.\n    config            Modify configuration values in .condarc. This is modeled after the git config command. Writes to the user .condarc file\n                      (/Users/nhand/.condarc) by default. Use the --show-sources flag to display all identified configuration locations on your computer.\n    create            Create a new conda environment from a list of specified packages.\n    info              Display information about current conda install.\n    init              Initialize conda for shell interaction.\n    install           Installs a list of packages into a specified conda environment.\n    list              List installed packages in a conda environment.\n    package           Low-level conda package utility. (EXPERIMENTAL)\n    remove (uninstall)\n                      Remove a list of packages from a specified conda environment. Use `--all` flag to remove all packages and the environment itself.\n    rename            Renames an existing environment.\n    run               Run an executable in a conda environment.\n    search            Search for packages and display associated information.The input is a MatchSpec, a query language for conda packages. See examples\n                      below.\n    update (upgrade)  Updates conda packages to the latest compatible version.\n    notices           Retrieves latest channel notifications.\n    repoquery         Query repositories using mamba.\n\noptional arguments:\n  -h, --help          Show this help message and exit.\n  -V, --version       Show the conda version number and exit.\nTo find out more info about a specific sub-command, you can run:\nmamba command --help\nFor example, for more info about the arguments (both required and optional) needed to install packages, use: mamba install --help.\n\n\nListing the available environments\nThe default environment when first installing mamba is called 'base'. You can list the currently installed Python environments by running the following command from the command line:\nmamba env list\nThe currently active environment will have a '*' next to it. You should see the 'base' environment as well as any other environments you have created.\n\n\nActivating your environment\nEnvironments must first be “activated” before the packages are available to use. To activate the environment for this course, you can run the following from the command line:\nmamba activate musa-550-fall-2023\nNow, all of the packages in this environment will be available when we run Python.\n\n\nFinding the active environment\nTo see the active environment, list the available environments. The active environment will be listed with a ‘*’ next to its name.\nFrom the command line, run:\nmamba env list\n\n\nListing the installed packages\nIf you have already activated the musa-550-fall-2023 environment, you can list all of the installed packages.\nFrom the command line:\nmamba list\n\n\nActivating the base environment\nTo activate the 'base' default environment, run from the command line:\nmamba activate base\n\n\n\n\n\n\nNote\n\n\n\nYou should always use the ‘musa-550-fall-2023’ environment to do the analysis in this course. Make sure it is the activated environment when using Python.\n\n\n\n\nDeleting an environment\nNote that you cannot create a new environment with the same name as an existing environment. If your environment becomes corrupted or you run into issues, it is often easiest to delete the environment and start over. To do, you can run the following commands from the command line:\nmamba deactivate\nmamba env remove --name musa-550-fall-2023\n\n\nUpdating an existing environment\nThe environment we are using throughout the course might be need to be updated during the course. For example, we might want to update to include a newly released version of a package.\nYou can update your local environment via the following command. From the command line:\nmamba env update pennmusa/musa-550-fall-2023\nThis command will ensure that the ‘musa-550-fall-2023’ environment on your local computer matches the environment specified by the “environment.yml” file stored in the cloud for the course.\n\n\nInstalling specific packages\nYou shouldn’t need to install any individual packages into the ‘musa-550-fall-2023’ environment. But for reference, you could install specific packages into the active environment using from the command line:\nmamba install package_name"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Welcome to the course syllabus for MUSA 550, Geospatial Data Science in Python, taught at the University of Pennsylvania in fall 2023."
+  },
+  {
+    "objectID": "syllabus.html#overview",
+    "href": "syllabus.html#overview",
+    "title": "Syllabus",
+    "section": "Overview",
+    "text": "Overview\nThis course will provide students with the knowledge and tools to turn data into meaningful insights, with a focus on real-world case studies in the urban planning and public policy realm. Focusing on the latest Python software tools, the course will outline the “pipeline” approach to data science. It will teach students the tools to gather, visualize, and analyze datasets, providing the skills to effectively explore large datasets and transform results into understandable and compelling narratives. The course is organized into five main sections:\n\nExploratory Data Science: Students will be introduced to the main tools needed to get started analyzing and visualizing data using Python.\nIntroduction to Geospatial Data Science: Building on the previous set of tools, this module will teach students how to work with geospatial datasets using a range of modern Python toolkits.\nData Ingestion & Big Data: Students will learn how to collect new data through web scraping and APIs, as well as how to work effectively with the large datasets often encountered in real-world applications.\nGeospatial Data Science in the Wild: Armed with the necessary data science tools, students will be introduced to a range of advanced analytic and machine learning techniques using a number of innovative examples from modern researchers.\nFrom Exploration to Storytelling: The final module will teach students to present their analysis results using web-based formats to transform their insights into interactive stories."
+  },
+  {
+    "objectID": "syllabus.html#logistics",
+    "href": "syllabus.html#logistics",
+    "title": "Syllabus",
+    "section": "Logistics",
+    "text": "Logistics\n\nLecture\nThe course will be conducted in weekly sessions devoted to lectures, interactive demonstrations, and in-class labs.\n\nMonday & Wednesday, 8:30 AM to 10:00 AM\nWilliams Hall, Room 202\n\n\n\nContact Info\n\nInstructor: Nick Hand, nhand@design.upenn.edu\nTeaching Assistant: Teresa Chang, thchang@design.upenn.edu\n\n\n\nOffice Hours\nOffice hours will be by appointment via Zoom — you should be able to sign up for 1 (or more) 15-minute time slot via the Canvas calendar.\nNick:\nTBD\nTeresa:\nTBD\n\n\nCourse Websites\n\nMain website: https://musa-550-fall-2023.github.io\nGithub: https://www.github.com/MUSA-550-Fall-2023\nCanvas: https://canvas.upenn.edu/courses/1740535\nEd Discussion https://edstem.org/us/courses/42616/discussion/\n\nThe course’s main website will be the main source of information, including the course schedule, weekly content, and guides/resources.\nThe course’s Github page will have repositories for each week’s lectures as well as assignments. Students will also submit their assignments through Github.\nWe will use Canvas signing up for office hours and tracking grades.\nEd Discussion is a Q&A forum that allows students to ask questions related to lecture materials and assignments.\n\n\nAssignments\nThere are six homework assignments and one required final project at the end of the semester. While you are required to submit all six assignments, the assignment with the lowest grade will be dropped.\nFor the final project, students will replicate the pipeline approach on a dataset (or datasets) of their choosing. Students will be required to use several of the analysis techniques taught in the class and produce a web-based data visualization that effectively communicates the empirical results to a non-technical audience. The final product should also include a description of the methods used in each step of the data science process (collection, analysis, and visualization).\nFor more details on the final project, see the Github repository.\n\n\nGrading\nThe grading breakdown is as follows: 55% for homework; 40% for final project, 5% for participation. Your participation grade will be determined by your activity on Ed Discussion — both asking, answering, and reading questions.\nOf the seven homework assignment, you must complete five in total and three are required.\nThere’s no penalty for late assignments. I would highly recommend staying caught up on lectures and assignments as much as possible, but if you need to turn something in a few days late, that’s fine — there’s no penalty. If you turn in something late, you’ll be missing out on valuable feedback, but that’s the only practical penalty, there’s no extra penalty to your grade.\n\n\nSoftware\nThis course relies on use of Python and various related packages and for geospatial topics. All software is open-source and freely available. The course will require a working installation of Python on your local computer. See the Installation Setup Guide for instructions on how to setup your computer for use in this course."
+  },
+  {
+    "objectID": "syllabus.html#policies",
+    "href": "syllabus.html#policies",
+    "title": "Syllabus",
+    "section": "Policies",
+    "text": "Policies\nMUSA 550 is a fast-paced course that covers a lot of topics in a short amount of time. I know that it can be overwhelming and frustrating, particularly as you are trying to learn Python syntax and the topics in the course at the same time. But I firmly believe that all students can succeed in this class.\nYou’ll get the most out of the course if you stay up-to-date on the lectures and assignments. If you fall behind, I know there can be a desire to copy code from the Internet or others to help you complete assignments. Ultimately, this will be detrimental to your progress as an analytics wizard. My goal for this course is for everyone to learn and engage with the material to the best of their ability.\n\nIf you find yourself falling behind or struggling with Python issues, please ask for help by:\n\nPost a question on Canvas — the fix for your problem might be quick and other students are probably experiencing similar issues.\nCome to office hours and discuss issues or larger conceptual questions you are having.\nTake advantage of the free resources to help fine-tine your Python skills.\n\n\nAnd if you are still struggling, reach out and let me know and we’ll figure out a strategy to make things work!\n\nCommunication Policies\n\nPlease add the following text into the subject line of emails to us: [MUSA550]. This will help us make sure we don’t miss your email!\nWe will use Canvas for questions related to lecture material and assignments.\nTo prevent code copying, please do not post long, complete code examples to Canvas.\nAnonymous posting is enabled on Canvas — if you have a question that requires a full code example, please use the anonymous feature to post the question.\nWe will also use Canvas for announcements — please make sure your notifications are turned on and you check the website frequently. This will be the primary method of communication for course-wide announcements.\nIf you have larger-scale or conceptual questions on assignments or lecture material, please set up a time to discuss during office hours.\n\n\n\nGroup Work\nStudents are allowed (and encouraged!) to collaborate when working through lecture materials or assignments. If you work closely with other students, please list the members of your group at the top of your assignment.\n\n\nSpecial Accommodations\nThere are a number of ongoing situations in the world that may take precedence over the course work. If you are experiencing any difficulties outside the course, please contact me and accommodations can be made. Similarly, if you are having any difficulties with the course schedule, attending lectures, or similar, please let us know.\n\n\nAcademic Integrity\nStudents are expected to be familiar with and comply with Penn’s Code of Academic Integrity, which is available in the Pennbook, or online at https://catalog.upenn.edu/pennbook/code-of-academic-integrity."
+  },
+  {
+    "objectID": "assignment/assignment-1.html",
+    "href": "assignment/assignment-1.html",
+    "title": "HW #1",
+    "section": "",
+    "text": "Assigned on Wednesday, August 30\n              \n\n              \n                \n            \n              \n            \n                Due on Wednesday, September 13 at 11:59 PM\n              \n\n\n\n  \n    \n     View materials: \n    \n      MUSA-550-Fall-2023/assignment-1\n    \n  \n\n  \n    \n     Submission link: \n    \n      GitHub classroom\n    \n  \n\nCheck back after the homework has been assigned for details."
+  },
+  {
+    "objectID": "assignment/assignment-2.html",
+    "href": "assignment/assignment-2.html",
+    "title": "HW #2",
+    "section": "",
+    "text": "Assigned on Wednesday, September 13\n              \n\n              \n                \n            \n              \n            \n                Due on Monday, October 2 at 11:59 PM\n              \n\n\n\n  \n    \n     View materials: \n    \n      MUSA-550-Fall-2023/assignment-2\n    \n  \n\n  \n    \n     Submission link: \n    \n      GitHub classroom\n    \n  \n\nCheck back after the homework has been assigned for details."
+  },
+  {
+    "objectID": "assignment/assignment-5.html",
+    "href": "assignment/assignment-5.html",
+    "title": "HW #5",
+    "section": "",
+    "text": "Assigned on Wednesday, October 25\n              \n\n              \n                \n            \n              \n            \n                Due on Monday, November 13 at 11:59 PM\n              \n\n\n\n  \n    \n     View materials: \n    \n      MUSA-550-Fall-2023/assignment-5\n    \n  \n\n  \n    \n     Submission link: \n    \n      GitHub classroom\n    \n  \n\nCheck back after the homework has been assigned for details."
+  },
+  {
+    "objectID": "assignment/final-project.html",
+    "href": "assignment/final-project.html",
+    "title": "Final Project",
+    "section": "",
+    "text": "Due on Wednesday, December 20 at 11:59 PM\n              \n\n\n\n  \n    \n     View materials: \n    \n      MUSA-550-Fall-2023/final-project\n    \n  \n\n  \n    \n     Submission link: \n    \n      GitHub classroom\n    \n  \n\nCheck back after the homework has been assigned for details."
+  },
+  {
+    "objectID": "assignment/index.html",
+    "href": "assignment/index.html",
+    "title": "Overview",
+    "section": "",
+    "text": "There are six homework assignments due throughout the semester and one final project that is due at the end of the finals period. For grading purposes, the assignment with the lowest grade will not count towards your final grade."
+  },
+  {
+    "objectID": "assignment/index.html#schedule",
+    "href": "assignment/index.html#schedule",
+    "title": "Overview",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\n\n\n\nNote\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssigned on\n\n\n\nDue on\n\n\n\n\n\n\n\n\n\n\n\nHW #1\n\n\n\nWednesday, August 30\n\n\n\nWednesday, September 13\n\n\n\n\n\n\n\nHW #2\n\n\n\nWednesday, September 13\n\n\n\nMonday, October 2\n\n\n\n\n\n\n\nHW #3\n\n\n\nWednesday, September 27\n\n\n\nMonday, October 16\n\n\n\n\n\n\n\nHW #4\n\n\n\nWednesday, October 11\n\n\n\nMonday, October 30\n\n\n\n\n\n\n\nHW #5\n\n\n\nWednesday, October 25\n\n\n\nMonday, November 13\n\n\n\n\n\n\n\nHW #6\n\n\n\nMonday, November 13\n\n\n\nMonday, December 4\n\n\n\n\n\n\n\nFinal project proposal\n\n\n\n\n\n\nMonday, December 4\n\n\n\n\n\n\n\nFinal project\n\n\n\n\n\n\nWednesday, December 20"
+  },
+  {
+    "objectID": "assignment/index.html#guidelines",
+    "href": "assignment/index.html#guidelines",
+    "title": "Overview",
+    "section": "Guidelines",
+    "text": "Guidelines\nWe will be using Jupyter notebook files for assignments. Below are a few guidelines to make this process as smooth as possible.\n1. Notebook files should be a polished, finished product.\n\nPlease be sure that your name (as well as the names of anyone you worked with) is listed at the top of the notebook file you submit.\nPlease remove any extra or unneccesary code.\nWhen possible, use markdown cells for comments or add comments directly to your Python code to help explain the steps in your analysis.\nSection headers in markdown can also be helpful to mark different sections of the analysis.\n\n2. Notebook files should be reproducible and executable.\n\nEnsure that your assignments can be executed from top to bottom and produce the desired result. This is how our course TAs will grade each assignment.\nIf your analysis loads a dataset, make sure you either A) Add the dataset to the repository, or B) document the original source of the data so it can be downloaded during grading.\nMake sure you are using relative file paths when loading your data so that the TA can download your repository and the file structure will still work. For more information, check out the guide on file paths."
+  },
+  {
+    "objectID": "assignment/index.html#submission",
+    "href": "assignment/index.html#submission",
+    "title": "Overview",
+    "section": "Submission",
+    "text": "Submission\nWe’ll be using GitHub Classroom to submit homework assignments. For each assignment, be on the look out for the submission url, which will always start with the following: https://classroom.github.com/.\nWhen you click on this submission link for each assignment, you will be prompted to log in to GitHub, and then a unique, private repository will be created on the course’s GitHub page. You will create a new private repository for each assignment. Only you and the instructors will be able to view these repositories.\nWe will be using Jupyter notebook files for assignments, and you should add your notebook to your newly created assignment repository before the deadline. You can add files to the repository through the browser (github.com) interface or using the command line locally on your machine. For more help, see these instructions."
+  },
+  {
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Weekly Course Content",
+    "section": "",
+    "text": "Each class session has a set of required readings that you should complete before watching the lecture or working through the lesson.\nI’ve included a set of questions that might guide your reflection response. You should not try to respond to all of these (or any of them if you don’t want to)—they’ll just help you know what to look for and think about as you read.\nEvery class session also has a YouTube playlist of short recorded videos for each of the lecture sections. The lecture slides are special HTML files made with the R package {xaringan} (R can do so much!). On each class session page you’ll buttons for opening the presentation in a new tab or for downloading a PDF of the slides in case you want to print them or store them on your computer:"
+  },
+  {
+    "objectID": "Untitled.html",
+    "href": "Untitled.html",
+    "title": "Geospatial Data Science in Python",
+    "section": "",
+    "text": "print(\"Hello, World!\")\n\nHello, World!"
+  },
+  {
+    "objectID": "content/week-2/index.html",
+    "href": "content/week-2/index.html",
+    "title": "Week 2",
+    "section": "",
+    "text": "HELLO"
+  },
+  {
+    "objectID": "content/week-1/index.html",
+    "href": "content/week-1/index.html",
+    "title": "Week 1",
+    "section": "",
+    "text": "View materials: \n     MUSA-550-Fall-2023/week-1\n  \n\n  \n    \n     Launch slides on Binder: \n    \n      Lecture 1A\n    \n     \n    \n      Lecture 1B"
+  },
+  {
+    "objectID": "assignment/final-project-proposal.html",
+    "href": "assignment/final-project-proposal.html",
+    "title": "Final Project Proposal",
+    "section": "",
+    "text": "Due on Monday, December 4 at 11:59 PM\n              \n\n\n\n  \n    \n     View materials: \n    \n      MUSA-550-Fall-2023/final-project-proposal\n    \n  \n\n  \n    \n     Submission link: \n    \n      GitHub classroom\n    \n  \n\nCheck back after the homework has been assigned for details."
+  },
+  {
+    "objectID": "assignment/assignment-4.html",
+    "href": "assignment/assignment-4.html",
+    "title": "HW #4",
+    "section": "",
+    "text": "Assigned on Wednesday, October 11\n              \n\n              \n                \n            \n              \n            \n                Due on Monday, October 30 at 11:59 PM\n              \n\n\n\n  \n    \n     View materials: \n    \n      MUSA-550-Fall-2023/assignment-4\n    \n  \n\n  \n    \n     Submission link: \n    \n      GitHub classroom\n    \n  \n\nCheck back after the homework has been assigned for details."
+  },
+  {
+    "objectID": "assignment/assignment-6.html",
+    "href": "assignment/assignment-6.html",
+    "title": "HW #6",
+    "section": "",
+    "text": "Assigned on Monday, November 13\n              \n\n              \n                \n            \n              \n            \n                Due on Monday, December 4 at 11:59 PM\n              \n\n\n\n  \n    \n     View materials: \n    \n      MUSA-550-Fall-2023/assignment-6\n    \n  \n\n  \n    \n     Submission link: \n    \n      GitHub classroom\n    \n  \n\nCheck back after the homework has been assigned for details."
+  },
+  {
+    "objectID": "assignment/assignment-3.html",
+    "href": "assignment/assignment-3.html",
+    "title": "HW #3",
+    "section": "",
+    "text": "Assigned on Wednesday, September 27\n              \n\n              \n                \n            \n              \n            \n                Due on Monday, October 16 at 11:59 PM\n              \n\n\n\n  \n    \n     View materials: \n    \n      MUSA-550-Fall-2023/assignment-3\n    \n  \n\n  \n    \n     Submission link: \n    \n      GitHub classroom\n    \n  \n\nCheck back after the homework has been assigned for details."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Geospatial Data Science",
+    "section": "",
+    "text": "Geospatial Data Science\n    \n      Use Python to gather, visualize, and analyze geospatial data with an urban planning and public policy focus\n    \n    \n      MUSA 550 • Fall 2023Masters of Urban Spatial AnalyticsWeitzman School of Design, University of Pennsylvania\n    \n  \n  \n    \n      \n        \n      \n    \n  \n\n\n\n\n\nInstructor\n\n   Dr. Nick Hand\n   nhand@design.upenn.edu\n   nicholashand\n\n\n\nCourse details\n\n   Mondays and Wednesdays\n   August 29-December 21, 2023\n   8:30AM-10:00AM\n   Williams Hall 202\n\n\n\nContacting me\nE-mail is the best way to get in contact with me. I will try to respond to all course-related e-mails within 24 hours, although I do have a tiny human 👶 at home, so it may be a bit longer on occassion. Please be patient!"
+  },
+  {
+    "objectID": "resource/jupyter.html",
+    "href": "resource/jupyter.html",
+    "title": "Using Jupyter notebooks and JupyterLab",
+    "section": "",
+    "text": "In this course, we will perform most of our Python data analysis in files known as Jupyter notebooks. These files, which have an extension of “.ipynb”, combine live runnable code with narrative text (via the Markdown language), images, interactive visualizations and other rich output.\nTo work with notebook files, we will use an application called JupyterLab. JupyterLab is a browser-based interface that allows users to edit and execute notebook files. It can also handle all sorts of additional file formats and even has a built-in command-line feature.\nOn this page, I’ll discuss two common issues when starting out with Jupyter notebooks and JupyterLab: launching JupyterLab and ensuring the right files are available."
+  },
+  {
+    "objectID": "resource/jupyter.html#launching-jupyterlab",
+    "href": "resource/jupyter.html#launching-jupyterlab",
+    "title": "Using Jupyter notebooks and JupyterLab",
+    "section": "Launching JupyterLab",
+    "text": "Launching JupyterLab\nThe recommended approach for starting JupyterLab is to use the Miniforge Prompt on Windows or the Terminal app on MacOS. To do so, we simply need to activate our ‘musa-550-fall-2023’ environment and then launch the notebook.\nFrom the command line, run:\nmamba activate musa-550-fall-2023\njupyter lab\nThis will create the local Jupyter server and should launch the JupyterLab dashboard in a browser. If it does not open in a browser, copy the link that is output by the command into your favorite browser. Typically, the server will be running at http://localhost:8888. The dashboard should like look something like this:\n\nOn the left, you’ll see a file browser for the files in the folder where you ran the jupyter lab command. On the right you will see the “Launcher”, which allows you to easily create various types of new files. Click on the “Python 3” button under the “Notebook” section and you’ll create your first notebook. Alternatively, you can use the File -&gt; New -&gt; Notebook option from the menu bar. The new notebook, entitled “Untitled.ipynb”, is created within the same directory.\nThe “Launcher” also shows you what other actions you can take with JupyterLab, including creating text files, Python files (“.py” files), Markdown files, new terminals or Python consoles. One of the most powerful features of JupyterLab is its ability to handle multiple file formats at once. You can have multiple file types open in the main work area and drag and resize these files to view them all at once, as described here.\n\n\n\n\n\n\nTip\n\n\n\nMore info on the various components of the JupyterLab interface, with several useful videos, is available here."
+  },
+  {
+    "objectID": "resource/jupyter.html#changing-the-jupyterlab-start-up-folder",
+    "href": "resource/jupyter.html#changing-the-jupyterlab-start-up-folder",
+    "title": "Using Jupyter notebooks and JupyterLab",
+    "section": "Changing the JupyterLab start-up folder",
+    "text": "Changing the JupyterLab start-up folder\nBy default, JupyterLab launches from the home directory. When you see the file browser on the left of the dashboard, you should see all of the files in this folder.\nWhen working with weekly lectures or assignments, it is easiest to launch JupyterLab from the specific assignment or week folder that you are working on.\nThere are two options to do this:\n\nChange to the desired folder before launching JupyterLab\nUse the “notebook-dir” option to specify the desired folder when launching JupyterLab\n\n\nOption 1\n\nStep 1: Change to the desired directory\nLet’s imagine we want to change to a folder named:\n/Users/YourUserName/MUSA_550 (on a Mac),\nor\nC:\\Users\\YourUserName\\MUSA_550 (on Windows)\nIf you need help finding the folder name’s path, this guide for Windows. (I usually use Method #2). On MacOS, you can use this guide to copy a folder’s path name.\nNext, use the following steps:\nStep 1. On Windows, open the Miniforge Prompt, or on Mac, open the Terminal.\nStep 2. Navigate to the folder where the environment file is located. From the Prompt or Terminal run:\n\nWindows\ncd C:\\Users\\YourUserName\\MUSA_550\nMac\ncd /Users/YourUserName/MUSA_550/\n\n\n\nStep 2: Launch JupyterLab\nNow, type the following command, either in Anaconda Prompt or the Terminal:\njupyter lab\nAnd you should now see the desired files in the file browser on the left sidebar of the JupyterLab interface!\n\n\n\nOption 2\nFrom the command line (Miniforge Prompt or Terminal), we can use the “notebook-dir” option to specify what working directory we want JupyterLab to use. For example, if we want to start from “/Users/YourUserName/MUSA_550/”, we could do:\n\nWindows\njupyter lab --notebook-dir=C:\\Users\\YourUserName\\MUSA_550\nMac\njupyter lab --notebook-dir=/Users/YourUserName/MUSA_550/"
+  },
+  {
+    "objectID": "resource/python.html",
+    "href": "resource/python.html",
+    "title": "Python resources",
+    "section": "",
+    "text": "MUSA 550 assumes some general familiarity with programming concepts, but there aren’t any formal Python prerequisites. However, we recommend all students that they use some of the free, online resources for learning Python’s core concepts. Below, we include a number of online resources that are freely available for students in the course."
+  },
+  {
+    "objectID": "resource/python.html#datacamp-courses",
+    "href": "resource/python.html#datacamp-courses",
+    "title": "Python resources",
+    "section": "DataCamp courses",
+    "text": "DataCamp courses\nDataCamp is providing 6 months of complimentary access to its courses for students in MUSA 550. Whether you have experience with Python or not, this is a great opportunity to learn the basics of Python and practice your skills.\nIt is strongly recommended that you watch some or all of the introductory videos below to build a stronger Python foundation for the semester. The more advanced, intermediate courses are also great — the more the merrier!\n\n\n\n\n\n\nImportant\n\n\n\nTo gain access, use this unique invite link. You will need to create or sign in to a DataCamp account with an “upenn.edu” email address.\n\n\nIntroductory DataCamp courses include:\n\nIntroduction to Python for Data Science\nPython Data Science Toolbox, Part 1\nPython DataScience Toolbox, Part 2\nIntroduction to NumPy\n\nAnd there are also shorter, free tutorials available on some core Python concepts:\n\nIf/else statements\nFor loops\nWhile loops\n\nA few courses covering more advanced topics include:\n\nIntermediate Python\nWriting functions in Python\n\nThere are also courses available to help reinforce topics we will cover in detail during the semester, including:\n\nData manipulation with pandas\nJoining data with pandas\nIntroduction to Data Visualization with seaborn\nIntroduction to Data Visualization with matplotlib\nIntermediate Data Visualization with seaborn\nSupervised Learning with scikit-learn\n\n\n\n\n\n\n\nTip\n\n\n\nCheck out the full list of available Python courses on DataCamp’s website."
+  },
+  {
+    "objectID": "resource/python.html#introductory-python-tutorials",
+    "href": "resource/python.html#introductory-python-tutorials",
+    "title": "Python resources",
+    "section": "Introductory Python tutorials",
+    "text": "Introductory Python tutorials\nThe following tutorials assume no background in Python and provide a fairly comprehensive introduction to Python and its core concepts.\n\nPractical Python Programming by David Beazley\nPython for Social Science (in particular, the first four chapters)\nScientific Python Basics from the Berkeley Institute for Data Science (notebook version)"
+  },
+  {
+    "objectID": "resource/python.html#more-advanced-tutorials",
+    "href": "resource/python.html#more-advanced-tutorials",
+    "title": "Python resources",
+    "section": "More advanced tutorials",
+    "text": "More advanced tutorials\nThe The Python Data Science Handbook by Jake VanderPlas is a free, online textbook covering the Python basics needed for this course. It is a bit more advanced than the resources in the previous section and assumes some familiarity with Python.\nIn particular, the first four chapters are excellent:\n\nChapter 1: IPython/Jupyter\nChapter 2: Numpy\nChapter 3: Pandas\nChapter 4: matplotlib\n\nThe data analysis library pandas and the visualization library matplotlib will be covered extensively in this course, but the above chapters provide additional background material on this foundational Python tools.\nNote: You can click on the “Open in Colab” button for each chapter and run the examples interactively in a cloud computing environment directly in the browser (using Google Colab)."
+  },
+  {
+    "objectID": "resource/python.html#additional-resources",
+    "href": "resource/python.html#additional-resources",
+    "title": "Python resources",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nThe Berkeley Institute for Data Science has compiled a number of Python resources\nThe subreddit r/learnpython is a good place for Python resources — it maintains a comprehensive wiki of resources and tutorials."
+  },
+  {
+    "objectID": "resource/common-issues.html",
+    "href": "resource/common-issues.html",
+    "title": "Troubleshooting common installation issues",
+    "section": "",
+    "text": "Having trouble with mamba/conda or your Python installation? You’ve come to the right place. Below, we outline some of the most common issues encountered during local installation of Python packages, as well as the troubleshooting steps to try to fix the issues."
+  },
+  {
+    "objectID": "resource/common-issues.html#common-problems",
+    "href": "resource/common-issues.html#common-problems",
+    "title": "Troubleshooting common installation issues",
+    "section": "Common Problems",
+    "text": "Common Problems\nBelow we list some of the most common issues encountered when installing packages with mamba.\n\nMissing package errors\nIf you have successfully followed the steps outlined in the installation guide to create your environment, but receive an ImportError when importing packages, you might have launched the notebook from the 'base' environment instead of the ‘musa-550-fall-2023’ environment. Be sure to activate the ‘musa-550-fall-2023’ environment before launching the notebook.s\n\n\nThe file extension of the environment file on Windows\nBe sure that Windows does not automatically add an .txt extension to your environment.yml file. This will sometimes cause mamba to fail, with a cryptic error:\nSpecNotFound: environment with requirements.txt needs a name\nThe environment file needs to end in .yml. You can change the extension for a file on Windows following these instructions.\n\n\nMixing pip and mamba\nThe command pip can also be used to install Python packages. However, using pip to install packages into a mamba environment can lead to issues. It’s best to stick to using the mamba env update command to update your environment or mamba install package_name to install specific packages.\n\n\nImport errors for geopandas\nWhen importing geopandas, you can sometimes receive errors about missing libraries. This is usually because package versions got mixed up during installation. This can sometimes happen, and geopandas is particularly sensitive to the versions of its dependencies.\nThe best and easiest thing to do to try to solve it is use the steps above to create a fresh environment.\n\n\nNumpy errors\nIf you receive the following error:\nImportError: Something is wrong with the numpy installation. While importing we detected an older version of numpy in ['/path/to/old/version/of/numpy/'']. One method of fixing this is to repeatedly uninstall numpy until none is found, then reinstall this version.\nFrom the Miniforge Prompt (Windows) or Terminal (Mac), run:\nmamba install --force-reinstall --clobber numpy"
+  },
+  {
+    "objectID": "resource/common-issues.html#most-common-fix-install-a-fresh-environment",
+    "href": "resource/common-issues.html#most-common-fix-install-a-fresh-environment",
+    "title": "Troubleshooting common installation issues",
+    "section": "Most common fix: install a fresh environment",
+    "text": "Most common fix: install a fresh environment\nUnfortunately, mamba/conda environments can sometimes become corrupted, preventing new packages from being installed or imported into Python properly. Most issues like this can be solved by simply deleting your current environment and starting fresh with a new version.\nThe following steps can be used to try to solve common issues:\n\n\n\n\n\n\nNote\n\n\n\nThe commands here should be executed via the command line, either using the Miniforge Prompt on Windows or the Terminal app on MacOS.\n\n\n\nStep 1: Delete any existing environment\nWe want to create a fresh environment, so you can delete any environment that was giving you issues. If that environment was called ‘musa-550-fall-2023’, you can run the following commands to delete it:\nmamba deactivate\nmamba env remove --name musa-550-fall-2023\nThe first command will make sure the environment we are deleting isn’t active, and then the second command will perform the deletion.\n\n\nStep 2: Create a fresh environment\nFollow the instructions outlined here to create a fresh version of the course website."
+  },
+  {
+    "objectID": "resource/file-paths.html",
+    "href": "resource/file-paths.html",
+    "title": "File paths and working directories",
+    "section": "",
+    "text": "Note\n\n\n\nBelow is a guide from one of our course’s previous TAs, Eugene Chong. It does a great job laying out the common issues associated with file paths and Python.\nA common challenge in collaborative data science work is dealing with file paths. A csv on your computer has a different file path than a csv on your colleague’s computer, and if you don’t plan ahead for that, your colleague won’t be able run your code on their computer without making (possibly many) changes.\nThis post contains a suggestion for how to organize your files and a glossary of terms. I’ll update it as things come up. Please let us know any questions!"
+  },
+  {
+    "objectID": "resource/file-paths.html#absolute-v.-relative-file-paths",
+    "href": "resource/file-paths.html#absolute-v.-relative-file-paths",
+    "title": "File paths and working directories",
+    "section": "Absolute v. relative file paths",
+    "text": "Absolute v. relative file paths\nProblem: I write pd.read_csv(\"C:/Users/eugene/data.csv\") in my code and send it to a project partner, Gritty. Gritty tries to run it, but it fails, and they have to change the code to pd.read_csv(\"C:/Users/gritty/data.csv\") to make it work. These are known as absolute file paths, which point to the exact location of a file on a computer, and generally they make it difficult to share code.\nOne way to deal with this is to organize your projects (e.g., a homework assignment) into self-contained folders. Something like the below:\nC:\n|__ /Users\n    |__ /eugene\n        |__ /MUSA550\n            |__ /Homework1\n                 |__ homework1_notebook.ipynb\n                 |__ /Data\n                      |__ data.csv\nWith this, I could instead write pd.read_csv(\"Data/data.csv\"). Then, I could send Gritty my entire Homework1 folder or upload that folder to GitHub as a repository, and Gritty can run the notebook without making any changes. These are relative file paths, which point to the location of a file on a computer relative to the working directory (i.e., the folder where homework1_notebook.ipynb is saved).\nFor your homework assignments, the most straightforward way to structure your files is to download the entire GitHub repository for that assignment (see below). Then, you can create a Jupyter notebook in that folder and, when you’re finished, upload it to GitHub. This way, when we download the repository for grading, or you open the notebook on a different computer, everything will run without changes (assuming you used relative file paths)."
+  },
+  {
+    "objectID": "resource/file-paths.html#glossary",
+    "href": "resource/file-paths.html#glossary",
+    "title": "File paths and working directories",
+    "section": "Glossary",
+    "text": "Glossary\nThese terms/commands work in Jupyter Notebooks, and they also apply to any command line tools you might encounter, like the Terminal, git bash, etc. except the Windows Command Prompt, Miniforge Prompt (which is actually just a wrapper around the Command Prompt), and Windows PowerShell.\nhome directory: Also referred to as ~. This is the directory for your particular user on your computer. In Windows, it’s usually something like C:/Users/eugene. If you open Terminal/Miniforge Prompt, it will be at this location by default.\nroot directory: Also referred to as /. This is the very highest level directory in your computer, where your operating system folders and such are located. We won’t be doing anything here, since deleting files can mess things up (I don’t think you can even open the root directory in the Windows File Explorer).\nworking directory: Also referred to as .. Relative file paths will be relative to this location on your computer. You can run the command pwd (“print working directory”) in either your Jupyter Notebook or the Terminal to see your current working directory. Note that ./subfolder/data.csv and subfolder/data.csv are the same; the first explicitly references the working directory, whereas it’s only implied in the second."
+  }
+]

@@ -1,0 +1,7 @@
+---
+title: Helpful resources
+sidebar: true
+---
+
+This section includes a number of extra resources, cheatsheets, and guides 
+related to software installation, Python, and other relevant topics. 

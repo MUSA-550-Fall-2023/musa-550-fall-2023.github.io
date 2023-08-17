@@ -1,0 +1,110 @@
+format:
+  html:
+    highlight-style: solarized
+    theme:
+    - default
+    - html/custom.scss
+    toc: true
+project:
+  output-dir: docs
+  pre-render: scripts/prepare.py
+  preview:
+    port: 3333
+  resources:
+  - files/
+  type: website
+website:
+  navbar:
+    background: '#fde68a'
+    pinned: true
+    right:
+    - syllabus.qmd
+    - schedule.qmd
+    - file: content/index.qmd
+      text: Content
+    - file: assignment/index.qmd
+      text: Assignments
+    - file: resource/index.qmd
+      text: Resources
+    tools:
+    - icon: box-arrow-up-right
+      menu:
+      - text: Github
+        url: https://github.com/MUSA-550-Fall-2023
+      - text: Canvas
+        url: https://canvas.upenn.edu/courses/1740535
+      - text: Ed Discussion
+        url: https://edstem.org/us/courses/42616/discussion/
+  page-footer:
+    left: 'Content {{< fa brands creative-commons >}} {{< var course.copyright_year
+      >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
+
+      All content licensed under a {{< fa brands creative-commons >}}
+
+      {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
+
+      [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC
+      4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
+
+      '
+    right: 'Made with {{< fa brands python >}} and [Quarto](https://quarto.org/)<br>
+
+      [View the source at {{< fa brands github >}} GitHub]({{< var course.github >}})
+
+      '
+  page-navigation: true
+  sidebar:
+  - background: light
+    contents:
+    - content/index.qmd
+    - file: content/week-1/index.qmd
+      text: 1. Exploratory Data Science in Python
+    search: false
+    style: docked
+    title: Content
+  - contents:
+    - contents:
+      - resource/index.qmd
+      - resource/python.qmd
+      section: Resources
+    - contents:
+      - resource/install.qmd
+      - resource/mamba.qmd
+      - resource/jupyter.qmd
+      - resource/common-issues.qmd
+      - resource/file-paths.qmd
+      section: Guides
+    - contents:
+      - file: cheatsheets/conda.pdf
+        text: Conda/mamba
+      - file: cheatsheets/python.pdf
+        text: Python
+      - file: cheatsheets/pandas.pdf
+        text: Pandas
+      - file: cheatsheets/matplotlib.pdf
+        text: Matplotlib
+      - file: cheatsheets/seaborn.pdf
+        text: Seaborn
+      section: Cheatsheets
+    title: Resources
+  - contents:
+    - file: assignment/index.qmd
+      text: Overview
+    - file: assignment/assignment-1.qmd
+      text: Assignment 1
+    - file: assignment/assignment-2.qmd
+      text: Assignment 2
+    - file: assignment/assignment-3.qmd
+      text: Assignment 3
+    - file: assignment/assignment-4.qmd
+      text: Assignment 4
+    - file: assignment/assignment-5.qmd
+      text: Assignment 5
+    - file: assignment/assignment-6.qmd
+      text: Assignment 6
+    - file: assignment/final-project-proposal.qmd
+      text: Final project proposal
+    - file: assignment/final-project.qmd
+      text: Final project
+    title: Assignments
+  title: Geospatial Data Science in Python

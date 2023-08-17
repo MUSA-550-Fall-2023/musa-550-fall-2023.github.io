@@ -1,0 +1,295 @@
+---
+title: Using mamba
+---
+
+In this guide, we'll outline some of the key concepts and common
+uses to get you up and running with `mamba`. A `conda`
+cheatsheet is also [available](/cheatsheets/conda.pdf) under the "Cheatsheets"
+section in the left sidebar.
+
+::: {.callout-note}
+
+This guide will reference the `conda` documentation throughout. Don't forget
+that `mamba` and `conda` are interchangeable and the `conda` docs also
+apply to `mamba`. You can switch out 
+the `conda` command for the `mamba` command and you're all set!
+:::
+
+
+::: {.callout-tip}
+To fully familiarize yourself with `mamba`/`conda`, I 
+strongly recommend going through the official 20-minute 
+[Conda User Guide](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
+:::
+
+## Key Concepts
+
+
+### Commands
+
+We'll be using the `mamba` tool through its command-line interface rather than a
+typical graphical user interface (GUI) application. If you are unfamiliar with
+the command line, this will take some getting used to but once you get the hang
+of it, it will make working with `mamba` and Python much easier.
+
+The `mamba` command is the main interface for using the `mamba` tool for managing
+your Python packages. From the command line, you simply run:
+
+```default
+conda command [optional arguments will go here]
+```
+where "command" is the name of the command you want to run. Commands exist to 
+install new packages, create new environments, and much more.
+
+### Starting and running mamba
+
+We will run `mamba` from the command line but the specifics of this will depend
+on your operating system.
+
+::: {.indented-callout}
+**Windows**
+
+Open the **Start** menu, search for and open the "Miniforge Prompt". This
+application provides a command line interface where the `mamba` tool is properly
+load, initialized, and ready to be used. Note that you **cannot** use the
+default "Command Prompt" application to use `mamba` because it doesn't know how
+to load `mamba` properly.
+
+**MacOS**
+
+The Terminal app should be used on MacOS to use `mamba`. You can also use any
+Terminal emulator (such as [iTerm2](https://iterm2.com/)). Simply open the Terminal
+application and the `mamba` command should be ready to use.
+:::
+
+### Channels
+
+"Channels" are the locations where packages are located. Channels are
+typically remote and hosted in the cloud. When you specify a channel, `mamba`
+will search the remote database for the right package and download it to your
+local computer.
+
+By default, `conda` usually downloads packages from the _defaults_ channel, which hosts
+thousands of packages and is managed by the makers of the Anaconda distribution.
+A full list of packages is available
+[here](https://repo.anaconda.com/pkgs/main/).
+
+The "mambaforge" distribution that [we installed](install.html#step-1.-installing-python) 
+in this course is pre-configured to use a community-managed 
+channel known as ["conda-forge"](https://conda-forge.org/) instead of the "defaults"
+channel. Conda forge includes many of the packages on the "defaults" channel but also popular
+packages that are widely-used but not quite essential enough for the "defaults"
+channel. A list of maintained packages is available
+[here](https://conda-forge.org/feedstocks/).
+
+For less well known packages, there is a higher likelihood the package will be
+hosted on conda forge. For that reason, we will prefer downloading and
+installing packages from conda forge in this course.
+
+### Environments
+
+The `mamba` tool not only lets you download and install packages, but you can
+group those packages together into _environments_. By default, the "mambaforge"
+Python distribution creates an environment named _base_. We will create a new
+environment specifically for this course that will hold all of the packages
+needed for the entire semester.
+
+Environments become particularly useful when working with lots of packages,
+packages that have a lot of dependencies, or packages that are difficult to
+install. When environments become too large, it can be difficult to install a
+new package that satisfies all of the existing package dependencies. For that
+reason, we will create a fresh, new environment to install the packages we need
+to use during this course.
+
+### Conda/mamba vs. pip
+
+The other widely used method for installing packages is via the [`pip`
+command](https://pip.pypa.io/en/stable/). The commands are similar in a lot of
+ways but with some key differences. The `pip` command installs packages from the
+[Python Package Index](https://pypi.org/) and is designed to install Python-only
+packages.
+
+The main advantage of `conda`/`mamba` is that it is _cross-platform_ and can handle
+dependencies that are written in C (or other languages) and will automatically
+handle the compiling process during installation. Many of the packages we use in
+this course have complex dependencies written in C, and `mamba` will make
+installation of these packages _much easier_.
+
+_In this course, we'll be using `mamba` to install packages._ Generally speaking, if you
+already are using `mamba` to manage environments, it's best to try to install packages
+with `mamba` and if the package is not available, then try using `pip`.
+
+See [this article](https://www.anaconda.com/blog/understanding-conda-and-pip)
+for more information about `conda` and `pip`.
+
+## Common Uses
+
+Managing environments and installing packages will be done by executing the
+`mamba` command in the command line. Below are some of the most common commands
+that we will use in this class.
+
+::: {.callout-important}
+All of the examples below should be run in the Terminal app
+(MacOS) or Miniforge Prompt (Windows). See the [Starting and running
+mamba](#starting-and-running-mamba) section above for more detail.
+:::
+
+### Getting help with the mamba command
+
+The `mamba` command has a built-in help function. From the command line, run,
+
+```default
+mamba --help
+```
+
+which will print out info about individual commands:
+
+```default
+usage: mamba [-h] [-V] command ...
+
+conda is a tool for managing and deploying applications, environments and packages.
+
+Options:
+
+positional arguments:
+  command
+    clean             Remove unused packages and caches.
+    compare           Compare packages between conda environments.
+    config            Modify configuration values in .condarc. This is modeled after the git config command. Writes to the user .condarc file
+                      (/Users/nhand/.condarc) by default. Use the --show-sources flag to display all identified configuration locations on your computer.
+    create            Create a new conda environment from a list of specified packages.
+    info              Display information about current conda install.
+    init              Initialize conda for shell interaction.
+    install           Installs a list of packages into a specified conda environment.
+    list              List installed packages in a conda environment.
+    package           Low-level conda package utility. (EXPERIMENTAL)
+    remove (uninstall)
+                      Remove a list of packages from a specified conda environment. Use `--all` flag to remove all packages and the environment itself.
+    rename            Renames an existing environment.
+    run               Run an executable in a conda environment.
+    search            Search for packages and display associated information.The input is a MatchSpec, a query language for conda packages. See examples
+                      below.
+    update (upgrade)  Updates conda packages to the latest compatible version.
+    notices           Retrieves latest channel notifications.
+    repoquery         Query repositories using mamba.
+
+optional arguments:
+  -h, --help          Show this help message and exit.
+  -V, --version       Show the conda version number and exit.
+
+```
+
+To find out more info about a specific sub-command, you can run:
+
+```default
+mamba command --help
+```
+
+For example, for more info about the arguments (both required and optional) needed
+to install packages, use: `mamba install --help`.
+
+
+### Listing the available environments
+
+The default environment when first installing `mamba` is called `'base'`. You
+can list the currently installed Python environments by running the following
+command from the command line:
+
+```default
+mamba env list
+```
+The currently active environment will have a `'*'` next to it. You should see
+the `'base'` environment as well as any other environments you have created.
+
+
+### Activating your environment
+
+Environments must first be "activated" before the packages are available to use.
+To activate the environment for this course, you can run the following
+from the command line:
+
+```default
+mamba activate {{< var install.env_name >}}
+```
+
+Now, all of the packages in this environment will be available when we run
+Python.
+
+### Finding the active environment
+
+To see the active environment, [list the available environments](#listing-the-available-environments).
+The active environment will be listed with a '\*' next to its name.
+
+From the command line, run:
+
+```default
+mamba env list
+```
+
+### Listing the installed packages
+
+If you have already [activated the {{< var install.env_name >}} environment](#activating-your-environment),
+you can list all of the installed packages.
+
+From the command line:
+
+```default
+mamba list
+```
+
+### Activating the base environment
+
+To activate the `'base'` default environment, run from the command line:
+
+```default
+mamba activate base
+```
+
+::: {.callout-note}
+You should always use the '{{< var install.env_name >}}' environment to do
+the analysis in this course. Make sure it is the activated environment
+when using Python.
+:::
+
+### Deleting an environment
+
+Note that you cannot create a new environment with the same name as an existing
+environment. If your environment becomes corrupted or you run into issues, it is
+often easiest to delete the environment and start over. To do, you can run the
+following commands from the command line:
+
+```default
+mamba deactivate
+```
+
+```default
+mamba env remove --name {{< var install.env_name >}}
+```
+
+### Updating an existing environment
+
+The environment we are using throughout the course might be need to be
+updated during the course. For example, we might want to update to include
+a newly released version of a package.
+
+You can update your local environment via the following command.
+From the command line:
+
+```default
+mamba env update pennmusa/{{< var install.env_name >}}
+```
+
+This command will ensure that the '{{< var install.env_name >}}' environment on your
+local computer matches the environment specified by the "environment.yml" file
+stored in the cloud for the course.
+
+### Installing specific packages
+
+You shouldn't need to install any individual packages into 
+the '{{< var install.env_name >}}' environment. But for reference, you could 
+install specific packages into the active environment using from the 
+command line:
+
+```default
+mamba install package_name
+```

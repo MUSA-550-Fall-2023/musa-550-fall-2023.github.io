@@ -1,0 +1,104 @@
+---
+title: Troubleshooting common installation issues
+---
+
+Having trouble with mamba/conda or your Python installation? You've come 
+to the right place. Below, we outline some of the most common issues encountered during
+local installation of Python packages, as well as the troubleshooting steps to
+try to fix the issues.
+
+## Common Problems
+
+Below we list some of the most common issues encountered when installing packages with mamba.
+
+### Missing package errors
+
+If you have successfully followed the steps outlined in the 
+[installation guide](/resource/install.html#create-your-first-python-environment) 
+to create your environment,
+but receive an `ImportError` when importing packages, you might have launched
+the notebook from the `'base'` environment instead of the '{{< var install.env_name >}}'
+environment. Be sure to activate the '{{< var install.env_name >}}' environment before launching
+the notebook.s
+
+### The file extension of the environment file on Windows
+
+Be sure that Windows does not automatically add an `.txt` extension to your
+`environment.yml` file. This will sometimes cause `mamba` to fail, with a cryptic error:
+
+```default
+SpecNotFound: environment with requirements.txt needs a name
+```
+
+The environment file needs to end in `.yml`. You can change the extension for 
+a file on Windows following [these instructions](https://www.mediacollege.com/microsoft/windows/extension-change.html).
+
+### Mixing `pip` and `mamba`
+
+The command `pip` can also be used to install Python packages. 
+However, using `pip` to install packages into a `mamba` environment can lead 
+to issues. It's best to stick to using the `mamba env update` command to 
+update your environment or `mamba install package_name` to install specific packages.
+
+### Import errors for `geopandas`
+
+When importing `geopandas`, you can sometimes receive errors about missing 
+libraries. This is usually because package versions got mixed up during 
+installation. This can sometimes happen, and `geopandas` is particularly 
+sensitive to the versions of its dependencies. 
+
+The best and easiest thing to do to try to solve it is use the steps above 
+to create a fresh environment.
+
+### Numpy errors
+
+If you receive the following error:
+
+```default
+ImportError: Something is wrong with the numpy installation. While importing we detected an older version of numpy in ['/path/to/old/version/of/numpy/'']. One method of fixing this is to repeatedly uninstall numpy until none is found, then reinstall this version.
+```
+
+From the Miniforge Prompt (Windows) or Terminal (Mac), run:
+
+```default
+mamba install --force-reinstall --clobber numpy
+```
+
+## Most common fix: install a fresh environment
+
+Unfortunately, mamba/conda environments can sometimes become corrupted, preventing
+new packages from being installed or imported into Python properly. Most
+issues like this can be solved by simply deleting your current environment and
+starting fresh with a new version.
+
+The following steps can be used to try to solve common issues:
+
+::: {.callout-note}
+The commands here should be executed via the command line, either
+using the `Miniforge Prompt` on Windows or the `Terminal` app on MacOS.
+:::
+
+
+### Step 1: Delete any existing environment
+
+We want to create a fresh environment, so you can delete any environment that
+was giving you issues. If that environment was called '{{< var install.env_name >}}',
+you can run the following commands to delete it:
+
+```
+mamba deactivate
+```
+
+```
+mamba env remove --name {{< var install.env_name >}}
+```
+
+The first command will make sure the environment we are deleting isn't active, 
+and then the second command will perform the deletion.
+
+### Step 2: Create a fresh environment
+
+Follow the instructions outlined
+[here](/resource/install.html#create-your-first-python-environment) to create a
+fresh version of the course website.
+
