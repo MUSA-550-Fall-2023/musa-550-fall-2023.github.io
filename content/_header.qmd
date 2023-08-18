@@ -4,109 +4,22 @@ execute:
 ---
 
 ```{python}
-import yaml
-import pandas as pd
+import sys
 from pyprojroot.here import here
-from IPython.core.display import HTML
 from IPython import get_ipython
+
+# Add python folder to path
+root_dir = here()
+sys.path.insert(1, str(root_dir / "python"))
+import content
+
 
 # Get week info for rendered page from folder
 ip = get_ipython()
 path = ip.starting_dir
-slug = path.split("/")[-1] # Should be week-X
-week_number = int(slug.split("-")[-1])
+slug = path.split("/")[-1]  # Should be week-X
 
-# Main directory
-root_dir = here()
-
-# Get the current lecture from project variables
-variables = yaml.load((root_dir / "_variables.yml").open("r"), yaml.Loader)
-current_lecture = variables["current_lecture"]
-current_week = int(current_lecture[:-1])
-
-
-# Load the schedule data
-data = pd.read_csv(root_dir / "data" / "schedule-dates.csv").assign(date=lambda df: pd.to_datetime(df.date))
-
-# Get the dates
-dates = data.query(f"week == {week_number}")['date'].dt.strftime("%b. %-d")
-
-# Initialize html
-html = []
-
-# Add subtitle with dates
-html.append(f'<div class="content-dates">Content for lectures {week_number}A ({dates.iloc[0]}) and {week_number}B ({dates.iloc[1]})</div>')
-
-# Now do the callout box
-html.append('<div class="content-header mt-2">')
-
-
-# Do the Github repo
-url = f"https://github.com/MUSA-550-Fall-2023/{slug}"
-html.append(
-  f"""
-  <div class="content-page-repo">
-    <i class="fa-brands fa-github"></i>
-    &nbsp;<span>View materials:</span>&nbsp;
-    <a href="{url}"> MUSA-550-Fall-2023/{slug}</a>
-  </div>"""
-)
-
-def get_binder_url(tag):
-  """Get the binder url for this lecture."""
-  lecture_number = f"{week_number}{tag}"
-  return f"https://mybinder.org/v2/gh/MUSA-550-Fall-2023/week-{week_number}/HEAD?labpath=lecture-{lecture_number}.ipynb"
-
-def get_disabled_class(tag):
-  """Is this lecture disabled?"""
-
-  lecture_number = f"{week_number}{tag}"
-  disabled = ""
-  if week_number > current_week:
-      disabled = "disabled"
-  elif (
-      week_number == current_week
-      and lecture_number.endswith("B")
-      and current_lecture.endswith("A")
-  ):
-      disabled = "disabled"
-
-  return disabled
-
-# Static slides
-html.append(
-  f"""
-  <div class="content-page-repo">
-    <i class="fa-solid fa-book-open-reader"></i>
-    &nbsp;<span>HTML slides:</span>&nbsp;
-    <a class="{get_disabled_class("A")}" href="./lecture-{week_number}A.html">
-      Lecture {week_number}A
-    </a>
-    &nbsp;
-    <a class="{get_disabled_class("B")}" href="./lecture-{week_number}B.html">
-      Lecture {week_number}B
-    </a>
-  </div>"""
-)
-
-
-# Interactive slides
-html.append(
-  f"""
-  <div class="content-page-repo">
-    <img class="binder-favicon" src="/files/binder-favicon.webp"></img>
-    &nbsp;<span>Executable slides:</span>&nbsp;
-    <a class="{get_disabled_class("A")}" href="{get_binder_url("A")}">
-      Lecture {week_number}A
-    </a>
-    &nbsp;
-    <a class="{get_disabled_class("B")}" href="{get_binder_url("B")}">
-      Lecture {week_number}B
-    </a>
-  </div>"""
-)
-
-html.append("</div>")
-
-HTML("\n".join(html))
+# Create the header HTML
+table = content.create_header(slug)
+table
 ```
