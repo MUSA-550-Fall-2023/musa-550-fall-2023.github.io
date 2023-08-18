@@ -26,13 +26,14 @@ sections:
 3. **Data Ingestion & Big Data**: Students will learn how to collect new data
    through web scraping and APIs, as well as how to work effectively with the
    large datasets often encountered in real-world applications.
-4. **Geospatial Data Science in the Wild**: Armed with the necessary data
-   science tools, students will be introduced to a range of advanced analytic
+4. **From Exploration to Storytelling**: With a solid foundations, students 
+   will learn the latest tools to present their analysis results using 
+   web-based formats to transform their insights into interactive stories.
+1. **Geospatial Data Science in the Wild**: Armed with the necessary data
+   science tools, the final module introduces a range of advanced analytic
    and machine learning techniques using a number of innovative examples from
    modern researchers.
-5. **From Exploration to Storytelling**: The final module will teach students to
-   present their analysis results using web-based formats to transform their
-   insights into interactive stories.
+
 
 ## Logistics
 

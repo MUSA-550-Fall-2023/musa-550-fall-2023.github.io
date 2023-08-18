@@ -16,7 +16,7 @@ The lecture slides are Jupyter notebook files, a mix of executable Python
 cells, text, and images. Students have a few different options to access
 the slide materials:
 
-1. The Jupyter notebook files for each week are stored in a repository that is available on [the course's GitHub homepage]({{< var github_org >}}). On the content page for each week, you will see a link to this repository. Once you navigate to the repository on GitHub, you can download the contents of the repository to your computer and work locally with the notebook files by [launching JupyterLab](/resource/install.html#launching-a-jupyter-notebook) on your laptop. To download the repository contents, look for the green "Code" button and select "Download ZIP":
+1. The Jupyter notebook files for each week are stored in a repository that is available on [the course's GitHub homepage]({{< var course.github_org >}}). On the content page for each week, you will see a link to this repository. Once you navigate to the repository on GitHub, you can download the contents of the repository to your computer and work locally with the notebook files by [launching JupyterLab](/resource/install.html#launching-a-jupyter-notebook) on your laptop. To download the repository contents, look for the green "Code" button and select "Download ZIP":
 
 ![](/files/download-zip-github.png){width=400 fig-align="center"}
 
