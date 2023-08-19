@@ -291,14 +291,14 @@
     "href": "content/week-1/lecture-1A.html#beyond-the-jupyter-notebook",
     "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
     "section": "Beyond the Jupyter notebook",
-    "text": "Beyond the Jupyter notebook\nGoogle Colab is the most popular alternative to Jupyter notebooks.\n\n\nA fancier notebook experience built on top of Jupyter notebook\nRunning in the cloud on Google’s servers\nAn internal Google product that was released publicly\nVery popular for Python-based machine learning, since it provides low-barrier access to GPU resources which can be very helpful for training machine learning models\nWe’ll focus on the open-source Jupyter notebook as the foundation for this course\n\nSee: https://colab.research.google.com/notebooks/welcome.ipynb"
+    "text": "Beyond the Jupyter notebook\nGoogle Colab is the most popular alternative to Jupyter notebooks.\n\n\nA fancier notebook experience built on top of Jupyter notebook\nRunning in the cloud on Google’s servers\nAn internal Google product that was released publicly\nVery popular for Python-based machine learning, since it provides low-barrier access to GPU resources which can be very helpful for training machine learning models\nWe’ll focus on the open-source Jupyter notebook as the foundation for this course\n\nSee, for example: https://colab.research.google.com/notebooks/welcome.ipynb"
   },
   {
-    "objectID": "content/week-1/lecture-1A.html#binder-httpsmybinder.org",
-    "href": "content/week-1/lecture-1A.html#binder-httpsmybinder.org",
+    "objectID": "content/week-1/lecture-1A.html#the-binder-service",
+    "href": "content/week-1/lecture-1A.html#the-binder-service",
     "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
-    "section": "Binder: https://mybinder.org",
-    "text": "Binder: https://mybinder.org\n\n\nA free, open-source service, supported by donors\nAllows you to launch a repository of Jupyter notebooks on GitHub in an executable environment in the cloud\nAmazing if you want to make your code immediately reproducible by anyone, anywhere.\nNote: as a free service, it can be a bit slow sometimes"
+    "section": "The Binder service",
+    "text": "The Binder service\nhttps://mybinder.org\n\n\nA free, open-source service, supported by donors\nAllows you to launch a repository of Jupyter notebooks on GitHub in an executable environment in the cloud\nAmazing if you want to make your code immediately reproducible by anyone, anywhere.\nNote: as a free service, it can be a bit slow sometimes"
   },
   {
     "objectID": "content/week-1/lecture-1A.html#class-lectures",
