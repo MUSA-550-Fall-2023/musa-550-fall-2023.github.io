@@ -88,14 +88,14 @@
     "href": "syllabus.html#overview",
     "title": "Syllabus",
     "section": "Overview",
-    "text": "Overview\nThis course will provide students with the knowledge and tools to turn data into meaningful insights, with a focus on real-world case studies in the urban planning and public policy realm. Focusing on the latest Python software tools, the course will outline the “pipeline” approach to data science. It will teach students the tools to gather, visualize, and analyze datasets, providing the skills to effectively explore large datasets and transform results into understandable and compelling narratives. The course is organized into five main sections:\n\nExploratory Data Science: Students will be introduced to the main tools needed to get started analyzing and visualizing data using Python.\nIntroduction to Geospatial Data Science: Building on the previous set of tools, this module will teach students how to work with geospatial datasets using a range of modern Python toolkits.\nData Ingestion & Big Data: Students will learn how to collect new data through web scraping and APIs, as well as how to work effectively with the large datasets often encountered in real-world applications.\nFrom Exploration to Storytelling: With a solid foundations, students will learn the latest tools to present their analysis results using web-based formats to transform their insights into interactive stories.\nGeospatial Data Science in the Wild: Armed with the necessary data science tools, the final module introduces a range of advanced analytic and machine learning techniques using a number of innovative examples from modern researchers."
+    "text": "Overview\nThis course will provide students with the knowledge and tools to turn data into meaningful insights, with a focus on real-world case studies in the urban planning and public policy realm. Focusing on the latest Python software tools, the course will outline the “pipeline” approach to data science. It will teach students the tools to gather, visualize, and analyze datasets, providing the skills to effectively explore large datasets and transform results into understandable and compelling narratives. The course is organized into five main sections:\n\nExploratory Data Science: Students will be introduced to the main tools needed to get started analyzing and visualizing data using Python.\nIntroduction to Geospatial Data Science: Building on the previous set of tools, this module will teach students how to work with geospatial datasets using a range of modern Python toolkits.\nData Ingestion & Big Data: Students will learn how to collect new data through web scraping and APIs, as well as how to work effectively with the large datasets often encountered in real-world applications.\nFrom Exploration to Storytelling: With a solid foundation, students will learn the latest tools to present their analysis results using web-based formats to transform their insights into interactive stories.\nGeospatial Data Science in the Wild: Armed with the necessary data science tools, the final module introduces a range of advanced analytic and machine learning techniques using a number of innovative examples from modern researchers."
   },
   {
     "objectID": "syllabus.html#logistics",
     "href": "syllabus.html#logistics",
     "title": "Syllabus",
     "section": "Logistics",
-    "text": "Logistics\n\nLecture\nThe course will be conducted in weekly sessions devoted to lectures, interactive demonstrations, and in-class labs.\n\nMonday & Wednesday, 8:30 AM to 10:00 AM\nWilliams Hall, Room 202\n\n\n\nContact Info\n\nInstructor: Nick Hand, nhand@design.upenn.edu\nTeaching Assistant: Teresa Chang, thchang@design.upenn.edu\n\n\n\nOffice Hours\nOffice hours will be by appointment via Zoom — you should be able to sign up for 1 (or more) 15-minute time slot via the Canvas calendar.\nNick:\nTBD\nTeresa:\nTBD\n\n\nCourse Websites\n\nMain website: https://musa-550-fall-2023.github.io\nGithub: https://www.github.com/MUSA-550-Fall-2023\nCanvas: https://canvas.upenn.edu/courses/1740535\nEd Discussion https://edstem.org/us/courses/42616/discussion/\n\nThe course’s main website will be the main source of information, including the course schedule, weekly content, and guides/resources.\nThe course’s Github page will have repositories for each week’s lectures as well as assignments. Students will also submit their assignments through Github.\nWe will use Canvas signing up for office hours and tracking grades.\nEd Discussion is a Q&A forum that allows students to ask questions related to lecture materials and assignments.\n\n\nAssignments\nThere are six homework assignments and one required final project at the end of the semester. While you are required to submit all six assignments, the assignment with the lowest grade will be dropped.\nFor the final project, students will replicate the pipeline approach on a dataset (or datasets) of their choosing. Students will be required to use several of the analysis techniques taught in the class and produce a web-based data visualization that effectively communicates the empirical results to a non-technical audience. The final product should also include a description of the methods used in each step of the data science process (collection, analysis, and visualization).\nFor more details on the final project, see the Github repository.\n\n\nGrading\nThe grading breakdown is as follows: 55% for homework; 40% for final project, 5% for participation. Your participation grade will be determined by your activity on Ed Discussion — both asking, answering, and reading questions.\nOf the seven homework assignment, you must complete five in total and three are required.\nThere’s no penalty for late assignments. I would highly recommend staying caught up on lectures and assignments as much as possible, but if you need to turn something in a few days late, that’s fine — there’s no penalty. If you turn in something late, you’ll be missing out on valuable feedback, but that’s the only practical penalty, there’s no extra penalty to your grade.\n\n\nSoftware\nThis course relies on use of Python and various related packages and for geospatial topics. All software is open-source and freely available. The course will require a working installation of Python on your local computer. See the Installation Setup Guide for instructions on how to setup your computer for use in this course."
+    "text": "Logistics\n\nLecture\nThe course will be conducted in weekly sessions devoted to lectures, interactive demonstrations, and in-class labs.\n\nMonday & Wednesday, 8:30 AM to 10:00 AM\nWilliams Hall, Room 202\n\n\n\nContact Info\n\nInstructor: Nick Hand, nhand@design.upenn.edu\nTeaching Assistant: Teresa Chang, thchang@design.upenn.edu\n\n\n\nOffice Hours\nOffice hours will be by appointment via Zoom — you should be able to sign up for 1 (or more) 15-minute time slot via the Canvas calendar.\nNick:\nTBD\nTeresa:\nTBD\n\n\nCourse Websites\n\nMain website: https://musa-550-fall-2023.github.io\nGithub: https://www.github.com/MUSA-550-Fall-2023\nCanvas: https://canvas.upenn.edu/courses/1740535\nEd Discussion https://edstem.org/us/courses/42616/discussion/\n\nThe course’s main website will be the main source of information, including the course schedule, weekly content, and guides/resources.\nThe course’s Github page will have repositories for each week’s lectures as well as assignments. Students will also submit their assignments through Github.\nWe will use Canvas signing up for office hours and tracking grades.\nEd Discussion is a Q&A forum that allows students to ask questions related to lecture materials and assignments.\n\n\nAssignments\nThere are six homework assignments and one required final project at the end of the semester. While you are required to submit all six assignments, the assignment with the lowest grade will not count towards your final grade.\nFor the final project, students will replicate the pipeline approach on a dataset (or datasets) of their choosing. Students will be required to use several of the analysis techniques taught in the class and produce a web-based data visualization that effectively communicates the empirical results to a non-technical audience. The final product should also include a description of the methods used in each step of the data science process (collection, analysis, and visualization).\nFor more details on the final project, see the Github repository.\n\n\nGrading\nThe grading breakdown is as follows: 55% for homework; 45% for final project, 5% for participation. Your participation grade will be determined by your activity on Ed Discussion — both asking, answering, and reading questions.\nWhile you are required to submit all six assignments, the assignment with the lowest grade will not count towards your final grade.\nThere’s no penalty for late assignments. I would highly recommend staying caught up on lectures and assignments as much as possible, but if you need to turn something in a few days late, that’s fine — there’s no penalty. If you turn in something late, you’ll be missing out on valuable feedback, but that’s the only practical penalty, there’s no extra penalty to your grade.\n\n\nSoftware\nThis course relies on use of Python and various related packages and for geospatial topics. All software is open-source and freely available. The course will require a working installation of Python on your local computer. See the Installation Setup Guide for instructions on how to setup your computer for use in this course."
   },
   {
     "objectID": "syllabus.html#policies",
@@ -161,6 +161,13 @@
     "text": "Submission\nWe’ll be using GitHub Classroom to submit homework assignments. For each assignment, be on the look out for the submission url, which will always start with the following: https://classroom.github.com/.\nWhen you click on this submission link for each assignment, you will be prompted to log in to GitHub, and then a unique, private repository will be created on the course’s GitHub page. You will create a new private repository for each assignment. Only you and the instructors will be able to view these repositories.\nWe will be using Jupyter notebook files for assignments, and you should add your notebook to your newly created assignment repository before the deadline. You can add files to the repository through the browser (github.com) interface or using the command line locally on your machine. For more help, see these instructions."
   },
   {
+    "objectID": "content/week-1/index.html",
+    "href": "content/week-1/index.html",
+    "title": "Week 1: Exploratory Data Science in Python",
+    "section": "",
+    "text": "Content for lectures 1A (Aug. 30) and 1B (Sep. 6)\n\n\n        \n            \n             \n            View materials:\n             \n            MUSA-550-Fall-2023/week-1\n        \n\n        \n            \n             \n            HTML slides:\n             \n            \n                Lecture 1A\n            \n             \n            \n                Lecture 1B\n            \n        \n        \n\n        \n            \n             \n            Executable slides:\n             \n            \n                Lecture 1A\n            \n             \n            \n                Lecture 1B"
+  },
+  {
     "objectID": "content/index.html",
     "href": "content/index.html",
     "title": "Weekly Course Content",
@@ -175,11 +182,165 @@
     "text": "Lecture slides\nThe lecture slides are Jupyter notebook files, a mix of executable Python cells, text, and images. Students have a few different options to access the slide materials:\n\nThe Jupyter notebook files for each week are stored in a repository that is available on the course’s GitHub homepage. On the content page for each week, you will see a link to this repository. Once you navigate to the repository on GitHub, you can download the contents of the repository to your computer and work locally with the notebook files by launching JupyterLab on your laptop. To download the repository contents, look for the green “Code” button and select “Download ZIP”:\n\n\n\n\n\n\n\nYou can also open the lecture slides in an interactive, executable environment using the free Binder service. This service is hosted in the cloud, meaning that the code is not being executed locally on your laptop but instead on Binder’s servers. This can be very convenient, since it doesn’t require you to have the files downloaded to your laptop or your Python environment to be set up yet. On the content page for each week, look for the Binder logo  for links to launch the lectures on Binder.\nOn the content page for each week, there are also links to HTML versions of the lecture slides. Look for the  icon for this version of the slides. Since they are displayed in the browser, they are NOT executable and cannot be changed. This version of the slides is a useful reference tool to look up how we did something in class. During class periods, we recommend that you use options #1 or #2 to view the slides, so that you can follow along and execute slides and participate in any in-class exercises or labs."
   },
   {
-    "objectID": "content/week-1/index.html",
-    "href": "content/week-1/index.html",
-    "title": "Week 1: Exploratory Data Science in Python",
+    "objectID": "content/week-1/lecture-1A.html",
+    "href": "content/week-1/lecture-1A.html",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
     "section": "",
-    "text": "Content for lectures 1A (Aug. 30) and 1B (Sep. 6)\n\n\n        \n            \n             \n            View materials:\n             \n            MUSA-550-Fall-2023/week-1\n        \n\n        \n            \n             \n            HTML slides:\n             \n            \n                Lecture 1A\n            \n             \n            \n                Lecture 1B\n            \n        \n        \n\n        \n            \n             \n            Executable slides:\n             \n            \n                Lecture 1A\n            \n             \n            \n                Lecture 1B"
+    "text": "Aug. 30, 2023"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#today",
+    "href": "content/week-1/lecture-1A.html#today",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Today",
+    "text": "Today\n\nCourse logistics\nUsing Jupyter Notebooks and Jupyter Lab\nIntroduction to Python & Pandas"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#who-am-i",
+    "href": "content/week-1/lecture-1A.html#who-am-i",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Who am I?",
+    "text": "Who am I?\n\nMy day job\n\nMy name is Nick Hand\nFor the past 5+ years, I have led a small data science team in the City Controller’s Office\nWhat did we do?:\n\nObjective, data-driven analysis of financial policies impacting Philadelphia\nIncreasing transparency through data releases and interactive reports\n\nIn two weeks, I start as a data scientist working at the Consumer Finance Protection Bureau in the federal government\n\nIn my time at the Controller’s Office, we covered a range of policy issues in the city:\n\nAnalysis of the fairness and accuracy of property assessments\nInteractive reports for the City’s cash levels\nAnalysis of the 10-Year Tax Abatement program\nInteractive dashboard of Soda Tax spending\nVisualization of paving & potholes\nSeries on the impact of COVID-19 on Philadelphia’s small businesses and neighborhoods\nVisualization of the City’s most recent budget\nInteractive report on redlining in Philadelphia\nAnalysis of the impact of gun violence on housing prices\nInteractive dashboard of shooting victims in Philadelphia\nInteractive dashboard of neighborhood well-being\n\n\n\n\n\n\n\n\nNote\n\n\n\nTo see more of our work, check out: https://controller.phila.gov/policy-analysis\n\n\n\n\nPreviously:Astrophysics Ph.D. at Berkeley\n\n\n\n\n\n\n\nHow did I get here?\n\nAstrophysics/physics to data science is becoming increasingly common\nLanded a job through Twitter: https://www.parkingjawn.com\n\nDashboard visualization of monthly parking tickets in Philadelphia\nData from OpenDataPhilly\n\n\n\nA nice example of how exploratory analysis + a well-designed dashbord can lead to insights: - The power of cross-filtering: different views of the same data across multiple dimensions - See drop in parking tickets over Jan 24-26, 2016 due to snowstorm\nParking Jawn is not Python based, but dovetails nicely with one of the main goals of the course: &gt; How can we effectively explore and extract insight from complex datasets?"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#course-logistics",
+    "href": "content/week-1/lecture-1A.html#course-logistics",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Course logistics",
+    "text": "Course logistics\n\nGeneral Info\n\nTwo 90-minute lectures per week — mix of lecturing, interactive demos, and in-class lab time\nMy email: nhand@design.upenn.edu\n\nOffice Hours:\n\n2-hours during the week\nOffice hours will be by appointment and remote via Zoom. You will be able to sign up for 1 (or more) 15-minute time slot via the Canvas calendar.\nTime is to be determined\n\n\nTeaching Assistant: Teresa Chang\n\nEmail: thchang@design.upenn.edu\nOffice hours: TBD\n\n\n\n\nCourse Websites\nCourse has four websites (sorry!). They are:\n\nMain Course: https://musa-550-fall-2023.github.io\nGithub: https://github.com/MUSA-550-Fall-2023\nCanvas: https://canvas.upenn.edu/courses/1740535\nEd Discussion: https://edstem.org/us/courses/42616/discussion/\n\nEach will have its own purpose:\n\nMain course website\n\nCourse schedule with links to weekly slides\nResources for learning Python, setting up software, and dealing with common issues\nGeneral course info and policies\nQuick links to the other websites for the course\n\n\n\nGithub\n\nGithub organization set up for the course\nEach week and assignment will have its own Github repository\nAssignments will also be submitted through Github\n\n\n\nCanvas\n\nWill be used sign up for remote office hours and provide Zoom links for office hours\nGrading will also be tracked here\n\n\n\nEd Discussion\n\nWill be used for question & answer forum for course materials and assignments\nAnnouncements will also be made here so make sure you check frequently or turn on your notifications!\nMain method of communication will be through announcements on this site\nParticipation grade (5% of total grade) will also be determined by user activity on the forum"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#main-course-website-1",
+    "href": "content/week-1/lecture-1A.html#main-course-website-1",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Main course website",
+    "text": "Main course website\n\n  \n\n\nHighlights\n\nSyllabus\nSchedule\nResources & Guides:\n\nPython resources\nInitial installation guide\n\nWeekly content\nAssignments\nQuick links to Canvas, Ed Discussion, GitHub homepage"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#course-github",
+    "href": "content/week-1/lecture-1A.html#course-github",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Course Github",
+    "text": "Course Github"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#the-goals-of-this-course",
+    "href": "content/week-1/lecture-1A.html#the-goals-of-this-course",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "The goals of this course",
+    "text": "The goals of this course\n\nProvide students with the knowledge and tools to turn data into meaningful insights and stories\nFocus on the modern data science tools within the Python ecosystem\nThe pipeline approach to data science:\n\ngathering, storing, analyzing, and visualizing data to tell stories\n\nReal-world applications of analysis techniques in the urban planning and public policy realm"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#what-well-cover",
+    "href": "content/week-1/lecture-1A.html#what-well-cover",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "What we’ll cover",
+    "text": "What we’ll cover\n\nModule 1\nExploratory Data Science: Students will be introduced to the main tools needed to get started analyzing and visualizing data using Python\n\n\nModule 2\nIntroduction to Geospatial Data Science: Building on the previous set of tools, this module will teach students how to work with geospatial datasets using a range of modern Python toolkits.\n\n\nModule 3\nData Ingestion & Big Data: Students will learn how to collect new data through web scraping and APIs, as well as how to work effectively with the large datasets often encountered in real-world applications.\n\n\nModule 4\nFrom Exploration to Storytelling: With a solid foundation, students will learn the latest tools to present their analysis results using web-based formats to transform their insights into interactive stories.\n\n\nModule 5\nGeospatial Data Science in the Wild: Armed with the necessary data science tools, the final module introduces a range of advanced analytic and machine learning techniques using a number of innovative examples from modern researchers."
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#assignments-and-grading",
+    "href": "content/week-1/lecture-1A.html#assignments-and-grading",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Assignments and grading",
+    "text": "Assignments and grading\n\nGrading:\n\n55% homework\n45% final project\n5% participation (based on class and Ed Discussion participation)\n\nWhile you are required to submit all six assignments, the assignment with the lowest grade will not count towards your final grade.\nThere’s no penalty for late assignments. I would highly recommend staying caught up on lectures and assignments as much as possible, but if you need to turn something in a few days late, there won’t be a penalty.\n\nNote: Homeworks will be assigned (roughly) every two and a half weeks."
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#the-course-schedule",
+    "href": "content/week-1/lecture-1A.html#the-course-schedule",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "The course schedule",
+    "text": "The course schedule\nCheck out the schedule page for the most up-to-date details on lectures, assignment due dates, etc."
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#final-project",
+    "href": "content/week-1/lecture-1A.html#final-project",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Final project",
+    "text": "Final project\nThe final project is to replicate the pipeline approach on a dataset (or datasets) of your choosing.\nStudents will be required to use several of the analysis techniques taught in the class and produce a web-based data visualization that effectively communicates the empirical results to a non-technical audience.\nMore info will be posted here: https://github.com/MUSA-550-Fall-2023/final-project"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#any-questions-so-far",
+    "href": "content/week-1/lecture-1A.html#any-questions-so-far",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Any questions so far?",
+    "text": "Any questions so far?"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#initial-surveys",
+    "href": "content/week-1/lecture-1A.html#initial-surveys",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Initial surveys",
+    "text": "Initial surveys\nRoll call: https://bit.ly/musa550-roll-call\nSome initial feedback: https://bit.ly/musa550-initial-feedback"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#the-incredible-growth-of-python",
+    "href": "content/week-1/lecture-1A.html#the-incredible-growth-of-python",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "The Incredible Growth of Python",
+    "text": "The Incredible Growth of Python\nExample #1: A 2017 analysis of StackOverflow posts"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#the-rise-of-the-jupyter-notebook",
+    "href": "content/week-1/lecture-1A.html#the-rise-of-the-jupyter-notebook",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "The rise of the Jupyter notebook",
+    "text": "The rise of the Jupyter notebook\n\nThe engine of collaborative data science\n\nFirst started by a physics grad student around 2001\nKnown as the IPython notebook originally\nStarting getting popular in ~2011\nFirst funding received in 2015 — the Jupyter notebook was born\n\n\n\nGoogle searches for Jupyter notebook\n\n\n\nKey features\n\nAimed at “computational narratives” — telling stories with data\nInteractive, reproducible, shareable, user-friendly, visualization-focused\nFully open-source and managed by the community\n\nVery versatile: good for both exploratory data analysis and polished finished products\n\n\n\n\n\n\nImportant\n\n\n\nThe lecture slides in the course will all be Jupyter notebooks. The preferred interface for editing and executing them will be JupyterLab. That’s what I’m using now!\n\n\n\n\n\n\n\n\nTip\n\n\n\nFor more info on Jupyter notebooks and JupyterLab, check out the guide on the course website.\nIn particulary, I strongly encourage you to go through the official documentation for JupyterLab and Jupyter notebooks:\n\nStarting JupyterLab\nThe JupyterLab interface\nThe structure of a notebook document\nThe notebook workflow\nWorking with notebooks in JupyterLab\nWorking with files"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#beyond-the-jupyter-notebook",
+    "href": "content/week-1/lecture-1A.html#beyond-the-jupyter-notebook",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Beyond the Jupyter notebook",
+    "text": "Beyond the Jupyter notebook\nGoogle Colab is the most popular alternative to Jupyter notebooks.\n\n\nA fancier notebook experience built on top of Jupyter notebook\nRunning in the cloud on Google’s servers\nAn internal Google product that was released publicly\nVery popular for Python-based machine learning, since it provides low-barrier access to GPU resources which can be very helpful for training machine learning models\nWe’ll focus on the open-source Jupyter notebook as the foundation for this course\n\nSee: https://colab.research.google.com/notebooks/welcome.ipynb"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#binder-httpsmybinder.org",
+    "href": "content/week-1/lecture-1A.html#binder-httpsmybinder.org",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Binder: https://mybinder.org",
+    "text": "Binder: https://mybinder.org\n\n\nA free, open-source service, supported by donors\nAllows you to launch a repository of Jupyter notebooks on GitHub in an executable environment in the cloud\nAmazing if you want to make your code immediately reproducible by anyone, anywhere.\nNote: as a free service, it can be a bit slow sometimes"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#class-lectures",
+    "href": "content/week-1/lecture-1A.html#class-lectures",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Class lectures",
+    "text": "Class lectures\nWeekly lectures are available on Binder! In the README for each week’s repository on GitHub, you will see badges to launch the lecture slides on Binder.\n\n\n\n\nYou can also access these links from the content section of the course website. For example, here is:\nhttps://musa-550-fall-2023.github.io/content/week-1/\n\n\n\n\n\n\n\n\n\nSuggested weekly workflow\n\n\n\n\nSet up local Python environment as part of first homework assignment\nEach week, you will have two options to follow along with lectures:\n\nUsing Binder in the cloud, launching via the button on the week’s repository\nDownload the week’s repository to your laptop and launch the notebook locally\n\nWork on homeworks locally on your laptop — Binder is only a temporary environment (no save features)\n\n\n\nCheck out the content overview page on the main course website for more info!"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#now-to-the-fun-stuff",
+    "href": "content/week-1/lecture-1A.html#now-to-the-fun-stuff",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Now to the fun stuff…",
+    "text": "Now to the fun stuff…\nJupyter notebooks are a mix of code cells and text cells in Markdown. You can change the type of cell in the top menu bar.\nThis cell is a Markdown cell.\n\n# Comments begin with a \"#\" character in Python\n# A simple code cell\n# SHIFT-ENTER to execute\n\n\nx = 10\nprint(x)\n\n10\n\n\n\nPython data types\n\n# integer\na = 10\n\n# float\nb = 10.5\n\n# string\nc = \"this is a test string\"\n\n# lists\nd = list(range(0, 10))\n\n# booleans\ne = True\n\n# dictionaries\nf = {\"key1\": 1, \"key2\": 2}\n\n\nprint(a)\nprint(b)\nprint(c)\nprint(d)\nprint(e)\nprint(f)\n\n10\n10.5\nthis is a test string\n[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\nTrue\n{'key1': 1, 'key2': 2}\n\n\n\n\n\n\n\n\nNote\n\n\n\nUnlike R, you’ll need to use quotes more often in Python, particularly around strings and keys of dictionaries.\n\n\n\n\nAlternative method for creating a dictionary\nWe can use the dict() function, which is built in to the Python language. More on functions in a bit…\n\nf = dict(key1=1, key2=2, key3=3)\n\nf\n\n{'key1': 1, 'key2': 2, 'key3': 3}\n\n\n\n\nAccessing dictionary values\n\n# Access the value with key 'key1'\nf['key1']\n\n1\n\n\n\n\nAccessing list values\n\nd\n\n[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n# Access the second list entry (0 is the first index)\nd[1]  \n\n1\n\n\n\n\nAccessing characters of a string\n\nc\n\n'this is a test string'\n\n\n\n# the first character\nc[0]\n\n't'\n\n\n\n\nIterators and for loops\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to use the right indentation in for loops!\n\n\n\n# Variable that will track the sum\nresult_sum = 0\n\n# Variable i takes on values [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\nfor i in range(10):\n    \n    # Indented, so it runs for each iteration of the loop\n    print(i)\n    result_sum = result_sum + i\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\n\n\nprint(result_sum)\n\n45\n\n\n\n\nPython’s inline syntax\n\na = range(10) # this is an iterator\n\n\nprint(a)\n\nrange(0, 10)\n\n\nUse the list() function to iterate over it and make it into a list:\n\n# convert it to a list explicitly\na = list(range(10))\n\n# Output it from the cell\na\n\n[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n# or use the INLINE syntax; this is the SAME\na = [i for i in range(10)]\n\na\n\n[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nPython functions\ndef function_name(arg1, arg2, arg3):\n    \n    .\n    .\n    .\n    code lines (indented)\n    .\n    .\n    .\n    \n    return result\n\ndef compute_square(x):\n    return x * x\n\n\nsq = compute_square(5)\nprint(sq)\n\n25\n\n\n\n\nKeywords: arguments with a default!\n\ndef compute_product(x, y=5):\n    return x * y\n\n\n# use the default value for y\nprint(compute_product(5))\n\n25\n\n\n\n# specify a y value other than the default\nprint(compute_product(5, 10))\n\n50\n\n\n\n# can also explicitly tell Python which arguments are which\nprint(compute_product(5, y=2))\nprint(compute_product(y=2, x=5))\n\n10\n10\n\n\n\nprint(compute_product(x=5, y=4))\n\n20\n\n\n\n# argument names must match the function signature though!\nprint(compute_product(x=5, z=5))\n\nTypeError: compute_product() got an unexpected keyword argument 'z'\n\n\n\n\nGetting help in the notebook\nUse tab auto-completion and the ? and ?? operators\n\nthis_variable_has_a_long_name = 5\n\n\n# try hitting tab after typing this_ \nthis_variable_has_a_long_name\n\n5\n\n\n\n# Forget how to create a range? --&gt; use the help message\nrange?\n\n\nInit signature: range(self, /, *args, **kwargs)\nDocstring:     \nrange(stop) -&gt; range object\nrange(start, stop[, step]) -&gt; range object\nReturn an object that produces a sequence of integers from start (inclusive)\nto stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.\nstart defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.\nThese are exactly the valid indices for a list of 4 elements.\nWhen step is given, it specifies the increment (or decrement).\nType:           type\nSubclasses:     \n\n\n\n\n\nPeeking at the source code for a function\nUse the ?? operator\n\n# Lets re-define compute_product() and add a docstring between \"\"\" \"\"\"\ndef compute_product(x, y=5):\n    \"\"\"\n    This computes the product of x and y\n    \n    \n    This is all part of the comment.\n    \"\"\"\n    return x * y\n\n\ncompute_product??\n\n\nSignature: compute_product(x, y=5)\nSource:   \ndef compute_product(x, y=5):\n    \"\"\"\n    This computes the product of x and y\n    \n    \n    This is all part of the comment.\n    \"\"\"\n    return x * y\nFile:      /var/folders/49/ntrr94q12xd4rq8hqdnx96gm0000gn/T/ipykernel_63388/3896936014.py\nType:      function\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe question mark operator gives you access to the help message for any variable or function.\nI use this frequently and it is a great way to understand what a function actually does.\n\n\n\n\nThe JupyterLab Debugger\nYou can enable Debugging mode in JupyterLab by clicking on the “bug” icon in the top right:\n\nThis should open the Debugger panel on the right side of JupyterLab. One of the most useful parts of this panel is the “Variables” section, which gives you the current values of all defined variables in the notebook.\n\n\n\n\n\n\n\nTip\n\n\n\nFor more information on the debugger, see the JupyterLab docs."
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#getting-more-python-help",
+    "href": "content/week-1/lecture-1A.html#getting-more-python-help",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Getting more Python help",
+    "text": "Getting more Python help\nThis was a very brief introduction to Python and Python syntax. We’ll continue practicing and reinforcing the proper syntax throughout the next few weeks, but it can definitely be frustrating. Hang in there!\n\n\n\n\n\n\nImportant: DataCamp Tutorials\n\n\n\nDataCamp is providing 6 months of complimentary access to its courses for students in MUSA 550. Whether you have experience with Python or not, this is a great opportunity to learn the basics of Python and practice your skills.\nIt is strongly recommended that you watch some or all of the introductory videos below to build a stronger Python foundation for the semester. The more advanced, intermediate courses are also great — the more the merrier!\nFor more info, including how to sign up, check out the resources section of the website.\n\n\nAdditional Python resources are listed on our course website under “Resources”\nhttps://musa-550-fall-2023.github.io/resource/python/\nIn addition to the DataCamp videos, there are links to lots of online tutorials:\n\nIntroductory level tutorials\nMore advanced tutorials\nThe r/learnpython subreddit has a great wiki of resources\nThe Berkeley Institute for Data Science has also compiled a number of Python resources"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#one-more-thing-working-outside-the-notebook",
+    "href": "content/week-1/lecture-1A.html#one-more-thing-working-outside-the-notebook",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "One more thing: working outside the notebook",
+    "text": "One more thing: working outside the notebook\nIn this class, we will almost exclusively work inside Jupyter notebooks — you’ll be writing Python code and doing data analysis directly in the notebook.\nThe more traditional method of using Python is to put your code into a .py file and execute it via the command line (known as the Miniforge/Anaconda Prompt on Windows or Terminal app on MacOS).\nSee this section of the Practical Python Programming tutorial for more info.\n\nThe JupyterLab text editor\nThere is a file called hello_world.py in the repository for week 1. If we execute it, it should print out “Hello, World” to the command line.\nFirst, let’s open up the .py file in the JupyterLab text editor. Double click on the “hello_world.py” item in the file browser on the left:\n\nThis will open the file and allow you to make edits. You should see the following:\n# Our first Python program\nprint(\"Hello World!\")\n\n\n\n\n\n\nTip\n\n\n\nSee the JupyterLab docs for more info on the text editor.\n\n\n\n\nUsing the JupyterLab Terminal\nTo execute the file, we can use the built-in Terminal feature in JupyterLab using the following steps:\n\nBring up the “Launcher” tab by clicking on the blue button with a plus sign in the upper left.\nClick on the “Terminal” button”\nWhen the terminal opens, type the following:\n\npython hello_world.py\nAnd you should see the following output:\nHello World!\nIt should look something like this:"
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#code-editors",
+    "href": "content/week-1/lecture-1A.html#code-editors",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "Code editors",
+    "text": "Code editors\nThe JupyterLab text editor will work in a pinch, but it’s not usually the best option when writing software outside the notebook. Other code editors will provide a nice interface for writing Python code and some even have fancy features, like real-time syntax checking and syntax highlighting.\nMy recommended option is Visual Studio Code."
+  },
+  {
+    "objectID": "content/week-1/lecture-1A.html#see-you-next-week",
+    "href": "content/week-1/lecture-1A.html#see-you-next-week",
+    "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
+    "section": "See you next week!",
+    "text": "See you next week!\n\nNo lecture on Monday next week due to Labor Day\nNext class a week from today on Wednesday 9/6"
   },
   {
     "objectID": "assignment/final-project-proposal.html",

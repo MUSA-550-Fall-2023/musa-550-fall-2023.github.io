@@ -26,7 +26,7 @@ sections:
 3. **Data Ingestion & Big Data**: Students will learn how to collect new data
    through web scraping and APIs, as well as how to work effectively with the
    large datasets often encountered in real-world applications.
-4. **From Exploration to Storytelling**: With a solid foundations, students 
+4. **From Exploration to Storytelling**: With a solid foundation, students 
    will learn the latest tools to present their analysis results using 
    web-based formats to transform their insights into interactive stories.
 1. **Geospatial Data Science in the Wild**: Armed with the necessary data
@@ -87,7 +87,7 @@ lecture materials and assignments.
 
 There are six homework assignments and one required final project at the end 
 of the semester. While you are required to submit all six assignments, the
-assignment with the lowest grade will be dropped. 
+assignment with the lowest grade will not count towards your final grade.
 
 For the final project, students will replicate the pipeline approach on a
 dataset (or datasets) of their choosing. Students will be required to use
@@ -102,13 +102,13 @@ repository]({{< var course.github_org >}}/final-project).
 
 ### Grading
 
-The grading breakdown is as follows: 55% for homework; 40% for final project,
+The grading breakdown is as follows: 55% for homework; 45% for final project,
 5% for participation. Your participation grade will be determined
 by your activity on Ed Discussion — both asking, answering, and reading
 questions.
 
-Of the seven homework assignment, you must complete five in total and three are
-required. 
+While you are required to submit all six assignments, the
+assignment with the lowest grade will not count towards your final grade.
 
 There’s no penalty for late assignments. I would **highly recommend** staying 
 caught up on lectures and assignments as much as possible, but if 

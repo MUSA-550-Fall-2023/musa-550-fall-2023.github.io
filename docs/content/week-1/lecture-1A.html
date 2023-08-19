@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geospatial Data Science in Python - Welcome to MUSA 550:Geospatial Data Science in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geospatial Data Science in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Content</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assignment/index.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resource/index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-box-arrow-up-right"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/MUSA-550-Fall-2023">
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://canvas.upenn.edu/courses/1740535">
+            Canvas
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://edstem.org/us/courses/42616/discussion/">
+            Ed Discussion
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#today" id="toc-today" class="nav-link active" data-scroll-target="#today">Today</a></li>
+  <li><a href="#who-am-i" id="toc-who-am-i" class="nav-link" data-scroll-target="#who-am-i">Who am I?</a>
+  <ul class="collapse">
+  <li><a href="#my-day-job" id="toc-my-day-job" class="nav-link" data-scroll-target="#my-day-job">My day job</a></li>
+  <li><a href="#previously-astrophysics-ph.d.-at-berkeley" id="toc-previously-astrophysics-ph.d.-at-berkeley" class="nav-link" data-scroll-target="#previously-astrophysics-ph.d.-at-berkeley">Previously:<br>Astrophysics Ph.D.&nbsp;at Berkeley</a></li>
+  <li><a href="#how-did-i-get-here" id="toc-how-did-i-get-here" class="nav-link" data-scroll-target="#how-did-i-get-here">How did I get here?</a></li>
+  </ul></li>
+  <li><a href="#course-logistics" id="toc-course-logistics" class="nav-link" data-scroll-target="#course-logistics">Course logistics</a>
+  <ul class="collapse">
+  <li><a href="#general-info" id="toc-general-info" class="nav-link" data-scroll-target="#general-info">General Info</a></li>
+  <li><a href="#course-websites" id="toc-course-websites" class="nav-link" data-scroll-target="#course-websites">Course Websites</a></li>
+  </ul></li>
+  <li><a href="#main-course-website-1" id="toc-main-course-website-1" class="nav-link" data-scroll-target="#main-course-website-1">Main course website</a>
+  <ul class="collapse">
+  <li><a href="#highlights" id="toc-highlights" class="nav-link" data-scroll-target="#highlights">Highlights</a></li>
+  </ul></li>
+  <li><a href="#course-github" id="toc-course-github" class="nav-link" data-scroll-target="#course-github">Course Github</a></li>
+  <li><a href="#the-goals-of-this-course" id="toc-the-goals-of-this-course" class="nav-link" data-scroll-target="#the-goals-of-this-course">The goals of this course</a></li>
+  <li><a href="#what-well-cover" id="toc-what-well-cover" class="nav-link" data-scroll-target="#what-well-cover">What we’ll cover</a>
+  <ul class="collapse">
+  <li><a href="#module-1" id="toc-module-1" class="nav-link" data-scroll-target="#module-1">Module 1</a></li>
+  <li><a href="#module-2" id="toc-module-2" class="nav-link" data-scroll-target="#module-2">Module 2</a></li>
+  <li><a href="#module-3" id="toc-module-3" class="nav-link" data-scroll-target="#module-3">Module 3</a></li>
+  <li><a href="#module-4" id="toc-module-4" class="nav-link" data-scroll-target="#module-4">Module 4</a></li>
+  <li><a href="#module-5" id="toc-module-5" class="nav-link" data-scroll-target="#module-5">Module 5</a></li>
+  </ul></li>
+  <li><a href="#assignments-and-grading" id="toc-assignments-and-grading" class="nav-link" data-scroll-target="#assignments-and-grading">Assignments and grading</a></li>
+  <li><a href="#the-course-schedule" id="toc-the-course-schedule" class="nav-link" data-scroll-target="#the-course-schedule">The course schedule</a></li>
+  <li><a href="#final-project" id="toc-final-project" class="nav-link" data-scroll-target="#final-project">Final project</a></li>
+  <li><a href="#any-questions-so-far" id="toc-any-questions-so-far" class="nav-link" data-scroll-target="#any-questions-so-far">Any questions so far?</a></li>
+  <li><a href="#initial-surveys" id="toc-initial-surveys" class="nav-link" data-scroll-target="#initial-surveys">Initial surveys</a></li>
+  <li><a href="#okay-lets-get-started" id="toc-okay-lets-get-started" class="nav-link" data-scroll-target="#okay-lets-get-started">Okay, let’s get started…</a>
+  <ul class="collapse">
+  <li><a href="#the-incredible-growth-of-python" id="toc-the-incredible-growth-of-python" class="nav-link" data-scroll-target="#the-incredible-growth-of-python">The Incredible Growth of Python</a></li>
+  <li><a href="#the-rise-of-the-jupyter-notebook" id="toc-the-rise-of-the-jupyter-notebook" class="nav-link" data-scroll-target="#the-rise-of-the-jupyter-notebook">The rise of the Jupyter notebook</a>
+  <ul class="collapse">
+  <li><a href="#the-engine-of-collaborative-data-science" id="toc-the-engine-of-collaborative-data-science" class="nav-link" data-scroll-target="#the-engine-of-collaborative-data-science">The engine of collaborative data science</a></li>
+  <li><a href="#google-searches-for-jupyter-notebook" id="toc-google-searches-for-jupyter-notebook" class="nav-link" data-scroll-target="#google-searches-for-jupyter-notebook">Google searches for Jupyter notebook</a></li>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key features</a></li>
+  </ul></li>
+  <li><a href="#beyond-the-jupyter-notebook" id="toc-beyond-the-jupyter-notebook" class="nav-link" data-scroll-target="#beyond-the-jupyter-notebook">Beyond the Jupyter notebook</a></li>
+  <li><a href="#binder-httpsmybinder.org" id="toc-binder-httpsmybinder.org" class="nav-link" data-scroll-target="#binder-httpsmybinder.org">Binder: https://mybinder.org</a></li>
+  <li><a href="#class-lectures" id="toc-class-lectures" class="nav-link" data-scroll-target="#class-lectures">Class lectures</a></li>
+  <li><a href="#now-to-the-fun-stuff" id="toc-now-to-the-fun-stuff" class="nav-link" data-scroll-target="#now-to-the-fun-stuff">Now to the fun stuff…</a>
+  <ul class="collapse">
+  <li><a href="#python-data-types" id="toc-python-data-types" class="nav-link" data-scroll-target="#python-data-types">Python data types</a></li>
+  <li><a href="#alternative-method-for-creating-a-dictionary" id="toc-alternative-method-for-creating-a-dictionary" class="nav-link" data-scroll-target="#alternative-method-for-creating-a-dictionary">Alternative method for creating a dictionary</a></li>
+  <li><a href="#accessing-dictionary-values" id="toc-accessing-dictionary-values" class="nav-link" data-scroll-target="#accessing-dictionary-values">Accessing dictionary values</a></li>
+  <li><a href="#accessing-list-values" id="toc-accessing-list-values" class="nav-link" data-scroll-target="#accessing-list-values">Accessing list values</a></li>
+  <li><a href="#accessing-characters-of-a-string" id="toc-accessing-characters-of-a-string" class="nav-link" data-scroll-target="#accessing-characters-of-a-string">Accessing characters of a string</a></li>
+  <li><a href="#iterators-and-for-loops" id="toc-iterators-and-for-loops" class="nav-link" data-scroll-target="#iterators-and-for-loops">Iterators and for loops</a></li>
+  <li><a href="#pythons-inline-syntax" id="toc-pythons-inline-syntax" class="nav-link" data-scroll-target="#pythons-inline-syntax">Python’s inline syntax</a></li>
+  <li><a href="#python-functions" id="toc-python-functions" class="nav-link" data-scroll-target="#python-functions">Python functions</a></li>
+  <li><a href="#keywords-arguments-with-a-default" id="toc-keywords-arguments-with-a-default" class="nav-link" data-scroll-target="#keywords-arguments-with-a-default">Keywords: arguments with a default!</a></li>
+  <li><a href="#getting-help-in-the-notebook" id="toc-getting-help-in-the-notebook" class="nav-link" data-scroll-target="#getting-help-in-the-notebook">Getting help in the notebook</a></li>
+  <li><a href="#peeking-at-the-source-code-for-a-function" id="toc-peeking-at-the-source-code-for-a-function" class="nav-link" data-scroll-target="#peeking-at-the-source-code-for-a-function">Peeking at the source code for a function</a></li>
+  <li><a href="#the-jupyterlab-debugger" id="toc-the-jupyterlab-debugger" class="nav-link" data-scroll-target="#the-jupyterlab-debugger">The JupyterLab Debugger</a></li>
+  </ul></li>
+  <li><a href="#getting-more-python-help" id="toc-getting-more-python-help" class="nav-link" data-scroll-target="#getting-more-python-help">Getting more Python help</a></li>
+  <li><a href="#one-more-thing-working-outside-the-notebook" id="toc-one-more-thing-working-outside-the-notebook" class="nav-link" data-scroll-target="#one-more-thing-working-outside-the-notebook">One more thing: working outside the notebook</a>
+  <ul class="collapse">
+  <li><a href="#the-jupyterlab-text-editor" id="toc-the-jupyterlab-text-editor" class="nav-link" data-scroll-target="#the-jupyterlab-text-editor">The JupyterLab text editor</a></li>
+  <li><a href="#using-the-jupyterlab-terminal" id="toc-using-the-jupyterlab-terminal" class="nav-link" data-scroll-target="#using-the-jupyterlab-terminal">Using the JupyterLab Terminal</a></li>
+  </ul></li>
+  <li><a href="#code-editors" id="toc-code-editors" class="nav-link" data-scroll-target="#code-editors">Code editors</a></li>
+  <li><a href="#see-you-next-week" id="toc-see-you-next-week" class="nav-link" data-scroll-target="#see-you-next-week">See you next week!</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Welcome to MUSA 550:<br>Geospatial Data Science in Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Aug.&nbsp;30, 2023</p>
+<section id="today" class="level2">
+<h2 class="anchored" data-anchor-id="today">Today</h2>
+<ul>
+<li>Course logistics</li>
+<li>Using Jupyter Notebooks and Jupyter Lab</li>
+<li>Introduction to Python &amp; Pandas</li>
+</ul>
+</section>
+<section id="who-am-i" class="level2">
+<h2 class="anchored" data-anchor-id="who-am-i">Who am I?</h2>
+<section id="my-day-job" class="level3">
+<h3 class="anchored" data-anchor-id="my-day-job">My day job</h3>
+<ul>
+<li>My name is Nick Hand</li>
+<li>For the past 5+ years, I have led a small data science team in the City Controller’s Office</li>
+<li>What did we do?:
+<ul>
+<li>Objective, data-driven analysis of financial policies impacting Philadelphia</li>
+<li>Increasing transparency through data releases and interactive reports</li>
+</ul></li>
+<li>In two weeks, I start as a data scientist working at the Consumer Finance Protection Bureau in the federal government</li>
+</ul>
+<p>In my time at the Controller’s Office, we covered a range of policy issues in the city:</p>
+<ul>
+<li><a href="https://controller.phila.gov/philadelphia-audits/property-assessment-review/">Analysis of the fairness and accuracy of property assessments</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/cash-report-fiscal-year-2022-q3/">Interactive reports for the City’s cash levels</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/an-analysis-of-tax-abatements-in-philadelphia/">Analysis of the 10-Year Tax Abatement program</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/data-release-beverage-tax/">Interactive dashboard of Soda Tax spending</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/data-release-paving-and-potholes/">Visualization of paving &amp; potholes</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/the-impact-of-covid-19-across-philadelphias-neighborhoods/">Series on the impact of COVID-19 on Philadelphia’s small businesses and neighborhoods</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/the-adopted-fy24-budget">Visualization of the City’s most recent budget</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/mapping-the-legacy-of-structural-racism-in-philadelphia/">Interactive report on redlining in Philadelphia</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/economic-impact-of-homicides/">Analysis of the impact of gun violence on housing prices</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/mapping-gun-violence/#/">Interactive dashboard of shooting victims in Philadelphia</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/progressphl">Interactive dashboard of neighborhood well-being</a></li>
+</ul>
+<p><img src="imgs/phila-controller-homepage.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To see more of our work, check out: https://controller.phila.gov/policy-analysis</p>
+</div>
+</div>
+</section>
+<section id="previously-astrophysics-ph.d.-at-berkeley" class="level3">
+<h3 class="anchored" data-anchor-id="previously-astrophysics-ph.d.-at-berkeley">Previously:<br>Astrophysics Ph.D.&nbsp;at Berkeley</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/uc-berkeley.jpg" class="img-fluid figure-img" width="600"></p>
+</figure>
+</div>
+</section>
+<section id="how-did-i-get-here" class="level3">
+<h3 class="anchored" data-anchor-id="how-did-i-get-here">How did I get here?</h3>
+<ul>
+<li>Astrophysics/physics to data science is becoming increasingly common</li>
+<li>Landed a job through Twitter: https://www.parkingjawn.com
+<ul>
+<li>Dashboard visualization of monthly parking tickets in Philadelphia</li>
+<li>Data from <a href="https://opendataphilly.org/datasets/parking-violations/">OpenDataPhilly</a></li>
+</ul></li>
+</ul>
+<p><img src="imgs/parking-jawn.png" class="img-fluid"></p>
+<p>A nice example of how exploratory analysis + a well-designed dashbord can lead to insights: - The power of cross-filtering: different views of the same data across multiple dimensions - See drop in parking tickets over Jan 24-26, 2016 due to snowstorm</p>
+<p>Parking Jawn is not Python based, but dovetails nicely with one of the <strong>main goals of the course:</strong> &gt; How can we effectively explore and extract insight from complex datasets?</p>
+</section>
+</section>
+<section id="course-logistics" class="level2">
+<h2 class="anchored" data-anchor-id="course-logistics">Course logistics</h2>
+<section id="general-info" class="level3">
+<h3 class="anchored" data-anchor-id="general-info">General Info</h3>
+<ul>
+<li>Two 90-minute lectures per week — mix of lecturing, interactive demos, and in-class lab time</li>
+<li>My email: nhand@design.upenn.edu
+<ul>
+<li>Office Hours:
+<ul>
+<li>2-hours during the week</li>
+<li>Office hours will be by appointment and remote via Zoom. You will be able to sign up for 1 (or more) 15-minute time slot via the Canvas calendar.</li>
+<li>Time is to be determined</li>
+</ul></li>
+</ul></li>
+<li>Teaching Assistant: Teresa Chang
+<ul>
+<li>Email: thchang@design.upenn.edu</li>
+<li>Office hours: TBD</li>
+</ul></li>
+</ul>
+</section>
+<section id="course-websites" class="level3">
+<h3 class="anchored" data-anchor-id="course-websites">Course Websites</h3>
+<p>Course has four websites (sorry!). They are:</p>
+<ul>
+<li>Main Course: https://musa-550-fall-2023.github.io</li>
+<li>Github: https://github.com/MUSA-550-Fall-2023</li>
+<li>Canvas: https://canvas.upenn.edu/courses/1740535</li>
+<li>Ed Discussion: https://edstem.org/us/courses/42616/discussion/</li>
+</ul>
+<p>Each will have its own purpose:</p>
+<section id="main-course-website" class="level4">
+<h4 class="anchored" data-anchor-id="main-course-website">Main course website</h4>
+<ul>
+<li>Course schedule with links to weekly slides</li>
+<li>Resources for learning Python, setting up software, and dealing with common issues</li>
+<li>General course info and policies</li>
+<li>Quick links to the other websites for the course</li>
+</ul>
+</section>
+<section id="github" class="level4">
+<h4 class="anchored" data-anchor-id="github">Github</h4>
+<ul>
+<li>Github organization set up for the course</li>
+<li>Each week and assignment will have its own Github repository</li>
+<li>Assignments will also be submitted through Github</li>
+</ul>
+</section>
+<section id="canvas" class="level4">
+<h4 class="anchored" data-anchor-id="canvas">Canvas</h4>
+<ul>
+<li>Will be used sign up for remote office hours and provide Zoom links for office hours</li>
+<li>Grading will also be tracked here</li>
+</ul>
+</section>
+<section id="ed-discussion" class="level4">
+<h4 class="anchored" data-anchor-id="ed-discussion">Ed Discussion</h4>
+<ul>
+<li>Will be used for question &amp; answer forum for course materials and assignments</li>
+<li>Announcements will also be made here so make sure you check frequently or turn on your notifications!</li>
+<li>Main method of communication will be through announcements on this site</li>
+<li>Participation grade (5% of total grade) will also be determined by user activity on the forum</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="main-course-website-1" class="level2">
+<h2 class="anchored" data-anchor-id="main-course-website-1">Main course website</h2>
+<center>
+<a href="https://musa-550-fall-2023.github.io/" target="blank_"> <img src="imgs/main-course-website.png" width="800"> </a>
+</center>
+<section id="highlights" class="level3">
+<h3 class="anchored" data-anchor-id="highlights">Highlights</h3>
+<ul>
+<li><a href="https://musa-550-fall-2023.github.io/syllabus.html">Syllabus</a></li>
+<li><a href="https://musa-550-fall-2023.github.io/schedule.html">Schedule</a></li>
+<li>Resources &amp; Guides:
+<ul>
+<li><a href="https://musa-550-fall-2023.github.io/resource/python.html">Python resources</a></li>
+<li><a href="https://musa-550-fall-2023.github.io/resource/python.html">Initial installation guide</a></li>
+</ul></li>
+<li><a href="https://musa-550-fall-2023.github.io/content/">Weekly content</a></li>
+<li><a href="https://musa-550-fall-2023.github.io/assignment/">Assignments</a></li>
+<li>Quick links to Canvas, Ed Discussion, GitHub homepage</li>
+</ul>
+</section>
+</section>
+<section id="course-github" class="level2">
+<h2 class="anchored" data-anchor-id="course-github">Course Github</h2>
+<center>
+<a href="https://github.com/MUSA-550-Fall-2023" target="blank_"> <img src="imgs/course-github.png" width="800"> </a>
+</center>
+</section>
+<section id="the-goals-of-this-course" class="level2">
+<h2 class="anchored" data-anchor-id="the-goals-of-this-course">The goals of this course</h2>
+<ul>
+<li>Provide students with the knowledge and tools to turn data into meaningful insights and stories</li>
+<li>Focus on the modern data science tools within the Python ecosystem</li>
+<li>The pipeline approach to data science:
+<ul>
+<li>gathering, storing, analyzing, and visualizing data to tell stories</li>
+</ul></li>
+<li>Real-world applications of analysis techniques in the urban planning and public policy realm</li>
+</ul>
+</section>
+<section id="what-well-cover" class="level2">
+<h2 class="anchored" data-anchor-id="what-well-cover">What we’ll cover</h2>
+<section id="module-1" class="level3">
+<h3 class="anchored" data-anchor-id="module-1">Module 1</h3>
+<p><strong>Exploratory Data Science:</strong> Students will be introduced to the main tools needed to get started analyzing and visualizing data using Python</p>
+</section>
+<section id="module-2" class="level3">
+<h3 class="anchored" data-anchor-id="module-2">Module 2</h3>
+<p><strong>Introduction to Geospatial Data Science:</strong> Building on the previous set of tools, this module will teach students how to work with geospatial datasets using a range of modern Python toolkits.</p>
+</section>
+<section id="module-3" class="level3">
+<h3 class="anchored" data-anchor-id="module-3">Module 3</h3>
+<p><strong>Data Ingestion &amp; Big Data:</strong> Students will learn how to collect new data through web scraping and APIs, as well as how to work effectively with the large datasets often encountered in real-world applications.</p>
+</section>
+<section id="module-4" class="level3">
+<h3 class="anchored" data-anchor-id="module-4">Module 4</h3>
+<p><strong>From Exploration to Storytelling</strong>: With a solid foundation, students will learn the latest tools to present their analysis results using web-based formats to transform their insights into interactive stories.</p>
+</section>
+<section id="module-5" class="level3">
+<h3 class="anchored" data-anchor-id="module-5">Module 5</h3>
+<p><strong>Geospatial Data Science in the Wild:</strong> Armed with the necessary data science tools, the final module introduces a range of advanced analytic and machine learning techniques using a number of innovative examples from modern researchers.</p>
+</section>
+</section>
+<section id="assignments-and-grading" class="level2">
+<h2 class="anchored" data-anchor-id="assignments-and-grading">Assignments and grading</h2>
+<ul>
+<li>Grading:
+<ul>
+<li>55% homework</li>
+<li>45% final project</li>
+<li>5% participation (based on class and Ed Discussion participation)</li>
+</ul></li>
+<li>While you are required to submit all six assignments, the assignment with the lowest grade will not count towards your final grade.</li>
+<li>There’s no penalty for late assignments. I would <strong>highly recommend</strong> staying caught up on lectures and assignments as much as possible, but if you need to turn something in a few days late, there won’t be a penalty.</li>
+</ul>
+<p><em>Note:</em> Homeworks will be assigned (roughly) every two and a half weeks.</p>
+</section>
+<section id="the-course-schedule" class="level2">
+<h2 class="anchored" data-anchor-id="the-course-schedule">The course schedule</h2>
+<p>Check out the schedule page for the most up-to-date details on lectures, assignment due dates, etc.</p>
+<center>
+<a href="https://musa-550-fall-2023.github.io/schedule" target="blank_"> <img src="imgs/course-schedule.png" width="800"> </a>
+</center>
+</section>
+<section id="final-project" class="level2">
+<h2 class="anchored" data-anchor-id="final-project">Final project</h2>
+<p>The final project is to replicate the pipeline approach on a dataset (or datasets) of your choosing.</p>
+<p>Students will be required to use several of the analysis techniques taught in the class and produce a web-based data visualization that effectively communicates the empirical results to a non-technical audience.</p>
+<p>More info will be posted here: https://github.com/MUSA-550-Fall-2023/final-project</p>
+</section>
+<section id="any-questions-so-far" class="level2">
+<h2 class="anchored" data-anchor-id="any-questions-so-far">Any questions so far?</h2>
+</section>
+<section id="initial-surveys" class="level2">
+<h2 class="anchored" data-anchor-id="initial-surveys">Initial surveys</h2>
+<p><strong>Roll call</strong>: https://bit.ly/musa550-roll-call</p>
+<p><strong>Some initial feedback</strong>: https://bit.ly/musa550-initial-feedback</p>
+</section>
+<section id="okay-lets-get-started" class="level1">
+<h1>Okay, let’s get started…</h1>
+<section id="the-incredible-growth-of-python" class="level2">
+<h2 class="anchored" data-anchor-id="the-incredible-growth-of-python">The Incredible Growth of Python</h2>
+<p><a href="https://stackoverflow.blog/2017/09/06/incredible-growth-python/">Example #1: A 2017 analysis of StackOverflow posts</a></p>
+<center>
+<img src="imgs/stackoverflow-python-growth.png" width="700">
+</center>
+<center>
+<img src="imgs/stackoverflow-python-vs-small.png" width="750">
+</center>
+</section>
+<section id="the-rise-of-the-jupyter-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="the-rise-of-the-jupyter-notebook">The rise of the Jupyter notebook</h2>
+<section id="the-engine-of-collaborative-data-science" class="level3">
+<h3 class="anchored" data-anchor-id="the-engine-of-collaborative-data-science">The engine of collaborative data science</h3>
+<ul>
+<li>First started by a physics grad student around 2001</li>
+<li>Known as the IPython notebook originally</li>
+<li>Starting getting popular in ~2011</li>
+<li>First funding received in 2015 — the Jupyter notebook was born</li>
+</ul>
+</section>
+<section id="google-searches-for-jupyter-notebook" class="level3">
+<h3 class="anchored" data-anchor-id="google-searches-for-jupyter-notebook">Google searches for Jupyter notebook</h3>
+<p><img src="imgs/google-trends-jupyter.png" class="img-fluid"></p>
+</section>
+<section id="key-features" class="level3">
+<h3 class="anchored" data-anchor-id="key-features">Key features</h3>
+<ul>
+<li>Aimed at “computational narratives” — telling stories with data</li>
+<li>Interactive, reproducible, shareable, user-friendly, visualization-focused</li>
+<li>Fully open-source and <a href="https://jupyter.org/governance/intro.html">managed by the community</a></li>
+</ul>
+<p><strong>Very versatile: good for both exploratory data analysis and polished finished products</strong></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The lecture slides in the course will all be <em>Jupyter notebooks</em>. The preferred interface for editing and executing them will be <em>JupyterLab</em>. That’s what I’m using now!</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For more info on Jupyter notebooks and JupyterLab, check out <a href="https://musa-550-fall-2023.github.io/resource/jupyter.html">the guide</a> on the course website.</p>
+<p>In particulary, I strongly encourage you to go through the official documentation for JupyterLab and Jupyter notebooks:</p>
+<ul>
+<li><a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/starting.html">Starting JupyterLab</a></li>
+<li><a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">The JupyterLab interface</a></li>
+<li><a href="https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#structure-of-a-notebook-document">The structure of a notebook document</a></li>
+<li><a href="https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#basic-workflow">The notebook workflow</a></li>
+<li><a href="https://jupyterlab.readthedocs.io/en/stable/user/notebook.html">Working with notebooks in JupyterLab</a></li>
+<li><a href="https://jupyterlab.readthedocs.io/en/stable/user/files.html">Working with files</a></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="beyond-the-jupyter-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="beyond-the-jupyter-notebook">Beyond the Jupyter notebook</h2>
+<p><strong>Google Colab</strong> is the most popular alternative to Jupyter notebooks.</p>
+<p><img src="imgs/google-colab.png" class="img-fluid"></p>
+<ul>
+<li>A fancier notebook experience built on top of Jupyter notebook</li>
+<li>Running in the cloud on Google’s servers</li>
+<li>An internal Google product that was released publicly</li>
+<li>Very popular for Python-based machine learning, since it provides low-barrier access to GPU resources which can be very helpful for training machine learning models</li>
+<li>We’ll focus on the open-source Jupyter notebook as the foundation for this course</li>
+</ul>
+<p>See: https://colab.research.google.com/notebooks/welcome.ipynb</p>
+</section>
+<section id="binder-httpsmybinder.org" class="level2">
+<h2 class="anchored" data-anchor-id="binder-httpsmybinder.org">Binder: https://mybinder.org</h2>
+<p><img src="imgs/binder-logo.png" class="img-fluid" width="700"></p>
+<ul>
+<li>A free, open-source service, supported by donors</li>
+<li>Allows you to launch a repository of Jupyter notebooks on GitHub in an executable environment in the cloud</li>
+<li>Amazing if you want to make your code immediately reproducible by anyone, anywhere.</li>
+<li>Note: as a free service, it can be a bit slow sometimes</li>
+</ul>
+</section>
+<section id="class-lectures" class="level2">
+<h2 class="anchored" data-anchor-id="class-lectures">Class lectures</h2>
+<p>Weekly lectures are available on Binder! In the README for each week’s repository on GitHub, you will see badges to launch the lecture slides on Binder.</p>
+<center>
+<img src="imgs/binder-buttons.png" width="800">
+</center>
+<p><br></p>
+<p>You can also access these links from the content section of the course website. For example, here is:</p>
+<p>https://musa-550-fall-2023.github.io/content/week-1/</p>
+<center>
+<img src="imgs/week-1-header.png" width="800">
+</center>
+<div class="callout callout-style-default callout-tip callout-titled" title="Suggested weekly workflow">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Suggested weekly workflow
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Set up local Python environment as part of first homework assignment</li>
+<li>Each week, you will have two options to follow along with lectures:
+<ol type="1">
+<li>Using Binder in the cloud, launching via the button on the week’s repository</li>
+<li>Download the week’s repository to your laptop and launch the notebook locally</li>
+</ol></li>
+<li>Work on homeworks locally on your laptop — Binder is only a <em>temporary</em> environment (no save features)</li>
+</ul>
+</div>
+</div>
+<p>Check out the <a href="https://musa-550-fall-2023.github.io/content/">content overview page</a> on the main course website for more info!</p>
+</section>
+<section id="now-to-the-fun-stuff" class="level2">
+<h2 class="anchored" data-anchor-id="now-to-the-fun-stuff">Now to the fun stuff…</h2>
+<p>Jupyter notebooks are a mix of <em>code</em> cells and <strong>text</strong> cells in Markdown. You can change the type of cell in the top menu bar.</p>
+<p>This cell is a <em>Markdown cell</em>.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comments begin with a "#" character in Python</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A simple code cell</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SHIFT-ENTER to execute</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10</code></pre>
+</div>
+</div>
+<section id="python-data-types" class="level3">
+<h3 class="anchored" data-anchor-id="python-data-types">Python data types</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># integer</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># float</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">10.5</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># string</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="st">"this is a test string"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># lists</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># booleans</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># dictionaries</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> {<span class="st">"key1"</span>: <span class="dv">1</span>, <span class="st">"key2"</span>: <span class="dv">2</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(c)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(e)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10
+10.5
+this is a test string
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+True
+{'key1': 1, 'key2': 2}</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Unlike <code>R</code>, you’ll need to use quotes more often in Python, particularly around strings and keys of dictionaries.</p>
+</div>
+</div>
+</section>
+<section id="alternative-method-for-creating-a-dictionary" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-method-for-creating-a-dictionary">Alternative method for creating a dictionary</h3>
+<p>We can use the <code>dict()</code> function, which is built in to the Python language. More on functions in a bit…</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">dict</span>(key1<span class="op">=</span><span class="dv">1</span>, key2<span class="op">=</span><span class="dv">2</span>, key3<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>{'key1': 1, 'key2': 2, 'key3': 3}</code></pre>
+</div>
+</div>
+</section>
+<section id="accessing-dictionary-values" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-dictionary-values">Accessing dictionary values</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the value with key 'key1'</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>f[<span class="st">'key1'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>1</code></pre>
+</div>
+</div>
+</section>
+<section id="accessing-list-values" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-list-values">Accessing list values</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the second list entry (0 is the first index)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">1</span>]  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>1</code></pre>
+</div>
+</div>
+</section>
+<section id="accessing-characters-of-a-string" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-characters-of-a-string">Accessing characters of a string</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>'this is a test string'</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first character</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>c[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>'t'</code></pre>
+</div>
+</div>
+</section>
+<section id="iterators-and-for-loops" class="level3">
+<h3 class="anchored" data-anchor-id="iterators-and-for-loops">Iterators and for loops</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be sure to use the right indentation in for loops!</p>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variable that will track the sum</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>result_sum <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Variable i takes on values [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Indented, so it runs for each iteration of the loop</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    result_sum <span class="op">=</span> result_sum <span class="op">+</span> i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>45</code></pre>
+</div>
+</div>
+</section>
+<section id="pythons-inline-syntax" class="level3">
+<h3 class="anchored" data-anchor-id="pythons-inline-syntax">Python’s inline syntax</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="co"># this is an iterator</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>range(0, 10)</code></pre>
+</div>
+</div>
+<p>Use the <code>list()</code> function to iterate over it and make it into a list:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert it to a list explicitly</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Output it from the cell</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or use the INLINE syntax; this is the SAME</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+</div>
+</div>
+</section>
+<section id="python-functions" class="level3">
+<h3 class="anchored" data-anchor-id="python-functions">Python functions</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> function_name(arg1, arg2, arg3):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    .</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    .</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    .</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    code lines (indented)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    .</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    .</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    .</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_square(x):</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>sq <span class="op">=</span> compute_square(<span class="dv">5</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25</code></pre>
+</div>
+</div>
+</section>
+<section id="keywords-arguments-with-a-default" class="level3">
+<h3 class="anchored" data-anchor-id="keywords-arguments-with-a-default">Keywords: arguments with a default!</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_product(x, y<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use the default value for y</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compute_product(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify a y value other than the default</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compute_product(<span class="dv">5</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>50</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can also explicitly tell Python which arguments are which</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compute_product(<span class="dv">5</span>, y<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compute_product(y<span class="op">=</span><span class="dv">2</span>, x<span class="op">=</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10
+10</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compute_product(x<span class="op">=</span><span class="dv">5</span>, y<span class="op">=</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>20</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># argument names must match the function signature though!</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compute_product(x<span class="op">=</span><span class="dv">5</span>, z<span class="op">=</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: compute_product() got an unexpected keyword argument 'z'</code></pre>
+</div>
+</div>
+</section>
+<section id="getting-help-in-the-notebook" class="level3">
+<h3 class="anchored" data-anchor-id="getting-help-in-the-notebook">Getting help in the notebook</h3>
+<p>Use tab auto-completion and the ? and ?? operators</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>this_variable_has_a_long_name <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># try hitting tab after typing this_ </span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>this_variable_has_a_long_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<pre><code>5</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forget how to create a range? --&gt; use the help message</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">range</span>?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Init signature:</span> range<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">/</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>     
+range(stop) -&gt; range object
+range(start, stop[, step]) -&gt; range object
+Return an object that produces a sequence of integers from start (inclusive)
+to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
+start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
+These are exactly the valid indices for a list of 4 elements.
+When step is given, it specifies the increment (or decrement).
+<span class="ansi-red-fg">Type:</span>           type
+<span class="ansi-red-fg">Subclasses:</span>     </pre>
+</div>
+</div>
+</div>
+</section>
+<section id="peeking-at-the-source-code-for-a-function" class="level3">
+<h3 class="anchored" data-anchor-id="peeking-at-the-source-code-for-a-function">Peeking at the source code for a function</h3>
+<p>Use the ?? operator</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets re-define compute_product() and add a docstring between """ """</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_product(x, y<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co">    This computes the product of x and y</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co">    This is all part of the comment.</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>compute_product??</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> compute_product<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">,</span> y<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Source:</span>   
+<span class="ansi-green-fg">def</span> compute_product<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">,</span> y<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+    <span class="ansi-blue-fg">"""</span>
+<span class="ansi-blue-fg">    This computes the product of x and y</span>
+<span class="ansi-blue-fg">    </span>
+<span class="ansi-blue-fg">    </span>
+<span class="ansi-blue-fg">    This is all part of the comment.</span>
+<span class="ansi-blue-fg">    """</span>
+    <span class="ansi-green-fg">return</span> x <span class="ansi-blue-fg">*</span> y
+<span class="ansi-red-fg">File:</span>      /var/folders/49/ntrr94q12xd4rq8hqdnx96gm0000gn/T/ipykernel_63388/3896936014.py
+<span class="ansi-red-fg">Type:</span>      function</pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The question mark operator gives you access to the help message for any variable or function.</p>
+<p><strong>I use this frequently and it is a great way to understand what a function actually does.</strong></p>
+</div>
+</div>
+</section>
+<section id="the-jupyterlab-debugger" class="level3">
+<h3 class="anchored" data-anchor-id="the-jupyterlab-debugger">The JupyterLab Debugger</h3>
+<p>You can enable Debugging mode in JupyterLab by clicking on the “bug” icon in the top right:</p>
+<p><img src="imgs/jupyterlab-debugger-1.png" class="img-fluid"></p>
+<p>This should open the Debugger panel on the right side of JupyterLab. One of the most useful parts of this panel is the “Variables” section, which gives you the current values of all defined variables in the notebook.</p>
+<p><img src="imgs/jupyterlab-debugger-2.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For more information on the debugger, see the <a href="https://jupyterlab.readthedocs.io/en/stable/user/debugger.html">JupyterLab docs</a>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="getting-more-python-help" class="level2">
+<h2 class="anchored" data-anchor-id="getting-more-python-help">Getting more Python help</h2>
+<p>This was a <em>very</em> brief introduction to Python and Python syntax. We’ll continue practicing and reinforcing the proper syntax throughout the next few weeks, but it can definitely be frustrating. Hang in there!</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Important: DataCamp Tutorials">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important: DataCamp Tutorials
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>DataCamp is providing 6 months of complimentary access to its courses for students in MUSA 550. Whether you have experience with Python or not, this is a great opportunity to learn the basics of Python and practice your skills.</p>
+<p>It is strongly recommended that you watch some or all of the introductory videos below to build a stronger Python foundation for the semester. The more advanced, intermediate courses are also great — the more the merrier!</p>
+<p>For more info, including how to sign up, check out <a href="https://musa-550-fall-2023.github.io/resource/python.html#datacamp-courses">the resources section of the website</a>.</p>
+</div>
+</div>
+<p>Additional Python resources are listed on our course website under “Resources”</p>
+<p>https://musa-550-fall-2023.github.io/resource/python/</p>
+<p>In addition to the DataCamp videos, there are links to lots of online tutorials:</p>
+<ul>
+<li><a href="https://musa-550-fall-2023.github.io/resource/python#introductory-python-tutorials">Introductory level tutorials</a></li>
+<li><a href="https://musa-550-fall-2023.github.io/resource/python#more-advanced-tutorials">More advanced tutorials</a></li>
+<li>The r/learnpython subreddit has a great <a href="https://www.reddit.com/r/learnpython/wiki/index/">wiki of resources</a></li>
+<li>The Berkeley Institute for Data Science has also compiled a number of <a href="http://python.berkeley.edu/resources/http://python.berkeley.edu/resources/">Python resources</a></li>
+</ul>
+</section>
+<section id="one-more-thing-working-outside-the-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="one-more-thing-working-outside-the-notebook">One more thing: working outside the notebook</h2>
+<p>In this class, we will almost exclusively work inside Jupyter notebooks — you’ll be writing Python code and doing data analysis directly in the notebook.</p>
+<p>The more traditional method of using Python is to put your code into a <code>.py</code> file and execute it via the command line (known as the Miniforge/Anaconda Prompt on Windows or Terminal app on MacOS).</p>
+<p>See <a href="https://dabeaz-course.github.io/practical-python/Notes/01_Introduction/02_Hello_world.html">this section</a> of the Practical Python Programming tutorial for more info.</p>
+<section id="the-jupyterlab-text-editor" class="level3">
+<h3 class="anchored" data-anchor-id="the-jupyterlab-text-editor">The JupyterLab text editor</h3>
+<p>There is a file called <a href="./hello_world.py"><code>hello_world.py</code></a> in the repository for week 1. If we execute it, it should print out “Hello, World” to the command line.</p>
+<p>First, let’s open up the <code>.py</code> file in the JupyterLab text editor. Double click on the “hello_world.py” item in the file browser on the left:</p>
+<p><img src="imgs/jupyterlab-hello-world.png" class="img-fluid" width="300"></p>
+<p>This will open the file and allow you to make edits. You should see the following:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our first Python program</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See the <a href="https://jupyterlab.readthedocs.io/en/stable/user/file_editor.html">JupyterLab docs</a> for more info on the text editor.</p>
+</div>
+</div>
+</section>
+<section id="using-the-jupyterlab-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-jupyterlab-terminal">Using the JupyterLab Terminal</h3>
+<p>To execute the file, we can use the built-in Terminal feature in JupyterLab using the following steps:</p>
+<ol type="1">
+<li>Bring up the “Launcher” tab by clicking on the blue button with a plus sign in the upper left.</li>
+<li>Click on the “Terminal” button”</li>
+<li>When the terminal opens, type the following:</li>
+</ol>
+<pre><code>python hello_world.py</code></pre>
+<p>And you should see the following output:</p>
+<pre><code>Hello World!</code></pre>
+<p>It should look something like this:</p>
+<p><img src="imgs/jupyterlab-launch-terminal.gif" class="img-fluid"></p>
+</section>
+</section>
+<section id="code-editors" class="level2">
+<h2 class="anchored" data-anchor-id="code-editors">Code editors</h2>
+<p>The JupyterLab text editor will work in a pinch, but it’s not usually the best option when writing software outside the notebook. Other code editors will provide a nice interface for writing Python code and some even have fancy features, like real-time syntax checking and syntax highlighting.</p>
+<p>My recommended option is <a href="https://code.visualstudio.com/download">Visual Studio Code</a>.</p>
+</section>
+<section id="see-you-next-week" class="level2">
+<h2 class="anchored" data-anchor-id="see-you-next-week">See you next week!</h2>
+<ul>
+<li>No lecture on Monday next week due to Labor Day</li>
+<li>Next class a week from today on Wednesday 9/6</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by <a href="https://www.nickhand.dev">Nick Hand</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-python" aria-label="python"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/MUSA-550-Fall-2023/musa-550-fall-2023.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

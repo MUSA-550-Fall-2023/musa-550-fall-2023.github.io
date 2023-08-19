@@ -29,7 +29,7 @@ website:
     tools:
     - icon: box-arrow-up-right
       menu:
-      - text: Github
+      - text: GitHub
         url: https://github.com/MUSA-550-Fall-2023
       - text: Canvas
         url: https://canvas.upenn.edu/courses/1740535
