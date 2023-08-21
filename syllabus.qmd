@@ -66,16 +66,16 @@ TBD
 ### Course Websites
 
 - Main website: [https://musa-550-fall-2023.github.io](https://musa-550-fall-2023.github.io)
-- Github: [{{< var course.github_org >}}]({{< var course.github_org >}})
+- GitHub: [{{< var course.github_org >}}]({{< var course.github_org >}})
 - Canvas: [{{< var course.canvas >}}]({{< var course.canvas >}})
 - Ed Discussion [https://edstem.org/us/courses/42616/discussion/](https://edstem.org/us/courses/42616/discussion/)
 
 The course's main website will be the main source of information, including
 the course schedule, weekly content, and guides/resources.
 
-The course's Github page will have repositories for each week's
+The course's GitHub page will have repositories for each week's
 lectures as well as assignments. Students will also submit their assignments
-through Github.
+through GitHub.
 
 We will use Canvas signing up for office hours and tracking grades.
 
@@ -97,7 +97,7 @@ non-technical audience. The final product should also include a description of
 the methods used in each step of the data science process (collection, analysis,
 and visualization).
 
-For more details on the final project, see [the Github
+For more details on the final project, see [the GitHub
 repository]({{< var course.github_org >}}/final-project).
 
 ### Grading
@@ -132,7 +132,7 @@ particularly as you are trying to learn Python syntax and the topics
 in the course at the same time. But I firmly believe that all students can 
 succeed in this class.
 
-You'll get the most out of the course if you stay up-to-date on the lectures 
+You'll get the most out of the course if you stay up to date on the lectures 
 and assignments. If you fall behind, I know there can be a desire to copy code 
 from the Internet or others to help you complete assignments. Ultimately, this 
 will be detrimental to your progress as an analytics wizard. My goal for this 
@@ -145,22 +145,20 @@ ask for help by:
 
 1. Post a question on Canvas — the fix for your problem might be quick and other students are probably experiencing similar issues.
 1. Come to office hours and discuss issues or larger conceptual questions you are having.
-1. Take advantage of the [free resources](./resource/python.qmd) to help fine-tine your Python skills. 
+1. Take advantage of the [free resources](./resource/python.qmd) to help fine-tune your Python skills. 
 :::
 
 And if you are still struggling, reach out and let me know and we'll figure out a strategy to make things work!
-
-
 
 ### Communication Policies
 
 - Please add the following text into the subject line of emails to us:
   [MUSA550]. This will help us make sure we don't miss your email!
-- We will use Canvas for questions related to lecture material and assignments.
-- To prevent code copying, please do not post long, complete code examples to Canvas.
-- Anonymous posting is enabled on Canvas — if you have a question that requires
+- We will use the Ed Discussion Q&A forum for questions related to lecture material and assignments.
+- To prevent code copying, please do not post long, complete code examples to Ed Discussion.
+- Anonymous posting is enabled on Ed Discussion — if you have a question that requires
   a full code example, please use the anonymous feature to post the question.
-- We will also use Canvas for announcements — please make sure your
+- We will use Canvas for announcements — please make sure your
   notifications are turned on and you check the website frequently. This will
   be the primary method of communication for course-wide announcements.
 - If you have larger-scale or conceptual questions on assignments or lecture
@@ -171,7 +169,6 @@ And if you are still struggling, reach out and let me know and we'll figure out 
 Students are allowed (and encouraged!) to collaborate when working through
 lecture materials or assignments. If you work closely with other students,
 please list the members of your group at the top of your assignment.
-
 
 ### Special Accommodations
 
