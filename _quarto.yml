@@ -60,8 +60,6 @@ website:
   - background: light
     contents:
     - content/index.qmd
-    - file: content/week-1/index.qmd
-      text: 1. Exploratory Data Science in Python
     search: false
     style: docked
     title: Content
