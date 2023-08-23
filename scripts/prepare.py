@@ -14,7 +14,10 @@ config = yaml.load(config_path.open("r"), yaml.Loader)
 # Load variables
 variables = yaml.load((root_dir / "_variables.yml").open("r"), yaml.Loader)
 current_lecture = variables["current_lecture"]
-current_week = int(current_lecture[:-1])
+if current_lecture == "None":
+    current_week = 0
+else:
+    current_week = int(current_lecture[:-1])
 
 # Load the schedule data
 dates = pd.read_csv(root_dir / "data" / "schedule-dates.csv")

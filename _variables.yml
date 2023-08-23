@@ -1,4 +1,5 @@
-current_lecture: "-1A"
+current_lecture: None
+
 
 install:
   default_python_version: "3.10"

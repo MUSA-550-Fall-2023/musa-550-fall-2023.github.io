@@ -167,12 +167,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#today" id="toc-today" class="nav-link active" data-scroll-target="#today">Today</a></li>
+  <li><a href="#reminder-the-weekly-workflow" id="toc-reminder-the-weekly-workflow" class="nav-link" data-scroll-target="#reminder-the-weekly-workflow">Reminder: The weekly workflow</a></li>
+  <li><a href="#python-data-analysis-the-pandas-package" id="toc-python-data-analysis-the-pandas-package" class="nav-link" data-scroll-target="#python-data-analysis-the-pandas-package">Python Data Analysis: the <em>pandas</em> package</a>
+  <ul class="collapse">
+  <li><a href="#the-old-logo" id="toc-the-old-logo" class="nav-link" data-scroll-target="#the-old-logo">The old logo</a></li>
+  <li><a href="#the-new-less-fun-logo" id="toc-the-new-less-fun-logo" class="nav-link" data-scroll-target="#the-new-less-fun-logo">The new, less fun logo</a></li>
+  </ul></li>
+  <li><a href="#basic-pandas-concepts" id="toc-basic-pandas-concepts" class="nav-link" data-scroll-target="#basic-pandas-concepts">Basic <em>pandas</em> concepts</a>
+  <ul class="collapse">
+  <li><a href="#accessing-data" id="toc-accessing-data" class="nav-link" data-scroll-target="#accessing-data">1. Accessing data</a></li>
+  <li><a href="#manipulating-data" id="toc-manipulating-data" class="nav-link" data-scroll-target="#manipulating-data">2. Manipulating data</a></li>
+  <li><a href="#applying-a-function" id="toc-applying-a-function" class="nav-link" data-scroll-target="#applying-a-function">3. Applying a function</a></li>
+  <li><a href="#data-selection" id="toc-data-selection" class="nav-link" data-scroll-target="#data-selection">4. Data selection</a></li>
+  <li><a href="#need-more-help" id="toc-need-more-help" class="nav-link" data-scroll-target="#need-more-help">Need more help?</a></li>
+  </ul></li>
+  <li><a href="#a-more-interesting-example-the-donut-effect" id="toc-a-more-interesting-example-the-donut-effect" class="nav-link" data-scroll-target="#a-more-interesting-example-the-donut-effect">A more interesting example: The Donut Effect</a>
+  <ul class="collapse">
+  <li><a href="#population-change" id="toc-population-change" class="nav-link" data-scroll-target="#population-change">1. Population change</a></li>
+  <li><a href="#home-rental-prices" id="toc-home-rental-prices" class="nav-link" data-scroll-target="#home-rental-prices">2. Home &amp; rental prices</a></li>
+  </ul></li>
+  <li><a href="#first-homework-assignment" id="toc-first-homework-assignment" class="nav-link" data-scroll-target="#first-homework-assignment">First Homework Assignment</a></li>
+  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -211,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol></li>
 <li>Work on homeworks locally on your laptop — Binder is only a <em>temporary</em> environment (no save features)</li>
 </ul>
-<p>To follow along today, go to https://github.com/MUSA-550-Fall-2023/week-1</p>
+<p>To follow along today, go to <a href="https://github.com/MUSA-550-Fall-2023/week-1">https://github.com/MUSA-550-Fall-2023/week-1</a></p>
 <p><img src="imgs/binder-buttons-2.png" class="img-fluid"></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Reminder: Free DataCamp Courses">
 <div class="callout-header d-flex align-content-center">
@@ -231,7 +260,7 @@ Reminder: Free DataCamp Courses
 </section>
 <section id="python-data-analysis-the-pandas-package" class="level2">
 <h2 class="anchored" data-anchor-id="python-data-analysis-the-pandas-package">Python Data Analysis: the <em>pandas</em> package</h2>
-<p>Documentation is available at https://pandas.pydata.org</p>
+<p>Documentation is available at <a href="https://pandas.pydata.org">https://pandas.pydata.org</a></p>
 <section id="the-old-logo" class="level3">
 <h3 class="anchored" data-anchor-id="the-old-logo">The old logo</h3>
 <center>
@@ -244,7 +273,7 @@ Reminder: Free DataCamp Courses
 <img width="500" src="https://raw.githubusercontent.com/pandas-dev/pandas/master/web/pandas/static/img/pandas.svg">
 </center>
 <p>The following line imports the <em>pandas</em> package:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="1">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -259,7 +288,7 @@ Reminder: Free DataCamp Courses
 <p>The data frame is a commonly used abstraction for data manipulation. Similar implementations exist in <code>R</code>.</p>
 <p>You can think <code>Series</code> objects as fancier versions of Python’s built-in list data type.</p>
 <p>To create a <code>Series</code> object, pass a list of values to the <code>pd.Series()</code> function:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="2">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Philadelphia metro counties and populations</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>county_names <span class="op">=</span> pd.Series(</span>
@@ -287,10 +316,10 @@ Reminder: Free DataCamp Courses
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>DataFrame</code> objects can be created by passing a <code>dict</code> mapping <code>string</code> column names to their respective <code>Series</code>.</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="3">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>county_df <span class="op">=</span> pd.DataFrame({<span class="st">"County Name"</span>: county_names, <span class="st">"Population"</span>: population})</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>county_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="70">
 <div>
 
 
@@ -364,10 +393,10 @@ Note
 </div>
 <section id="accessing-data" class="level3">
 <h3 class="anchored" data-anchor-id="accessing-data">1. Accessing data</h3>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="4">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access columns with a dict-like syntax</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Population"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>0     645054.0
 1     545823.0
 2     575182.0
@@ -380,23 +409,23 @@ Name: Population, dtype: float64</code></pre>
 </div>
 </div>
 <p>Rows can be accessed using Python’s syntax for slicing:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="5">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Example: slicing a list slicing</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the elements with indices 1 and 2 (but NOT 3)</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>county_list <span class="op">=</span> [<span class="st">"Bucks"</span>, <span class="st">"Philadelphia"</span>, <span class="st">"Delaware"</span>]</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>county_list[<span class="dv">0</span>:<span class="dv">2</span>]  <span class="co"># Same as county_list[:2] (omitting the zero)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="72">
 <pre><code>['Bucks', 'Philadelphia']</code></pre>
 </div>
 </div>
 <p>Unfortunately the functionality for slicing lists is not that powerful…but pandas will have many more features!</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="6">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slicing a DataFrame is similar...but now we will get rows of the DataFrame back!</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>county_df[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="73">
 <div>
 
 
@@ -429,34 +458,34 @@ Name: Population, dtype: float64</code></pre>
 </section>
 <section id="manipulating-data" class="level3">
 <h3 class="anchored" data-anchor-id="manipulating-data">2. Manipulating data</h3>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="7">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Population"</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>560502.5</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="8">
+<div class="cell" data-tags="[]" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Population"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="75">
 <pre><code>686951.375</code></pre>
 </div>
 </div>
 <p><a href="http://www.numpy.org/">NumPy</a> (<em>Num</em>erical <em>Py</em>thon) is a popular toolkit for scientific computing. Among other things, it can calculate mathematical functions, like mean, median, min, max, etc.</p>
 <p><em>pandas</em> <code>Series</code> can be used as arguments to most NumPy functions:</p>
-<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="cell" data-tags="[]" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="10">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the median population value</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>np.median(county_df[<span class="st">"Population"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="77">
 <pre><code>560502.5</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="11">
+<div class="cell" data-tags="[]" data-execution_count="78">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the median population value</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>np.mean(county_df[<span class="st">"Population"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>686951.375</code></pre>
 </div>
 </div>
@@ -480,7 +509,7 @@ Note: DataCamp + NumPy
 <p>For more complex single-column transformations, you can use <code>Series.apply</code>. It accepts a function that is applied to each value in the <code>Series</code>.</p>
 <p>An <code>apply</code> operation allows you to call an arbitrary function to each value in a column. It is a core <code>pandas</code> concept and can be very powerful for complex calculations.</p>
 <p>As an example, we can find which counties have a population greater than one million:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="12">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_large_counties(population):</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> population <span class="op">&gt;</span> <span class="fl">1e6</span></span>
@@ -488,10 +517,10 @@ Note: DataCamp + NumPy
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>large_county_sel <span class="op">=</span> county_df[<span class="st">"Population"</span>].<span class="bu">apply</span>(get_large_counties)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="13">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="80">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a Series where the value is the returned value from the above function</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>large_county_sel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="80">
 <pre><code>0    False
 1    False
 2    False
@@ -503,13 +532,13 @@ Note: DataCamp + NumPy
 Name: Population, dtype: bool</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="14">
+<div class="cell" data-tags="[]" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the new computed column to our original data frame</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Large Counties"</span>] <span class="op">=</span> large_county_sel</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>county_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="81">
 <div>
 
 
@@ -592,7 +621,7 @@ Tip
 </div>
 </div>
 <p>As an example, let’s add a small counties column:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="15">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>small_counties_func <span class="op">=</span> <span class="kw">lambda</span> population: population <span class="op">&lt;</span> <span class="fl">1e6</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we can also use lambda (unnamed, inline) functions</span></span>
@@ -600,7 +629,7 @@ Tip
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out</span></span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>county_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="82">
 <div>
 
 
@@ -681,9 +710,9 @@ Tip
 <section id="data-selection" class="level3">
 <h3 class="anchored" data-anchor-id="data-selection">4. Data selection</h3>
 <p>We can select the “large” counties by passing the boolean values to the <code>.loc[]</code> function of a <code>DataFrame</code>:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="16">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Large Counties"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="83">
 <pre><code>0    False
 1    False
 2    False
@@ -695,9 +724,9 @@ Tip
 Name: Large Counties, dtype: bool</code></pre>
 </div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="17">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>county_df.loc[ county_df[<span class="st">"Large Counties"</span>] ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="84">
 <div>
 
 
@@ -741,9 +770,9 @@ Note
 </div>
 </div>
 <p><em>But:</em> there is a faster, more concise, to achieve this!</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="18">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Population"</span>] <span class="op">&gt;</span> <span class="fl">1e6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>0    False
 1    False
 2    False
@@ -755,11 +784,11 @@ Note
 Name: Population, dtype: bool</code></pre>
 </div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="19">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can pass the selection directory the .loc[] —&gt; no need to define a new variable</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>county_df.loc[county_df[<span class="st">"Population"</span>] <span class="op">&gt;</span> <span class="fl">1e6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="86">
 <div>
 
 
@@ -789,10 +818,10 @@ Name: Population, dtype: bool</code></pre>
 </div>
 <p><strong>Question:</strong> What about getting rows where “Large Counties” is False?</p>
 <p><strong>Answer:</strong> Use the Python tilde operator to do a logicial <em>not</em> operation:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="20">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reverse the large counties boolean selection</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>county_df.loc[ <span class="op">~</span>large_county_sel ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="87">
 <div>
 
 
@@ -862,12 +891,12 @@ Name: Population, dtype: bool</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="21">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="88">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or equivalently:</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: you need to put the whole expression in () and then apply the tilde!</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>county_df.loc[ <span class="op">~</span>(county_df[<span class="st">"Population"</span>] <span class="op">&gt;</span> <span class="fl">1e6</span>) ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="88">
 <div>
 
 
@@ -940,9 +969,9 @@ Name: Population, dtype: bool</code></pre>
 <p><em>Ah!</em> An even faster way!</p>
 <p>We can use the <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.query.html">pandas query function</a>.</p>
 <p>The <code>query()</code> function will return a subset of your dataframe based on a string version of the boolean expression.</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="22">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>county_df.query(<span class="st">"Population &lt; 1e6"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="89">
 <div>
 
 
@@ -1015,9 +1044,9 @@ Name: Population, dtype: bool</code></pre>
 <p>What else can <code>.loc[]</code> do? So much!</p>
 <p>One of the more common uses is use the DataFrame’s index labels to select particular rows. What is the index?</p>
 <p>Each row has a label that idenitifes it. By default the label is an integer ranging from 0 (first row) to 1 less than the number of rows (last row). The label is displayed in bold before each row when you look at a DataFrame:</p>
-<div class="cell" data-tags="[]" data-execution_count="24">
+<div class="cell" data-tags="[]" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>county_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="90">
 <div>
 
 
@@ -1095,9 +1124,9 @@ Name: Population, dtype: bool</code></pre>
 </div>
 </div>
 <p>We can pass a label to the <code>.loc[]</code> function to select a particular row. For example, to get the Philadelphia row, we could use the “4” label:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="25">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>county_df.loc[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="91">
 <pre><code>County Name       Philadelphia
 Population           1567258.0
 Large Counties            True
@@ -1106,11 +1135,11 @@ Name: 4, dtype: object</code></pre>
 </div>
 </div>
 <p>Or maybe we want the suburb counties in NJ. In this case, we can pass a list of multiple labels (5, 6, 7)”</p>
-<div class="cell" data-tags="[]" data-execution_count="26">
+<div class="cell" data-tags="[]" data-execution_count="92">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>nj_suburbs <span class="op">=</span> county_df.loc[ [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>] ]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>nj_suburbs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="92">
 <div>
 
 
@@ -1157,9 +1186,9 @@ Name: 4, dtype: object</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br> For more details on the <code>iloc[]</code> function, see the documentation on <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#indexing-integer">indexing by position</a>.</p>
 <p>In the case of the <code>nj_suburbs</code> dataframe, we can get the first row, which has a label of “5”, using:</p>
-<div class="cell" data-scrolled="true" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-tags="[]" data-execution_count="27">
+<div class="cell" data-scrolled="true" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-tags="[]" data-execution_count="93">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>nj_suburbs.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="93">
 <pre><code>County Name       Burlington
 Population          466103.0
 Large Counties         False
@@ -1168,9 +1197,9 @@ Name: 5, dtype: object</code></pre>
 </div>
 </div>
 <p>We can also reset the index labels so they range from 0 to the length of the dataframe, using the <code>reset_index()</code> function. For example</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="28">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="94">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>nj_suburbs.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
+<div class="cell-output cell-output-display" data-execution_count="94">
 <div>
 
 
@@ -1218,13 +1247,13 @@ Name: 5, dtype: object</code></pre>
 <p><strong>How to remember the specifics of all of these functions?</strong></p>
 <p>The documentation is your best friend! <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html#user-guide">The Pandas user guide</a></p>
 <p>You can also use the question mark operator in the notebook!</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="29">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="95">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the question mark</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame.loc?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">Type:</span>        property
-<span class="ansi-red-fg">String form:</span> &lt;property object at 0x135d11760&gt;
+<span class="ansi-red-fg">String form:</span> &lt;property object at 0x12f6f1d50&gt;
 <span class="ansi-red-fg">Docstring:</span>  
 Access a group of rows and columns by label(s) or a boolean array.
 ``.loc[]`` is primarily label based, but may also be used with a
@@ -1424,13 +1453,13 @@ for more details and explanations of advanced indexing.</pre>
 </div>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="30">
+<div class="cell" data-tags="[]" data-execution_count="96">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the question mark</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame.iloc?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">Type:</span>        property
-<span class="ansi-red-fg">String form:</span> &lt;property object at 0x135d11710&gt;
+<span class="ansi-red-fg">String form:</span> &lt;property object at 0x12f6f1080&gt;
 <span class="ansi-red-fg">Docstring:</span>  
 Purely integer-location based indexing for selection by position.
 ``.iloc[]`` is primarily integer position based (from ``0`` to
@@ -1549,21 +1578,21 @@ With a callable function that expects the Series or DataFrame.
 <p>Let’s use this data to see if the donut effect occurred in Philadelphia and its suburbs.</p>
 <p><strong>Goal:</strong> Calculate the percent population change from 2020 to 2022 in Philadelphia and the <em>total</em> percent change in the suburb counties and compare!</p>
 <p>First, use the <code>pd.read_csv()</code> function from <em>pandas</em>. The first argument to <code>pd.read_csv()</code> is the file path to load.</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="31">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="97">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data from the CSV file</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>pop_df <span class="op">=</span> pd.read_csv(<span class="st">"./data/phila-metro-counties-population.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="32">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="98">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many rows are in the dataframe? --&gt; use the len() operator</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(pop_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div class="cell-output cell-output-display" data-execution_count="98">
 <pre><code>8</code></pre>
 </div>
 </div>
 <p>Peak at the first 5 rows:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="33">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="99">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pop_df.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="99">
 <div>
 
 
@@ -1643,9 +1672,9 @@ Tip: The squeeze() function
 </div>
 </div>
 <p>The selector for Philadelphia:</p>
-<div class="cell" data-tags="[]" data-execution_count="34">
+<div class="cell" data-tags="[]" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>pop_df[<span class="st">'county_name'</span>] <span class="op">==</span> <span class="st">'Philadelphia'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="100">
 <pre><code>0    False
 1    False
 2    False
@@ -1658,11 +1687,11 @@ Name: county_name, dtype: bool</code></pre>
 </div>
 </div>
 <p>Now, let’s use the <code>.loc[]</code> function to select the data for Philadelphia</p>
-<div class="cell" data-tags="[]" data-execution_count="35">
+<div class="cell" data-tags="[]" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>philly_pop <span class="op">=</span> pop_df.loc[ pop_df[<span class="st">'county_name'</span>] <span class="op">==</span> <span class="st">'Philadelphia'</span> ]</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>philly_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="101">
 <div>
 
 
@@ -1690,11 +1719,11 @@ Name: county_name, dtype: bool</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="36">
+<div class="cell" data-tags="[]" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>philly_pop <span class="op">=</span> pop_df.loc[pop_df[<span class="st">"county_name"</span>] <span class="op">==</span> <span class="st">"Philadelphia"</span>].squeeze()</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>philly_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="102">
 <pre><code>county_name    Philadelphia
 state_name               PA
 pop_2020          1600600.0
@@ -1703,11 +1732,11 @@ Name: 4, dtype: object</code></pre>
 </div>
 </div>
 <p>Now we can calculate the percent change:</p>
-<div class="cell" data-tags="[]" data-execution_count="37">
+<div class="cell" data-tags="[]" data-execution_count="103">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>philly_pop_change <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> (philly_pop[<span class="st">'pop_2022'</span>] <span class="op">/</span> philly_pop[<span class="st">'pop_2020'</span>] <span class="op">-</span> <span class="dv">1</span>)</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>philly_pop_change</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="103">
 <pre><code>-2.0830938398100685</code></pre>
 </div>
 </div>
@@ -1715,7 +1744,7 @@ Name: 4, dtype: object</code></pre>
 <p><strong>A note about string formatting in Python</strong></p>
 <p>We can format this into a string using an “f-string”, strings that have an “f” before them.</p>
 <p>Look for curly braces in these strings. The syntax is: <code>{variable_name : format string}</code>. For example:</p>
-<div class="cell" data-tags="[]" data-execution_count="38">
+<div class="cell" data-tags="[]" data-execution_count="104">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Philadelphia's percent change in population from 2020 to 2022: </span><span class="sc">{</span>philly_pop_change<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Philadelphia's percent change in population from 2020 to 2022: -2.1%</code></pre>
@@ -1736,12 +1765,12 @@ Tip
 </div>
 </div>
 <p><strong>Next up</strong>: let’s calculate the total population change across all the suburb counties. First select every county except for Philadelphia, using the <code>!=</code> (not equals) operator.</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="39">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="105">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now do the selection!</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>suburb_pop <span class="op">=</span> pop_df.loc[ pop_df[<span class="st">"county_name"</span>] <span class="op">!=</span> <span class="st">'Philadelphia'</span> ]  <span class="co"># select the valid rows</span></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>suburb_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="39">
+<div class="cell-output cell-output-display" data-execution_count="105">
 <div>
 
 
@@ -1813,15 +1842,15 @@ Tip
 </div>
 <p>To calculate the <em>total</em> percent change, we can sum up the population in 2020 and 2022 and calculate the percent change.</p>
 <p>In this case, we can use the built-in <code>.sum()</code> function for a column Series to sum up the values in a column:</p>
-<div class="cell" data-tags="[]" data-execution_count="40">
+<div class="cell" data-tags="[]" data-execution_count="106">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>suburb_pop_change <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> (suburb_pop[<span class="st">"pop_2022"</span>].<span class="bu">sum</span>() <span class="op">/</span> suburb_pop[<span class="st">"pop_2020"</span>].<span class="bu">sum</span>() <span class="op">-</span> <span class="dv">1</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>suburb_pop_change</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="106">
 <pre><code>0.6900286869026662</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="41">
+<div class="cell" data-tags="[]" data-execution_count="107">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Percent change in population from 2020 to 2022 in the Philadelphia suburbs: </span><span class="sc">{</span>suburb_pop_change<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Percent change in population from 2020 to 2022 in the Philadelphia suburbs: 0.7%</code></pre>
@@ -1837,14 +1866,14 @@ Tip
 <p>Let’s investigate changes in home and rental prices in Philadelphia and its suburbs during the pandemic. If there was a strong “donut effect”, we would expect to see higher price appreciation in the suburbs compared to Philadelphia itself.</p>
 <p>For this part, we will use <a href="https://www.zillow.com/research/data/">Zillow data</a>, specifically data by county for the Zillow Observed Rent Index (ZORI) and Zillow Home Value Index (ZHVI).</p>
 <p>I’ve already downloaded the data and stored it in the <code>data/</code> folder. Let’s read it into pandas using the <code>pd.read_csv()</code> function.</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="42">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="108">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>zhvi <span class="op">=</span> pd.read_csv(<span class="st">"data/County_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv"</span>)</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>zori <span class="op">=</span> pd.read_csv(<span class="st">"data/County_zori_sm_month.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Peek at the first few rows of the rent data:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="43">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="109">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>zori.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="109">
 <div>
 
 
@@ -2004,9 +2033,9 @@ Tip
 </div>
 </div>
 <p>And do the same for the home price data:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="44">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="110">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>zhvi.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="110">
 <div>
 
 
@@ -2174,7 +2203,7 @@ Tip
 <p>Imagine you have 6 rows of data (each row is a unique county) with 10 columns of home values (each column is a different month). That is wide data and is the format usually seen in spreadsheets or tables in a report.</p>
 <p>If you <code>melt()</code> that wide data, you would get a table with 60 rows and 3 columns. Each row would contain the county name, the month, and the home value that county and month. This tidy-formatted data contains the same info as the wide data, but in a different form.</p>
 <p><strong>This animation shows the transformation from wide to long / long to wide. You can ignore gather() and spread() - those are the R versions of the pandas functions.</strong></p>
-<p><img src="lecture-1B_files/figure-html/5dfdceb0-1-tidyr-spread-gather.gif" class="img-fluid"></p>
+<p><img src="lecture-1B_files/figure-html/74ee5812-1-tidyr-spread-gather.gif" class="img-fluid"></p>
 <p>The syntax for <code>pd.melt()</code>:</p>
 <ul>
 <li>“id_vars”: A list of column names that are the identifier variables, the fields that uniquely identify each observation.</li>
@@ -2186,9 +2215,9 @@ Tip
 <p>For “id_vars”, we want to use ‘RegionName’ (county name) and ‘StateName’. That uniquely identifies each row.</p>
 <p><strong>But what about “value_vars”?</strong></p>
 <p>The columns holding the values we want to unpivot are the monthly date strings. So…we need to figure out how to select all of the column names that look like dates.</p>
-<div class="cell" data-tags="[]" data-execution_count="45">
+<div class="cell" data-tags="[]" data-execution_count="111">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>zhvi.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="45">
+<div class="cell-output cell-output-display" data-execution_count="111">
 <pre><code>Index(['RegionID', 'SizeRank', 'RegionName', 'RegionType', 'StateName',
        'State', 'Metro', 'StateCodeFIPS', 'MunicipalCodeFIPS', '2000-01-31',
        ...
@@ -2213,33 +2242,33 @@ Tip
 </div>
 </div>
 <p>In our case, let’s write a function that tests if a string column name starts with ‘20’ — this should give us all of the column names that look like dates.</p>
-<div class="cell" data-tags="[]" data-execution_count="46">
+<div class="cell" data-tags="[]" data-execution_count="112">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> looks_like_a_date(col):</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""A function that tests if a string starts with '20'"""</span></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> col.startswith(<span class="st">"20"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="47">
+<div class="cell" data-tags="[]" data-execution_count="113">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>looks_like_a_date(<span class="st">'2000-01-31'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div class="cell-output cell-output-display" data-execution_count="113">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="48">
+<div class="cell" data-tags="[]" data-execution_count="114">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Now do the filter:</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co">## First argument is the function</span></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Second argument is the list of values we want to filter</span></span>
 <span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="bu">filter</span>(looks_like_a_date, zhvi.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="48">
-<pre><code>&lt;filter at 0x14014e830&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="114">
+<pre><code>&lt;filter at 0x17fdb8040&gt;</code></pre>
 </div>
 </div>
 <p><em>Ugh</em>, this doesn’t look like what we wanted!</p>
 <p>This is what’s called an “iterable” in Python (something that is ready to be iterated over). In order to actually get the values, we need to explicitly pass this to a <code>list()</code> function.</p>
-<div class="cell" data-tags="[]" data-execution_count="49">
+<div class="cell" data-tags="[]" data-execution_count="115">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">filter</span>(looks_like_a_date, zhvi.columns))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
+<div class="cell-output cell-output-display" data-execution_count="115">
 <pre><code>['2000-01-31',
  '2000-02-29',
  '2000-03-31',
@@ -2527,7 +2556,7 @@ Tip
 </div>
 <p><em>Hooray, it worked!</em></p>
 <p>Now, it’s time to <em>melt</em> our datasets:</p>
-<div class="cell" data-tags="[]" data-execution_count="50">
+<div class="cell" data-tags="[]" data-execution_count="116">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>zhvi_tidy <span class="op">=</span> zhvi.melt(</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span>[<span class="st">"RegionName"</span>, <span class="st">"StateName"</span>],</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span><span class="bu">list</span>(<span class="bu">filter</span>(looks_like_a_date, zhvi.columns)), <span class="co"># Notice I'm filtering zhvi columns here</span></span>
@@ -2535,7 +2564,7 @@ Tip
 <span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">"ZHVI"</span>,</span>
 <span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="51">
+<div class="cell" data-execution_count="117">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>zori_tidy <span class="op">=</span> zori.melt(</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span>[<span class="st">"RegionName"</span>, <span class="st">"StateName"</span>],</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span><span class="bu">list</span>(<span class="bu">filter</span>(looks_like_a_date, zori.columns)), <span class="co"># Notice I'm filtering zori columns here</span></span>
@@ -2544,9 +2573,9 @@ Tip
 <span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and take a look:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="52">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="118">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>zori_tidy.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
+<div class="cell-output cell-output-display" data-execution_count="118">
 <div>
 
 
@@ -2602,9 +2631,9 @@ Tip
 </div>
 </div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="53">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="119">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>zhvi_tidy.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
+<div class="cell-output cell-output-display" data-execution_count="119">
 <div>
 
 
@@ -2665,7 +2694,7 @@ Tip
 <h4 class="anchored" data-anchor-id="merge-the-data-frames">Merge the data frames</h4>
 <p>Another common operation is <strong>merging</strong>, also known as <strong>joining</strong>, two datasets.</p>
 <p>We can use the <code>merge()</code> function to merge observations that have the same <code>Date</code>, <code>RegionName</code>, and <code>StateName</code> values.</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="54">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="120">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left dataframe is ZORI</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Right dataframe is ZHVI</span></span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2673,7 +2702,7 @@ Tip
 <span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>    zori_tidy, zhvi_tidy, on<span class="op">=</span>[<span class="st">"Date"</span>, <span class="st">"RegionName"</span>, <span class="st">"StateName"</span>], how<span class="op">=</span><span class="st">"outer"</span></span>
 <span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="55">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="121">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's sort the data by Date</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>zillow_data <span class="op">=</span> zillow_data.sort_values(</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    by<span class="op">=</span><span class="st">"Date"</span>,         <span class="co"># Sort by Data column</span></span>
@@ -2682,9 +2711,9 @@ Tip
 <span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s take a peak at the end of the dataframe using the <code>.tail()</code> function:</p>
-<div class="cell" data-tags="[]" data-execution_count="56">
+<div class="cell" data-tags="[]" data-execution_count="122">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>zillow_data.head(n<span class="op">=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="56">
+<div class="cell-output cell-output-display" data-execution_count="122">
 <div>
 
 
@@ -2878,14 +2907,14 @@ Tip
 <li>Trim to counties in NJ or PA</li>
 <li>Trim based on county name</li>
 </ol>
-<div class="cell" data-tags="[]" data-execution_count="57">
+<div class="cell" data-tags="[]" data-execution_count="123">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the rows with state == 'PA' or state == 'NJ'</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>in_nj_pa <span class="op">=</span> zillow_data[<span class="st">"StateName"</span>].isin([<span class="st">"PA"</span>, <span class="st">"NJ"</span>])</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the trimmed dataframe</span></span>
 <span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>zillow_trim_tmp <span class="op">=</span> zillow_data.loc[in_nj_pa]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="58">
+<div class="cell" data-tags="[]" data-execution_count="124">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>county_names <span class="op">=</span> [</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bucks County"</span>,</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Chester County"</span>,</span>
@@ -2903,9 +2932,9 @@ Tip
 <span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Trim temp dataframe from last step</span></span>
 <span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>prices_philly_metro <span class="op">=</span> zillow_trim_tmp.loc[county_sel].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="59">
+<div class="cell" data-tags="[]" data-execution_count="125">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>prices_philly_metro</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="59">
+<div class="cell-output cell-output-display" data-execution_count="125">
 <div>
 
 
@@ -3017,9 +3046,9 @@ Tip
 </div>
 </div>
 <p>Let’s verify it worked…how many unique values in the “RegionName” column?</p>
-<div class="cell" data-execution_count="60">
+<div class="cell" data-execution_count="126">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>prices_philly_metro[<span class="st">'RegionName'</span>].nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="60">
+<div class="cell-output cell-output-display" data-execution_count="126">
 <pre><code>8</code></pre>
 </div>
 </div>
@@ -3053,17 +3082,17 @@ Tip
 </ul></li>
 </ol>
 <p>First, do the groupby operation:</p>
-<div class="cell" data-tags="[]" data-execution_count="61">
+<div class="cell" data-tags="[]" data-execution_count="127">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>grouped <span class="op">=</span> prices_philly_metro.groupby(<span class="st">"RegionName"</span>)</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>grouped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="61">
-<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x1377fef50&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="127">
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x17fdb8fa0&gt;</code></pre>
 </div>
 </div>
 <p>The <code>groupby()</code> function returns a <code>DataFrameGroupBy</code> object. This object knows what the groups are, but we still need to <code>apply()</code> a function to this object in order to get a DataFrame back!</p>
 <p>Let’s set up our function:</p>
-<div class="cell" data-tags="[]" data-execution_count="62">
+<div class="cell" data-tags="[]" data-execution_count="128">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_percent_increase(group_df):</span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Calculate the percent increase from 2020-03-31 to 2023-07-31.</span></span>
@@ -3086,11 +3115,11 @@ Tip
 <span id="cb86-20"><a href="#cb86-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">100</span> <span class="op">*</span> (july_2023[columns] <span class="op">/</span> march_2020[columns] <span class="op">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let’s apply this function to our group object:</p>
-<div class="cell" data-tags="[]" data-execution_count="63">
+<div class="cell" data-tags="[]" data-execution_count="129">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> grouped.<span class="bu">apply</span>(calculate_percent_increase)</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="63">
+<div class="cell-output cell-output-display" data-execution_count="129">
 <div>
 
 
@@ -3168,9 +3197,9 @@ Note
 </div>
 </div>
 <p>Sort by ZHVI and take a look:</p>
-<div class="cell" data-tags="[]" data-execution_count="64">
+<div class="cell" data-tags="[]" data-execution_count="130">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>result.sort_values(by<span class="op">=</span><span class="st">"ZHVI"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="64">
+<div class="cell-output cell-output-display" data-execution_count="130">
 <div>
 
 
@@ -3239,7 +3268,7 @@ Note
 <p>This is evidence in favor of the “donut effect”, with higher demand in the suburbs driving prices higher!</p>
 <p><strong>Note:</strong> There are a number of built-in, convenience functions that we can use on the groupby object, such as <code>.mean()</code>, <code>.sum()</code>, etc.</p>
 <p>For example, if we wanted to calculate the average ZHVI and ZORI values since March 2020 for every county, we could do the following:</p>
-<div class="cell" data-tags="[]" data-execution_count="65">
+<div class="cell" data-tags="[]" data-execution_count="131">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First trim to dates from March 2020 onwards, then group by county name</span></span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>group_example <span class="op">=</span> prices_philly_metro.query(<span class="st">"Date &gt;= '2020-03-31'"</span>).groupby(<span class="st">"RegionName"</span>)</span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3247,7 +3276,7 @@ Note
 <span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>avg_prices <span class="op">=</span> group_example[[<span class="st">'ZHVI'</span>, <span class="st">'ZORI'</span>]].mean()</span>
 <span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>avg_prices.sort_values(<span class="st">"ZHVI"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
+<div class="cell-output cell-output-display" data-execution_count="131">
 <div>
 
 
@@ -3316,7 +3345,7 @@ Note
 <section id="bonus-a-matplotlib-preview" class="level4">
 <h4 class="anchored" data-anchor-id="bonus-a-matplotlib-preview">Bonus: a <code>matplotlib</code> preview</h4>
 <p>The week 2 lectures will dive into (probably too much) detail about <code>matplotlib</code> and data visualization in Python. For now, let’s do a quick and dirty plot for illustration purposes only. <em>The matplotlib details here aren’t important</em></p>
-<div class="cell" data-tags="[]" data-execution_count="66">
+<div class="cell" data-tags="[]" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The import statement matplotlib</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -3334,7 +3363,7 @@ Note
 <span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here we go…plot the <em>ZORI values</em>.</p>
 <p>To better see the growth since March 2020, we will normalize the y-axis to 1 in March 2020:</p>
-<div class="cell" data-tags="[]" data-execution_count="67">
+<div class="cell" data-tags="[]" data-execution_count="133">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure and axes</span></span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3361,7 +3390,7 @@ Note
 </div>
 </div>
 <p>Plot the <em>ZHVI values</em>, normalized to 1 in March 2020:</p>
-<div class="cell" data-tags="[]" data-execution_count="68">
+<div class="cell" data-tags="[]" data-execution_count="134">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure and axes</span></span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3394,11 +3423,11 @@ Note
 <section id="first-homework-assignment" class="level2">
 <h2 class="anchored" data-anchor-id="first-homework-assignment">First Homework Assignment</h2>
 <p>Available on GitHub:</p>
-<p>https://github.com/MUSA-550-Fall-2023/assignment-1</p>
+<p><a href="https://github.com/MUSA-550-Fall-2023/assignment-1">https://github.com/MUSA-550-Fall-2023/assignment-1</a></p>
 <p>Two parts:</p>
 <ol type="1">
 <li>Download and install Python locally on your computer. Instructions in the assignment README!</li>
-<li>Analyze Zillow ZHVI data by ZIP code in Philadelphia, submitting your Jupyter notebook.</li>
+<li>Explore the “Donut Effect” using Zillow ZHVI data by ZIP code in Philadelphia, and submit your Jupyter notebook.</li>
 </ol>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -3410,7 +3439,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Due date: Monday 9/19 by the start of class (7pm)</strong></p>
+<p><strong>Due date:</strong> Wednesday 9/20 by the end of the day (11:59 PM)</p>
 </div>
 </div>
 </section>
@@ -3420,11 +3449,11 @@ Important
 <li>Next week: Data Visualization Fundamentals</li>
 <li>Office hours:
 <ul>
-<li>Nick: Saturdays, 10AM-12PM</li>
-<li>Kristin: Tuesday/Thursday 11AM-12PM, remote via Zoom</li>
+<li>Nick:</li>
+<li>Teresa:</li>
 <li>Sign up for 15-minute time slots on Canvas (Zoom info in calendar invite)</li>
 </ul></li>
-<li>Post questions on Piazza!</li>
+<li>Post any questions on Ed Discussion!</li>
 <li>Email questions/concerns to nhand@design.upenn.edu</li>
 </ul>
 

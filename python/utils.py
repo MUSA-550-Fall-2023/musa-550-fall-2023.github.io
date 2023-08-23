@@ -9,6 +9,9 @@ import argparse
 def get_disabled_class_by_lecture(current_lecture, lecture_number):
     """Get the disabled flag for each lecture."""
 
+    if current_lecture is None:
+        return "disabled"
+
     # Get weeks from lecture numbers
     week_number = int(lecture_number[:-1])
     current_week = int(current_lecture[:-1])
@@ -75,6 +78,8 @@ def get_current_lecture():
 
     variables = load_variables()
     current_lecture = variables["current_lecture"]
+    if current_lecture == "None":
+        return None
     return current_lecture
 
 
@@ -82,6 +87,9 @@ def get_current_week():
     """Get the current week number from project variables."""
 
     current_lecture = get_current_lecture()
+    if current_lecture is None:
+        return None
+
     current_week = int(current_lecture[:-1])  # Drop the letter
     return current_week
 

@@ -158,7 +158,7 @@ def create_table():
     data = _load_schedule_data()
 
     # Get info for the assignments
-    assignments = utils.load_data("assignments.csv").assign(
+    assignments = utils.load_data("assignment-schedule.csv").assign(
         date=lambda df: pd.to_datetime(df.date),
         date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
     )
@@ -188,7 +188,7 @@ def create_table():
     # Group by week and add lecture info
     for (week, topic), group in data.groupby(["week", "topic"], sort=False):
         # Is the week disabled?
-        disabled = "disabled" if current_week < week else ""
+        disabled = "disabled" if current_week is None or current_week < week else ""
 
         # Add week header row
         table.append('<tr class="week-header-row">')

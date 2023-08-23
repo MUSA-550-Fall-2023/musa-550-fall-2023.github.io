@@ -1,6 +1,6 @@
 import pandas as pd
 from IPython.core.display import HTML
-
+import numpy as np
 import utils, config, icons
 
 
@@ -35,7 +35,7 @@ def create_schedule_table():
     table += ["</tr>", "</thead>"]
 
     # Load the data
-    assignments = utils.load_data("assignments.csv").assign(
+    assignments = utils.load_data("assignment-schedule.csv").assign(
         date=lambda df: pd.to_datetime(df.date),
         date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
     )
@@ -72,9 +72,17 @@ def create_schedule_table():
 def create_header(slug):
     """Create the HTML for the header on the assignment page."""
 
-    # Load the data
-    data = (
+    # Assignments: live/classroom links
+    assignments = (
         utils.load_data("assignments.csv")
+        .query(f"slug == '{slug}'")
+        .squeeze()
+        .fillna("")
+    )
+
+    # Load the data and trim by slug
+    schedule = (
+        utils.load_data("assignment-schedule.csv")
         .assign(
             date=lambda df: pd.to_datetime(df.date),
             date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
@@ -82,14 +90,8 @@ def create_header(slug):
         .query(f"slug == '{slug}'")
     )
 
-    # Get the github classroom link from the data
-    classroom_links = data["classroom_link"].dropna().drop_duplicates()
-    if len(classroom_links):
-        classroom_link = classroom_links.squeeze()
-        disabled = ""
-    else:
-        classroom_link = None
-        disabled = "disabled"
+    # Is this disabled?
+    disabled = "" if assignments["live"] else "disabled"
 
     # Store different lines of html
     html = []
@@ -100,7 +102,7 @@ def create_header(slug):
     # Due the assigned and due dates
     for task in ["assigned", "due"]:
         # Get the data
-        df = data.query(f"task == '{task}'").squeeze()
+        df = schedule.query(f"task == '{task}'").squeeze()
 
         if len(df):
             if task == "due":
@@ -129,7 +131,7 @@ def create_header(slug):
     html.append("</div>")
 
     # Now do the github links
-    html.append('<div class="assignment-header mt-2">')
+    html.append('<div class="assignment-header mt-2 mb-5">')
 
     # Do the Github repo
     url = f"https://github.com/{config.GITHUB_ORG}/{slug}"
@@ -145,6 +147,11 @@ def create_header(slug):
         </a>
     </div>"""
     )
+
+    # Get the classroom link
+    classroom_link = assignments["classroom_link"]
+    if not classroom_link:
+        disabled = "disabled"
 
     html.append(
         f"""
@@ -162,9 +169,9 @@ def create_header(slug):
     html.append("</div>")
 
     # Check current date
-    if classroom_link is None:
+    if not assignments["live"]:
         html.append(
-            """<div class="assignment-check-back">Check back after the homework has been assigned for details.</div>"""
+            """<div class="assignment-check-back">Assignment details coming soon!</div>"""
         )
 
     return HTML("\n".join(html))
