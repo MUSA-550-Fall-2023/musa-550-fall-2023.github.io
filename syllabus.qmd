@@ -158,7 +158,7 @@ And if you are still struggling, reach out and let me know and we'll figure out 
 - To prevent code copying, please do not post long, complete code examples to Ed Discussion.
 - Anonymous posting is enabled on Ed Discussion — if you have a question that requires
   a full code example, please use the anonymous feature to post the question.
-- We will use Canvas for announcements — please make sure your
+- We will also use Ed Discussion for announcements — please make sure your
   notifications are turned on and you check the website frequently. This will
   be the primary method of communication for course-wide announcements.
 - If you have larger-scale or conceptual questions on assignments or lecture
