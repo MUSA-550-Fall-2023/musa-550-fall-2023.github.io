@@ -27,8 +27,7 @@ If you've successfully followed the installation guide, you should be able to la
 JupyterLab by running `jupyter lab` (after activating the course environment) from the command line. 
 This should launch the [JupyterLab
 dashboard](https://jupyterlab.readthedocs.io/en/stable/user/interface.html).
-Now you can launch the [assignment notebook](assignment-1.ipynb)
-and get started on the homework!
+Now you can launch the assignment notebook and get started on the homework!
 
 The notebook will execute code from the current working directory (the folder
 that the notebook was launched from). This folder is usually your home folder on
