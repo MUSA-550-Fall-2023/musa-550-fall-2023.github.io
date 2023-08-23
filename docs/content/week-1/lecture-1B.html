@@ -1,0 +1,3681 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geospatial Data Science in Python - Week 1B: Exploratory Data Science in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geospatial Data Science in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Content</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assignment/index.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resource/index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-box-arrow-up-right"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/MUSA-550-Fall-2023">
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://canvas.upenn.edu/courses/1740535">
+            Canvas
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://edstem.org/us/courses/42616/discussion/">
+            Ed Discussion
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 1B: Exploratory Data Science in Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>9/6/2023</p>
+<section id="today" class="level2">
+<h2 class="anchored" data-anchor-id="today">Today</h2>
+<ul>
+<li>Introduction to Pandas</li>
+<li>Key data analysis concepts</li>
+<li>Example: Census + Zillow data</li>
+</ul>
+</section>
+<section id="reminder-the-weekly-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="reminder-the-weekly-workflow">Reminder: The weekly workflow</h2>
+<ul>
+<li>You’ll set up your local Python environment as part of the <a href="https://github.com/MUSA-550-Fall-2023/assignment-1">first homework assignment</a></li>
+<li>Each week, you will have two options to follow along with lectures:
+<ol type="1">
+<li>Using Binder in the cloud, launching via the button on the week’s repository</li>
+<li>Download the week’s repository to your laptop and launch the notebook locally</li>
+</ol></li>
+<li>Work on homeworks locally on your laptop — Binder is only a <em>temporary</em> environment (no save features)</li>
+</ul>
+<p>To follow along today, go to https://github.com/MUSA-550-Fall-2023/week-1</p>
+<p><img src="imgs/binder-buttons-2.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Reminder: Free DataCamp Courses">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reminder: Free DataCamp Courses
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>DataCamp is providing 6 months of complimentary access to its courses for students in MUSA 550. Whether you have experience with Python or not, this is a great opportunity to learn the basics of Python and practice your skills.</p>
+<p>It is strongly recommended that you watch some or all of the introductory videos below to build a stronger Python foundation for the semester. The more advanced, intermediate courses are also great — the more the merrier!</p>
+<p>For more info, including how to sign up, check out <a href="https://musa-550-fall-2023.github.io/resource/python.html#datacamp-courses">the resources section of the website</a>.</p>
+</div>
+</div>
+</section>
+<section id="python-data-analysis-the-pandas-package" class="level2">
+<h2 class="anchored" data-anchor-id="python-data-analysis-the-pandas-package">Python Data Analysis: the <em>pandas</em> package</h2>
+<p>Documentation is available at https://pandas.pydata.org</p>
+<section id="the-old-logo" class="level3">
+<h3 class="anchored" data-anchor-id="the-old-logo">The old logo</h3>
+<center>
+<img src="imgs/pandas-old-logo.png" width="400">
+</center>
+</section>
+<section id="the-new-less-fun-logo" class="level3">
+<h3 class="anchored" data-anchor-id="the-new-less-fun-logo">The new, less fun logo</h3>
+<center>
+<img width="500" src="https://raw.githubusercontent.com/pandas-dev/pandas/master/web/pandas/static/img/pandas.svg">
+</center>
+<p>The following line imports the <em>pandas</em> package:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="basic-pandas-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="basic-pandas-concepts">Basic <em>pandas</em> concepts</h2>
+<p>The primary <em>objects</em> in <em>pandas</em> are the:</p>
+<ul>
+<li><strong><code>DataFrame</code></strong>, which is very similar to an Excel spreadsheet, and has rows and named columns</li>
+<li><strong><code>Series</code></strong>, which represents a single column of data. A <code>DataFrame</code> contains one or more <code>Series</code> and a name for each <code>Series</code>.</li>
+</ul>
+<p>The data frame is a commonly used abstraction for data manipulation. Similar implementations exist in <code>R</code>.</p>
+<p>You can think <code>Series</code> objects as fancier versions of Python’s built-in list data type.</p>
+<p>To create a <code>Series</code> object, pass a list of values to the <code>pd.Series()</code> function:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Philadelphia metro counties and populations</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>county_names <span class="op">=</span> pd.Series(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bucks"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Chester"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Delaware"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Montgomery"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Philadelphia"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Burlington"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Camden"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Gloucester"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>population <span class="op">=</span> pd.Series([</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="fl">645054.0</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fl">545823.0</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="fl">575182.0</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="fl">864683.0</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1567258.0</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="fl">466103.0</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="fl">524907.0</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="fl">306601.0</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>DataFrame</code> objects can be created by passing a <code>dict</code> mapping <code>string</code> column names to their respective <code>Series</code>.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>county_df <span class="op">=</span> pd.DataFrame({<span class="st">"County Name"</span>: county_names, <span class="st">"Population"</span>: population})</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>county_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>645054.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>545823.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Delaware</td>
+<td>575182.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Montgomery</td>
+<td>864683.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Philadelphia</td>
+<td>1567258.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Burlington</td>
+<td>466103.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Camden</td>
+<td>524907.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Gloucester</td>
+<td>306601.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Always try to give your variables <em>meaningful names</em>. It will help immensely when you are trying to debug problems or when you’re trying to understand the code you’ve written months later.</p>
+</div>
+</div>
+<section id="accessing-data" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-data">1. Accessing data</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access columns with a dict-like syntax</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Population"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>0     645054.0
+1     545823.0
+2     575182.0
+3     864683.0
+4    1567258.0
+5     466103.0
+6     524907.0
+7     306601.0
+Name: Population, dtype: float64</code></pre>
+</div>
+</div>
+<p>Rows can be accessed using Python’s syntax for slicing:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Example: slicing a list slicing</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the elements with indices 1 and 2 (but NOT 3)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>county_list <span class="op">=</span> [<span class="st">"Bucks"</span>, <span class="st">"Philadelphia"</span>, <span class="st">"Delaware"</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>county_list[<span class="dv">0</span>:<span class="dv">2</span>]  <span class="co"># Same as county_list[:2] (omitting the zero)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>['Bucks', 'Philadelphia']</code></pre>
+</div>
+</div>
+<p>Unfortunately the functionality for slicing lists is not that powerful…but pandas will have many more features!</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slicing a DataFrame is similar...but now we will get rows of the DataFrame back!</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>county_df[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>645054.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>545823.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><em>pandas</em> includes functionality for many different ways of selecting data. See <a href="https://pandas.pydata.org/pandas-docs/stable/indexing.html">the documentation</a> for many more examples.</p>
+</section>
+<section id="manipulating-data" class="level3">
+<h3 class="anchored" data-anchor-id="manipulating-data">2. Manipulating data</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Population"</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>560502.5</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Population"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>686951.375</code></pre>
+</div>
+</div>
+<p><a href="http://www.numpy.org/">NumPy</a> (<em>Num</em>erical <em>Py</em>thon) is a popular toolkit for scientific computing. Among other things, it can calculate mathematical functions, like mean, median, min, max, etc.</p>
+<p><em>pandas</em> <code>Series</code> can be used as arguments to most NumPy functions:</p>
+<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the median population value</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>np.median(county_df[<span class="st">"Population"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>560502.5</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the median population value</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>np.mean(county_df[<span class="st">"Population"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>686951.375</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Note: DataCamp + NumPy">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note: DataCamp + NumPy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We won’t go through the specifics of NumPy in detail in this course. You will see it pop up throughout the course, particularly when we start talking about two-dimensional raster image data. NumPy specializes in <em>multi-dimensional arrays</em>, the same format of multi-band raster data.</p>
+<p>In the meantime, if you want to know more about NumPy or just build your Python knowledge, check out the <a href="https://www.datacamp.com/courses/introduction-to-numpy">DataCamp course on NumPy</a>. To get free access to DataCamp, see <a href="https://musa-550-fall-2023.github.io/resource/python.html#datacamp-courses">the instructions</a> on the course website.</p>
+</div>
+</div>
+</section>
+<section id="applying-a-function" class="level3">
+<h3 class="anchored" data-anchor-id="applying-a-function">3. Applying a function</h3>
+<p>For more complex single-column transformations, you can use <code>Series.apply</code>. It accepts a function that is applied to each value in the <code>Series</code>.</p>
+<p>An <code>apply</code> operation allows you to call an arbitrary function to each value in a column. It is a core <code>pandas</code> concept and can be very powerful for complex calculations.</p>
+<p>As an example, we can find which counties have a population greater than one million:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_large_counties(population):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> population <span class="op">&gt;</span> <span class="fl">1e6</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>large_county_sel <span class="op">=</span> county_df[<span class="st">"Population"</span>].<span class="bu">apply</span>(get_large_counties)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a Series where the value is the returned value from the above function</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>large_county_sel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>0    False
+1    False
+2    False
+3    False
+4     True
+5    False
+6    False
+7    False
+Name: Population, dtype: bool</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the new computed column to our original data frame</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Large Counties"</span>] <span class="op">=</span> large_county_sel</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>county_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>645054.0</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>545823.0</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Delaware</td>
+<td>575182.0</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Montgomery</td>
+<td>864683.0</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Philadelphia</td>
+<td>1567258.0</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Burlington</td>
+<td>466103.0</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Camden</td>
+<td>524907.0</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Gloucester</td>
+<td>306601.0</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>We could have also used a Python lambda function for our function. These are <em>inline</em> functions that start with a special Python keyword <code>lambda</code>, followed by the function argument, a colon, and then the contents of the function.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See <a href="https://www.datacamp.com/tutorial/python-lambda">this DataCamp tutorial</a> for more info on lambda functions.</p>
+</div>
+</div>
+<p>As an example, let’s add a small counties column:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>small_counties_func <span class="op">=</span> <span class="kw">lambda</span> population: population <span class="op">&lt;</span> <span class="fl">1e6</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we can also use lambda (unnamed, inline) functions</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Small Counties"</span>] <span class="op">=</span> county_df[<span class="st">"Population"</span>].<span class="bu">apply</span>(small_counties_func)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>county_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+<th data-quarto-table-cell-role="th">Small Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>645054.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>545823.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Delaware</td>
+<td>575182.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Montgomery</td>
+<td>864683.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Philadelphia</td>
+<td>1567258.0</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Burlington</td>
+<td>466103.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Camden</td>
+<td>524907.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Gloucester</td>
+<td>306601.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="data-selection" class="level3">
+<h3 class="anchored" data-anchor-id="data-selection">4. Data selection</h3>
+<p>We can select the “large” counties by passing the boolean values to the <code>.loc[]</code> function of a <code>DataFrame</code>:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Large Counties"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>0    False
+1    False
+2    False
+3    False
+4     True
+5    False
+6    False
+7    False
+Name: Large Counties, dtype: bool</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>county_df.loc[ county_df[<span class="st">"Large Counties"</span>] ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+<th data-quarto-table-cell-role="th">Small Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Philadelphia</td>
+<td>1567258.0</td>
+<td>True</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be sure to use square brackets when calling <code>.loc</code>.</p>
+<p><code>.loc[]</code> ✓</p>
+<p><code>.loc()</code> ✘</p>
+</div>
+</div>
+<p><em>But:</em> there is a faster, more concise, to achieve this!</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>county_df[<span class="st">"Population"</span>] <span class="op">&gt;</span> <span class="fl">1e6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>0    False
+1    False
+2    False
+3    False
+4     True
+5    False
+6    False
+7    False
+Name: Population, dtype: bool</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can pass the selection directory the .loc[] —&gt; no need to define a new variable</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>county_df.loc[county_df[<span class="st">"Population"</span>] <span class="op">&gt;</span> <span class="fl">1e6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+<th data-quarto-table-cell-role="th">Small Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Philadelphia</td>
+<td>1567258.0</td>
+<td>True</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Question:</strong> What about getting rows where “Large Counties” is False?</p>
+<p><strong>Answer:</strong> Use the Python tilde operator to do a logicial <em>not</em> operation:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reverse the large counties boolean selection</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>county_df.loc[ <span class="op">~</span>large_county_sel ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+<th data-quarto-table-cell-role="th">Small Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>645054.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>545823.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Delaware</td>
+<td>575182.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Montgomery</td>
+<td>864683.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Burlington</td>
+<td>466103.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Camden</td>
+<td>524907.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Gloucester</td>
+<td>306601.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or equivalently:</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: you need to put the whole expression in () and then apply the tilde!</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>county_df.loc[ <span class="op">~</span>(county_df[<span class="st">"Population"</span>] <span class="op">&gt;</span> <span class="fl">1e6</span>) ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+<th data-quarto-table-cell-role="th">Small Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>645054.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>545823.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Delaware</td>
+<td>575182.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Montgomery</td>
+<td>864683.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Burlington</td>
+<td>466103.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Camden</td>
+<td>524907.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Gloucester</td>
+<td>306601.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><em>Ah!</em> An even faster way!</p>
+<p>We can use the <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.query.html">pandas query function</a>.</p>
+<p>The <code>query()</code> function will return a subset of your dataframe based on a string version of the boolean expression.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>county_df.query(<span class="st">"Population &lt; 1e6"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+<th data-quarto-table-cell-role="th">Small Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>645054.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>545823.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Delaware</td>
+<td>575182.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Montgomery</td>
+<td>864683.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Burlington</td>
+<td>466103.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Camden</td>
+<td>524907.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Gloucester</td>
+<td>306601.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>What else can <code>.loc[]</code> do? So much!</p>
+<p>One of the more common uses is use the DataFrame’s index labels to select particular rows. What is the index?</p>
+<p>Each row has a label that idenitifes it. By default the label is an integer ranging from 0 (first row) to 1 less than the number of rows (last row). The label is displayed in bold before each row when you look at a DataFrame:</p>
+<div class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>county_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+<th data-quarto-table-cell-role="th">Small Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>645054.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>545823.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Delaware</td>
+<td>575182.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Montgomery</td>
+<td>864683.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Philadelphia</td>
+<td>1567258.0</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Burlington</td>
+<td>466103.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Camden</td>
+<td>524907.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Gloucester</td>
+<td>306601.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>We can pass a label to the <code>.loc[]</code> function to select a particular row. For example, to get the Philadelphia row, we could use the “4” label:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>county_df.loc[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>County Name       Philadelphia
+Population           1567258.0
+Large Counties            True
+Small Counties           False
+Name: 4, dtype: object</code></pre>
+</div>
+</div>
+<p>Or maybe we want the suburb counties in NJ. In this case, we can pass a list of multiple labels (5, 6, 7)”</p>
+<div class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>nj_suburbs <span class="op">=</span> county_df.loc[ [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>] ]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>nj_suburbs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+<th data-quarto-table-cell-role="th">Small Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Burlington</td>
+<td>466103.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Camden</td>
+<td>524907.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Gloucester</td>
+<td>306601.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>::: {.callout-important}</p>
+<p>Note that this is different than the <code>.iloc[]</code> function, which can also be used to select rows from a DataFrame. However, it uses the integer value of the row, regardless of what the labels in the index are. For example, the first row of a dataframe can always be accessed using:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br> For more details on the <code>iloc[]</code> function, see the documentation on <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#indexing-integer">indexing by position</a>.</p>
+<p>In the case of the <code>nj_suburbs</code> dataframe, we can get the first row, which has a label of “5”, using:</p>
+<div class="cell" data-scrolled="true" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>nj_suburbs.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>County Name       Burlington
+Population          466103.0
+Large Counties         False
+Small Counties          True
+Name: 5, dtype: object</code></pre>
+</div>
+</div>
+<p>We can also reset the index labels so they range from 0 to the length of the dataframe, using the <code>reset_index()</code> function. For example</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>nj_suburbs.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">County Name</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Large Counties</th>
+<th data-quarto-table-cell-role="th">Small Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Burlington</td>
+<td>466103.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Camden</td>
+<td>524907.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Gloucester</td>
+<td>306601.0</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="need-more-help" class="level3">
+<h3 class="anchored" data-anchor-id="need-more-help">Need more help?</h3>
+<p><strong>How to remember the specifics of all of these functions?</strong></p>
+<p>The documentation is your best friend! <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html#user-guide">The Pandas user guide</a></p>
+<p>You can also use the question mark operator in the notebook!</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the question mark</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame.loc?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Type:</span>        property
+<span class="ansi-red-fg">String form:</span> &lt;property object at 0x135d11760&gt;
+<span class="ansi-red-fg">Docstring:</span>  
+Access a group of rows and columns by label(s) or a boolean array.
+``.loc[]`` is primarily label based, but may also be used with a
+boolean array.
+Allowed inputs are:
+- A single label, e.g. ``5`` or ``'a'``, (note that ``5`` is
+  interpreted as a *label* of the index, and **never** as an
+  integer position along the index).
+- A list or array of labels, e.g. ``['a', 'b', 'c']``.
+- A slice object with labels, e.g. ``'a':'f'``.
+  .. warning:: Note that contrary to usual python slices, **both** the
+      start and the stop are included
+- A boolean array of the same length as the axis being sliced,
+  e.g. ``[True, False, True]``.
+- An alignable boolean Series. The index of the key will be aligned before
+  masking.
+- An alignable Index. The Index of the returned selection will be the input.
+- A ``callable`` function with one argument (the calling Series or
+  DataFrame) and that returns valid output for indexing (one of the above)
+See more at :ref:`Selection by Label &lt;indexing.label&gt;`.
+Raises
+------
+KeyError
+    If any items are not found.
+IndexingError
+    If an indexed key is passed and its index is unalignable to the frame index.
+See Also
+--------
+DataFrame.at : Access a single value for a row/column label pair.
+DataFrame.iloc : Access group of rows and columns by integer position(s).
+DataFrame.xs : Returns a cross-section (row(s) or column(s)) from the
+    Series/DataFrame.
+Series.loc : Access group of values using labels.
+Examples
+--------
+**Getting values**
+&gt;&gt;&gt; df = pd.DataFrame([[1, 2], [4, 5], [7, 8]],
+...      index=['cobra', 'viper', 'sidewinder'],
+...      columns=['max_speed', 'shield'])
+&gt;&gt;&gt; df
+            max_speed  shield
+cobra               1       2
+viper               4       5
+sidewinder          7       8
+Single label. Note this returns the row as a Series.
+&gt;&gt;&gt; df.loc['viper']
+max_speed    4
+shield       5
+Name: viper, dtype: int64
+List of labels. Note using ``[[]]`` returns a DataFrame.
+&gt;&gt;&gt; df.loc[['viper', 'sidewinder']]
+            max_speed  shield
+viper               4       5
+sidewinder          7       8
+Single label for row and column
+&gt;&gt;&gt; df.loc['cobra', 'shield']
+2
+Slice with labels for row and single label for column. As mentioned
+above, note that both the start and stop of the slice are included.
+&gt;&gt;&gt; df.loc['cobra':'viper', 'max_speed']
+cobra    1
+viper    4
+Name: max_speed, dtype: int64
+Boolean list with the same length as the row axis
+&gt;&gt;&gt; df.loc[[False, False, True]]
+            max_speed  shield
+sidewinder          7       8
+Alignable boolean Series:
+&gt;&gt;&gt; df.loc[pd.Series([False, True, False],
+...        index=['viper', 'sidewinder', 'cobra'])]
+            max_speed  shield
+sidewinder          7       8
+Index (same behavior as ``df.reindex``)
+&gt;&gt;&gt; df.loc[pd.Index(["cobra", "viper"], name="foo")]
+       max_speed  shield
+foo
+cobra          1       2
+viper          4       5
+Conditional that returns a boolean Series
+&gt;&gt;&gt; df.loc[df['shield'] &gt; 6]
+            max_speed  shield
+sidewinder          7       8
+Conditional that returns a boolean Series with column labels specified
+&gt;&gt;&gt; df.loc[df['shield'] &gt; 6, ['max_speed']]
+            max_speed
+sidewinder          7
+Callable that returns a boolean Series
+&gt;&gt;&gt; df.loc[lambda df: df['shield'] == 8]
+            max_speed  shield
+sidewinder          7       8
+**Setting values**
+Set value for all items matching the list of labels
+&gt;&gt;&gt; df.loc[['viper', 'sidewinder'], ['shield']] = 50
+&gt;&gt;&gt; df
+            max_speed  shield
+cobra               1       2
+viper               4      50
+sidewinder          7      50
+Set value for an entire row
+&gt;&gt;&gt; df.loc['cobra'] = 10
+&gt;&gt;&gt; df
+            max_speed  shield
+cobra              10      10
+viper               4      50
+sidewinder          7      50
+Set value for an entire column
+&gt;&gt;&gt; df.loc[:, 'max_speed'] = 30
+&gt;&gt;&gt; df
+            max_speed  shield
+cobra              30      10
+viper              30      50
+sidewinder         30      50
+Set value for rows matching callable condition
+&gt;&gt;&gt; df.loc[df['shield'] &gt; 35] = 0
+&gt;&gt;&gt; df
+            max_speed  shield
+cobra              30      10
+viper               0       0
+sidewinder          0       0
+**Getting values on a DataFrame with an index that has integer labels**
+Another example using integers for the index
+&gt;&gt;&gt; df = pd.DataFrame([[1, 2], [4, 5], [7, 8]],
+...      index=[7, 8, 9], columns=['max_speed', 'shield'])
+&gt;&gt;&gt; df
+   max_speed  shield
+7          1       2
+8          4       5
+9          7       8
+Slice with integer labels for rows. As mentioned above, note that both
+the start and stop of the slice are included.
+&gt;&gt;&gt; df.loc[7:9]
+   max_speed  shield
+7          1       2
+8          4       5
+9          7       8
+**Getting values with a MultiIndex**
+A number of examples using a DataFrame with a MultiIndex
+&gt;&gt;&gt; tuples = [
+...    ('cobra', 'mark i'), ('cobra', 'mark ii'),
+...    ('sidewinder', 'mark i'), ('sidewinder', 'mark ii'),
+...    ('viper', 'mark ii'), ('viper', 'mark iii')
+... ]
+&gt;&gt;&gt; index = pd.MultiIndex.from_tuples(tuples)
+&gt;&gt;&gt; values = [[12, 2], [0, 4], [10, 20],
+...         [1, 4], [7, 1], [16, 36]]
+&gt;&gt;&gt; df = pd.DataFrame(values, columns=['max_speed', 'shield'], index=index)
+&gt;&gt;&gt; df
+                     max_speed  shield
+cobra      mark i           12       2
+           mark ii           0       4
+sidewinder mark i           10      20
+           mark ii           1       4
+viper      mark ii           7       1
+           mark iii         16      36
+Single label. Note this returns a DataFrame with a single index.
+&gt;&gt;&gt; df.loc['cobra']
+         max_speed  shield
+mark i          12       2
+mark ii          0       4
+Single index tuple. Note this returns a Series.
+&gt;&gt;&gt; df.loc[('cobra', 'mark ii')]
+max_speed    0
+shield       4
+Name: (cobra, mark ii), dtype: int64
+Single label for row and column. Similar to passing in a tuple, this
+returns a Series.
+&gt;&gt;&gt; df.loc['cobra', 'mark i']
+max_speed    12
+shield        2
+Name: (cobra, mark i), dtype: int64
+Single tuple. Note using ``[[]]`` returns a DataFrame.
+&gt;&gt;&gt; df.loc[[('cobra', 'mark ii')]]
+               max_speed  shield
+cobra mark ii          0       4
+Single tuple for the index with a single label for the column
+&gt;&gt;&gt; df.loc[('cobra', 'mark i'), 'shield']
+2
+Slice from index tuple to single label
+&gt;&gt;&gt; df.loc[('cobra', 'mark i'):'viper']
+                     max_speed  shield
+cobra      mark i           12       2
+           mark ii           0       4
+sidewinder mark i           10      20
+           mark ii           1       4
+viper      mark ii           7       1
+           mark iii         16      36
+Slice from index tuple to index tuple
+&gt;&gt;&gt; df.loc[('cobra', 'mark i'):('viper', 'mark ii')]
+                    max_speed  shield
+cobra      mark i          12       2
+           mark ii          0       4
+sidewinder mark i          10      20
+           mark ii          1       4
+viper      mark ii          7       1
+Please see the :ref:`user guide&lt;advanced.advanced_hierarchical&gt;`
+for more details and explanations of advanced indexing.</pre>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the question mark</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame.iloc?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Type:</span>        property
+<span class="ansi-red-fg">String form:</span> &lt;property object at 0x135d11710&gt;
+<span class="ansi-red-fg">Docstring:</span>  
+Purely integer-location based indexing for selection by position.
+``.iloc[]`` is primarily integer position based (from ``0`` to
+``length-1`` of the axis), but may also be used with a boolean
+array.
+Allowed inputs are:
+- An integer, e.g. ``5``.
+- A list or array of integers, e.g. ``[4, 3, 0]``.
+- A slice object with ints, e.g. ``1:7``.
+- A boolean array.
+- A ``callable`` function with one argument (the calling Series or
+  DataFrame) and that returns valid output for indexing (one of the above).
+  This is useful in method chains, when you don't have a reference to the
+  calling object, but would like to base your selection on some value.
+- A tuple of row and column indexes. The tuple elements consist of one of the
+  above inputs, e.g. ``(0, 1)``.
+``.iloc`` will raise ``IndexError`` if a requested indexer is
+out-of-bounds, except *slice* indexers which allow out-of-bounds
+indexing (this conforms with python/numpy *slice* semantics).
+See more at :ref:`Selection by Position &lt;indexing.integer&gt;`.
+See Also
+--------
+DataFrame.iat : Fast integer location scalar accessor.
+DataFrame.loc : Purely label-location based indexer for selection by label.
+Series.iloc : Purely integer-location based indexing for
+               selection by position.
+Examples
+--------
+&gt;&gt;&gt; mydict = [{'a': 1, 'b': 2, 'c': 3, 'd': 4},
+...           {'a': 100, 'b': 200, 'c': 300, 'd': 400},
+...           {'a': 1000, 'b': 2000, 'c': 3000, 'd': 4000 }]
+&gt;&gt;&gt; df = pd.DataFrame(mydict)
+&gt;&gt;&gt; df
+      a     b     c     d
+0     1     2     3     4
+1   100   200   300   400
+2  1000  2000  3000  4000
+**Indexing just the rows**
+With a scalar integer.
+&gt;&gt;&gt; type(df.iloc[0])
+&lt;class 'pandas.core.series.Series'&gt;
+&gt;&gt;&gt; df.iloc[0]
+a    1
+b    2
+c    3
+d    4
+Name: 0, dtype: int64
+With a list of integers.
+&gt;&gt;&gt; df.iloc[[0]]
+   a  b  c  d
+0  1  2  3  4
+&gt;&gt;&gt; type(df.iloc[[0]])
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+&gt;&gt;&gt; df.iloc[[0, 1]]
+     a    b    c    d
+0    1    2    3    4
+1  100  200  300  400
+With a `slice` object.
+&gt;&gt;&gt; df.iloc[:3]
+      a     b     c     d
+0     1     2     3     4
+1   100   200   300   400
+2  1000  2000  3000  4000
+With a boolean mask the same length as the index.
+&gt;&gt;&gt; df.iloc[[True, False, True]]
+      a     b     c     d
+0     1     2     3     4
+2  1000  2000  3000  4000
+With a callable, useful in method chains. The `x` passed
+to the ``lambda`` is the DataFrame being sliced. This selects
+the rows whose index label even.
+&gt;&gt;&gt; df.iloc[lambda x: x.index % 2 == 0]
+      a     b     c     d
+0     1     2     3     4
+2  1000  2000  3000  4000
+**Indexing both axes**
+You can mix the indexer types for the index and columns. Use ``:`` to
+select the entire axis.
+With scalar integers.
+&gt;&gt;&gt; df.iloc[0, 1]
+2
+With lists of integers.
+&gt;&gt;&gt; df.iloc[[0, 2], [1, 3]]
+      b     d
+0     2     4
+2  2000  4000
+With `slice` objects.
+&gt;&gt;&gt; df.iloc[1:3, 0:3]
+      a     b     c
+1   100   200   300
+2  1000  2000  3000
+With a boolean array whose length matches the columns.
+&gt;&gt;&gt; df.iloc[:, [True, False, True, False]]
+      a     c
+0     1     3
+1   100   300
+2  1000  3000
+With a callable function that expects the Series or DataFrame.
+&gt;&gt;&gt; df.iloc[:, lambda df: [0, 2]]
+      a     c
+0     1     3
+1   100   300
+2  1000  3000</pre>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="a-more-interesting-example-the-donut-effect" class="level2">
+<h2 class="anchored" data-anchor-id="a-more-interesting-example-the-donut-effect">A more interesting example: The Donut Effect</h2>
+<p>The pandemic and growth in work from home led to a phenomenon known as <a href="https://www.gsb.stanford.edu/faculty-research/publications/donut-effect-how-covid-19-shapes-real-estate">the “Donut Effect”</a>. With more flexible working options and pandemic-driven density fears, people left urban dense cores and opted for more space in city suburbs, driving home and rental prices up in the suburbs relative to city centers.</p>
+<section id="population-change" class="level3">
+<h3 class="anchored" data-anchor-id="population-change">1. Population change</h3>
+<p>I’ve stored more data on population for Philadelphia and its suburbs in a comma-separated value (CSV) file in the data folder: <a href="./data/phila-metro-counties-population.csv">data/phila-metro-counties-population.csv</a>.</p>
+<p>This data comes from the <a href="https://www.census.gov/programs-surveys/popest.html">Census Population Estimates series</a> for counties in the Philadelphia metropolitan region, which includes Philadelphia County, four suburb counties in PA, and 3 suburb counties in NJ. Later in the course, you’ll learn how to download data from the Census directly using Python, but for now, I’ve downloaded and formatted the data already.</p>
+<p>Let’s use this data to see if the donut effect occurred in Philadelphia and its suburbs.</p>
+<p><strong>Goal:</strong> Calculate the percent population change from 2020 to 2022 in Philadelphia and the <em>total</em> percent change in the suburb counties and compare!</p>
+<p>First, use the <code>pd.read_csv()</code> function from <em>pandas</em>. The first argument to <code>pd.read_csv()</code> is the file path to load.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data from the CSV file</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>pop_df <span class="op">=</span> pd.read_csv(<span class="st">"./data/phila-metro-counties-population.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many rows are in the dataframe? --&gt; use the len() operator</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(pop_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>8</code></pre>
+</div>
+</div>
+<p>Peak at the first 5 rows:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pop_df.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">county_name</th>
+<th data-quarto-table-cell-role="th">state_name</th>
+<th data-quarto-table-cell-role="th">pop_2020</th>
+<th data-quarto-table-cell-role="th">pop_2022</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>PA</td>
+<td>646112.0</td>
+<td>645054.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>PA</td>
+<td>534783.0</td>
+<td>545823.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Delaware</td>
+<td>PA</td>
+<td>576323.0</td>
+<td>575182.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Montgomery</td>
+<td>PA</td>
+<td>856938.0</td>
+<td>864683.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Philadelphia</td>
+<td>PA</td>
+<td>1600600.0</td>
+<td>1567258.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="exercise-calculate-the-percent-change-in-population-for-philadelphia" class="level4">
+<h4 class="anchored" data-anchor-id="exercise-calculate-the-percent-change-in-population-for-philadelphia">Exercise: Calculate the percent change in population for Philadelphia</h4>
+<p>Let’s select the data for Philadelphia to get its population change.</p>
+<p>Steps:</p>
+<ol type="1">
+<li>Select the data for Philadelphia</li>
+<li>Select the 2020 and 2022 population columns (see the tip below about the <code>squeeze()</code> function)</li>
+<li>Calculate the percent change</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Tip: The squeeze() function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip: The squeeze() function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If we select the data for Philadelphia, it will be DataFrame with only a single row. So if we access a column, it will return a Series of length one, rather than just a number.</p>
+<p>We can use the <code>.squeeze()</code> function to get rid of this extra dimension of length one. It does just one it sounds like: if you have a DataFrame with only one row, it will “squeeze” the row dimension by removing it, returning just a Series object:</p>
+</div>
+</div>
+<p>The selector for Philadelphia:</p>
+<div class="cell" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>pop_df[<span class="st">'county_name'</span>] <span class="op">==</span> <span class="st">'Philadelphia'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>0    False
+1    False
+2    False
+3    False
+4     True
+5    False
+6    False
+7    False
+Name: county_name, dtype: bool</code></pre>
+</div>
+</div>
+<p>Now, let’s use the <code>.loc[]</code> function to select the data for Philadelphia</p>
+<div class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>philly_pop <span class="op">=</span> pop_df.loc[ pop_df[<span class="st">'county_name'</span>] <span class="op">==</span> <span class="st">'Philadelphia'</span> ]</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>philly_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">county_name</th>
+<th data-quarto-table-cell-role="th">state_name</th>
+<th data-quarto-table-cell-role="th">pop_2020</th>
+<th data-quarto-table-cell-role="th">pop_2022</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Philadelphia</td>
+<td>PA</td>
+<td>1600600.0</td>
+<td>1567258.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>philly_pop <span class="op">=</span> pop_df.loc[pop_df[<span class="st">"county_name"</span>] <span class="op">==</span> <span class="st">"Philadelphia"</span>].squeeze()</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>philly_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>county_name    Philadelphia
+state_name               PA
+pop_2020          1600600.0
+pop_2022          1567258.0
+Name: 4, dtype: object</code></pre>
+</div>
+</div>
+<p>Now we can calculate the percent change:</p>
+<div class="cell" data-tags="[]" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>philly_pop_change <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> (philly_pop[<span class="st">'pop_2022'</span>] <span class="op">/</span> philly_pop[<span class="st">'pop_2020'</span>] <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>philly_pop_change</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>-2.0830938398100685</code></pre>
+</div>
+</div>
+<p>A little more than 2% decline in population from 2020 to 2022!</p>
+<p><strong>A note about string formatting in Python</strong></p>
+<p>We can format this into a string using an “f-string”, strings that have an “f” before them.</p>
+<p>Look for curly braces in these strings. The syntax is: <code>{variable_name : format string}</code>. For example:</p>
+<div class="cell" data-tags="[]" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Philadelphia's percent change in population from 2020 to 2022: </span><span class="sc">{</span>philly_pop_change<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Philadelphia's percent change in population from 2020 to 2022: -2.1%</code></pre>
+</div>
+</div>
+<p>In this case, we told Python to format the <code>philly_pop_change</code> as a floating point number with one decimal using <code>.1f</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For more practice with f-strings, see <a href="https://www.datacamp.com/tutorial/f-string-formatting-in-python">this DataCamp tutorial</a>.</p>
+</div>
+</div>
+<p><strong>Next up</strong>: let’s calculate the total population change across all the suburb counties. First select every county except for Philadelphia, using the <code>!=</code> (not equals) operator.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now do the selection!</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>suburb_pop <span class="op">=</span> pop_df.loc[ pop_df[<span class="st">"county_name"</span>] <span class="op">!=</span> <span class="st">'Philadelphia'</span> ]  <span class="co"># select the valid rows</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>suburb_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">county_name</th>
+<th data-quarto-table-cell-role="th">state_name</th>
+<th data-quarto-table-cell-role="th">pop_2020</th>
+<th data-quarto-table-cell-role="th">pop_2022</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Bucks</td>
+<td>PA</td>
+<td>646112.0</td>
+<td>645054.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chester</td>
+<td>PA</td>
+<td>534783.0</td>
+<td>545823.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Delaware</td>
+<td>PA</td>
+<td>576323.0</td>
+<td>575182.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Montgomery</td>
+<td>PA</td>
+<td>856938.0</td>
+<td>864683.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Burlington</td>
+<td>NJ</td>
+<td>461648.0</td>
+<td>466103.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Camden</td>
+<td>NJ</td>
+<td>523074.0</td>
+<td>524907.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Gloucester</td>
+<td>NJ</td>
+<td>302554.0</td>
+<td>306601.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>To calculate the <em>total</em> percent change, we can sum up the population in 2020 and 2022 and calculate the percent change.</p>
+<p>In this case, we can use the built-in <code>.sum()</code> function for a column Series to sum up the values in a column:</p>
+<div class="cell" data-tags="[]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>suburb_pop_change <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> (suburb_pop[<span class="st">"pop_2022"</span>].<span class="bu">sum</span>() <span class="op">/</span> suburb_pop[<span class="st">"pop_2020"</span>].<span class="bu">sum</span>() <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>suburb_pop_change</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>0.6900286869026662</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Percent change in population from 2020 to 2022 in the Philadelphia suburbs: </span><span class="sc">{</span>suburb_pop_change<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Percent change in population from 2020 to 2022 in the Philadelphia suburbs: 0.7%</code></pre>
+</div>
+</div>
+<p><strong>Takeaway</strong></p>
+<p>A slight 0.7% increase in population change in the suburb counties from 2020 to 2022, compared to a 2.1% decline in Philadelphia.</p>
+<p>This tracks with the idea of a “donut effect” in Philadelphia during the pandemic!</p>
+</section>
+</section>
+<section id="home-rental-prices" class="level3">
+<h3 class="anchored" data-anchor-id="home-rental-prices">2. Home &amp; rental prices</h3>
+<p>Let’s investigate changes in home and rental prices in Philadelphia and its suburbs during the pandemic. If there was a strong “donut effect”, we would expect to see higher price appreciation in the suburbs compared to Philadelphia itself.</p>
+<p>For this part, we will use <a href="https://www.zillow.com/research/data/">Zillow data</a>, specifically data by county for the Zillow Observed Rent Index (ZORI) and Zillow Home Value Index (ZHVI).</p>
+<p>I’ve already downloaded the data and stored it in the <code>data/</code> folder. Let’s read it into pandas using the <code>pd.read_csv()</code> function.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>zhvi <span class="op">=</span> pd.read_csv(<span class="st">"data/County_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv"</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>zori <span class="op">=</span> pd.read_csv(<span class="st">"data/County_zori_sm_month.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Peek at the first few rows of the rent data:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>zori.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">RegionID</th>
+<th data-quarto-table-cell-role="th">SizeRank</th>
+<th data-quarto-table-cell-role="th">RegionName</th>
+<th data-quarto-table-cell-role="th">RegionType</th>
+<th data-quarto-table-cell-role="th">StateName</th>
+<th data-quarto-table-cell-role="th">State</th>
+<th data-quarto-table-cell-role="th">Metro</th>
+<th data-quarto-table-cell-role="th">StateCodeFIPS</th>
+<th data-quarto-table-cell-role="th">MunicipalCodeFIPS</th>
+<th data-quarto-table-cell-role="th">2015-01-31</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">2022-10-31</th>
+<th data-quarto-table-cell-role="th">2022-11-30</th>
+<th data-quarto-table-cell-role="th">2022-12-31</th>
+<th data-quarto-table-cell-role="th">2023-01-31</th>
+<th data-quarto-table-cell-role="th">2023-02-28</th>
+<th data-quarto-table-cell-role="th">2023-03-31</th>
+<th data-quarto-table-cell-role="th">2023-04-30</th>
+<th data-quarto-table-cell-role="th">2023-05-31</th>
+<th data-quarto-table-cell-role="th">2023-06-30</th>
+<th data-quarto-table-cell-role="th">2023-07-31</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3101</td>
+<td>0</td>
+<td>Los Angeles County</td>
+<td>county</td>
+<td>CA</td>
+<td>CA</td>
+<td>Los Angeles-Long Beach-Anaheim, CA</td>
+<td>6</td>
+<td>37</td>
+<td>1859.636263</td>
+<td>...</td>
+<td>2884.685434</td>
+<td>2878.934549</td>
+<td>2875.026052</td>
+<td>2871.083085</td>
+<td>2877.814065</td>
+<td>2884.805738</td>
+<td>2898.603156</td>
+<td>2902.637331</td>
+<td>2911.922927</td>
+<td>2918.754134</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>139</td>
+<td>1</td>
+<td>Cook County</td>
+<td>county</td>
+<td>IL</td>
+<td>IL</td>
+<td>Chicago-Naperville-Elgin, IL-IN-WI</td>
+<td>17</td>
+<td>31</td>
+<td>1509.519799</td>
+<td>...</td>
+<td>1953.033934</td>
+<td>1948.209459</td>
+<td>1951.135298</td>
+<td>1957.004902</td>
+<td>1971.312435</td>
+<td>1985.335169</td>
+<td>2003.414964</td>
+<td>2029.555166</td>
+<td>2052.142638</td>
+<td>2065.170019</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1090</td>
+<td>2</td>
+<td>Harris County</td>
+<td>county</td>
+<td>TX</td>
+<td>TX</td>
+<td>Houston-The Woodlands-Sugar Land, TX</td>
+<td>48</td>
+<td>201</td>
+<td>1244.972009</td>
+<td>...</td>
+<td>1605.890305</td>
+<td>1604.357134</td>
+<td>1603.265557</td>
+<td>1612.486921</td>
+<td>1618.611045</td>
+<td>1628.098030</td>
+<td>1630.157224</td>
+<td>1638.558882</td>
+<td>1648.540280</td>
+<td>1655.318245</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2402</td>
+<td>3</td>
+<td>Maricopa County</td>
+<td>county</td>
+<td>AZ</td>
+<td>AZ</td>
+<td>Phoenix-Mesa-Chandler, AZ</td>
+<td>4</td>
+<td>13</td>
+<td>1001.214534</td>
+<td>...</td>
+<td>1937.026071</td>
+<td>1927.513924</td>
+<td>1918.344571</td>
+<td>1913.116142</td>
+<td>1917.415652</td>
+<td>1930.233484</td>
+<td>1939.647281</td>
+<td>1945.676380</td>
+<td>1945.808056</td>
+<td>1948.880852</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2841</td>
+<td>4</td>
+<td>San Diego County</td>
+<td>county</td>
+<td>CA</td>
+<td>CA</td>
+<td>San Diego-Chula Vista-Carlsbad, CA</td>
+<td>6</td>
+<td>73</td>
+<td>1797.996849</td>
+<td>...</td>
+<td>3094.460551</td>
+<td>3074.724631</td>
+<td>3061.535358</td>
+<td>3052.480138</td>
+<td>3057.236678</td>
+<td>3079.509599</td>
+<td>3115.522418</td>
+<td>3154.972888</td>
+<td>3185.039118</td>
+<td>3205.105049</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 112 columns</p>
+</div>
+</div>
+</div>
+<p>And do the same for the home price data:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>zhvi.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">RegionID</th>
+<th data-quarto-table-cell-role="th">SizeRank</th>
+<th data-quarto-table-cell-role="th">RegionName</th>
+<th data-quarto-table-cell-role="th">RegionType</th>
+<th data-quarto-table-cell-role="th">StateName</th>
+<th data-quarto-table-cell-role="th">State</th>
+<th data-quarto-table-cell-role="th">Metro</th>
+<th data-quarto-table-cell-role="th">StateCodeFIPS</th>
+<th data-quarto-table-cell-role="th">MunicipalCodeFIPS</th>
+<th data-quarto-table-cell-role="th">2000-01-31</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">2022-10-31</th>
+<th data-quarto-table-cell-role="th">2022-11-30</th>
+<th data-quarto-table-cell-role="th">2022-12-31</th>
+<th data-quarto-table-cell-role="th">2023-01-31</th>
+<th data-quarto-table-cell-role="th">2023-02-28</th>
+<th data-quarto-table-cell-role="th">2023-03-31</th>
+<th data-quarto-table-cell-role="th">2023-04-30</th>
+<th data-quarto-table-cell-role="th">2023-05-31</th>
+<th data-quarto-table-cell-role="th">2023-06-30</th>
+<th data-quarto-table-cell-role="th">2023-07-31</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3101</td>
+<td>0</td>
+<td>Los Angeles County</td>
+<td>county</td>
+<td>CA</td>
+<td>CA</td>
+<td>Los Angeles-Long Beach-Anaheim, CA</td>
+<td>6</td>
+<td>37</td>
+<td>205982.244116</td>
+<td>...</td>
+<td>841135.925058</td>
+<td>838631.538883</td>
+<td>835366.307179</td>
+<td>828060.815041</td>
+<td>818172.457895</td>
+<td>809992.297565</td>
+<td>806193.000835</td>
+<td>808305.144458</td>
+<td>815021.466146</td>
+<td>826958.461096</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>139</td>
+<td>1</td>
+<td>Cook County</td>
+<td>county</td>
+<td>IL</td>
+<td>IL</td>
+<td>Chicago-Naperville-Elgin, IL-IN-WI</td>
+<td>17</td>
+<td>31</td>
+<td>136354.916313</td>
+<td>...</td>
+<td>284950.857552</td>
+<td>284143.669431</td>
+<td>283375.276172</td>
+<td>284008.891628</td>
+<td>284769.843988</td>
+<td>286109.760510</td>
+<td>286873.595748</td>
+<td>287996.202478</td>
+<td>290010.594940</td>
+<td>292281.611623</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1090</td>
+<td>2</td>
+<td>Harris County</td>
+<td>county</td>
+<td>TX</td>
+<td>TX</td>
+<td>Houston-The Woodlands-Sugar Land, TX</td>
+<td>48</td>
+<td>201</td>
+<td>107050.239739</td>
+<td>...</td>
+<td>283073.624205</td>
+<td>282597.185986</td>
+<td>281442.805088</td>
+<td>279727.962356</td>
+<td>278170.043854</td>
+<td>277582.191393</td>
+<td>277509.897059</td>
+<td>277852.705574</td>
+<td>278500.865874</td>
+<td>279400.674485</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2402</td>
+<td>3</td>
+<td>Maricopa County</td>
+<td>county</td>
+<td>AZ</td>
+<td>AZ</td>
+<td>Phoenix-Mesa-Chandler, AZ</td>
+<td>4</td>
+<td>13</td>
+<td>146824.674809</td>
+<td>...</td>
+<td>478373.220270</td>
+<td>472003.290822</td>
+<td>465224.903046</td>
+<td>459750.984210</td>
+<td>455757.981512</td>
+<td>454203.508557</td>
+<td>453192.923509</td>
+<td>453262.846630</td>
+<td>454625.973499</td>
+<td>457065.330187</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2841</td>
+<td>4</td>
+<td>San Diego County</td>
+<td>county</td>
+<td>CA</td>
+<td>CA</td>
+<td>San Diego-Chula Vista-Carlsbad, CA</td>
+<td>6</td>
+<td>73</td>
+<td>217214.415906</td>
+<td>...</td>
+<td>881918.327354</td>
+<td>873416.861727</td>
+<td>866066.237738</td>
+<td>858962.865592</td>
+<td>854294.612077</td>
+<td>853873.557956</td>
+<td>856932.860092</td>
+<td>862757.750601</td>
+<td>871180.725221</td>
+<td>881746.559143</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 292 columns</p>
+</div>
+</div>
+</div>
+<section id="convert-from-wide-to-tidy-format" class="level4">
+<h4 class="anchored" data-anchor-id="convert-from-wide-to-tidy-format">Convert from “wide” to “tidy” format</h4>
+<p>Currently, our data is in <strong>wide</strong> format: each observation has its own column. This usually results in many columns but few rows.</p>
+<p>Usually it’s better to have data in <a href="https://en.wikipedia.org/wiki/Tidy_data"><strong>tidy</strong></a> (also known as <strong>long</strong>) format. Tidy datasets are arranged such that each variable is a column and each observation is a row.</p>
+<p>In our case, we want to have a column called <code>ZORI</code> and one called <code>ZHVI</code> and a row for each month that the indices were measured.</p>
+<p><em>pandas</em> provides the <code>melt()</code> function for converting from <strong>wide</strong> formats to <strong>tidy</strong> formats. <code>melt()</code> <strong>doesn’t</strong> aggregate or summarize the data. It transforms it into a different shape, but it contains the exact same information as before.</p>
+<p>Imagine you have 6 rows of data (each row is a unique county) with 10 columns of home values (each column is a different month). That is wide data and is the format usually seen in spreadsheets or tables in a report.</p>
+<p>If you <code>melt()</code> that wide data, you would get a table with 60 rows and 3 columns. Each row would contain the county name, the month, and the home value that county and month. This tidy-formatted data contains the same info as the wide data, but in a different form.</p>
+<p><strong>This animation shows the transformation from wide to long / long to wide. You can ignore gather() and spread() - those are the R versions of the pandas functions.</strong></p>
+<p><img src="lecture-1B_files/figure-html/386db237-1-tidyr-spread-gather.gif" class="img-fluid"></p>
+<p>The syntax for <code>pd.melt()</code>:</p>
+<ul>
+<li>“id_vars”: A list of column names that are the identifier variables, the fields that uniquely identify each observation.</li>
+<li>“value_vars”: A list of column names that get “unpivoted” and become the values in the new dataframe.</li>
+<li>“value_name”: The name to use for the new value column created; by default, this is “value”</li>
+<li>“var_name”: The name of the column that holds the unpivoted column names (the “key” above); by default, this is “variable”</li>
+</ul>
+<p>Now let’s look at our dataframes.</p>
+<p>For “id_vars”, we want to use ‘RegionName’ (county name) and ‘StateName’. That uniquely identifies each row.</p>
+<p><strong>But what about “value_vars”?</strong></p>
+<p>The columns holding the values we want to unpivot are the monthly date strings. So…we need to figure out how to select all of the column names that look like dates.</p>
+<div class="cell" data-tags="[]" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>zhvi.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>Index(['RegionID', 'SizeRank', 'RegionName', 'RegionType', 'StateName',
+       'State', 'Metro', 'StateCodeFIPS', 'MunicipalCodeFIPS', '2000-01-31',
+       ...
+       '2022-10-31', '2022-11-30', '2022-12-31', '2023-01-31', '2023-02-28',
+       '2023-03-31', '2023-04-30', '2023-05-31', '2023-06-30', '2023-07-31'],
+      dtype='object', length=292)</code></pre>
+</div>
+</div>
+<p>The <code>filter()</code> function to the rescue!</p>
+<p>This function will take a function that returns <code>True</code>/<code>False</code> and list of values and return a new list with values that only return True in the function.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See <a href="https://realpython.com/python-filter-function/">this tutorial</a> for more info on the built-in filter() function.</p>
+</div>
+</div>
+<p>In our case, let’s write a function that tests if a string column name starts with ‘20’ — this should give us all of the column names that look like dates.</p>
+<div class="cell" data-tags="[]" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> looks_like_a_date(col):</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""A function that tests if a string starts with '20'"""</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> col.startswith(<span class="st">"20"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>looks_like_a_date(<span class="st">'2000-01-31'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Now do the filter:</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co">## First argument is the function</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Second argument is the list of values we want to filter</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="bu">filter</span>(looks_like_a_date, zhvi.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>&lt;filter at 0x14014e830&gt;</code></pre>
+</div>
+</div>
+<p><em>Ugh</em>, this doesn’t look like what we wanted!</p>
+<p>This is what’s called an “iterable” in Python (something that is ready to be iterated over). In order to actually get the values, we need to explicitly pass this to a <code>list()</code> function.</p>
+<div class="cell" data-tags="[]" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">filter</span>(looks_like_a_date, zhvi.columns))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>['2000-01-31',
+ '2000-02-29',
+ '2000-03-31',
+ '2000-04-30',
+ '2000-05-31',
+ '2000-06-30',
+ '2000-07-31',
+ '2000-08-31',
+ '2000-09-30',
+ '2000-10-31',
+ '2000-11-30',
+ '2000-12-31',
+ '2001-01-31',
+ '2001-02-28',
+ '2001-03-31',
+ '2001-04-30',
+ '2001-05-31',
+ '2001-06-30',
+ '2001-07-31',
+ '2001-08-31',
+ '2001-09-30',
+ '2001-10-31',
+ '2001-11-30',
+ '2001-12-31',
+ '2002-01-31',
+ '2002-02-28',
+ '2002-03-31',
+ '2002-04-30',
+ '2002-05-31',
+ '2002-06-30',
+ '2002-07-31',
+ '2002-08-31',
+ '2002-09-30',
+ '2002-10-31',
+ '2002-11-30',
+ '2002-12-31',
+ '2003-01-31',
+ '2003-02-28',
+ '2003-03-31',
+ '2003-04-30',
+ '2003-05-31',
+ '2003-06-30',
+ '2003-07-31',
+ '2003-08-31',
+ '2003-09-30',
+ '2003-10-31',
+ '2003-11-30',
+ '2003-12-31',
+ '2004-01-31',
+ '2004-02-29',
+ '2004-03-31',
+ '2004-04-30',
+ '2004-05-31',
+ '2004-06-30',
+ '2004-07-31',
+ '2004-08-31',
+ '2004-09-30',
+ '2004-10-31',
+ '2004-11-30',
+ '2004-12-31',
+ '2005-01-31',
+ '2005-02-28',
+ '2005-03-31',
+ '2005-04-30',
+ '2005-05-31',
+ '2005-06-30',
+ '2005-07-31',
+ '2005-08-31',
+ '2005-09-30',
+ '2005-10-31',
+ '2005-11-30',
+ '2005-12-31',
+ '2006-01-31',
+ '2006-02-28',
+ '2006-03-31',
+ '2006-04-30',
+ '2006-05-31',
+ '2006-06-30',
+ '2006-07-31',
+ '2006-08-31',
+ '2006-09-30',
+ '2006-10-31',
+ '2006-11-30',
+ '2006-12-31',
+ '2007-01-31',
+ '2007-02-28',
+ '2007-03-31',
+ '2007-04-30',
+ '2007-05-31',
+ '2007-06-30',
+ '2007-07-31',
+ '2007-08-31',
+ '2007-09-30',
+ '2007-10-31',
+ '2007-11-30',
+ '2007-12-31',
+ '2008-01-31',
+ '2008-02-29',
+ '2008-03-31',
+ '2008-04-30',
+ '2008-05-31',
+ '2008-06-30',
+ '2008-07-31',
+ '2008-08-31',
+ '2008-09-30',
+ '2008-10-31',
+ '2008-11-30',
+ '2008-12-31',
+ '2009-01-31',
+ '2009-02-28',
+ '2009-03-31',
+ '2009-04-30',
+ '2009-05-31',
+ '2009-06-30',
+ '2009-07-31',
+ '2009-08-31',
+ '2009-09-30',
+ '2009-10-31',
+ '2009-11-30',
+ '2009-12-31',
+ '2010-01-31',
+ '2010-02-28',
+ '2010-03-31',
+ '2010-04-30',
+ '2010-05-31',
+ '2010-06-30',
+ '2010-07-31',
+ '2010-08-31',
+ '2010-09-30',
+ '2010-10-31',
+ '2010-11-30',
+ '2010-12-31',
+ '2011-01-31',
+ '2011-02-28',
+ '2011-03-31',
+ '2011-04-30',
+ '2011-05-31',
+ '2011-06-30',
+ '2011-07-31',
+ '2011-08-31',
+ '2011-09-30',
+ '2011-10-31',
+ '2011-11-30',
+ '2011-12-31',
+ '2012-01-31',
+ '2012-02-29',
+ '2012-03-31',
+ '2012-04-30',
+ '2012-05-31',
+ '2012-06-30',
+ '2012-07-31',
+ '2012-08-31',
+ '2012-09-30',
+ '2012-10-31',
+ '2012-11-30',
+ '2012-12-31',
+ '2013-01-31',
+ '2013-02-28',
+ '2013-03-31',
+ '2013-04-30',
+ '2013-05-31',
+ '2013-06-30',
+ '2013-07-31',
+ '2013-08-31',
+ '2013-09-30',
+ '2013-10-31',
+ '2013-11-30',
+ '2013-12-31',
+ '2014-01-31',
+ '2014-02-28',
+ '2014-03-31',
+ '2014-04-30',
+ '2014-05-31',
+ '2014-06-30',
+ '2014-07-31',
+ '2014-08-31',
+ '2014-09-30',
+ '2014-10-31',
+ '2014-11-30',
+ '2014-12-31',
+ '2015-01-31',
+ '2015-02-28',
+ '2015-03-31',
+ '2015-04-30',
+ '2015-05-31',
+ '2015-06-30',
+ '2015-07-31',
+ '2015-08-31',
+ '2015-09-30',
+ '2015-10-31',
+ '2015-11-30',
+ '2015-12-31',
+ '2016-01-31',
+ '2016-02-29',
+ '2016-03-31',
+ '2016-04-30',
+ '2016-05-31',
+ '2016-06-30',
+ '2016-07-31',
+ '2016-08-31',
+ '2016-09-30',
+ '2016-10-31',
+ '2016-11-30',
+ '2016-12-31',
+ '2017-01-31',
+ '2017-02-28',
+ '2017-03-31',
+ '2017-04-30',
+ '2017-05-31',
+ '2017-06-30',
+ '2017-07-31',
+ '2017-08-31',
+ '2017-09-30',
+ '2017-10-31',
+ '2017-11-30',
+ '2017-12-31',
+ '2018-01-31',
+ '2018-02-28',
+ '2018-03-31',
+ '2018-04-30',
+ '2018-05-31',
+ '2018-06-30',
+ '2018-07-31',
+ '2018-08-31',
+ '2018-09-30',
+ '2018-10-31',
+ '2018-11-30',
+ '2018-12-31',
+ '2019-01-31',
+ '2019-02-28',
+ '2019-03-31',
+ '2019-04-30',
+ '2019-05-31',
+ '2019-06-30',
+ '2019-07-31',
+ '2019-08-31',
+ '2019-09-30',
+ '2019-10-31',
+ '2019-11-30',
+ '2019-12-31',
+ '2020-01-31',
+ '2020-02-29',
+ '2020-03-31',
+ '2020-04-30',
+ '2020-05-31',
+ '2020-06-30',
+ '2020-07-31',
+ '2020-08-31',
+ '2020-09-30',
+ '2020-10-31',
+ '2020-11-30',
+ '2020-12-31',
+ '2021-01-31',
+ '2021-02-28',
+ '2021-03-31',
+ '2021-04-30',
+ '2021-05-31',
+ '2021-06-30',
+ '2021-07-31',
+ '2021-08-31',
+ '2021-09-30',
+ '2021-10-31',
+ '2021-11-30',
+ '2021-12-31',
+ '2022-01-31',
+ '2022-02-28',
+ '2022-03-31',
+ '2022-04-30',
+ '2022-05-31',
+ '2022-06-30',
+ '2022-07-31',
+ '2022-08-31',
+ '2022-09-30',
+ '2022-10-31',
+ '2022-11-30',
+ '2022-12-31',
+ '2023-01-31',
+ '2023-02-28',
+ '2023-03-31',
+ '2023-04-30',
+ '2023-05-31',
+ '2023-06-30',
+ '2023-07-31']</code></pre>
+</div>
+</div>
+<p><em>Hooray, it worked!</em></p>
+<p>Now, it’s time to <em>melt</em> our datasets:</p>
+<div class="cell" data-tags="[]" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>zhvi_tidy <span class="op">=</span> zhvi.melt(</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span>[<span class="st">"RegionName"</span>, <span class="st">"StateName"</span>],</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span><span class="bu">list</span>(<span class="bu">filter</span>(looks_like_a_date, zhvi.columns)), <span class="co"># Notice I'm filtering zhvi columns here</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>    var_name<span class="op">=</span><span class="st">"Date"</span>,</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">"ZHVI"</span>,</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>zori_tidy <span class="op">=</span> zori.melt(</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span>[<span class="st">"RegionName"</span>, <span class="st">"StateName"</span>],</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span><span class="bu">list</span>(<span class="bu">filter</span>(looks_like_a_date, zori.columns)), <span class="co"># Notice I'm filtering zori columns here</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    var_name<span class="op">=</span><span class="st">"Date"</span>,</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">"ZORI"</span>,</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and take a look:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>zori_tidy.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">RegionName</th>
+<th data-quarto-table-cell-role="th">StateName</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">ZORI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Los Angeles County</td>
+<td>CA</td>
+<td>2015-01-31</td>
+<td>1859.636263</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Cook County</td>
+<td>IL</td>
+<td>2015-01-31</td>
+<td>1509.519799</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Harris County</td>
+<td>TX</td>
+<td>2015-01-31</td>
+<td>1244.972009</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Maricopa County</td>
+<td>AZ</td>
+<td>2015-01-31</td>
+<td>1001.214534</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>San Diego County</td>
+<td>CA</td>
+<td>2015-01-31</td>
+<td>1797.996849</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>zhvi_tidy.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">RegionName</th>
+<th data-quarto-table-cell-role="th">StateName</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">ZHVI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Los Angeles County</td>
+<td>CA</td>
+<td>2000-01-31</td>
+<td>205982.244116</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Cook County</td>
+<td>IL</td>
+<td>2000-01-31</td>
+<td>136354.916313</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Harris County</td>
+<td>TX</td>
+<td>2000-01-31</td>
+<td>107050.239739</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Maricopa County</td>
+<td>AZ</td>
+<td>2000-01-31</td>
+<td>146824.674809</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>San Diego County</td>
+<td>CA</td>
+<td>2000-01-31</td>
+<td>217214.415906</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="merge-the-data-frames" class="level4">
+<h4 class="anchored" data-anchor-id="merge-the-data-frames">Merge the data frames</h4>
+<p>Another common operation is <strong>merging</strong>, also known as <strong>joining</strong>, two datasets.</p>
+<p>We can use the <code>merge()</code> function to merge observations that have the same <code>Date</code>, <code>RegionName</code>, and <code>StateName</code> values.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left dataframe is ZORI</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Right dataframe is ZHVI</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>zillow_data <span class="op">=</span> pd.merge(</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>    zori_tidy, zhvi_tidy, on<span class="op">=</span>[<span class="st">"Date"</span>, <span class="st">"RegionName"</span>, <span class="st">"StateName"</span>], how<span class="op">=</span><span class="st">"outer"</span></span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's sort the data by Date</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>zillow_data <span class="op">=</span> zillow_data.sort_values(</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    by<span class="op">=</span><span class="st">"Date"</span>,         <span class="co"># Sort by Data column</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>    ascending<span class="op">=</span><span class="va">True</span>,    <span class="co"># Ascending order</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>    ignore_index<span class="op">=</span><span class="va">True</span>, <span class="co"># Reset the index to 0 to N</span></span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s take a peak at the end of the dataframe using the <code>.tail()</code> function:</p>
+<div class="cell" data-tags="[]" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>zillow_data.head(n<span class="op">=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">RegionName</th>
+<th data-quarto-table-cell-role="th">StateName</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">ZORI</th>
+<th data-quarto-table-cell-role="th">ZHVI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Dooly County</td>
+<td>GA</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>43205.386681</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Moniteau County</td>
+<td>MO</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Jefferson County</td>
+<td>GA</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>52304.968485</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Henry County</td>
+<td>KY</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>83564.841863</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Pawnee County</td>
+<td>OK</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>37124.230106</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Clarke County</td>
+<td>MS</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Floyd County</td>
+<td>IA</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>65476.850601</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Nottoway County</td>
+<td>VA</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Dewitt County</td>
+<td>IL</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Grand County</td>
+<td>CO</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>176407.811425</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>Sequatchie County</td>
+<td>TN</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>57679.387017</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Barbour County</td>
+<td>WV</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>41933.827293</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Carroll County</td>
+<td>IL</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Washington County</td>
+<td>AL</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>Floyd County</td>
+<td>VA</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Marquette County</td>
+<td>WI</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Vermillion County</td>
+<td>IN</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Lawrence County</td>
+<td>IL</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>14805.795158</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Brown County</td>
+<td>IN</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Redwood County</td>
+<td>MN</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Merging is very powerful and the merge can be done in a number of ways. In this case, we did a <strong>outer merge</strong> in order to keep all parts of each dataframe: even if a county doesn’t have both a ZORI and ZHVI value, the row will be in the merged dataframe with NaN to represent missing values.</p>
+<p>By contrast, the <strong>inner merge</strong> only keeps the overlapping intersection of the merge: counties must have <em>both</em> a ZORI and ZHVI value for a given month for the row to make it into the merged dataframe.</p>
+<p>The below infographic is helpful for figuring out the differences between merge types:</p>
+<p><img src="./joining_infographic.jpg" class="img-fluid" width="800"></p>
+</section>
+<section id="trim-to-the-counties-we-want" class="level4">
+<h4 class="anchored" data-anchor-id="trim-to-the-counties-we-want">Trim to the counties we want</h4>
+<p>When we select the counties in the Philly metro region, we need to be careful because if we select just based on county name, we run the risk of selecting counties with the same name in other states. So let’s do our selection in two parts:</p>
+<ol type="1">
+<li>Trim to counties in NJ or PA</li>
+<li>Trim based on county name</li>
+</ol>
+<div class="cell" data-tags="[]" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the rows with state == 'PA' or state == 'NJ'</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>in_nj_pa <span class="op">=</span> zillow_data[<span class="st">"StateName"</span>].isin([<span class="st">"PA"</span>, <span class="st">"NJ"</span>])</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the trimmed dataframe</span></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>zillow_trim_tmp <span class="op">=</span> zillow_data.loc[in_nj_pa]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>county_names <span class="op">=</span> [</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bucks County"</span>,</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Chester County"</span>,</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Delaware County"</span>,</span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Montgomery County"</span>,</span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Burlington County"</span>,</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Camden County"</span>,</span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gloucester County"</span>,</span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Philadelphia County"</span>,</span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Trim based on county name</span></span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>county_sel <span class="op">=</span> zillow_data[<span class="st">'RegionName'</span>].isin(county_names)</span>
+<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Trim temp dataframe from last step</span></span>
+<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>prices_philly_metro <span class="op">=</span> zillow_trim_tmp.loc[county_sel].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>prices_philly_metro</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">RegionName</th>
+<th data-quarto-table-cell-role="th">StateName</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">ZORI</th>
+<th data-quarto-table-cell-role="th">ZHVI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1939</td>
+<td>Camden County</td>
+<td>NJ</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>104472.922223</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1946</td>
+<td>Chester County</td>
+<td>PA</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>181113.160285</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1948</td>
+<td>Delaware County</td>
+<td>PA</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>113558.833735</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1960</td>
+<td>Bucks County</td>
+<td>PA</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>166888.007583</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2008</td>
+<td>Burlington County</td>
+<td>NJ</td>
+<td>2000-01-31</td>
+<td>NaN</td>
+<td>141309.912108</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">870781</td>
+<td>Camden County</td>
+<td>NJ</td>
+<td>2023-07-31</td>
+<td>1840.157047</td>
+<td>305607.084299</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">870875</td>
+<td>Gloucester County</td>
+<td>NJ</td>
+<td>2023-07-31</td>
+<td>2156.799027</td>
+<td>333625.235271</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">870881</td>
+<td>Bucks County</td>
+<td>PA</td>
+<td>2023-07-31</td>
+<td>2165.660642</td>
+<td>464753.874925</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">870987</td>
+<td>Montgomery County</td>
+<td>PA</td>
+<td>2023-07-31</td>
+<td>2058.804292</td>
+<td>443222.467804</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">871037</td>
+<td>Philadelphia County</td>
+<td>PA</td>
+<td>2023-07-31</td>
+<td>1747.206167</td>
+<td>221021.754706</td>
+</tr>
+</tbody>
+</table>
+
+<p>2264 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<p>Let’s verify it worked…how many unique values in the “RegionName” column?</p>
+<div class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>prices_philly_metro[<span class="st">'RegionName'</span>].nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>8</code></pre>
+</div>
+</div>
+</section>
+<section id="group-by-split-apply-combine" class="level4">
+<h4 class="anchored" data-anchor-id="group-by-split-apply-combine">Group by: split-apply-combine</h4>
+<p><em>pandas</em> is especially useful for grouping and aggregating data via the <code>groupby()</code> function.</p>
+<p>From the <em>pandas</em> documentation, <code>groupby</code> means: - <strong>Splitting</strong> the data into groups based on some criteria. - <strong>Applying</strong> a function to each group independently. - <strong>Combining</strong> the results into a data structure.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check out the <a href="https://pandas.pydata.org/pandas-docs/stable/groupby.html">documentation</a> for more info.</p>
+</div>
+</div>
+<p>We will take advantage of the pandas “group by” to calculate the percent increase in price values from March 2020 to July 2023 (the latest available data) for each county.</p>
+<p>To do this, we’ll do the following:</p>
+<ol type="1">
+<li>Group by county name (the “RegionName” column)</li>
+<li>Apply a function that does the following for each county’s data:
+<ul>
+<li>Select the March 2020 data</li>
+<li>Select the July 2023 data</li>
+<li>Calculates the percent change for ZHVI and ZORI</li>
+</ul></li>
+</ol>
+<p>First, do the groupby operation:</p>
+<div class="cell" data-tags="[]" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>grouped <span class="op">=</span> prices_philly_metro.groupby(<span class="st">"RegionName"</span>)</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>grouped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x1377fef50&gt;</code></pre>
+</div>
+</div>
+<p>The <code>groupby()</code> function returns a <code>DataFrameGroupBy</code> object. This object knows what the groups are, but we still need to <code>apply()</code> a function to this object in order to get a DataFrame back!</p>
+<p>Let’s set up our function:</p>
+<div class="cell" data-tags="[]" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_percent_increase(group_df):</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Calculate the percent increase from 2020-03-31 to 2023-07-31.</span></span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Note that `group_df` is the DataFrame for each group, in this</span></span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a><span class="co">    case, the data for each county.</span></span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create selections for the march 2020 and july 2023 data</span></span>
+<span id="cb86-9"><a href="#cb86-9" aria-hidden="true" tabindex="-1"></a>    march_sel <span class="op">=</span> group_df[<span class="st">"Date"</span>] <span class="op">==</span> <span class="st">"2020-03-31"</span></span>
+<span id="cb86-10"><a href="#cb86-10" aria-hidden="true" tabindex="-1"></a>    july_sel <span class="op">=</span> group_df[<span class="st">"Date"</span>] <span class="op">==</span> <span class="st">"2023-07-31"</span></span>
+<span id="cb86-11"><a href="#cb86-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb86-12"><a href="#cb86-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the data for each month (only 1 row, so squeeze it!)</span></span>
+<span id="cb86-13"><a href="#cb86-13" aria-hidden="true" tabindex="-1"></a>    march_2020 <span class="op">=</span> group_df.loc[march_sel].squeeze()</span>
+<span id="cb86-14"><a href="#cb86-14" aria-hidden="true" tabindex="-1"></a>    july_2023 <span class="op">=</span> group_df.loc[july_sel].squeeze()</span>
+<span id="cb86-15"><a href="#cb86-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-16"><a href="#cb86-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Columns to calculate percent change for</span></span>
+<span id="cb86-17"><a href="#cb86-17" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> [<span class="st">"ZORI"</span>, <span class="st">"ZHVI"</span>]</span>
+<span id="cb86-18"><a href="#cb86-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb86-19"><a href="#cb86-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return the percent change for both columns</span></span>
+<span id="cb86-20"><a href="#cb86-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">100</span> <span class="op">*</span> (july_2023[columns] <span class="op">/</span> march_2020[columns] <span class="op">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, let’s apply this function to our group object:</p>
+<div class="cell" data-tags="[]" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> grouped.<span class="bu">apply</span>(calculate_percent_increase)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ZORI</th>
+<th data-quarto-table-cell-role="th">ZHVI</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">RegionName</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Bucks County</td>
+<td>28.943525</td>
+<td>33.028304</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Burlington County</td>
+<td>35.053677</td>
+<td>37.403941</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Camden County</td>
+<td>35.580024</td>
+<td>51.834765</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Chester County</td>
+<td>27.913963</td>
+<td>39.692418</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Delaware County</td>
+<td>29.269362</td>
+<td>41.453732</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Gloucester County</td>
+<td>36.979221</td>
+<td>44.089155</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Montgomery County</td>
+<td>27.045037</td>
+<td>39.111692</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Philadelphia County</td>
+<td>15.020128</td>
+<td>20.048094</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that the index (shown in bold in the notebook output) is the column that we grouped over. That is always the case when we use <code>groupby()</code> in pandas. The resulting DataFrame’s index is the groupby columns.</p>
+</div>
+</div>
+<p>Sort by ZHVI and take a look:</p>
+<div class="cell" data-tags="[]" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>result.sort_values(by<span class="op">=</span><span class="st">"ZHVI"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ZORI</th>
+<th data-quarto-table-cell-role="th">ZHVI</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">RegionName</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Philadelphia County</td>
+<td>15.020128</td>
+<td>20.048094</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Bucks County</td>
+<td>28.943525</td>
+<td>33.028304</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Burlington County</td>
+<td>35.053677</td>
+<td>37.403941</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Montgomery County</td>
+<td>27.045037</td>
+<td>39.111692</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Chester County</td>
+<td>27.913963</td>
+<td>39.692418</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Delaware County</td>
+<td>29.269362</td>
+<td>41.453732</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Gloucester County</td>
+<td>36.979221</td>
+<td>44.089155</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Camden County</td>
+<td>35.580024</td>
+<td>51.834765</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Takeaway</strong></p>
+<p>Philadelphia has had much lower price appreciation for home values and rent values since the pandemic started compared to its suburbs.</p>
+<p>This is evidence in favor of the “donut effect”, with higher demand in the suburbs driving prices higher!</p>
+<p><strong>Note:</strong> There are a number of built-in, convenience functions that we can use on the groupby object, such as <code>.mean()</code>, <code>.sum()</code>, etc.</p>
+<p>For example, if we wanted to calculate the average ZHVI and ZORI values since March 2020 for every county, we could do the following:</p>
+<div class="cell" data-tags="[]" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First trim to dates from March 2020 onwards, then group by county name</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>group_example <span class="op">=</span> prices_philly_metro.query(<span class="st">"Date &gt;= '2020-03-31'"</span>).groupby(<span class="st">"RegionName"</span>)</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the columns we want, and then use the built-in mean function</span></span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>avg_prices <span class="op">=</span> group_example[[<span class="st">'ZHVI'</span>, <span class="st">'ZORI'</span>]].mean()</span>
+<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>avg_prices.sort_values(<span class="st">"ZHVI"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ZHVI</th>
+<th data-quarto-table-cell-role="th">ZORI</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">RegionName</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Philadelphia County</td>
+<td>208756.603528</td>
+<td>1620.775839</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Camden County</td>
+<td>255742.478151</td>
+<td>1612.282080</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Gloucester County</td>
+<td>283831.654654</td>
+<td>1868.459836</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Delaware County</td>
+<td>285825.916694</td>
+<td>1532.245821</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Burlington County</td>
+<td>315162.461555</td>
+<td>1924.282700</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Montgomery County</td>
+<td>382385.207204</td>
+<td>1831.782312</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Bucks County</td>
+<td>413498.955059</td>
+<td>1907.576110</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Chester County</td>
+<td>440770.335977</td>
+<td>1880.804478</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Note:</strong> Philadelphia also had the lowest average prices (in addition to the lowest growth in prices) since the pandemic started.</p>
+</section>
+<section id="bonus-a-matplotlib-preview" class="level4">
+<h4 class="anchored" data-anchor-id="bonus-a-matplotlib-preview">Bonus: a <code>matplotlib</code> preview</h4>
+<p>The week 2 lectures will dive into (probably too much) detail about <code>matplotlib</code> and data visualization in Python. For now, let’s do a quick and dirty plot for illustration purposes only. <em>The matplotlib details here aren’t important</em></p>
+<div class="cell" data-tags="[]" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The import statement matplotlib</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We’ll plot the ZORI/ZHVI values for each county from March 2020 through July 2023. One way to do this is to use the same <em>groupby</em> operation we used earlier.</p>
+<p>As shown below, if you iterate over the groupby object, you will get two things back each time:</p>
+<ol type="1">
+<li>The value of the thing you grouped over</li>
+<li>The dataframe holding the data for that group.</li>
+</ol>
+<p>We will use this trick to group by “RegionName” and when we iterate over the groups, we can easily plot the data for each group on the same axes. It will look like this:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over the data, grouped by county name</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> countyName, group_df <span class="kw">in</span> prices_philly_metro.groupby(<span class="st">"RegionName"</span>):</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make our plots, each time using group_df</span></span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here we go…plot the <em>ZORI values</em>.</p>
+<p>To better see the growth since March 2020, we will normalize the y-axis to 1 in March 2020:</p>
+<div class="cell" data-tags="[]" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure and axes</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over the data, grouped by county name</span></span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> countyName, group_df <span class="kw">in</span> prices_philly_metro.groupby(<span class="st">"RegionName"</span>):</span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Trim to where Date &gt; March 2020</span></span>
+<span id="cb92-8"><a href="#cb92-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sort by Date in ascending order</span></span>
+<span id="cb92-9"><a href="#cb92-9" aria-hidden="true" tabindex="-1"></a>    group_df <span class="op">=</span> group_df.sort_values(<span class="st">"Date"</span>).query(<span class="st">"Date &gt;= '2020-03-01'"</span>)</span>
+<span id="cb92-10"><a href="#cb92-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-11"><a href="#cb92-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Date vs. ZORI</span></span>
+<span id="cb92-12"><a href="#cb92-12" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> group_df[<span class="st">"Date"</span>]</span>
+<span id="cb92-13"><a href="#cb92-13" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> group_df[<span class="st">"ZORI"</span>]</span>
+<span id="cb92-14"><a href="#cb92-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb92-15"><a href="#cb92-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Trime</span></span>
+<span id="cb92-16"><a href="#cb92-16" aria-hidden="true" tabindex="-1"></a>    ax.plot(x, y <span class="op">/</span> y.iloc[<span class="dv">0</span>], label<span class="op">=</span>countyName)</span>
+<span id="cb92-17"><a href="#cb92-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-18"><a href="#cb92-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Format and add a legend</span></span>
+<span id="cb92-19"><a href="#cb92-19" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"ZORI Values, Normalized to 1 in March 2020"</span>)</span>
+<span id="cb92-20"><a href="#cb92-20" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="st">"2020-03-31"</span>, <span class="st">"2023-07-31"</span>])</span>
+<span id="cb92-21"><a href="#cb92-21" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">10</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="lecture-1B_files/figure-html/cell-67-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Plot the <em>ZHVI values</em>, normalized to 1 in March 2020:</p>
+<div class="cell" data-tags="[]" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure and axes</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over the data, grouped by county name</span></span>
+<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> countyName, group_df <span class="kw">in</span> prices_philly_metro.groupby(<span class="st">"RegionName"</span>):</span>
+<span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Trim to where Date &gt; March 2020</span></span>
+<span id="cb93-8"><a href="#cb93-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sort by Date in ascending order</span></span>
+<span id="cb93-9"><a href="#cb93-9" aria-hidden="true" tabindex="-1"></a>    group_df <span class="op">=</span> group_df.sort_values(<span class="st">"Date"</span>).query(<span class="st">"Date &gt;= '2020-03-01'"</span>)</span>
+<span id="cb93-10"><a href="#cb93-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-11"><a href="#cb93-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Date vs. ZHVI</span></span>
+<span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> group_df[<span class="st">"Date"</span>]</span>
+<span id="cb93-13"><a href="#cb93-13" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> group_df[<span class="st">"ZHVI"</span>]</span>
+<span id="cb93-14"><a href="#cb93-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb93-15"><a href="#cb93-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Trime</span></span>
+<span id="cb93-16"><a href="#cb93-16" aria-hidden="true" tabindex="-1"></a>    ax.plot(x, y <span class="op">/</span> y.iloc[<span class="dv">0</span>], label<span class="op">=</span>countyName)</span>
+<span id="cb93-17"><a href="#cb93-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-18"><a href="#cb93-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Format and add a legend</span></span>
+<span id="cb93-19"><a href="#cb93-19" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"ZHVI Values, Normalized to 1 in March 2020"</span>)</span>
+<span id="cb93-20"><a href="#cb93-20" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="st">"2020-03-31"</span>, <span class="st">"2023-07-31"</span>])</span>
+<span id="cb93-21"><a href="#cb93-21" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">10</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="lecture-1B_files/figure-html/cell-68-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><strong>Takeaway:</strong> You can clearly see that price growth in Philadelphia significantly lags the growth in its suburb counties.</p>
+</section>
+</section>
+</section>
+<section id="first-homework-assignment" class="level2">
+<h2 class="anchored" data-anchor-id="first-homework-assignment">First Homework Assignment</h2>
+<p>Available on GitHub:</p>
+<p>https://github.com/MUSA-550-Fall-2023/assignment-1</p>
+<p>Two parts:</p>
+<ol type="1">
+<li>Download and install Python locally on your computer. Instructions in the assignment README!</li>
+<li>Analyze Zillow ZHVI data by ZIP code in Philadelphia, submitting your Jupyter notebook.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Due date: Monday 9/19 by the start of class (7pm)</strong></p>
+</div>
+</div>
+</section>
+<section id="thats-it" class="level2">
+<h2 class="anchored" data-anchor-id="thats-it">That’s it!</h2>
+<ul>
+<li>Next week: Data Visualization Fundamentals</li>
+<li>Office hours:
+<ul>
+<li>Nick: Saturdays, 10AM-12PM</li>
+<li>Kristin: Tuesday/Thursday 11AM-12PM, remote via Zoom</li>
+<li>Sign up for 15-minute time slots on Canvas (Zoom info in calendar invite)</li>
+</ul></li>
+<li>Post questions on Piazza!</li>
+<li>Email questions/concerns to nhand@design.upenn.edu</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by <a href="https://www.nickhand.dev">Nick Hand</a>, Quarto layout adapted from <a href="https://github.com/andrewheiss/datavizs23.classes.andrewheiss.com">Andrew Heiss’s Data Visualization with R course</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-python" aria-label="python"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/MUSA-550-Fall-2023/musa-550-fall-2023.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>
