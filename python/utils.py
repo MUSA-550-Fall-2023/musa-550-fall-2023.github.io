@@ -3,6 +3,7 @@ import pandas as pd
 from pyprojroot.here import here
 from urllib.parse import urlencode
 import config
+import argparse
 
 
 def get_disabled_class_by_lecture(current_lecture, lecture_number):
@@ -83,3 +84,17 @@ def get_current_week():
     current_lecture = get_current_lecture()
     current_week = int(current_lecture[:-1])  # Drop the letter
     return current_week
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Get the Binder URL for the specified lecture."
+    )
+    parser.add_argument(
+        "week",
+        type=str,
+        help="The lecture number to get the Binder URL for.",
+    )
+    args = parser.parse_args()
+
+    print(get_binder_url(args.week))
