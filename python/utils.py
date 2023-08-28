@@ -5,28 +5,7 @@ from urllib.parse import urlencode
 import config
 import argparse
 
-
-def get_disabled_class_by_lecture(current_lecture, lecture_number):
-    """Get the disabled flag for each lecture."""
-
-    if current_lecture is None:
-        return "disabled"
-
-    # Get weeks from lecture numbers
-    week_number = int(lecture_number[:-1])
-    current_week = int(current_lecture[:-1])
-
-    disabled = ""
-    if week_number > current_week:
-        disabled = "disabled"
-    elif (
-        week_number == current_week
-        and lecture_number.endswith("B")
-        and current_lecture.endswith("A")
-    ):
-        disabled = "disabled"
-
-    return disabled
+DEFAULT_SECTION_NUMBER = "401"
 
 
 def get_binder_url(lecture_number):
@@ -36,7 +15,7 @@ def get_binder_url(lecture_number):
     ENV_REPO = f"{config.GITHUB_ORG}/python-environment"
 
     # The content for this week
-    week_number = int(lecture_number[:-1])
+    week_number = get_week_from_lecture_number(lecture_number)
     WEEK_REPO = f"https://github.com/{config.GITHUB_ORG}/week-{week_number}"
 
     # Filename
@@ -66,31 +45,38 @@ def load_variables():
     return yaml.load((root_dir / "_variables.yml").open("r"), yaml.Loader)
 
 
-def load_data(filename):
+def load_data(filename, dtypes={}):
     """Load data from CSV file in the data/ folder."""
 
     root_dir = here()
-    return pd.read_csv(root_dir / "data" / filename)
+    return pd.read_csv(root_dir / "data" / filename, dtype=dtypes)
 
 
-def get_current_lecture():
+def get_current_lecture(section_number=DEFAULT_SECTION_NUMBER):
     """Get the current lecture from project variables."""
 
     variables = load_variables()
-    current_lecture = variables["current_lecture"]
+    current_lecture = variables["current_lecture"][section_number]
     if current_lecture == "None":
         return None
     return current_lecture
 
 
-def get_current_week():
+def get_week_from_lecture_number(lecture_number):
+    """Return the week from the lecture number."""
+    return int(lecture_number.replace("A", "").replace("B", ""))  # Drop the letter
+
+
+def get_current_week(section_number=DEFAULT_SECTION_NUMBER):
     """Get the current week number from project variables."""
 
-    current_lecture = get_current_lecture()
+    # Get the current lecture
+    current_lecture = get_current_lecture(section_number)
     if current_lecture is None:
         return None
 
-    current_week = int(current_lecture[:-1])  # Drop the letter
+    # Get the matching week number
+    current_week = get_week_from_lecture_number(current_lecture)
     return current_week
 
 

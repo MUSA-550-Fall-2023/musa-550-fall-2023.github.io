@@ -1,4 +1,6 @@
-current_lecture: None
+current_lecture:
+  "401": "1A"
+  "402": "1"
 
 
 install:

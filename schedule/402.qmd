@@ -1,0 +1,26 @@
+---
+title: "Schedule: Section 402"
+sidebar: false
+toc: false
+page-layout: full
+execute: 
+  echo: false
+---
+
+::: {.callout-note} 
+The schedule is tentative and could change in the future.
+:::
+
+```{python}
+import sys
+from pyprojroot.here import here
+
+# Add python folder to path
+root_dir = here()
+sys.path.insert(1, str(root_dir / "python"))
+import schedule
+
+table = schedule.create_table('402')
+table
+```
+

@@ -16,18 +16,18 @@ The schedule is tentative and could change in the future.
 :::
 
 ```{python}
-import sys
-from pyprojroot.here import here
+# import sys
+# from pyprojroot.here import here
 
 
-# Add python folder to path
-root_dir = here()
-sys.path.insert(1, str(root_dir / "python"))
-import assignment
+# # Add python folder to path
+# root_dir = here()
+# sys.path.insert(1, str(root_dir / "python"))
+# import assignment
 
-# Create the schedule HTML
-table = assignment.create_schedule_table()
-table
+# # Create the schedule HTML
+# table = assignment.create_schedule_table()
+# table
 ```
 
 

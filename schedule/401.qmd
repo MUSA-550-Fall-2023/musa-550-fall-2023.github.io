@@ -1,5 +1,5 @@
 ---
-title: "Schedule"
+title: "Schedule: Section 401"
 sidebar: false
 toc: false
 page-layout: full
@@ -20,7 +20,7 @@ root_dir = here()
 sys.path.insert(1, str(root_dir / "python"))
 import schedule
 
-table = schedule.create_table()
+table = schedule.create_table('401')
 table
 ```
 

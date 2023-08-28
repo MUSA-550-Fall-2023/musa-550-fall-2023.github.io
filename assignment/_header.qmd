@@ -8,19 +8,19 @@ input_file <- knitr::current_input()
 ```
 
 ```{python}
-import sys
-from pyprojroot.here import here
+# import sys
+# from pyprojroot.here import here
 
 
-# Add python folder to path
-root_dir = here()
-sys.path.insert(1, str(root_dir / "python"))
-import assignment
+# # Add python folder to path
+# root_dir = here()
+# sys.path.insert(1, str(root_dir / "python"))
+# import assignment
 
-# Get the file slug
-slug = r.input_file.split(".")[0]  # Should be assignment-X
+# # Get the file slug
+# slug = r.input_file.split(".")[0]  # Should be assignment-X
 
-# Create the header HTML
-table = assignment.create_header(slug)
-table
+# # Create the header HTML
+# table = assignment.create_header(slug)
+# table
 ```

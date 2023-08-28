@@ -1,10 +1,12 @@
 import pandas as pd
-
 import utils, config, icons
 
 
-def _add_assignment_row(html, data, disabled, include_date=False):
+def _add_assignment_row(html, data, disabled, group_dates):
     """Add a row for an assignment."""
+
+    # Show the date?
+    show_date = data["date_formatted"] not in group_dates
 
     # Add row
     html.append("<tr>")
@@ -13,13 +15,19 @@ def _add_assignment_row(html, data, disabled, include_date=False):
     html.append("""<td class="col-week"></td>""")
 
     # Col #2: Date
-    if not include_date:
-        html.append("""<td class="col-lecture"></td>""")
-    else:
+    if show_date:
         html.append(
             f"""
             <td class="col-lecture">
                 <span class="content-class">{data["date_formatted"]}</span>
+            </td>
+            """
+        )
+    else:
+        html.append(
+            """
+            <td class="col-lecture">
+                <span class="content-class"></span>
             </td>
             """
         )
@@ -58,27 +66,36 @@ def _add_assignment_row(html, data, disabled, include_date=False):
     return html
 
 
-def _add_lecture_cells(html, data, assignments, lecture_number, current_lecture):
+def _add_lecture_row(html, data, lecture_number, group_dates, disabled):
     """Add cells for date, static slides, interactive slides."""
 
-    # Get week number
-    week_number = int(lecture_number[:-1])
+    # Show the date?
+    show_date = data["date_formatted"] not in group_dates
 
-    # Get the disabled class
-    disabled = utils.get_disabled_class_by_lecture(
-        lecture_number=lecture_number, current_lecture=current_lecture
-    )
+    # Get week number
+    week_number = utils.get_week_from_lecture_number(lecture_number)
+
+    # New lecture row
+    html.append("<tr class='lecture-row>")
 
     # Cell #1: empty
     html.append('<td class="col-week"></td>')
 
     # Cell #2: Formatted date
-    html.append(
-        f"""
-      <td class="col-lecture">
-        <span class="content-class">{data["date_formatted"]}</span>
-      </td>"""
-    )
+    if show_date:
+        html.append(
+            f"""
+            <td class="col-lecture">
+                <span class="content-class">{data["date_formatted"]}</span>
+            </td>"""
+        )
+    else:
+        html.append(
+            """
+            <td class="col-lecture">
+                <span class="content-class"></span>
+            </td>"""
+        )
 
     # Cell #3: Lecture number
     html.append(
@@ -124,48 +141,64 @@ def _add_lecture_cells(html, data, assignments, lecture_number, current_lecture)
     )
     html.append("</tr>")
 
-    # Check for assignments and add row for each task
-    hw = assignments.query(f"date_formatted == '{data['date_formatted']}'")
-    if len(hw):
-        for _, row in hw.iterrows():
-            html = _add_assignment_row(html, row, disabled, include_date=False)
-
     return html
 
 
-def _load_schedule_data():
-    """Load the formatted schedule data."""
+def _load_lecture_schedule(section_number):
+    """Load the formatted schedule data for lectures."""
 
     # Load the schedule data
-    dates = utils.load_data("schedule-dates.csv")
-    topics = utils.load_data("schedule-topics.csv")
-
-    # Merge and return
-    return (
-        dates.merge(topics, on="week")
-        .assign(
-            date=lambda df: pd.to_datetime(df.date),
-            date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
-        )
-        .sort_values("class_number", ascending=True)
+    dates = utils.load_data(
+        f"{section_number}/lecture-dates.csv", dtypes={"class_number": str, "week": int}
     )
 
+    # Merge and return
+    return dates.assign(
+        date=lambda df: pd.to_datetime(df.date),
+        date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
+    ).sort_values("class_number", ascending=True)
 
-def create_table():
-    """Create the schedule HTML table."""
 
-    # Get the schedule data
-    data = _load_schedule_data()
+def _load_assignment_schedule(section_number):
+    """Load the formatted schedule data for assignments."""
 
-    # Get info for the assignments
-    assignments = utils.load_data("assignment-schedule.csv").assign(
+    return utils.load_data(f"{section_number}/assignment-dates.csv").assign(
         date=lambda df: pd.to_datetime(df.date),
         date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
     )
 
+
+def create_table(section_number):
+    """Create the schedule HTML table."""
+
+    # Get the lecture schedule data
+    lectures = _load_lecture_schedule(section_number)
+
+    # Get info for the assignments
+    hws = _load_assignment_schedule(section_number)
+
+    # Combine the data
+    data = (
+        pd.concat([lectures.assign(order=1), hws.assign(order=2)], axis=0)
+        .sort_values(["date", "order"], ascending=True)
+        .assign(
+            week=lambda df: df.week.fillna(method="ffill").astype(int),
+            task=lambda df: df.task.fillna(""),
+        )
+    )
+
+    # Get the topics
+    topics = utils.load_data("week-topics.csv")
+    data = data.merge(topics, on="week")
+
     # Get current lecture/week
-    current_week = utils.get_current_week()
-    current_lecture = utils.get_current_lecture()
+    current_week = utils.get_current_week(section_number)
+    current_lecture = utils.get_current_lecture(section_number)
+
+    # Get latest date (beyond this is disabled)
+    latest_date = lectures.query(f"class_number == '{current_lecture}'").squeeze()[
+        "date"
+    ]
 
     # Initialize table
     table = []
@@ -212,45 +245,37 @@ def create_table():
         )
         table.append("</tr>")  # End week header row
 
-        # Add the info for A lecture
-        table.append("<tr>")
-        table = _add_lecture_cells(
-            html=table,
-            data=group.iloc[0],
-            assignments=assignments,
-            lecture_number=f"{week}A",
-            current_lecture=current_lecture,
-        )
+        # Dates in this group
+        group_dates = []
 
-        # Do the "B" lecture too
-        table.append('<tr class="lecture-row">')
-        table = _add_lecture_cells(
-            html=table,
-            data=group.iloc[1],
-            assignments=assignments,
-            lecture_number=f"{week}B",
-            current_lecture=current_lecture,
-        )
+        # Iterate over rows in group
+        for _, row in group.iterrows():
+            # Disabled?
+            disabled = "disabled" if row["date"] > latest_date else ""
 
-    # Add header row for final project
-    table.append(
-        """
-        <tr class="week-header-row">
-            <td class="col-week" colspan="6">
-                <span class="content-week">Finals period</span>
-            </td>
-        </tr>
-        """
-    )
+            # Add row for lecture (only assignments have a task)
+            if not row["task"]:
+                table = _add_lecture_row(
+                    html=table,
+                    data=row,
+                    lecture_number=row["class_number"],
+                    group_dates=group_dates,
+                    disabled=disabled,
+                )
+            # Add hw row
+            else:
+                table = _add_assignment_row(
+                    html=table,
+                    data=row,
+                    disabled=disabled,
+                    group_dates=group_dates,
+                )
 
-    # Add row for final project task
-    table = _add_assignment_row(
-        html=table,
-        data=assignments.query("slug == 'final-project'").squeeze(),
-        disabled="",
-        include_date=True,
-    )
+            # Track the dates
+            if row["date_formatted"] not in group_dates:
+                group_dates.append(row["date_formatted"])
 
+    # Close it out
     table += ["</tbody>", "</table>"]
     table = "\n".join(table)
 

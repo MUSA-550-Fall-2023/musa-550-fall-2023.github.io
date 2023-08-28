@@ -4,7 +4,7 @@ from IPython.core.display import HTML
 import utils, config
 
 
-def create_header(slug):
+def create_header(slug, section_number=utils.DEFAULT_SECTION_NUMBER):
     """
     Create the HTML for the header on each weekly content page.
 
@@ -21,7 +21,7 @@ def create_header(slug):
     current_lecture = utils.get_current_lecture()
 
     # Load the schedule dates
-    data = utils.load_data("schedule-dates.csv").assign(
+    data = utils.load_data(f"{section_number}/lecture-dates.csv").assign(
         date=lambda df: pd.to_datetime(df.date)
     )
 
