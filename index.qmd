@@ -19,26 +19,45 @@ course-logo: /files/course-icon.png
 :::: {.grid .course-details}
 
 ::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
-### Instructor
 
-- {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
-- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
-- {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
+### Instructors
+
+
+#### Section 401
+
+- {{< fa user >}} &nbsp; [{{< var instructors.nick.name >}}]({{< var instructors.nick.url >}})
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructors.nick.email >}}">{{< var instructors.nick.email >}}</a>
+- {{< fa brands twitter >}} &nbsp; [{{< var instructors.nick.twitter >}}](https://www.twitter.com/{{< var instructors.nick.twitter >}})
+
+#### Section 402
+
+- {{< fa user >}} &nbsp; {{< var instructors.eric.name >}}
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructors.eric.email >}}">{{< var instructors.eric.email >}}</a>
+<!---
+ - {{< fa brands twitter >}} &nbsp; [{{< var instructors.eric.twitter >}}](https://www.twitter.com/{{< var instructors.eric.twitter >}}) 
+--->
 :::
 
 ::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
 ### Course details
 
-- {{< fa calendar >}} &nbsp; {{< var course.days >}}
-- {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
-- {{< fa clock >}} &nbsp; {{< var course.time >}}
-- {{< fa location-dot >}} &nbsp; {{< var course.location >}}
+#### Section 401
+
+- {{< fa calendar >}} &nbsp; {{< var sections.nick.days >}}
+- {{< fa clock >}} &nbsp; {{< var sections.nick.time >}}
+- {{< fa location-dot >}} &nbsp; {{< var sections.nick.location >}}
+
+#### Section 402
+
+- {{< fa calendar >}} &nbsp; {{< var sections.eric.days >}}
+- {{< fa clock >}} &nbsp; {{< var sections.eric.time >}}
+- {{< fa location-dot >}} &nbsp; {{< var sections.eric.location >}}
 :::
 
 ::: {.g-col-12 .g-col-md-4 .contact-policy}
-### Contacting me
+### Contacting us
 
-{{< var instructor.contact_policy >}}
+{{< var course.contact_policy >}}
 :::
 
 ::::

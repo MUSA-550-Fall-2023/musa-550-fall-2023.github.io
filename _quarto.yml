@@ -38,9 +38,9 @@ website:
         url: https://edstem.org/us/courses/42616/discussion/
   page-footer:
     left: 'Content {{< fa brands creative-commons >}} {{< var course.copyright_year
-      >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}), Quarto
-      layout adapted from [Andrew Heiss''s Data Visualization with R course](https://github.com/andrewheiss/datavizs23.classes.andrewheiss.com)
-      <br>
+      >}} by [{{< var instructors.nick.name_no_title >}}]({{< var instructors.nick.url
+      >}}), Quarto layout adapted from [Andrew Heiss''s Data Visualization with R
+      course](https://github.com/andrewheiss/datavizs23.classes.andrewheiss.com) <br>
 
       All content licensed under a {{< fa brands creative-commons >}}
 

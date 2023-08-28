@@ -8,29 +8,45 @@ install:
 
 author: Nick Hand
 
-instructor:
-  name: Dr. Nick Hand
-  name_no_title: Nick Hand
-  email: nhand@design.upenn.edu
-  url: "https://www.nickhand.dev"
-  twitter: nicholashand
-  github: nickhand
-  contact_policy: >-
-    E-mail is the best way to get in contact with me. I will try to respond to all course-related e-mails within 24 hours, although I *do* have a tiny human 👶 at home, so it may be a bit longer on occassion. Please be patient!
-
+instructors:
+  nick:
+    name: Dr. Nick Hand
+    name_no_title: Nick Hand
+    email: nhand@design.upenn.edu
+    url: "https://www.nickhand.dev"
+    twitter: nicholashand
+    github: nickhand
+    
+  eric: 
+    name: Dr. Eric Delmelle
+    name_no_title: Eric Delmelle
+    email: ericdel@design.upenn.edu
+    url: 
+    twitter: 
+    github: ericdelmelle
+    contact_policy: >-
+      E-mail is the best way to get in contact with me. 
+  
+sections:
+  nick:
+    days: "Mondays and Wednesdays"
+    time: "8:30AM-10:00AM"
+    location: "Williams Hall 202"
+  eric:
+    days: "Thursdays"
+    time: "1:45PM-4:45PM"
+    location: "Meyerson Hall B2"
 
 course:
   number: "MUSA 550"
   semester: "Fall 2023"
-  days: "Mondays and Wednesdays"
-  time: "8:30AM-10:00AM"
-  location: "Williams Hall 202"
-  dates: "August 29-December 21, 2023"
   github: "https://www.github.com/MUSA-550-Fall-2023/musa-550-fall-2023.github.io"
   url: "https://musa-550-fall-2023.github.io"
   copyright_year: "2023"
   github_org: https://www.github.com/MUSA-550-Fall-2023
   canvas: https://canvas.upenn.edu/courses/1740535
+  contact_policy: >-
+    E-mail is the best way to get in contact with us. We will try to respond to all course-related e-mails within 24 hours, although we *do* have a few tiny humans 👶 at home, so it may be a bit longer on occassion. Please be patient!
 
 university:
   name: University of Pennsylvania

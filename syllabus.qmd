@@ -37,29 +37,61 @@ sections:
 
 ## Logistics
 
+There are two sections for this course, 401 and 402. Info for these
+sections is below.
+
 ### Lecture
 
 The course will be conducted in weekly sessions devoted to lectures, interactive
 demonstrations, and in-class labs.
 
+#### Section 401
+
 - Monday & Wednesday, 8:30 AM to 10:00 AM
 - [Williams Hall, Room 202](https://www.isc-cts.upenn.edu/finder/classroominfo.asp?id=WILL-202)
 
+#### Section 402
+
+- Thursday, 1:45 PM to 4:45 PM
+- [Meyerson Hall, Room B2](https://www.isc-cts.upenn.edu/finder/classroominfo.asp?id=MEYH-B2)
+
+
 ### Contact Info
+
+#### Section 401
 
 - **Instructor**: Nick Hand, [nhand@design.upenn.edu](mailto:nhand@design.upenn.edu)
 - **Teaching Assistant**: Teresa Chang, [thchang@design.upenn.edu](mailto:thchang@design.upenn.edu)
+
+#### Section 402
+
+- **Instructor**: Eric Delmelle, [ericdel@design.upenn.edu](mailto:ericdel@design.upenn.edu)
+- **Teaching Assistant**: Jinze Wang, [wangjz@seas.upenn.edu](mailto:wangjz@seas.upenn.edu)
+
 
 ### Office Hours
 
 Office hours will be by appointment via Zoom — you should be able to
 sign up for 1 (or more) 15-minute time slot via the Canvas calendar.
 
+
+#### Section 401
+
 **Nick:**
 
 TBD
 
 **Teresa:**
+
+TBD
+
+#### Section 402
+
+**Eric:**
+
+TBD
+
+**Jinze:**
 
 TBD
 
