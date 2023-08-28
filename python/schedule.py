@@ -1,6 +1,6 @@
 import pandas as pd
 import utils, config, icons
-from datetime import date
+from datetime import datetime
 
 
 def _add_assignment_row(html, data, disabled, group_dates):
@@ -201,7 +201,7 @@ def create_table(section_number):
         "date"
     ]
     if len(latest_date) == 0:
-        latest_date = date.today()
+        latest_date = datetime.today()
 
     # Initialize table
     table = []
