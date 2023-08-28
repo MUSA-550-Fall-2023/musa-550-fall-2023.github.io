@@ -1,5 +1,6 @@
 import pandas as pd
 import utils, config, icons
+from datetime import date
 
 
 def _add_assignment_row(html, data, disabled, group_dates):
@@ -199,6 +200,8 @@ def create_table(section_number):
     latest_date = lectures.query(f"class_number == '{current_lecture}'").squeeze()[
         "date"
     ]
+    if len(latest_date) == 0:
+        latest_date = date.today()
 
     # Initialize table
     table = []
