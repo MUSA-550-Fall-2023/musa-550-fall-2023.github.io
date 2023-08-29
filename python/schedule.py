@@ -163,9 +163,13 @@ def _load_lecture_schedule(section_number):
 def _load_assignment_schedule(section_number):
     """Load the formatted schedule data for assignments."""
 
-    return utils.load_data(f"{section_number}/assignment-dates.csv").assign(
+    schedule = utils.load_data(f"{section_number}/assignment-dates.csv").assign(
         date=lambda df: pd.to_datetime(df.date),
         date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
+    )
+
+    return schedule.merge(
+        utils.load_data(f"{section_number}/assignment-details.csv"), on="slug"
     )
 
 
@@ -197,7 +201,7 @@ def create_table(section_number):
 
     # Get the latest_date
     if current_week is not None:
-        latest_date = lectures.query(f"week == '{current_week}'")["date"].max()
+        latest_date = lectures.query(f"week == {current_week}")["date"].dropna().max()
     else:
         latest_date = datetime.today()
 
@@ -251,9 +255,6 @@ def create_table(section_number):
 
         # Iterate over rows in group
         for _, row in group.iterrows():
-            # Disabled?
-            disabled = "disabled" if row["date"] > latest_date else ""
-
             # Add row for lecture (only assignments have a task)
             if not row["task"]:
                 table = _add_lecture_row(
@@ -261,14 +262,14 @@ def create_table(section_number):
                     data=row,
                     lecture_number=row["class_number"],
                     group_dates=group_dates,
-                    disabled=disabled,
+                    disabled="disabled" if row["date"] > latest_date else "",
                 )
             # Add hw row
             else:
                 table = _add_assignment_row(
                     html=table,
                     data=row,
-                    disabled=disabled,
+                    disabled="" if row["live"] else "disabled",
                     group_dates=group_dates,
                 )
 

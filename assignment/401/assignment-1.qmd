@@ -6,8 +6,5 @@ execute:
 
 {{< include ../shared/_header.qmd >}}
 
-<!---
- {{< include ../shared/_assignment-1.qmd >}} 
---->
 
 *Check back later for details!*

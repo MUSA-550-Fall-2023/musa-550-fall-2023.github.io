@@ -132,5 +132,4 @@ def create_header(slug, section_number):
     )
 
     html.append("</div>")
-
     return "\n".join(html)
