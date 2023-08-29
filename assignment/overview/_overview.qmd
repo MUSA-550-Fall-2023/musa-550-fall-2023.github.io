@@ -1,0 +1,71 @@
+
+There are six homework assignments due throughout the semester and one 
+final project that is due at the end of the finals period. For grading purposes, 
+the assignment with the lowest grade will not count towards your final grade.
+
+
+## Schedule
+
+::: {.callout-note} 
+The schedule is tentative and could change in the future.
+:::
+
+```{python}
+import sys
+from pyprojroot.here import here
+
+# NOTE:
+# "section_number" needs to be defined as parameter
+
+# Add python folder to path
+root_dir = here()
+sys.path.insert(1, str(root_dir / "python"))
+import assignment
+
+# Create the schedule HTML
+table = assignment.create_schedule_table(section_number)
+table
+```
+
+
+## Guidelines
+
+We will be using Jupyter notebook files for assignments. Below are a few
+guidelines to make this process as smooth as possible. 
+
+
+**1. Notebook files should be a polished, finished product.**
+
+   - Please be sure that your name (as well as the names of anyone you worked with) is listed at the top of the notebook file you submit. 
+   - Please remove any extra or unneccesary code.
+   - When possible, use markdown cells for comments or add comments directly to your Python code to help explain the steps in your analysis.
+   - Section headers in markdown can also be helpful to mark different sections of the analysis.
+
+
+**2. Notebook files should be reproducible and executable.**
+
+  - Ensure that your assignments can be executed from top to bottom and produce the desired result. This is how our course TAs will grade each assignment.
+  - If your analysis loads a dataset, make sure you either A) Add the dataset to the repository, or B) document the original source of the data so it can be downloaded during grading.
+  - Make sure you are using relative file paths when loading your data so that the TA can download your repository and the file structure will still work. For more information, check out [the guide on file paths](/resource/file-paths.qmd).
+
+
+## Submission
+
+We'll be using GitHub Classroom to submit homework assignments. For each 
+assignment, be on the look out for the submission url, which will always
+start with the following: `https://classroom.github.com/`.
+
+When you click on this submission link for each assignment, you will be prompted
+to log in to GitHub, and then a unique, private repository will be created 
+on the course's GitHub page. You will create a new private repository for 
+each assignment. **Only you and the instructors will be able 
+to view these repositories.**
+
+We will be using Jupyter notebook files for assignments, and you should 
+add your notebook to your newly created assignment repository before the deadline.
+You can add files to the repository through the browser (github.com) interface 
+or using the command line locally on your machine. For more help, see
+[these instructions](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository).
+
+
+
