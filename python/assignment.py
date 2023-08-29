@@ -4,7 +4,7 @@ import numpy as np
 import utils, config, icons
 
 
-def create_schedule_table():
+def create_schedule_table(section_number):
     """Create the HTML for the summary assignment table."""
 
     # Initialize the table
@@ -35,7 +35,7 @@ def create_schedule_table():
     table += ["</tr>", "</thead>"]
 
     # Load the data
-    assignments = utils.load_data("assignment-schedule.csv").assign(
+    assignments = utils.load_data(f"{section_number}/assignment-dates.csv").assign(
         date=lambda df: pd.to_datetime(df.date),
         date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
     )

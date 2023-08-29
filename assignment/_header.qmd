@@ -1,7 +1,3 @@
----
-execute: 
-  echo: false
----
 
 ```{r}
 input_file <- knitr::current_input()

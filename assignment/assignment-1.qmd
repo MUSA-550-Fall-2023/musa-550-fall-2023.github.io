@@ -5,7 +5,7 @@ execute:
 ---
 
 {{< include _header.qmd >}}
-go
+
 
 This week's assignment will be broken into two parts:
 

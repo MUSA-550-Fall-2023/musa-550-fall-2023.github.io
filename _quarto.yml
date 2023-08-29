@@ -28,8 +28,12 @@ website:
       text: Schedule
     # - file: content/index.qmd
     #   text: Content
-    # - file: assignment/index.qmd
-    #   text: Assignments
+    - menu:
+      - file: assignment/overview/401.qmd
+        text: Section 401
+      - file: assignment/overview/402.qmd
+        text: Section 402
+      text: Assignments
     - file: resource/index.qmd
       text: Resources
     tools:
