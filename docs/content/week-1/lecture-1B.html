@@ -193,41 +193,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#today" id="toc-today" class="nav-link active" data-scroll-target="#today">Today</a></li>
-  <li><a href="#reminder-the-weekly-workflow" id="toc-reminder-the-weekly-workflow" class="nav-link" data-scroll-target="#reminder-the-weekly-workflow">Reminder: The weekly workflow</a></li>
-  <li><a href="#python-data-analysis-the-pandas-package" id="toc-python-data-analysis-the-pandas-package" class="nav-link" data-scroll-target="#python-data-analysis-the-pandas-package">Python Data Analysis: the <em>pandas</em> package</a>
-  <ul class="collapse">
-  <li><a href="#the-old-logo" id="toc-the-old-logo" class="nav-link" data-scroll-target="#the-old-logo">The old logo</a></li>
-  <li><a href="#the-new-less-fun-logo" id="toc-the-new-less-fun-logo" class="nav-link" data-scroll-target="#the-new-less-fun-logo">The new, less fun logo</a></li>
-  </ul></li>
-  <li><a href="#basic-pandas-concepts" id="toc-basic-pandas-concepts" class="nav-link" data-scroll-target="#basic-pandas-concepts">Basic <em>pandas</em> concepts</a>
-  <ul class="collapse">
-  <li><a href="#accessing-data" id="toc-accessing-data" class="nav-link" data-scroll-target="#accessing-data">1. Accessing data</a></li>
-  <li><a href="#manipulating-data" id="toc-manipulating-data" class="nav-link" data-scroll-target="#manipulating-data">2. Manipulating data</a></li>
-  <li><a href="#applying-a-function" id="toc-applying-a-function" class="nav-link" data-scroll-target="#applying-a-function">3. Applying a function</a></li>
-  <li><a href="#data-selection" id="toc-data-selection" class="nav-link" data-scroll-target="#data-selection">4. Data selection</a></li>
-  <li><a href="#need-more-help" id="toc-need-more-help" class="nav-link" data-scroll-target="#need-more-help">Need more help?</a></li>
-  </ul></li>
-  <li><a href="#a-more-interesting-example-the-donut-effect" id="toc-a-more-interesting-example-the-donut-effect" class="nav-link" data-scroll-target="#a-more-interesting-example-the-donut-effect">A more interesting example: The Donut Effect</a>
-  <ul class="collapse">
-  <li><a href="#population-change" id="toc-population-change" class="nav-link" data-scroll-target="#population-change">1. Population change</a></li>
-  <li><a href="#home-rental-prices" id="toc-home-rental-prices" class="nav-link" data-scroll-target="#home-rental-prices">2. Home &amp; rental prices</a></li>
-  </ul></li>
-  <li><a href="#first-homework-assignment" id="toc-first-homework-assignment" class="nav-link" data-scroll-target="#first-homework-assignment">First Homework Assignment</a></li>
-  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -246,7 +217,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>toc: false page-layout: full</p>
 <ul>
 <li>Section 401</li>
 <li>9/6/2023</li>
@@ -2163,7 +2133,7 @@ Tip
 <p>Imagine you have 6 rows of data (each row is a unique county) with 10 columns of home values (each column is a different month). That is wide data and is the format usually seen in spreadsheets or tables in a report.</p>
 <p>If you <code>melt()</code> that wide data, you would get a table with 60 rows and 3 columns. Each row would contain the county name, the month, and the home value that county and month. This tidy-formatted data contains the same info as the wide data, but in a different form.</p>
 <p><strong>This animation shows the transformation from wide to long / long to wide. You can ignore gather() and spread() - those are the R versions of the pandas functions.</strong></p>
-<p><img src="lecture-1B_files/figure-html/c5e1ac86-1-tidyr-spread-gather.gif" class="img-fluid"></p>
+<p><img src="lecture-1B_files/figure-html/fc6e980e-1-tidyr-spread-gather.gif" class="img-fluid"></p>
 <p>The syntax for <code>pd.melt()</code>:</p>
 <ul>
 <li>“id_vars”: A list of column names that are the identifier variables, the fields that uniquely identify each observation.</li>
