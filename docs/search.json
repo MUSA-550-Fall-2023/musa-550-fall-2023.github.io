@@ -186,7 +186,7 @@
     "href": "content/week-1/lecture-1A.html",
     "title": "Welcome to MUSA 550:Geospatial Data Science in Python",
     "section": "",
-    "text": "Section 401\nAug. 30, 2023"
+    "text": "toc: false page-layout: full"
   },
   {
     "objectID": "content/week-1/lecture-1A.html#today",
@@ -410,7 +410,7 @@
     "href": "content/week-1/lecture-1B.html",
     "title": "Week 1B: Exploratory Data Science in Python",
     "section": "",
-    "text": "Section 401\n9/6/2023"
+    "text": "toc: false page-layout: full"
   },
   {
     "objectID": "content/week-1/lecture-1B.html#today",
