@@ -29,9 +29,11 @@ website:
     - file: content/index.qmd
       text: Content
     - menu:
-      - file: assignment/401/overview.qmd
+      - file: assignment/overview.qmd
+        text: Overview
+      - file: assignment/401/schedule.qmd
         text: Section 401
-      - file: assignment/402/overview.qmd
+      - file: assignment/402/schedule.qmd
         text: Section 402
       text: Assignments
     - file: resource/index.qmd
@@ -100,8 +102,8 @@ website:
       section: Cheatsheets
     title: Resources
   - contents:
-    - file: assignment/401/overview.qmd
-      text: Overview
+    - file: assignment/401/schedule.qmd
+      text: Schedule
     - file: assignment/401/assignment-1.qmd
       text: Assignment 1
     - file: assignment/401/assignment-2.qmd
@@ -120,8 +122,8 @@ website:
       text: Final Project
     title: Assignments
   - contents:
-    - file: assignment/402/overview.qmd
-      text: Overview
+    - file: assignment/402/schedule.qmd
+      text: Schedule
     - file: assignment/402/assignment-1.qmd
       text: Assignment 1
     - file: assignment/402/assignment-2.qmd

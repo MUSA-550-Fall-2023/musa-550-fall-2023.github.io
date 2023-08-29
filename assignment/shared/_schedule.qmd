@@ -1,0 +1,40 @@
+
+There are six homework assignments due throughout the semester and one 
+final project that is due at the end of the finals period. For grading purposes, 
+the assignment with the lowest grade will not count towards your final grade.
+
+
+## Schedule
+
+::: {.callout-note} 
+The schedule is tentative and could change in the future.
+:::
+
+
+```{r}
+input_file <- knitr::current_input(dir = TRUE)
+```
+
+```{python, results='asis'}
+import sys
+from pyprojroot.here import here
+from IPython.display import HTML
+
+# Path
+path = r.input_file
+
+# Get section number from file path
+*_, section_number, _ = path.split('/')
+
+# Add python folder to path
+root_dir = here()
+sys.path.insert(1, str(root_dir / "python"))
+import assignment
+
+# Create the schedule HTML
+table = assignment.create_schedule_table(section_number)
+
+print(table)
+```
+
+

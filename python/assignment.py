@@ -133,10 +133,4 @@ def create_header(slug, section_number):
 
     html.append("</div>")
 
-    # Check current date
-    if not assignments["live"]:
-        html.append(
-            """<div class="assignment-check-back">Assignment details coming soon!</div>"""
-        )
-
     return "\n".join(html)
