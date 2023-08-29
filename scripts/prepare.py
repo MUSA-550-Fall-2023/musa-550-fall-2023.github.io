@@ -13,30 +13,25 @@ config = yaml.load(config_path.open("r"), yaml.Loader)
 
 # Load variables
 variables = yaml.load((root_dir / "_variables.yml").open("r"), yaml.Loader)
-current_lecture = variables["current_lecture"]["401"]
-if current_lecture == "None":
+
+# Get the current week
+current_week = variables["current_week"]
+if current_week == "None":
     current_week = 0
 else:
-    current_week = int(current_lecture[:-1])
+    current_week = int(current_week)
 
 # Load the schedule data
-dates = pd.read_csv(root_dir / "data" / "401" / "lecture-dates.csv")
-topics = pd.read_csv(root_dir / "data" / "week-topics.csv")
+topics = pd.read_csv(root_dir / "data" / "week-topics.csv").sort_values(
+    "week", ascending=False
+)
 
-# Merge
-data = dates.merge(topics, on="week").sort_values("class_number", ascending=True)
 
 # Calculate the contents
 contents = ["content/index.qmd"]
-for i, r in data.drop_duplicates(subset=["week"]).iterrows():
+for i, r in topics.iterrows():
     # Only show content for weeks we've posted
     if r["week"] > current_week:
-        continue
-    elif (
-        r["week"] == current_week
-        and r["class_number"].endswith("B")
-        and current_lecture.endswith("A")
-    ):
         continue
 
     # Add the week

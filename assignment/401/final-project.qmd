@@ -1,0 +1,10 @@
+---
+title: "Final Project Proposal"
+execute: 
+  echo: false
+---
+
+{{< include ../shared/_header.qmd >}}
+
+{{< include ../shared/_final-project.qmd >}}
+

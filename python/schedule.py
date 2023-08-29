@@ -192,15 +192,13 @@ def create_table(section_number):
     topics = utils.load_data("week-topics.csv")
     data = data.merge(topics, on="week")
 
-    # Get current lecture/week
-    current_week = utils.get_current_week(section_number)
-    current_lecture = utils.get_current_lecture(section_number)
+    # Get current week
+    current_week = utils.get_current_week()
 
-    # Get latest date (beyond this is disabled)
-    latest_date = lectures.query(f"class_number == '{current_lecture}'").squeeze()[
-        "date"
-    ]
-    if len(latest_date) == 0:
+    # Get the latest_date
+    if current_week is not None:
+        latest_date = lectures.query(f"week == '{current_week}'")["date"].max()
+    else:
         latest_date = datetime.today()
 
     # Initialize table

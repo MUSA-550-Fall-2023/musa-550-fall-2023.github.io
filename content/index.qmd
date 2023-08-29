@@ -3,7 +3,7 @@ title: "Weekly Course Content"
 toc: false
 ---
 
-As detailed on the [schedule page](../schedule.qmd), the course will be broken up into 14 weeks of content, and each week will 
+As detailed on the schedule page, the course will be broken up into 14 weeks of content, and each week will 
 have two lectures (cleverly labeled "A" and "B") that cover that week's unique 
 topic. Each week will have a recommended set of readings that will help reinforce
 the content. As we progress through the semester, you will be able 

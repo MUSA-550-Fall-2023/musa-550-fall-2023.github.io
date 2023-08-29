@@ -1,0 +1,8 @@
+---
+title: "HW #6"
+execute: 
+  echo: false
+---
+
+{{< include ../shared/_header.qmd >}}
+

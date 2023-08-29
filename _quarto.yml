@@ -7,7 +7,7 @@ format:
     toc: true
 project:
   output-dir: docs
-  # pre-render: scripts/prepare.py
+  pre-render: scripts/prepare.py
   preview:
     port: 3333
   resources:
@@ -26,12 +26,12 @@ website:
       - file: schedule/402.qmd
         text: Section 402
       text: Schedule
-    # - file: content/index.qmd
-    #   text: Content
+    - file: content/index.qmd
+      text: Content
     - menu:
-      - file: assignment/overview/401.qmd
+      - file: assignment/401/overview.qmd
         text: Section 401
-      - file: assignment/overview/402.qmd
+      - file: assignment/402/overview.qmd
         text: Section 402
       text: Assignments
     - file: resource/index.qmd
@@ -99,24 +99,44 @@ website:
         text: Seaborn
       section: Cheatsheets
     title: Resources
-  # - contents:
-  #   - file: assignment/index.qmd
-  #     text: Overview
-  #   - file: assignment/assignment-1.qmd
-  #     text: Assignment 1
-  #   - file: assignment/assignment-2.qmd
-  #     text: Assignment 2
-  #   - file: assignment/assignment-3.qmd
-  #     text: Assignment 3
-  #   - file: assignment/assignment-4.qmd
-  #     text: Assignment 4
-  #   - file: assignment/assignment-5.qmd
-  #     text: Assignment 5
-  #   - file: assignment/assignment-6.qmd
-  #     text: Assignment 6
-  #   - file: assignment/final-project-proposal.qmd
-  #     text: Final project proposal
-  #   - file: assignment/final-project.qmd
-  #     text: Final project
-  #   title: Assignments
+  - contents:
+    - file: assignment/401/overview.qmd
+      text: Overview
+    - file: assignment/401/assignment-1.qmd
+      text: Assignment 1
+    - file: assignment/401/assignment-2.qmd
+      text: Assignment 2
+    - file: assignment/401/assignment-3.qmd
+      text: Assignment 3
+    - file: assignment/401/assignment-4.qmd
+      text: Assignment 4
+    - file: assignment/401/assignment-5.qmd
+      text: Assignment 5
+    - file: assignment/401/assignment-6.qmd
+      text: Assignment 6
+    - file: assignment/401/final-project-proposal.qmd
+      text: Final Project Proposal
+    - file: assignment/401/final-project.qmd
+      text: Final Project
+    title: Assignments
+  - contents:
+    - file: assignment/402/overview.qmd
+      text: Overview
+    - file: assignment/402/assignment-1.qmd
+      text: Assignment 1
+    - file: assignment/402/assignment-2.qmd
+      text: Assignment 2
+    - file: assignment/402/assignment-3.qmd
+      text: Assignment 3
+    - file: assignment/402/assignment-4.qmd
+      text: Assignment 4
+    - file: assignment/402/assignment-5.qmd
+      text: Assignment 5
+    - file: assignment/402/assignment-6.qmd
+      text: Assignment 6
+    - file: assignment/402/final-project-proposal.qmd
+      text: Final Project Proposal
+    - file: assignment/402/final-project.qmd
+      text: Final Project
+    title: Assignments
   title: Geospatial Data Science in Python

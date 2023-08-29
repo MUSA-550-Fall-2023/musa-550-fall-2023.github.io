@@ -1,0 +1,26 @@
+
+```{r}
+input_file <- knitr::current_input(dir = TRUE)
+```
+
+```{python, results='asis'}
+import sys
+from pyprojroot.here import here
+
+# Path
+path = r.input_file
+
+# Get section number and slug
+*_, section_number, filename = path.split('/')
+slug = filename.split(".")[0] # Should be assignment-X
+
+# Add python folder to path
+root_dir = here()
+sys.path.insert(1, str(root_dir / "python"))
+import assignment
+
+# Create the header HTML
+html = assignment.create_header(slug, section_number)
+
+print(html)
+```

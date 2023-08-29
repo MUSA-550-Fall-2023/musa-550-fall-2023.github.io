@@ -5,8 +5,6 @@ from urllib.parse import urlencode
 import config
 import argparse
 
-DEFAULT_SECTION_NUMBER = "401"
-
 
 def get_binder_url(lecture_number):
     """Get the Binder url for a lecture."""
@@ -52,31 +50,21 @@ def load_data(filename, dtypes={}):
     return pd.read_csv(root_dir / "data" / filename, dtype=dtypes)
 
 
-def get_current_lecture(section_number=DEFAULT_SECTION_NUMBER):
-    """Get the current lecture from project variables."""
-
-    variables = load_variables()
-    current_lecture = variables["current_lecture"][section_number]
-    if current_lecture == "None":
-        return None
-    return current_lecture
-
-
 def get_week_from_lecture_number(lecture_number):
     """Return the week from the lecture number."""
-    return int(lecture_number.replace("A", "").replace("B", ""))  # Drop the letter
+    return int(lecture_number[:-1])  # Drop the A/B letter
 
 
-def get_current_week(section_number=DEFAULT_SECTION_NUMBER):
+def get_current_week():
     """Get the current week number from project variables."""
 
-    # Get the current lecture
-    current_lecture = get_current_lecture(section_number)
-    if current_lecture is None:
-        return None
+    # Load the variables
+    variables = load_variables()
+    current_week = variables["current_week"]
 
-    # Get the matching week number
-    current_week = get_week_from_lecture_number(current_lecture)
+    # Check for None
+    if current_week == "None":
+        return None
     return current_week
 
 

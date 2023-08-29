@@ -1,7 +1,0 @@
----
-title: "Final Project Proposal"
-execute: 
-  echo: false
----
-
-{{< include _header.qmd >}}

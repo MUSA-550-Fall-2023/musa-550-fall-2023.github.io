@@ -1,6 +1,4 @@
 import pandas as pd
-from IPython.core.display import HTML
-import numpy as np
 import utils, config, icons
 
 
@@ -69,12 +67,12 @@ def create_schedule_table(section_number):
     return table
 
 
-def create_header(slug):
+def create_header(slug, section_number):
     """Create the HTML for the header on the assignment page."""
 
     # Assignments: live/classroom links
     assignments = (
-        utils.load_data("assignments.csv")
+        utils.load_data(f"{section_number}/assignment-details.csv")
         .query(f"slug == '{slug}'")
         .squeeze()
         .fillna("")
@@ -82,7 +80,7 @@ def create_header(slug):
 
     # Load the data and trim by slug
     schedule = (
-        utils.load_data("assignment-schedule.csv")
+        utils.load_data(f"{section_number}/assignment-dates.csv")
         .assign(
             date=lambda df: pd.to_datetime(df.date),
             date_formatted=lambda df: df.date.dt.strftime("%A, %B %-d"),
@@ -107,27 +105,12 @@ def create_header(slug):
         if len(df):
             if task == "due":
                 text = f"Due on {df['date_formatted']} at 11:59 PM"
-                icon = f"""
-                        <span class="assignment-icon-due">
-                            {icons.get_hw_due(sizing="fa-sm")}
-                        </span>
-                        """
+                icon = f"""<span class="assignment-icon-due">{icons.get_hw_due(sizing="fa-sm")}</span>"""
             else:
                 text = f"Assigned on {df['date_formatted']}"
-                icon = f"""
-                        <span class="assignment-icon-assigned">
-                            {icons.get_hw_assigned(sizing="fa-sm")}
-                        </span>
-                        """
+                icon = f"""<span class="assignment-icon-assigned">{icons.get_hw_assigned(sizing="fa-sm")}</span>"""
 
-            html.append(
-                f"""
-                        <div>
-                            {icon}
-                        <span>{text}</span>
-                        </div>"""
-            )
-
+            html.append(f"""<div>{icon}<span>{text}</span></div>""")
     html.append("</div>")
 
     # Now do the github links
@@ -136,16 +119,7 @@ def create_header(slug):
     # Do the Github repo
     url = f"https://github.com/{config.GITHUB_ORG}/{slug}"
     html.append(
-        f"""
-    <div class="assignment-page-repo">
-        <i class="fa-brands fa-github fa-sm"></i>
-        &nbsp;
-        <span>View materials:</span>
-        &nbsp;
-        <a class="{disabled}" href="{url}">
-            {config.GITHUB_ORG}/{slug}
-        </a>
-    </div>"""
+        f"""<div class="assignment-page-repo"><i class="fa-brands fa-github fa-sm"></i>&nbsp;<span>View materials:</span>&nbsp;<a class="{disabled}" href="{url}">{config.GITHUB_ORG}/{slug}</a></div>"""
     )
 
     # Get the classroom link
@@ -154,16 +128,7 @@ def create_header(slug):
         disabled = "disabled"
 
     html.append(
-        f"""
-    <div class="assignment-page-repo">
-        <i class="fa-brands fa-github fa-sm"></i>
-        &nbsp;
-        <span>Submission link:</span>
-        &nbsp;
-        <a class="{disabled}" href="{classroom_link}">
-            GitHub classroom
-        </a>
-    </div>"""
+        f"""<div class="assignment-page-repo"><i class="fa-brands fa-github fa-sm"></i>&nbsp;<span>Submission link:</span>&nbsp;<a class="{disabled}" href="{classroom_link}">GitHub classroom</a></div>"""
     )
 
     html.append("</div>")
@@ -174,4 +139,4 @@ def create_header(slug):
             """<div class="assignment-check-back">Assignment details coming soon!</div>"""
         )
 
-    return HTML("\n".join(html))
+    return "\n".join(html)

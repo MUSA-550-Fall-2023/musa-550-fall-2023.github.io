@@ -102,33 +102,110 @@
     "href": "index.html",
     "title": "Geospatial Data Science",
     "section": "",
-    "text": "Geospatial Data Science\n    \n      Use Python to gather, visualize, and analyze geospatial data with an urban planning and public policy focus\n    \n    \n      MUSA 550 • Fall 2023Masters of Urban Spatial AnalyticsWeitzman School of Design, University of Pennsylvania\n    \n  \n  \n    \n      \n        \n      \n    \n  \n\n\n\n\n\nInstructors\n\nSection 401\n\n   Dr. Nick Hand\n   nhand@design.upenn.edu\n   nicholashand\n\n\n\nSection 402\n\n   Dr. Eric Delmelle\n   ericdel@design.upenn.edu \n\n\n\n\nCourse details\n\nSection 401\n\n   Mondays and Wednesdays\n   8:30AM-10:00AM\n   Williams Hall 202\n\n\n\nSection 402\n\n   Thursdays\n   1:45PM-4:45PM\n   Meyerson Hall B2\n\n\n\n\nContacting us\nE-mail is the best way to get in contact with us. We will try to respond to all course-related e-mails within 24 hours, although we do have a few tiny humans 👶 at home, so it may be a bit longer on occassion. Please be patient!"
+    "text": "Geospatial Data Science\n    \n      Use Python to gather, visualize, and analyze geospatial data with an urban planning and public policy focus\n    \n    \n      MUSA 550 • Fall 2023Masters of Urban Spatial AnalyticsWeitzman School of Design, University of Pennsylvania\n    \n  \n  \n    \n      \n        \n      \n    \n  \n\n\n\n\n\nInstructors\n\nSection 401\n\n   Dr. Nick Hand\n   nhand@design.upenn.edu\n   nicholashand\n\n\n\nSection 402\n\n   Dr. Eric Delmelle\n   ericdel@design.upenn.edu\n   ericdelmelle\n\n\n\n\nCourse details\n\nSection 401\n\n   Mondays and Wednesdays\n   8:30AM-10:00AM\n   Williams Hall 202\n\n\n\nSection 402\n\n   Thursdays\n   1:45PM-4:45PM\n   Meyerson Hall B2\n\n\n\n\nContacting us\nE-mail is the best way to get in contact with us. We will try to respond to all course-related e-mails within 24 hours, although we do have a few tiny humans 👶 at home, so it may be a bit longer on occassion. Please be patient!"
   },
   {
-    "objectID": "assignment/overview/402.html",
-    "href": "assignment/overview/402.html",
-    "title": "Overview: Section 402",
+    "objectID": "assignment/402/assignment-3.html",
+    "href": "assignment/402/assignment-3.html",
+    "title": "HW #3",
+    "section": "",
+    "text": "Assigned on Thursday, September 28\n\n\nDue on Thursday, October 19 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-3\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
+  },
+  {
+    "objectID": "assignment/402/assignment-6.html",
+    "href": "assignment/402/assignment-6.html",
+    "title": "HW #6",
+    "section": "",
+    "text": "Assigned on Tuesday, November 21\n\n\nDue on Monday, December 4 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-6\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
+  },
+  {
+    "objectID": "assignment/402/assignment-4.html",
+    "href": "assignment/402/assignment-4.html",
+    "title": "HW #4",
+    "section": "",
+    "text": "Assigned on Thursday, October 19\n\n\nDue on Thursday, November 2 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-4\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
+  },
+  {
+    "objectID": "assignment/402/final-project-proposal.html",
+    "href": "assignment/402/final-project-proposal.html",
+    "title": "Final Project Proposal",
+    "section": "",
+    "text": "Due on Monday, December 4 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/final-project-proposal\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
+  },
+  {
+    "objectID": "assignment/401/assignment-1.html",
+    "href": "assignment/401/assignment-1.html",
+    "title": "HW #1",
+    "section": "",
+    "text": "Assigned on Wednesday, September 6\n\n\nDue on Wednesday, September 20 at 11:59 PM\nThis week’s assignment will be broken into two parts:"
+  },
+  {
+    "objectID": "assignment/401/assignment-1.html#part-1-installing-python-locally-and-launching-a-jupyter-notebook",
+    "href": "assignment/401/assignment-1.html#part-1-installing-python-locally-and-launching-a-jupyter-notebook",
+    "title": "HW #1",
+    "section": "Part 1: Installing Python locally and launching a Jupyter notebook",
+    "text": "Part 1: Installing Python locally and launching a Jupyter notebook\nFollow the initial installation guide on the course website for instructions on how to set up Python locally and launch JupyterLab\nPlease see the list of recommended readings for tutorials and background reading to get familiar with Python, mamba/conda, and the Jupyter notebook.\nProblems? Post your question to Ed Discussion!\n\nWorking Locally\nIf you’ve successfully followed the installation guide, you should be able to launch JupyterLab by running jupyter lab (after activating the course environment) from the command line. This should launch the JupyterLab dashboard. Now you can launch the assignment notebook and get started on the homework!\nThe notebook will execute code from the current working directory (the folder that the notebook was launched from). This folder is usually your home folder on your laptop. If you are using relative file paths to load the data, the path should be relative to this working directory. From within the Jupyter notebook, you can find out the current working directory by running the following command in a cell:\npwd\nIf you’ve downloaded the assignment-1 repository to your computer, it usually makes sense to launch the Jupyter notebook from this folder instead of the default folder. You can change the start-up folder by first navigating to your assignment folder in the command line: see instructions here."
+  },
+  {
+    "objectID": "assignment/401/assignment-1.html#part-2-exploring-the-donut-effect-for-philadelphia-zip-codes",
+    "href": "assignment/401/assignment-1.html#part-2-exploring-the-donut-effect-for-philadelphia-zip-codes",
+    "title": "HW #1",
+    "section": "Part 2: Exploring the Donut Effect for Philadelphia ZIP codes",
+    "text": "Part 2: Exploring the Donut Effect for Philadelphia ZIP codes\nIn part #2, you will explore the Donut Effect for home values in different parts of Philadelphia. This part will be submitted as a Jupyter notebook (a .ipynb file). There is already a starter notebook in this repository to help guide you through this part.\n\nSubmission\nNote: Be sure to read the documentation for assignment guidelines and submission.\nYou will submit your assignment through GitHub. For each assignment, I will provide a GitHub link that can be used to create a new repository. Each student will have their own private repository on GitHub where the assignment can be submitted. Only the student and instructors will have access to the private repository.\nThe invitation link for this week is:\nhttps://classroom.github.com/a/MkVE9Lb0\nIf you do not have a GitHub account yet, you should be prompted to make an account. After clicking on this link, GitHub will create a new private repo with permissions such that only you and the instructors can view the commits.\nYour assignment should be added to this newly crearted GitHub repository before the deadline. You can add files to the repository through the web (github.com) interface or using the command line on your laptop.\nImportant: Files should be committed to the newly created private repository (after following the above link) and not to your forked version of the assignment-1 repository.\nYour Jupyter notebook should be submitted to your private repository by the deadline, 11:59 PM on 9/20."
+  },
+  {
+    "objectID": "assignment/401/assignment-2.html",
+    "href": "assignment/401/assignment-2.html",
+    "title": "HW #2",
+    "section": "",
+    "text": "Assigned on Wednesday, September 20\n\n\nDue on Wednesday, October 4 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-2\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
+  },
+  {
+    "objectID": "assignment/401/assignment-5.html",
+    "href": "assignment/401/assignment-5.html",
+    "title": "HW #5",
+    "section": "",
+    "text": "Assigned on Wednesday, November 1\n\n\nDue on Monday, November 20 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-5\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
+  },
+  {
+    "objectID": "assignment/401/final-project.html",
+    "href": "assignment/401/final-project.html",
+    "title": "Final Project Proposal",
+    "section": "",
+    "text": "Due on Wednesday, December 20 at 11:59 PM\nThe final project is to replicate the pipeline approach on a dataset (or datasets) of your choosing.\nThe final deliverable will be a web-based data visualization and accompanying description including a summary of the results and the methods used in each step of the process (collection, analysis and visualization)."
+  },
+  {
+    "objectID": "assignment/401/final-project.html#due-dates",
+    "href": "assignment/401/final-project.html#due-dates",
+    "title": "Final Project Proposal",
+    "section": "Due dates",
+    "text": "Due dates\nNote: Due dates are tentative and subject to change\nWritten proposal due date: Monday, December 4th (or earlier)\nProject due date: Wednesday, December 20th at 11:59 PM\nFinal projects must receive prior approval in the form of a written proposal."
+  },
+  {
+    "objectID": "assignment/401/overview.html",
+    "href": "assignment/401/overview.html",
+    "title": "Assignments: Section 401",
     "section": "",
     "text": "There are six homework assignments due throughout the semester and one final project that is due at the end of the finals period. For grading purposes, the assignment with the lowest grade will not count towards your final grade."
   },
   {
-    "objectID": "assignment/overview/402.html#schedule",
-    "href": "assignment/overview/402.html#schedule",
-    "title": "Overview: Section 402",
+    "objectID": "assignment/401/overview.html#schedule",
+    "href": "assignment/401/overview.html#schedule",
+    "title": "Assignments: Section 401",
     "section": "Schedule",
-    "text": "Schedule\n\n\n\n\n\n\nNote\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssigned on\n\n\n\nDue on\n\n\n\n\n\n\n\n\n\n\n\nHW #1\n\n\n\nThursday, August 31\n\n\n\nThursday, September 14\n\n\n\n\n\n\n\nHW #2\n\n\n\nThursday, September 14\n\n\n\nThursday, September 28\n\n\n\n\n\n\n\nHW #3\n\n\n\nThursday, September 28\n\n\n\nThursday, October 19\n\n\n\n\n\n\n\nHW #4\n\n\n\nThursday, October 19\n\n\n\nThursday, November 2\n\n\n\n\n\n\n\nHW #5\n\n\n\nThursday, November 2\n\n\n\nTuesday, November 21\n\n\n\n\n\n\n\nHW #6\n\n\n\nTuesday, November 21\n\n\n\nMonday, December 4\n\n\n\n\n\n\n\nFinal project proposal\n\n\n\n\n\n\nMonday, December 4\n\n\n\n\n\n\n\nFinal project\n\n\n\n\n\n\nWednesday, December 20"
+    "text": "Schedule\n\n\n\n\n\n\nNote\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n   Assigned on\n\n\n   Due on\n\n\n\n\n\n\nHW #1\n\n\nWednesday, September 6\n\n\nWednesday, September 20\n\n\n\n\nHW #2\n\n\nWednesday, September 20\n\n\nWednesday, October 4\n\n\n\n\nHW #3\n\n\nWednesday, October 4\n\n\nWednesday, October 18\n\n\n\n\nHW #4\n\n\nWednesday, October 18\n\n\nWednesday, November 1\n\n\n\n\nHW #5\n\n\nWednesday, November 1\n\n\nMonday, November 20\n\n\n\n\nHW #6\n\n\nMonday, November 20\n\n\nMonday, December 4\n\n\n\n\nFinal project proposal\n\n\n\n\nMonday, December 4\n\n\n\n\nFinal project\n\n\n\n\nWednesday, December 20"
   },
   {
-    "objectID": "assignment/overview/402.html#guidelines",
-    "href": "assignment/overview/402.html#guidelines",
-    "title": "Overview: Section 402",
+    "objectID": "assignment/401/overview.html#guidelines",
+    "href": "assignment/401/overview.html#guidelines",
+    "title": "Assignments: Section 401",
     "section": "Guidelines",
     "text": "Guidelines\nWe will be using Jupyter notebook files for assignments. Below are a few guidelines to make this process as smooth as possible.\n1. Notebook files should be a polished, finished product.\n\nPlease be sure that your name (as well as the names of anyone you worked with) is listed at the top of the notebook file you submit.\nPlease remove any extra or unneccesary code.\nWhen possible, use markdown cells for comments or add comments directly to your Python code to help explain the steps in your analysis.\nSection headers in markdown can also be helpful to mark different sections of the analysis.\n\n2. Notebook files should be reproducible and executable.\n\nEnsure that your assignments can be executed from top to bottom and produce the desired result. This is how our course TAs will grade each assignment.\nIf your analysis loads a dataset, make sure you either A) Add the dataset to the repository, or B) document the original source of the data so it can be downloaded during grading.\nMake sure you are using relative file paths when loading your data so that the TA can download your repository and the file structure will still work. For more information, check out the guide on file paths."
   },
   {
-    "objectID": "assignment/overview/402.html#submission",
-    "href": "assignment/overview/402.html#submission",
-    "title": "Overview: Section 402",
+    "objectID": "assignment/401/overview.html#submission",
+    "href": "assignment/401/overview.html#submission",
+    "title": "Assignments: Section 401",
     "section": "Submission",
     "text": "Submission\nWe’ll be using GitHub Classroom to submit homework assignments. For each assignment, be on the look out for the submission url, which will always start with the following: https://classroom.github.com/.\nWhen you click on this submission link for each assignment, you will be prompted to log in to GitHub, and then a unique, private repository will be created on the course’s GitHub page. You will create a new private repository for each assignment. Only you and the instructors will be able to view these repositories.\nWe will be using Jupyter notebook files for assignments, and you should add your notebook to your newly created assignment repository before the deadline. You can add files to the repository through the browser (github.com) interface or using the command line locally on your machine. For more help, see these instructions."
   },
@@ -207,7 +284,7 @@
     "href": "schedule/402.html",
     "title": "Schedule: Section 402",
     "section": "",
-    "text": "Note\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGithub Repo\n\n\n\nHTML Slides\n\n\n\nExecutable Slides\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\n\n\n\nExploratory Data Science in Python\n\n\n\n\n\n\n\n\n\n\nThursday, August 31\n\n\n\nLecture 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\n\nData Visualization Fundamentals\n\n\n\n\n\n\n\n\n\n\nThursday, September 7\n\n\n\nLecture 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\n\nGeospatial Data Analysis and GeoPandas\n\n\n\n\n\n\n\n\n\n\nThursday, September 14\n\n\n\nLecture 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\n\nMore Interactive Data Viz, Working with Raster Datasets\n\n\n\n\n\n\n\n\n\n\nThursday, September 21\n\n\n\nLecture 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\n\n\n\nOpenStreetMap, Urban Networks, and Interactive Web Maps\n\n\n\n\n\n\n\n\n\n\nThursday, September 28\n\n\n\nLecture 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\n\nWeb Scraping\n\n\n\n\n\n\n\n\n\n\nThursday, October 5\n\n\n\nLecture 6\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\n\n\n\nWorking with APIs\n\n\n\n\n\n\n\n\n\n\nThursday, October 19\n\n\n\nLecture 7\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\n\nAnalyzing and Visualizing Large Datasets\n\n\n\n\n\n\n\n\n\n\nThursday, October 26\n\n\n\nLecture 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\n\nFrom Notebooks to the Web: Part 1\n\n\n\n\n\n\n\n\n\n\nThursday, November 2\n\n\n\nLecture 9\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\n\nFrom Notebooks to the Web: Part 2\n\n\n\n\n\n\n\n\n\n\nThursday, November 9\n\n\n\nLecture 10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\n\n\n\nCase Study: Predicting Home Prices in Philadelphia\n\n\n\n\n\n\n\n\n\n\nThursday, November 16\n\n\n\nLecture 11\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\n\n\n\nCase Study: Predicting Rideshare Demand\n\n\n\n\n\n\n\n\n\n\nTuesday, November 21\n\n\n\nLecture 12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #6 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\n\n\n\nCase Study: Clustering Analysis in Python\n\n\n\n\n\n\n\n\n\n\nThursday, November 30\n\n\n\nLecture 13\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, December 4\n\n\n\nHW #6 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal project proposal due\n\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\n\nCase Study: Advanced Raster Analysis\n\n\n\n\n\n\n\n\n\n\nThursday, December 7\n\n\n\nLecture 14\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, December 20\n\n\n\nFinal project due"
+    "text": "Note\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGithub Repo\n\n\n\nHTML Slides\n\n\n\nExecutable Slides\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\n\n\n\nExploratory Data Science in Python\n\n\n\n\n\n\n\n\n\n\nThursday, August 31\n\n\n\nLecture 1A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 1B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\n\nData Visualization Fundamentals\n\n\n\n\n\n\n\n\n\n\nThursday, September 7\n\n\n\nLecture 2A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 2B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\n\nGeospatial Data Analysis and GeoPandas\n\n\n\n\n\n\n\n\n\n\nThursday, September 14\n\n\n\nLecture 3A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 3B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\n\nMore Interactive Data Viz, Working with Raster Datasets\n\n\n\n\n\n\n\n\n\n\nThursday, September 21\n\n\n\nLecture 4A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 4B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\n\n\n\nOpenStreetMap, Urban Networks, and Interactive Web Maps\n\n\n\n\n\n\n\n\n\n\nThursday, September 28\n\n\n\nLecture 5A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 5B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\n\nWeb Scraping\n\n\n\n\n\n\n\n\n\n\nThursday, October 5\n\n\n\nLecture 6A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 6B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\n\n\n\nWorking with APIs\n\n\n\n\n\n\n\n\n\n\nThursday, October 19\n\n\n\nLecture 7A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 7B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\n\nAnalyzing and Visualizing Large Datasets\n\n\n\n\n\n\n\n\n\n\nThursday, October 26\n\n\n\nLecture 8A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 8B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\n\nFrom Notebooks to the Web: Part 1\n\n\n\n\n\n\n\n\n\n\nThursday, November 2\n\n\n\nLecture 9A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 9B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\n\nFrom Notebooks to the Web: Part 2\n\n\n\n\n\n\n\n\n\n\nThursday, November 9\n\n\n\nLecture 10A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 10B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\n\n\n\nCase Study: Predicting Home Prices in Philadelphia\n\n\n\n\n\n\n\n\n\n\nThursday, November 16\n\n\n\nLecture 11A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 11B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\n\n\n\nCase Study: Predicting Rideshare Demand\n\n\n\n\n\n\n\n\n\n\nTuesday, November 21\n\n\n\nLecture 12A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 12B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #6 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\n\n\n\nCase Study: Clustering Analysis in Python\n\n\n\n\n\n\n\n\n\n\nThursday, November 30\n\n\n\nLecture 13A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 13B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, December 4\n\n\n\nHW #6 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal project proposal due\n\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\n\nCase Study: Advanced Raster Analysis\n\n\n\n\n\n\n\n\n\n\nThursday, December 7\n\n\n\nLecture 14A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 14B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, December 20\n\n\n\nFinal project due"
   },
   {
     "objectID": "schedule/401.html",
@@ -221,14 +298,14 @@
     "href": "content/week-1/index.html",
     "title": "Week 1: Exploratory Data Science in Python",
     "section": "",
-    "text": "Course Logistics\nUsing Jupyter Notebooks\nIntroduction to Pandas"
+    "text": "Content for lectures 1A and 1B\n\n\n        \n            \n             \n            View materials:\n             \n            MUSA-550-Fall-2023/week-1\n        \n\n        \n            \n             \n            HTML slides:\n             \n            \n                Lecture 1A\n            \n             \n            \n                Lecture 1B\n            \n        \n        \n\n        \n            \n             \n            Executable slides:\n             \n            \n                Lecture 1A\n            \n             \n            \n                Lecture 1B"
   },
   {
     "objectID": "content/week-1/index.html#topics",
     "href": "content/week-1/index.html#topics",
     "title": "Week 1: Exploratory Data Science in Python",
-    "section": "",
-    "text": "Course Logistics\nUsing Jupyter Notebooks\nIntroduction to Pandas"
+    "section": "Topics",
+    "text": "Topics\n\nCourse Logistics\nUsing Jupyter Notebooks\nIntroduction to Pandas"
   },
   {
     "objectID": "content/week-1/index.html#initial-survey",
@@ -413,64 +490,106 @@
     "text": "See you next week!\n\nNo lecture on Monday next week due to Labor Day\nNext class a week from today on Wednesday 9/6\nIn the meantime:\n\nFollow [the guide] for setting up your local Python environment\nCheck out Python resources + DataCamp courses in the meantime\nHomework #1 will be posted a week from today (Wednesday 9/6, due on 9/20)"
   },
   {
-    "objectID": "assignment/final-project.html",
-    "href": "assignment/final-project.html",
-    "title": "Final Project",
+    "objectID": "assignment/401/final-project-proposal.html",
+    "href": "assignment/401/final-project-proposal.html",
+    "title": "Final Project Proposal",
     "section": "",
-    "text": "The final project is to replicate the pipeline approach on a dataset (or datasets) of your choosing.\nThe final deliverable will be a web-based data visualization and accompanying description including a summary of the results and the methods used in each step of the process (collection, analysis and visualization)."
+    "text": "Due on Monday, December 4 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/final-project-proposal\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
   },
   {
-    "objectID": "assignment/final-project.html#due-dates",
-    "href": "assignment/final-project.html#due-dates",
+    "objectID": "assignment/401/assignment-4.html",
+    "href": "assignment/401/assignment-4.html",
+    "title": "HW #4",
+    "section": "",
+    "text": "Assigned on Wednesday, October 18\n\n\nDue on Wednesday, November 1 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-4\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
+  },
+  {
+    "objectID": "assignment/401/assignment-6.html",
+    "href": "assignment/401/assignment-6.html",
+    "title": "HW #6",
+    "section": "",
+    "text": "Assigned on Monday, November 20\n\n\nDue on Monday, December 4 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-6\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
+  },
+  {
+    "objectID": "assignment/401/assignment-3.html",
+    "href": "assignment/401/assignment-3.html",
+    "title": "HW #3",
+    "section": "",
+    "text": "Assigned on Wednesday, October 4\n\n\nDue on Wednesday, October 18 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-3\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
+  },
+  {
+    "objectID": "assignment/402/overview.html",
+    "href": "assignment/402/overview.html",
+    "title": "Assignments: Section 402",
+    "section": "",
+    "text": "There are six homework assignments due throughout the semester and one final project that is due at the end of the finals period. For grading purposes, the assignment with the lowest grade will not count towards your final grade."
+  },
+  {
+    "objectID": "assignment/402/overview.html#schedule",
+    "href": "assignment/402/overview.html#schedule",
+    "title": "Assignments: Section 402",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\n\n\n\nNote\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n   Assigned on\n\n\n   Due on\n\n\n\n\n\n\nHW #1\n\n\nThursday, August 31\n\n\nThursday, September 14\n\n\n\n\nHW #2\n\n\nThursday, September 14\n\n\nThursday, September 28\n\n\n\n\nHW #3\n\n\nThursday, September 28\n\n\nThursday, October 19\n\n\n\n\nHW #4\n\n\nThursday, October 19\n\n\nThursday, November 2\n\n\n\n\nHW #5\n\n\nThursday, November 2\n\n\nTuesday, November 21\n\n\n\n\nHW #6\n\n\nTuesday, November 21\n\n\nMonday, December 4\n\n\n\n\nFinal project proposal\n\n\n\n\nMonday, December 4\n\n\n\n\nFinal project\n\n\n\n\nWednesday, December 20"
+  },
+  {
+    "objectID": "assignment/402/overview.html#guidelines",
+    "href": "assignment/402/overview.html#guidelines",
+    "title": "Assignments: Section 402",
+    "section": "Guidelines",
+    "text": "Guidelines\nWe will be using Jupyter notebook files for assignments. Below are a few guidelines to make this process as smooth as possible.\n1. Notebook files should be a polished, finished product.\n\nPlease be sure that your name (as well as the names of anyone you worked with) is listed at the top of the notebook file you submit.\nPlease remove any extra or unneccesary code.\nWhen possible, use markdown cells for comments or add comments directly to your Python code to help explain the steps in your analysis.\nSection headers in markdown can also be helpful to mark different sections of the analysis.\n\n2. Notebook files should be reproducible and executable.\n\nEnsure that your assignments can be executed from top to bottom and produce the desired result. This is how our course TAs will grade each assignment.\nIf your analysis loads a dataset, make sure you either A) Add the dataset to the repository, or B) document the original source of the data so it can be downloaded during grading.\nMake sure you are using relative file paths when loading your data so that the TA can download your repository and the file structure will still work. For more information, check out the guide on file paths."
+  },
+  {
+    "objectID": "assignment/402/overview.html#submission",
+    "href": "assignment/402/overview.html#submission",
+    "title": "Assignments: Section 402",
+    "section": "Submission",
+    "text": "Submission\nWe’ll be using GitHub Classroom to submit homework assignments. For each assignment, be on the look out for the submission url, which will always start with the following: https://classroom.github.com/.\nWhen you click on this submission link for each assignment, you will be prompted to log in to GitHub, and then a unique, private repository will be created on the course’s GitHub page. You will create a new private repository for each assignment. Only you and the instructors will be able to view these repositories.\nWe will be using Jupyter notebook files for assignments, and you should add your notebook to your newly created assignment repository before the deadline. You can add files to the repository through the browser (github.com) interface or using the command line locally on your machine. For more help, see these instructions."
+  },
+  {
+    "objectID": "assignment/402/final-project.html",
+    "href": "assignment/402/final-project.html",
+    "title": "Final Project",
+    "section": "",
+    "text": "Due on Wednesday, December 20 at 11:59 PM\nThe final project is to replicate the pipeline approach on a dataset (or datasets) of your choosing.\nThe final deliverable will be a web-based data visualization and accompanying description including a summary of the results and the methods used in each step of the process (collection, analysis and visualization)."
+  },
+  {
+    "objectID": "assignment/402/final-project.html#due-dates",
+    "href": "assignment/402/final-project.html#due-dates",
     "title": "Final Project",
     "section": "Due dates",
     "text": "Due dates\nNote: Due dates are tentative and subject to change\nWritten proposal due date: Monday, December 4th (or earlier)\nProject due date: Wednesday, December 20th at 11:59 PM\nFinal projects must receive prior approval in the form of a written proposal."
   },
   {
-    "objectID": "assignment/overview/401.html",
-    "href": "assignment/overview/401.html",
-    "title": "Overview: Section 401",
+    "objectID": "assignment/402/assignment-5.html",
+    "href": "assignment/402/assignment-5.html",
+    "title": "HW #5",
     "section": "",
-    "text": "There are six homework assignments due throughout the semester and one final project that is due at the end of the finals period. For grading purposes, the assignment with the lowest grade will not count towards your final grade."
+    "text": "Assigned on Thursday, November 2\n\n\nDue on Tuesday, November 21 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-5\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
   },
   {
-    "objectID": "assignment/overview/401.html#schedule",
-    "href": "assignment/overview/401.html#schedule",
-    "title": "Overview: Section 401",
-    "section": "Schedule",
-    "text": "Schedule\n\n\n\n\n\n\nNote\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssigned on\n\n\n\nDue on\n\n\n\n\n\n\n\n\n\n\n\nHW #1\n\n\n\nWednesday, September 6\n\n\n\nWednesday, September 20\n\n\n\n\n\n\n\nHW #2\n\n\n\nWednesday, September 20\n\n\n\nWednesday, October 4\n\n\n\n\n\n\n\nHW #3\n\n\n\nWednesday, October 4\n\n\n\nWednesday, October 18\n\n\n\n\n\n\n\nHW #4\n\n\n\nWednesday, October 18\n\n\n\nWednesday, November 1\n\n\n\n\n\n\n\nHW #5\n\n\n\nWednesday, November 1\n\n\n\nMonday, November 20\n\n\n\n\n\n\n\nHW #6\n\n\n\nMonday, November 20\n\n\n\nMonday, December 4\n\n\n\n\n\n\n\nFinal project proposal\n\n\n\n\n\n\nMonday, December 4\n\n\n\n\n\n\n\nFinal project\n\n\n\n\n\n\nWednesday, December 20"
+    "objectID": "assignment/402/assignment-2.html",
+    "href": "assignment/402/assignment-2.html",
+    "title": "HW #2",
+    "section": "",
+    "text": "Assigned on Thursday, September 14\n\n\nDue on Thursday, September 28 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-2\n\n\n Submission link: GitHub classroom\n\n\n\nAssignment details coming soon!"
   },
   {
-    "objectID": "assignment/overview/401.html#guidelines",
-    "href": "assignment/overview/401.html#guidelines",
-    "title": "Overview: Section 401",
-    "section": "Guidelines",
-    "text": "Guidelines\nWe will be using Jupyter notebook files for assignments. Below are a few guidelines to make this process as smooth as possible.\n1. Notebook files should be a polished, finished product.\n\nPlease be sure that your name (as well as the names of anyone you worked with) is listed at the top of the notebook file you submit.\nPlease remove any extra or unneccesary code.\nWhen possible, use markdown cells for comments or add comments directly to your Python code to help explain the steps in your analysis.\nSection headers in markdown can also be helpful to mark different sections of the analysis.\n\n2. Notebook files should be reproducible and executable.\n\nEnsure that your assignments can be executed from top to bottom and produce the desired result. This is how our course TAs will grade each assignment.\nIf your analysis loads a dataset, make sure you either A) Add the dataset to the repository, or B) document the original source of the data so it can be downloaded during grading.\nMake sure you are using relative file paths when loading your data so that the TA can download your repository and the file structure will still work. For more information, check out the guide on file paths."
-  },
-  {
-    "objectID": "assignment/overview/401.html#submission",
-    "href": "assignment/overview/401.html#submission",
-    "title": "Overview: Section 401",
-    "section": "Submission",
-    "text": "Submission\nWe’ll be using GitHub Classroom to submit homework assignments. For each assignment, be on the look out for the submission url, which will always start with the following: https://classroom.github.com/.\nWhen you click on this submission link for each assignment, you will be prompted to log in to GitHub, and then a unique, private repository will be created on the course’s GitHub page. You will create a new private repository for each assignment. Only you and the instructors will be able to view these repositories.\nWe will be using Jupyter notebook files for assignments, and you should add your notebook to your newly created assignment repository before the deadline. You can add files to the repository through the browser (github.com) interface or using the command line locally on your machine. For more help, see these instructions."
-  },
-  {
-    "objectID": "assignment/assignment-1.html",
-    "href": "assignment/assignment-1.html",
+    "objectID": "assignment/402/assignment-1.html",
+    "href": "assignment/402/assignment-1.html",
     "title": "HW #1",
     "section": "",
-    "text": "This week’s assignment will be broken into two parts:"
+    "text": "Assigned on Thursday, August 31\n\n\nDue on Thursday, September 14 at 11:59 PM\nThis week’s assignment will be broken into two parts:"
   },
   {
-    "objectID": "assignment/assignment-1.html#part-1-installing-python-locally-and-launching-a-jupyter-notebook",
-    "href": "assignment/assignment-1.html#part-1-installing-python-locally-and-launching-a-jupyter-notebook",
+    "objectID": "assignment/402/assignment-1.html#part-1-installing-python-locally-and-launching-a-jupyter-notebook",
+    "href": "assignment/402/assignment-1.html#part-1-installing-python-locally-and-launching-a-jupyter-notebook",
     "title": "HW #1",
     "section": "Part 1: Installing Python locally and launching a Jupyter notebook",
     "text": "Part 1: Installing Python locally and launching a Jupyter notebook\nFollow the initial installation guide on the course website for instructions on how to set up Python locally and launch JupyterLab\nPlease see the list of recommended readings for tutorials and background reading to get familiar with Python, mamba/conda, and the Jupyter notebook.\nProblems? Post your question to Ed Discussion!\n\nWorking Locally\nIf you’ve successfully followed the installation guide, you should be able to launch JupyterLab by running jupyter lab (after activating the course environment) from the command line. This should launch the JupyterLab dashboard. Now you can launch the assignment notebook and get started on the homework!\nThe notebook will execute code from the current working directory (the folder that the notebook was launched from). This folder is usually your home folder on your laptop. If you are using relative file paths to load the data, the path should be relative to this working directory. From within the Jupyter notebook, you can find out the current working directory by running the following command in a cell:\npwd\nIf you’ve downloaded the assignment-1 repository to your computer, it usually makes sense to launch the Jupyter notebook from this folder instead of the default folder. You can change the start-up folder by first navigating to your assignment folder in the command line: see instructions here."
   },
   {
-    "objectID": "assignment/assignment-1.html#part-2-exploring-the-donut-effect-for-philadelphia-zip-codes",
-    "href": "assignment/assignment-1.html#part-2-exploring-the-donut-effect-for-philadelphia-zip-codes",
+    "objectID": "assignment/402/assignment-1.html#part-2-exploring-the-donut-effect-for-philadelphia-zip-codes",
+    "href": "assignment/402/assignment-1.html#part-2-exploring-the-donut-effect-for-philadelphia-zip-codes",
     "title": "HW #1",
     "section": "Part 2: Exploring the Donut Effect for Philadelphia ZIP codes",
     "text": "Part 2: Exploring the Donut Effect for Philadelphia ZIP codes\nIn part #2, you will explore the Donut Effect for home values in different parts of Philadelphia. This part will be submitted as a Jupyter notebook (a .ipynb file). There is already a starter notebook in this repository to help guide you through this part.\n\nSubmission\nNote: Be sure to read the documentation for assignment guidelines and submission.\nYou will submit your assignment through GitHub. For each assignment, I will provide a GitHub link that can be used to create a new repository. Each student will have their own private repository on GitHub where the assignment can be submitted. Only the student and instructors will have access to the private repository.\nThe invitation link for this week is:\nhttps://classroom.github.com/a/MkVE9Lb0\nIf you do not have a GitHub account yet, you should be prompted to make an account. After clicking on this link, GitHub will create a new private repo with permissions such that only you and the instructors can view the commits.\nYour assignment should be added to this newly crearted GitHub repository before the deadline. You can add files to the repository through the web (github.com) interface or using the command line on your laptop.\nImportant: Files should be committed to the newly created private repository (after following the above link) and not to your forked version of the assignment-1 repository.\nYour Jupyter notebook should be submitted to your private repository by the deadline, 11:59 PM on 9/20."

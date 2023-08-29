@@ -33,9 +33,8 @@ course-logo: /files/course-icon.png
 
 - {{< fa user >}} &nbsp; {{< var instructors.eric.name >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructors.eric.email >}}">{{< var instructors.eric.email >}}</a>
-<!---
- - {{< fa brands twitter >}} &nbsp; [{{< var instructors.eric.twitter >}}](https://www.twitter.com/{{< var instructors.eric.twitter >}}) 
---->
+- {{< fa brands twitter >}} &nbsp; [{{< var instructors.eric.twitter >}}](https://www.twitter.com/{{< var instructors.eric.twitter >}}) 
+
 :::
 
 ::: {.g-col-12 .g-col-sm-6 .g-col-md-4}

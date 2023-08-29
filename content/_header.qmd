@@ -4,22 +4,22 @@ execute:
 ---
 
 ```{python}
-# import sys
-# from pyprojroot.here import here
-# from IPython import get_ipython
+import sys
+from pyprojroot.here import here
+from IPython import get_ipython
 
-# # Add python folder to path
-# root_dir = here()
-# sys.path.insert(1, str(root_dir / "python"))
-# import content
+# Add python folder to path
+root_dir = here()
+sys.path.insert(1, str(root_dir / "python"))
+import content
 
 
-# # Get week info for rendered page from folder
-# ip = get_ipython()
-# path = ip.starting_dir
-# slug = path.split("/")[-1]  # Should be week-X
+# Get week info for rendered page from folder
+ip = get_ipython()
+path = ip.starting_dir
+slug = path.split("/")[-1]  # Should be week-X
 
-# # Create the header HTML
-# table = content.create_header(slug)
-# table
+# Create the header HTML
+table = content.create_header(slug)
+table
 ```

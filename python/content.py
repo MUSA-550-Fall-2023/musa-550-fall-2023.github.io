@@ -3,8 +3,10 @@ from IPython.core.display import HTML
 
 import utils, config
 
+DEFAULT_SECTION_NUMBER = "401"
 
-def create_header(slug, section_number=utils.DEFAULT_SECTION_NUMBER):
+
+def create_header(slug):
     """
     Create the HTML for the header on each weekly content page.
 
@@ -17,11 +19,11 @@ def create_header(slug, section_number=utils.DEFAULT_SECTION_NUMBER):
     # Get week number from slug
     week_number = int(slug.split("-")[-1])
 
-    # Get the current lecture from project variables
-    current_lecture = utils.get_current_lecture()
+    # Get current week
+    current_week = utils.get_current_week()
 
     # Load the schedule dates
-    data = utils.load_data(f"{section_number}/lecture-dates.csv").assign(
+    data = utils.load_data(f"{DEFAULT_SECTION_NUMBER}/lecture-dates.csv").assign(
         date=lambda df: pd.to_datetime(df.date)
     )
 
@@ -33,7 +35,7 @@ def create_header(slug, section_number=utils.DEFAULT_SECTION_NUMBER):
 
     # Add subtitle with dates
     html.append(
-        f'<div class="content-dates">Content for lectures {week_number}A ({dates.iloc[0]}) and {week_number}B ({dates.iloc[1]})</div>'
+        f'<div class="content-dates">Content for lectures {week_number}A and {week_number}B</div>'
     )
 
     # Now do the callout box
@@ -52,17 +54,12 @@ def create_header(slug, section_number=utils.DEFAULT_SECTION_NUMBER):
         </div>"""
     )
 
-    # Get the disabled classes for A
-    lectureA = f"{week_number}A"
-    disabledA = utils.get_disabled_class_by_lecture(
-        lecture_number=lectureA, current_lecture=current_lecture
-    )
+    # Are the disabled?
+    disabled = "disabled" if week_number > current_week else ""
 
-    # Get the disabled classes for B
+    # Lecture tags
+    lectureA = f"{week_number}A"
     lectureB = f"{week_number}B"
-    disabledB = utils.get_disabled_class_by_lecture(
-        lecture_number=lectureB, current_lecture=current_lecture
-    )
 
     # Static slides
     html.append(
@@ -72,11 +69,11 @@ def create_header(slug, section_number=utils.DEFAULT_SECTION_NUMBER):
             &nbsp;
             <span>HTML slides:</span>
             &nbsp;
-            <a class="{disabledA}" href="./lecture-{lectureA}.html">
+            <a class="{disabled}" href="./lecture-{lectureA}.html">
                 Lecture {lectureA}
             </a>
             &nbsp;
-            <a class="{disabledB}" href="./lecture-{lectureB}.html">
+            <a class="{disabled}" href="./lecture-{lectureB}.html">
                 Lecture {lectureB}
             </a>
         </div>
@@ -91,11 +88,11 @@ def create_header(slug, section_number=utils.DEFAULT_SECTION_NUMBER):
             &nbsp;
             <span>Executable slides:</span>
             &nbsp;
-            <a class="{disabledA}" href="{utils.get_binder_url(lectureA)}">
+            <a class="{disabled}" href="{utils.get_binder_url(lectureA)}">
                 Lecture {lectureA}
             </a>
             &nbsp;
-            <a class="{disabledB}" href="{utils.get_binder_url(lectureB)}">
+            <a class="{disabled}" href="{utils.get_binder_url(lectureB)}">
                 Lecture {lectureB}
             </a>
         </div>
