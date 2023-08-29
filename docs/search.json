@@ -144,14 +144,7 @@
     "href": "assignment/401/schedule.html",
     "title": "Assignments: Section 401",
     "section": "",
-    "text": "There are six homework assignments due throughout the semester and one final project that is due at the end of the finals period. For grading purposes, the assignment with the lowest grade will not count towards your final grade."
-  },
-  {
-    "objectID": "assignment/401/schedule.html#schedule",
-    "href": "assignment/401/schedule.html#schedule",
-    "title": "Assignments: Section 401",
-    "section": "Schedule",
-    "text": "Schedule\n\n\n\n\n\n\nNote\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n   Assigned on\n\n\n   Due on\n\n\n\n\n\n\nHW #1\n\n\nWednesday, September 6\n\n\nWednesday, September 20\n\n\n\n\nHW #2\n\n\nWednesday, September 20\n\n\nWednesday, October 4\n\n\n\n\nHW #3\n\n\nWednesday, October 4\n\n\nWednesday, October 18\n\n\n\n\nHW #4\n\n\nWednesday, October 18\n\n\nWednesday, November 1\n\n\n\n\nHW #5\n\n\nWednesday, November 1\n\n\nMonday, November 20\n\n\n\n\nHW #6\n\n\nMonday, November 20\n\n\nMonday, December 4\n\n\n\n\nFinal project proposal\n\n\n\n\nMonday, December 4\n\n\n\n\nFinal project\n\n\n\n\nWednesday, December 20"
+    "text": "Note\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n   Assigned on\n\n\n   Due on\n\n\n\n\n\n\nHW #1\n\n\nWednesday, September 6\n\n\nWednesday, September 20\n\n\n\n\nHW #2\n\n\nWednesday, September 20\n\n\nWednesday, October 4\n\n\n\n\nHW #3\n\n\nWednesday, October 4\n\n\nWednesday, October 18\n\n\n\n\nHW #4\n\n\nWednesday, October 18\n\n\nWednesday, November 1\n\n\n\n\nHW #5\n\n\nWednesday, November 1\n\n\nMonday, November 20\n\n\n\n\nHW #6\n\n\nMonday, November 20\n\n\nMonday, December 4\n\n\n\n\nFinal project proposal\n\n\n\n\nMonday, December 4\n\n\n\n\nFinal project\n\n\n\n\nWednesday, December 20"
   },
   {
     "objectID": "assignment/401/assignment-3.html",
@@ -466,14 +459,14 @@
     "href": "assignment/overview.html",
     "title": "Overview",
     "section": "",
-    "text": "We will be using Jupyter notebook files for assignments. Below are a few guidelines to make this process as smooth as possible.\n1. Notebook files should be a polished, finished product.\n\nPlease be sure that your name (as well as the names of anyone you worked with) is listed at the top of the notebook file you submit.\nPlease remove any extra or unneccesary code.\nWhen possible, use markdown cells for comments or add comments directly to your Python code to help explain the steps in your analysis.\nSection headers in markdown can also be helpful to mark different sections of the analysis.\n\n2. Notebook files should be reproducible and executable.\n\nEnsure that your assignments can be executed from top to bottom and produce the desired result. This is how our course TAs will grade each assignment.\nIf your analysis loads a dataset, make sure you either A) Add the dataset to the repository, or B) document the original source of the data so it can be downloaded during grading.\nMake sure you are using relative file paths when loading your data so that the TA can download your repository and the file structure will still work. For more information, check out the guide on file paths."
+    "text": "There are six homework assignments due throughout the semester and one final project that is due at the end of the finals period. For grading purposes, the assignment with the lowest grade will not count towards your final grade."
   },
   {
     "objectID": "assignment/overview.html#guidelines",
     "href": "assignment/overview.html#guidelines",
     "title": "Overview",
-    "section": "",
-    "text": "We will be using Jupyter notebook files for assignments. Below are a few guidelines to make this process as smooth as possible.\n1. Notebook files should be a polished, finished product.\n\nPlease be sure that your name (as well as the names of anyone you worked with) is listed at the top of the notebook file you submit.\nPlease remove any extra or unneccesary code.\nWhen possible, use markdown cells for comments or add comments directly to your Python code to help explain the steps in your analysis.\nSection headers in markdown can also be helpful to mark different sections of the analysis.\n\n2. Notebook files should be reproducible and executable.\n\nEnsure that your assignments can be executed from top to bottom and produce the desired result. This is how our course TAs will grade each assignment.\nIf your analysis loads a dataset, make sure you either A) Add the dataset to the repository, or B) document the original source of the data so it can be downloaded during grading.\nMake sure you are using relative file paths when loading your data so that the TA can download your repository and the file structure will still work. For more information, check out the guide on file paths."
+    "section": "Guidelines",
+    "text": "Guidelines\nWe will be using Jupyter notebook files for assignments. Below are a few guidelines to make this process as smooth as possible.\n1. Notebook files should be a polished, finished product.\n\nPlease be sure that your name (as well as the names of anyone you worked with) is listed at the top of the notebook file you submit.\nPlease remove any extra or unneccesary code.\nWhen possible, use markdown cells for comments or add comments directly to your Python code to help explain the steps in your analysis.\nSection headers in markdown can also be helpful to mark different sections of the analysis.\n\n2. Notebook files should be reproducible and executable.\n\nEnsure that your assignments can be executed from top to bottom and produce the desired result. This is how our course TAs will grade each assignment.\nIf your analysis loads a dataset, make sure you either A) Add the dataset to the repository, or B) document the original source of the data so it can be downloaded during grading.\nMake sure you are using relative file paths when loading your data so that the TA can download your repository and the file structure will still work. For more information, check out the guide on file paths."
   },
   {
     "objectID": "assignment/overview.html#submission",
@@ -550,14 +543,7 @@
     "href": "assignment/402/schedule.html",
     "title": "Assignments: Section 402",
     "section": "",
-    "text": "There are six homework assignments due throughout the semester and one final project that is due at the end of the finals period. For grading purposes, the assignment with the lowest grade will not count towards your final grade."
-  },
-  {
-    "objectID": "assignment/402/schedule.html#schedule",
-    "href": "assignment/402/schedule.html#schedule",
-    "title": "Assignments: Section 402",
-    "section": "Schedule",
-    "text": "Schedule\n\n\n\n\n\n\nNote\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n   Assigned on\n\n\n   Due on\n\n\n\n\n\n\nHW #1\n\n\nThursday, August 31\n\n\nThursday, September 14\n\n\n\n\nHW #2\n\n\nThursday, September 14\n\n\nThursday, September 28\n\n\n\n\nHW #3\n\n\nThursday, September 28\n\n\nThursday, October 19\n\n\n\n\nHW #4\n\n\nThursday, October 19\n\n\nThursday, November 2\n\n\n\n\nHW #5\n\n\nThursday, November 2\n\n\nTuesday, November 21\n\n\n\n\nHW #6\n\n\nTuesday, November 21\n\n\nMonday, December 4\n\n\n\n\nFinal project proposal\n\n\n\n\nMonday, December 4\n\n\n\n\nFinal project\n\n\n\n\nWednesday, December 20"
+    "text": "Note\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n   Assigned on\n\n\n   Due on\n\n\n\n\n\n\nHW #1\n\n\nThursday, August 31\n\n\nThursday, September 14\n\n\n\n\nHW #2\n\n\nThursday, September 14\n\n\nThursday, September 28\n\n\n\n\nHW #3\n\n\nThursday, September 28\n\n\nThursday, October 19\n\n\n\n\nHW #4\n\n\nThursday, October 19\n\n\nThursday, November 2\n\n\n\n\nHW #5\n\n\nThursday, November 2\n\n\nTuesday, November 21\n\n\n\n\nHW #6\n\n\nTuesday, November 21\n\n\nMonday, December 4\n\n\n\n\nFinal project proposal\n\n\n\n\nMonday, December 4\n\n\n\n\nFinal project\n\n\n\n\nWednesday, December 20"
   },
   {
     "objectID": "syllabus.html",

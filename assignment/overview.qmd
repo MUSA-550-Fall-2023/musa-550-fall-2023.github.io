@@ -3,6 +3,11 @@
 title: "Overview"
 ---
 
+There are six homework assignments due throughout the semester and one 
+final project that is due at the end of the finals period. For grading purposes, 
+the assignment with the lowest grade will not count towards your final grade.
+
+
 ## Guidelines
 
 We will be using Jupyter notebook files for assignments. Below are a few

@@ -1,11 +1,4 @@
 
-There are six homework assignments due throughout the semester and one 
-final project that is due at the end of the finals period. For grading purposes, 
-the assignment with the lowest grade will not count towards your final grade.
-
-
-## Schedule
-
 ::: {.callout-note} 
 The schedule is tentative and could change in the future.
 :::
@@ -24,7 +17,7 @@ from IPython.display import HTML
 path = r.input_file
 
 # Get section number from file path
-*_, section_number, _ = path.split('/')
+*_, section_number, _ = path.split("/")
 
 # Add python folder to path
 root_dir = here()
