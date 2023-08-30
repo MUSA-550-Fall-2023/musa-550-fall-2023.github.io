@@ -134,7 +134,7 @@ repository]({{< var course.github_org >}}/final-project).
 
 ### Grading
 
-The grading breakdown is as follows: 55% for homework; 45% for final project,
+The grading breakdown is as follows: 50% for homework; 45% for final project,
 5% for participation. Your participation grade will be determined
 by your activity on Ed Discussion — both asking, answering, and reading
 questions.
