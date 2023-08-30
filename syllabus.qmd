@@ -175,7 +175,7 @@ their ability.
 If you find yourself falling behind or struggling with Python issues, please 
 ask for help by:
 
-1. Post a question on Canvas — the fix for your problem might be quick and other students are probably experiencing similar issues.
+1. Post a question on Ed Discussion — the fix for your problem might be quick and other students are probably experiencing similar issues.
 1. Come to office hours and discuss issues or larger conceptual questions you are having.
 1. Take advantage of the [free resources](./resource/python.qmd) to help fine-tune your Python skills. 
 :::
