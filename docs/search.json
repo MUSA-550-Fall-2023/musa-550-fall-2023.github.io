@@ -392,11 +392,172 @@
     "text": "Additional materials\n\nDocumentation\n\nGit and GitHub:\n\nSetting up git\nManaging files on GitHub\n\nConda user guide\nJupyter notebook\nGuide to Markdown in notebook cells\nBinder Documentation\npandas documentation\nmatplotlib documentation\n\n\n\nReadings/reference\n\nStackOverflow: The Incredible Growth of Python\n2015 Funding Proposal for the Jupyter Notebook\nA history of Jupyter Notebooks by its founder\nGoogle’s Colab\nTidy Data\nJoining Datasets\nZIllow Data\nIntroduction to writing your first Python program\nVisual Studio Code"
   },
   {
-    "objectID": "schedule/401.html",
-    "href": "schedule/401.html",
-    "title": "Schedule: Section 401",
+    "objectID": "content/week-2/index.html",
+    "href": "content/week-2/index.html",
+    "title": "Week 2: Data Visualization Fundamentals",
     "section": "",
-    "text": "Note\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGithub Repo\n\n\n\nHTML Slides\n\n\n\nExecutable Slides\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\n\n\n\nExploratory Data Science in Python\n\n\n\n\n\n\n\n\n\n\nWednesday, August 30\n\n\n\nLecture 1A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 6\n\n\n\nLecture 1B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\n\nData Visualization Fundamentals\n\n\n\n\n\n\n\n\n\n\nMonday, September 11\n\n\n\nLecture 2A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 13\n\n\n\nLecture 2B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\n\nGeospatial Data Analysis and GeoPandas\n\n\n\n\n\n\n\n\n\n\nMonday, September 18\n\n\n\nLecture 3A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 20\n\n\n\nLecture 3B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\n\nMore Interactive Data Viz, Working with Raster Datasets\n\n\n\n\n\n\n\n\n\n\nMonday, September 25\n\n\n\nLecture 4A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 27\n\n\n\nLecture 4B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\n\n\n\nOpenStreetMap, Urban Networks, and Interactive Web Maps\n\n\n\n\n\n\n\n\n\n\nMonday, October 2\n\n\n\nLecture 5A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 4\n\n\n\nLecture 5B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\n\nWeb Scraping\n\n\n\n\n\n\n\n\n\n\nMonday, October 9\n\n\n\nLecture 6A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 11\n\n\n\nLecture 6B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\n\n\n\nWorking with APIs\n\n\n\n\n\n\n\n\n\n\nMonday, October 16\n\n\n\nLecture 7A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 18\n\n\n\nLecture 7B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\n\nAnalyzing and Visualizing Large Datasets\n\n\n\n\n\n\n\n\n\n\nMonday, October 23\n\n\n\nLecture 8A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 25\n\n\n\nLecture 8B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\n\nFrom Notebooks to the Web: Part 1\n\n\n\n\n\n\n\n\n\n\nMonday, October 30\n\n\n\nLecture 9A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 1\n\n\n\nLecture 9B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\n\nFrom Notebooks to the Web: Part 2\n\n\n\n\n\n\n\n\n\n\nMonday, November 6\n\n\n\nLecture 10A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 8\n\n\n\nLecture 10B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\n\n\n\nCase Study: Predicting Home Prices in Philadelphia\n\n\n\n\n\n\n\n\n\n\nMonday, November 13\n\n\n\nLecture 11A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 15\n\n\n\nLecture 11B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\n\n\n\nCase Study: Predicting Rideshare Demand\n\n\n\n\n\n\n\n\n\n\nMonday, November 20\n\n\n\nLecture 12A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #6 assigned\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, November 27\n\n\n\nLecture 12B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\n\n\n\nCase Study: Clustering Analysis in Python\n\n\n\n\n\n\n\n\n\n\nWednesday, November 29\n\n\n\nLecture 13A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, December 4\n\n\n\nLecture 13B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #6 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal project proposal due\n\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\n\nCase Study: Advanced Raster Analysis\n\n\n\n\n\n\n\n\n\n\nWednesday, December 6\n\n\n\nLecture 14A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, December 11\n\n\n\nLecture 14B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, December 20\n\n\n\nFinal project due"
+    "text": "Content for lectures 2A and 2B\n\n\n        \n            \n             \n            View materials:\n             \n            MUSA-550-Fall-2023/week-2\n        \n\n        \n            \n             \n            HTML slides:\n             \n            \n                Lecture 2A\n            \n             \n            \n                Lecture 2B\n            \n        \n        \n\n        \n            \n             \n            Executable slides:\n             \n            \n                Lecture 2A\n            \n             \n            \n                Lecture 2B"
+  },
+  {
+    "objectID": "content/week-2/index.html#topics",
+    "href": "content/week-2/index.html#topics",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Topics",
+    "text": "Topics\n\nColor fundamentals and available tools\nIntroduction to matplotlib, seaborn, and altair"
+  },
+  {
+    "objectID": "content/week-2/index.html#recommended-readings",
+    "href": "content/week-2/index.html#recommended-readings",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Recommended Readings",
+    "text": "Recommended Readings\n\nGuide to getting started with matplotlib\nPlotting & visualization chapter of Python for Data Analysis\n\nA good introduction to plotting with matplotlib, pandas, and seaborn\n\nAltair:\n\nIntroduction to Statistical Visualization\nInteractive charts with altair\nExploring Seattle Weather: A Case Study\n\nData viz design: Introductory slides of London’s design guidelines"
+  },
+  {
+    "objectID": "content/week-2/index.html#documentation",
+    "href": "content/week-2/index.html#documentation",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Documentation",
+    "text": "Documentation\n\nmatplotlib\n\nExample plots\nPlot types\n\nseaborn docs homepage\nSeaborn tutorial\n\nVisualizing statistical relationships\nCategorical data\nVisualizing the distribution of a data set\nVisualizing linear relationships\n\naltair\n\nThe user guide\nExample gallery"
+  },
+  {
+    "objectID": "content/week-2/index.html#other-readings",
+    "href": "content/week-2/index.html#other-readings",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Other Readings",
+    "text": "Other Readings\n\nRemaking Historical Data Viz\nModern Statistical Atlas\nA 6-part blog series on W. E. B. Du Bois’ Data Visualization\nData Sketches\nThe 7 Kinds of Data Visualization People\nFast vs Slow Data Visualization\nWhat Charts Say\nColor Guide and Overview of Color Tools\nThe Importance of Grey\n2017 PyCon presentation by Jake VanderPlas\nInterview with John Burn-Murdoch about his COVID Data Viz"
+  },
+  {
+    "objectID": "content/week-2/index.html#color-resources",
+    "href": "content/week-2/index.html#color-resources",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Color Resources",
+    "text": "Color Resources\n\nColorBrewer 2.0\nViz Palette\nAdobe Color CC\nColorpicker for data\nChroma.js Color Scale Helper\nChoosing Color Maps in Matplotlib\nChoosing Color Palettes in seaborn\nNames of available color maps in Altair"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html",
+    "href": "content/week-2/lecture-2B.html",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "",
+    "text": "Section 401\nSep 13, 2023"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#housekeeping",
+    "href": "content/week-2/lecture-2B.html#housekeeping",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "Housekeeping",
+    "text": "Housekeeping\n\nHW #1 due on Wednesday 9/20\nHW #2 posted on same day (9/20)\nLots of good questions on Ed Discussion so far!\n\nEmail me if you need access: https://edstem.org/us/courses/42616/discussion/\n\n\nReminder: Quick links to course materials and main sites (Ed Discussion, Canvas, Github) can be found in the upper right corner of the top navbar:\nhttps://musa-550-fall-2023.github.io/"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#reminder-office-hours",
+    "href": "content/week-2/lecture-2B.html#reminder-office-hours",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "Reminder: Office Hours",
+    "text": "Reminder: Office Hours\n\nNick:\nTeresa: Fridays 10:30AM-12:00PM\nRemote: sign-up for time slots on Canvas calendar"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#week-2-recap",
+    "href": "content/week-2/lecture-2B.html#week-2-recap",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "Week #2 Recap",
+    "text": "Week #2 Recap\n\nWeek #2 repository: https://github.com/MUSA-550-Fall-2023/week-2\nRecommended readings for the week listed here\n\n\nLast time\n\nA brief overview of data visualization\nPractical tips on color in data vizualization\n\n\n\nToday\n\nThe Python landscape:\n\nmatplotlib\npandas\n\nOne more static plotting function: seaborn\nAdding interaction to our plots!\nIntro to the Altair package\nLab: Reproducing a famous Wall Street Journal data visualization with Altair"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#reminder-following-along-with-lectures",
+    "href": "content/week-2/lecture-2B.html#reminder-following-along-with-lectures",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "Reminder: following along with lectures",
+    "text": "Reminder: following along with lectures\n\nEasiest option: Binder\n\n\n\nHarder option: downloading Github repository contents"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#recommended-readings",
+    "href": "content/week-2/lecture-2B.html#recommended-readings",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "Recommended readings",
+    "text": "Recommended readings\nBe sure to check out the recommended readings for the week:\n\nGuide to getting started with matplotlib\nPlotting & visualization chapter of Python for Data Analysis\n\nA good introduction to plotting with matplotlib, pandas, and seaborn\n\nAltair:\n\nIntroduction to Statistical Visualization\nInteractive charts with altair\nExploring Seattle Weather: A Case Study\n\nData viz design: Introductory slides of London’s design guidelines\n\n\n# The imports\nimport pandas as pd\nimport numpy as np\nfrom matplotlib import pyplot as plt\n\n# Make sure plots show up in JupyterLab!\n%matplotlib inline"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#the-python-data-viz-landscape",
+    "href": "content/week-2/lecture-2B.html#the-python-data-viz-landscape",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "The Python data viz landscape",
+    "text": "The Python data viz landscape\nSo many tools…so little time"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#which-one-is-the-best",
+    "href": "content/week-2/lecture-2B.html#which-one-is-the-best",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "Which one is the best?",
+    "text": "Which one is the best?"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#there-isnt-one",
+    "href": "content/week-2/lecture-2B.html#there-isnt-one",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "There isn’t one…",
+    "text": "There isn’t one…\nYou’ll use different packages to achieve different goals, and they each have different things they are good at.\nToday, we’ll focus on: - matplotlib: the classic - pandas: built on matplotlib, quick plotting built in to DataFrames - seaborn: built on matplotlib, adds functionality for fancy statistical plots - altair: interactive, relying on javascript plotting library Vega\nAnd next week for geospatial data: - holoviews/geoviews - matplotlib/cartopy - geopandas/geopy\nGoal: introduce you to the most common tools and enable you to know the best package for the job in the future"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#the-classic-matplotlib",
+    "href": "content/week-2/lecture-2B.html#the-classic-matplotlib",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "The classic: matplotlib",
+    "text": "The classic: matplotlib\n\nVery well tested, robust plotting library\nCan reproduce just about any plot (sometimes with a lot of effort)\n\n\n\nWith some downsides…\n\nImperative, overly verbose syntax\nLittle support for interactive/web graphics\n\n\n\nAvailable functionality\n\nDon’t need to memorize syntax for all of the plotting functions\nExample gallery: https://matplotlib.org/stable/gallery/index.html\nSee the cheat sheet available in this repository\n\n\n\nMost commonly used:\n\nSimple line plots: plot()\nMultiple axes per figure: subplot()\n2D image (RGB) data : imshow()\n2D arrays: pcolormesh()\nHistograms: hist()\nBar charts: bar()\nPie charts: pie()\nScatter plots: scatter()\n\n\n\nWorking with matplotlib\nWe’ll use the object-oriented interface to matplotlib - Create Figure and Axes objects - Add plots to the Axes object - Customize any and all aspects of the Figure or Axes objects\n\nPro: Matplotlib is extraordinarily general — you can do pretty much anything with it\nCon: There’s a steep learning curve, with a lot of matplotlib-specific terms to learn\n\n\n\nLearning the matplotlib language\n\nSource\n\n\nRecommended reading\n\nIntroduction to the object-oriented interface\nA good walk through on using matplotlib to customize plots\nListed in the README for this week’s repository too"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#lets-load-some-data-to-plot",
+    "href": "content/week-2/lecture-2B.html#lets-load-some-data-to-plot",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "Let’s load some data to plot…",
+    "text": "Let’s load some data to plot…\nWe’ll use the Palmer penguins data set, data collected for three species of penguins at Palmer station in Antartica\n\n\nArtwork by @allison_horst\n\n# Load data on Palmer penguins\npenguins = pd.read_csv(\"./data/penguins.csv\")\n\n\n# Show the first ten rows\npenguins.head(n=10)    \n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nfemale\n2007\n\n\n5\nAdelie\nTorgersen\n39.3\n20.6\n190.0\n3650.0\nmale\n2007\n\n\n6\nAdelie\nTorgersen\n38.9\n17.8\n181.0\n3625.0\nfemale\n2007\n\n\n7\nAdelie\nTorgersen\n39.2\n19.6\n195.0\n4675.0\nmale\n2007\n\n\n8\nAdelie\nTorgersen\n34.1\n18.1\n193.0\n3475.0\nNaN\n2007\n\n\n9\nAdelie\nTorgersen\n42.0\n20.2\n190.0\n4250.0\nNaN\n2007\n\n\n\n\n\n\n\nData is already in tidy format"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#a-simple-visualization-3-different-ways",
+    "href": "content/week-2/lecture-2B.html#a-simple-visualization-3-different-ways",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "A simple visualization, 3 different ways",
+    "text": "A simple visualization, 3 different ways\n\nI want to scatter flipper length vs. bill length, colored by the penguin species"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#using-matplotlib",
+    "href": "content/week-2/lecture-2B.html#using-matplotlib",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "1. Using matplotlib",
+    "text": "1. Using matplotlib\n\n# Setup a dict to hold colors for each species\ncolor_map = {\"Adelie\": \"#1f77b4\", \"Gentoo\": \"#ff7f0e\", \"Chinstrap\": \"#D62728\"}\n\n# Initialize the figure \"fig\" and axes \"ax\"\nfig, ax = plt.subplots(figsize=(10, 6))\n\n# Group the data frame by species and loop over each group\n# NOTE: \"group\" will be the dataframe holding the data for \"species\"\nfor species, group in penguins.groupby(\"species\"):\n    print(f\"Plotting {species}...\")\n\n    # Plot flipper length vs bill length for this group\n    # Note: we are adding this plot to the existing \"ax\" object\n    ax.scatter(\n        group[\"flipper_length_mm\"],\n        group[\"bill_length_mm\"],\n        marker=\"o\",\n        label=species,\n        color=color_map[species],\n        alpha=0.75,\n    )\n\n# Plotting is done...format the axes!\n\n## Add a legend to the axes\nax.legend(loc=\"best\")\n\n## Add x-axis and y-axis labels\nax.set_xlabel(\"Flipper Length (mm)\")\nax.set_ylabel(\"Bill Length (mm)\")\n\n## Add the grid of lines\nax.grid(True)\n\nPlotting Adelie...\nPlotting Chinstrap...\nPlotting Gentoo..."
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#how-about-in-pandas",
+    "href": "content/week-2/lecture-2B.html#how-about-in-pandas",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "2. How about in pandas?",
+    "text": "2. How about in pandas?\nDataFrames have a built-in “plot” function that can make all of the basic type of matplotlib plots!\n\n# Tab complete on the plot attribute of a dataframe to see the available functions\n#penguins.plot.\n\nFirst, we need to add a new “color” column specifying the color to use for each species type.\nUse the pd.replace() function: it use a dict to replace values in a DataFrame column.\n\n# Calculate a list of colors\ncolor_map = {\"Adelie\": \"#1f77b4\", \"Gentoo\": \"#ff7f0e\", \"Chinstrap\": \"#D62728\"}\n\n# Map species name to color \npenguins[\"color\"] = penguins[\"species\"].replace(color_map)\n\npenguins.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\ncolor\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n#1f77b4\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n#1f77b4\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n#1f77b4\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007\n#1f77b4\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nfemale\n2007\n#1f77b4\n\n\n\n\n\n\n\nNow plot!\n\n# Same as before: Start by initializing the figure and axes\nfig, ax = plt.subplots(figsize=(10, 6))\n\n# Scatter plot two columns, colored by third\n# Use the built-in pandas plot.scatter function\npenguins.plot.scatter(\n    x=\"flipper_length_mm\",\n    y=\"bill_length_mm\",\n    c=\"color\",\n    alpha=0.75,\n    ax=ax, # IMPORTANT: Make sure to plot on the axes object we created already!\n)\n\n# Format the axes finally\nax.set_xlabel(\"Flipper Length (mm)\")\nax.set_ylabel(\"Bill Length (mm)\")\nax.grid(True)\n\n\n\n\nNote: no easy way to get legend added to the plot in this case…\n\nDisclaimer\n\nIn my experience, I have found the pandas plotting capabilities are good for quick and unpolished plots during the data exploration phase\nMost of the pandas plotting functions serve as shorcuts, removing some biolerplate matplotlib code\nIf I’m trying to make polished, clean data visualization, I’ll usually opt to use matplotlib from the beginning"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#seaborn-statistical-data-visualization",
+    "href": "content/week-2/lecture-2B.html#seaborn-statistical-data-visualization",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "3. Seaborn: statistical data visualization",
+    "text": "3. Seaborn: statistical data visualization\nSeaborn is designed to plot two columns colored by a third column…\n\n  \n\n\nimport seaborn as sns\n\n\n# Initialize the figure and axes\nfig, ax = plt.subplots(figsize=(10, 6))\n\n# style keywords as dict\ncolor_map = {\"Adelie\": \"#1f77b4\", \"Gentoo\": \"#ff7f0e\", \"Chinstrap\": \"#D62728\"}\nstyle = dict(palette=color_map, s=60, edgecolor=\"none\", alpha=0.75)\n\n# use the scatterplot() function\nsns.scatterplot(\n    x=\"flipper_length_mm\", # the x column\n    y=\"bill_length_mm\", # the y column\n    hue=\"species\", # the third dimension (color)\n    data=penguins, # pass in the data\n    ax=ax, # plot on the axes object we made\n    **style # add our style keywords\n)\n\n# Format with matplotlib commands\nax.set_xlabel(\"Flipper Length (mm)\")\nax.set_ylabel(\"Bill Length (mm)\")\nax.grid(True)\nax.legend(loc='best')\n\n&lt;matplotlib.legend.Legend at 0x1572e6170&gt;\n\n\n\n\n\n\n\n\n\n\n\nSide note: the **kwargs syntax\n\n\n\nThe ** syntax is the unpacking operator. It will unpack the dictionary and pass each keyword to the function.\nSo the previous code is the same as:\nsns.scatterplot(\n    x=\"flipper_length_mm\", \n    y=\"bill_length_mm\", \n    hue=\"species\",\n    data=penguins, \n    ax=ax, \n    palette=color_map, # defined in the style dict \n    edgecolor=\"none\", # defined in the style dict\n    alpha=0.5 # defined in the style dict\n)\nBut we can use **style as a shortcut!\n\n\n\nAn aside: the seaborn objects interface\nSeaborn recently introduced an “objects” interface, a completely new syntax that aims to be more declarative. It hides the interaction with matplotlib for the user and provides an more intuitive way to customize charts.\nYou’ll see a lot of similarities between the “objects” interface and the next library we will talk about: altair.\n\n\n\n\n\n\nNote\n\n\n\nSince it’s so new and not yet finalized, we won’t recommend using it during this course. However, we wanted to make sure you’re aware of it as it could be a good option in the future. More info can be found on seaborn’s documentation.\n\n\nAs a reference, our scatterplot example would look like this in the “objects” interface:\n\nimport seaborn.objects as so\n\n\n(\n    so.Plot(x=\"flipper_length_mm\", y=\"bill_length_mm\", color=\"species\", data=penguins)\n    .add(so.Dot())\n    .scale(color=color_map)\n    .layout(size=(10, 6))\n    .label(x=\"Flipper Length (mm)\", y=\"Bill Length (mm)\")\n    # Warning: this theme syntax is not yet finalized!\n    .theme({\"axes.facecolor\": \"w\", \"axes.edgecolor\": \"k\"})\n)\n\n\n\n\n\n\nMany more functions available\nIn general, seaborn is fantastic for visualizing relationships between variables in a more quantitative way\nDon’t memorize every function…\nI always look at the beautiful Example Gallery for ideas.\n\nHow about adding linear regression lines?\nUse lmplot()\n\nsns.lmplot(\n    x=\"flipper_length_mm\",\n    y=\"bill_length_mm\",\n    hue=\"species\",\n    data=penguins,\n    height=6,\n    aspect=1.5,\n    palette=color_map,\n    scatter_kws=dict(edgecolor=\"none\", alpha=0.5),\n);\n\n/Users/nhand/mambaforge/envs/musa-550-fall-2023/lib/python3.10/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight\n  self._figure.tight_layout(*args, **kwargs)\n\n\n\n\n\n\n\nHow about the smoothed 2D distribution?\nUse jointplot()\n\nsns.jointplot(\n    x=\"flipper_length_mm\",\n    y=\"bill_length_mm\",\n    data=penguins,\n    height=8,\n    kind=\"kde\",\n    cmap=\"viridis\",\n);\n\n\n\n\n\n\nHow about comparing more than two variables at once?\nUse pairplot()\n\n# The variables to plot\nvariables = [\n    \"species\",\n    \"bill_length_mm\",\n    \"flipper_length_mm\",\n    \"body_mass_g\",\n    \"bill_depth_mm\",\n]\n\n# Set the seaborn style\nsns.set_context(\"notebook\", font_scale=1.5)\n\n# make the pair plot\nsns.pairplot(\n    penguins[variables].dropna(),\n    palette=color_map,\n    hue=\"species\",\n    plot_kws=dict(alpha=0.5, edgecolor=\"none\"),\n)\n\n/Users/nhand/mambaforge/envs/musa-550-fall-2023/lib/python3.10/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight\n  self._figure.tight_layout(*args, **kwargs)\n\n\n\n\n\n\n\nLet’s explore the bill length differences across species and gender\nWe can use seaborn’s functionality for exploring categorical data sets: catplot()\n\nsns.catplot(x=\"species\", y=\"bill_length_mm\", hue=\"sex\", data=penguins);\n\n/Users/nhand/mambaforge/envs/musa-550-fall-2023/lib/python3.10/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight\n  self._figure.tight_layout(*args, **kwargs)\n\n\n\n\n\n\n\n\nSeaborn tutorials broken down by data type\n\nTutorial landing page\n\nVisualizing statistical relationships\nCategorical data\nVisualizing the distribution of a data set\nVisualizing linear relationships\n\n\n\n\nColor palettes in seaborn\nGreat tutorial available in the seaborn documentation\n\n\n\n\n\n\nTip\n\n\n\nThe color_palette() function in seaborn is very useful. For me, it is the easiest way to get a list of hex strings for a specific color map.\n\n\n\n# This is a list of hex strings values for the colors\nviridis = sns.color_palette(\"viridis\", n_colors=7).as_hex()\n\n# Print it out to see the list\nprint(viridis)\n\n['#472d7b', '#3b528b', '#2c728e', '#21918c', '#28ae80', '#5ec962', '#addc30']\n\n\nCan we preview the colors in JupyterLab?\n\n# Option 1: Use the sns.palplot() function to make a matplotlib figure\nsns.palplot(viridis)\n\n\n\n\n\n# Option 2: If you output it from a cell, JupyterLab automatically renders it\nviridis\n\n\n\n\nYou can also create custom light, dark, or diverging color maps, based on the desired hues at either end of the color map.\n\nsns.diverging_palette(10, 220, sep=50, n=7)"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#altair-declarative-data-viz-in-python",
+    "href": "content/week-2/lecture-2B.html#altair-declarative-data-viz-in-python",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "4. Altair: Declarative Data Viz in Python",
+    "text": "4. Altair: Declarative Data Viz in Python\n\n\n\nDocumentation available at: https://altair-viz.github.io/\n\nThe altair import statement\n\nimport altair as alt  \n\n\n\nA visualization grammar\n\nSpecify what should be done\nDetails determined automatically\nCharts are really just visualization specifications and the data to make the plot\nRelies on vega and vega-lite\n\nImportant: focuses on tidy data — you’ll often find yourself running pd.melt() to get to tidy format\nLet’s try out our flipper length vs bill length example:\n\n# Step 1: Initialize the chart with the data\nchart = alt.Chart(penguins)\n\n# Step 2: Define what kind of marks to use\nchart = chart.mark_circle(size=60)\n\n# Step 3: Encode the visual channels\nchart = chart.encode(\n    x=\"flipper_length_mm\",\n    y=\"bill_length_mm\",\n    color=\"species\", \n    tooltip=[\"species\", \"flipper_length_mm\", \"bill_length_mm\", \"island\", \"sex\"],\n)\n\n# Optional: Make the chart interactive\nchart.interactive()\n\n\n\n\n\n\n\n\n\nAltair shorcuts\n\nThere are built-in objects to represent “x”, “y”, “color”, “tooltip”, etc..\nUsing the object syntax allows your to customize how different elements behave\n\nExample: previous code is the same as\nchart = chart.encode(\n    x=alt.X(\"flipper_length_mm\"),\n    y=alt.Y(\"bill_length_mm\"),\n    color=alt.Color(\"species\"),\n    tooltip=alt.Tooltip([\"species\", \"flipper_length_mm\", \"bill_length_mm\", \"island\", \"sex\"]),\n)\n\n\nChanging Altair chart axis limits\n\nBy default, Altair assumes the axis will start at 0\nTo center on the data automatically, we need to use a alt.Scale() object to specify the scale\n\n\n# initialize the chart with the data\nchart = alt.Chart(penguins)\n\n# define what kind of marks to use\nchart = chart.mark_circle(size=60)\n\n# encode the visual channels\nchart = chart.encode(\n    x=alt.X(\"flipper_length_mm\", scale=alt.Scale(zero=False)), # This part is new!\n    y=alt.Y(\"bill_length_mm\", scale=alt.Scale(zero=False)), # This part is new!\n    color=\"species\",\n    tooltip=[\"species\", \"flipper_length_mm\", \"bill_length_mm\", \"island\", \"sex\"],\n)\n\n# make the chart interactive\nchart = chart.interactive()\n\nchart\n\n\n\n\n\n\n\n\n\nEncodings\n\nX: x-axis value\nY: y-axis value\nColor: color of the mark\nOpacity: transparency/opacity of the mark\nShape: shape of the mark\nSize: size of the mark\nRow: row within a grid of facet plots\nColumn: column within a grid of facet plots\n\nFor a complete list of these encodings, see the Encodings section of the documentation.\nAltair charts can be fully specified as JSON \\(\\rightarrow\\) easy to embed in HTML on websites!\n\n# Save the chart as a JSON string!\njson = chart.to_json()\n\n\n# Print out the first 1,000 characters\nprint(json[:1000])\n\n{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.14.1.json\",\n  \"config\": {\n    \"view\": {\n      \"continuousHeight\": 300,\n      \"continuousWidth\": 300\n    }\n  },\n  \"data\": {\n    \"name\": \"data-6e6be28484bfcb7bdf9764c3163fc5aa\"\n  },\n  \"datasets\": {\n    \"data-6e6be28484bfcb7bdf9764c3163fc5aa\": [\n      {\n        \"bill_depth_mm\": 18.7,\n        \"bill_length_mm\": 39.1,\n        \"body_mass_g\": 3750.0,\n        \"color\": \"#1f77b4\",\n        \"flipper_length_mm\": 181.0,\n        \"island\": \"Torgersen\",\n        \"sex\": \"male\",\n        \"species\": \"Adelie\",\n        \"year\": 2007\n      },\n      {\n        \"bill_depth_mm\": 17.4,\n        \"bill_length_mm\": 39.5,\n        \"body_mass_g\": 3800.0,\n        \"color\": \"#1f77b4\",\n        \"flipper_length_mm\": 186.0,\n        \"island\": \"Torgersen\",\n        \"sex\": \"female\",\n        \"species\": \"Adelie\",\n        \"year\": 2007\n      },\n      {\n        \"bill_depth_mm\": 18.0,\n        \"bill_length_mm\": 40.3,\n        \"body_mass_g\": 3250.0,\n        \"color\": \"#1f77b4\",\n        \n\n\n\n\nPublishing the visualization online\n\nchart.save(\"chart.html\")\n\n\n# Display IFrame in IPython\nfrom IPython.display import IFrame\nIFrame('chart.html', width=600, height=375)\n\n\n        \n        \n\n\n\n\nWatch out for large datasets!\nNote that the data is embedded inside the JSON representation of the chart. That means that if you pass a DataFrame to your chart with a lot of data, your browser might be overwhelmed and everything might freeze. To avoid this, altair will throw an error if your DataFrame has more than 5,000 rows.\nThere are a number of strategies outlined on the docs for dealing with larger datasets. One is to simply disable the max rows check — this could be a good idea if your dataset is just a bit larger than the limit.\nalt.data_transformers.disable_max_rows()\nAnother strategy is to use the more flexible “vegafusion” library, which has improved implementations of data transformations and allows charts with data up to 100,000 rows. You can enable this transformer with:\nalt.data_transformers.enable(\"vegafusion\")\n\n\n\n\n\n\nNote\n\n\n\nIf you get an error about missing packages, make sure you update your course environment to the latest version. See the instructions here.\n\n\n\n\nUsually, the function calls are chained together\nSurround your code with parentheses, and put each line of code on a new line\n\nchart = (\n    alt.Chart(penguins)\n    .mark_circle(size=60)\n    .encode(\n        x=alt.X(\"flipper_length_mm\", scale=alt.Scale(zero=False)),\n        y=alt.Y(\"bill_length_mm\", scale=alt.Scale(zero=False)),\n        color=\"species:N\",\n    )\n    .interactive()\n)\n\nchart\n\n\n\n\n\n\n\nNote that the interactive() call allows users to pan and zoom.\nAltair is able to automatically determine the type of the variable using built-in heuristics. Altair and Vega-Lite support four primitive data types:\n\n\n\n\nData Type\n\n\nCode\n\n\nDescription\n\n\n\n\nquantitative\n\n\nQ\n\n\nNumerical quantity (real-valued)\n\n\n\n\nnominal\n\n\nN\n\n\nName / Unordered categorical\n\n\n\n\nordinal\n\n\nO\n\n\nOrdered categorial\n\n\n\n\ntemporal\n\n\nT\n\n\nDate/time\n\n\n\n\nYou can set the data type of a column explicitly using a one letter code attached to the column name with a colon:\n\n\nFaceting\nEasily create multiple views of a dataset with faceting\n\n(\n    alt.Chart(penguins)\n    .mark_point()\n    .encode(\n        x=alt.X(\"flipper_length_mm:Q\", scale=alt.Scale(zero=False)),\n        y=alt.Y(\"bill_length_mm:Q\", scale=alt.Scale(zero=False)),\n        color=\"species:N\",\n    )\n    .properties(width=200, height=200)\n    .facet(column=\"species\")\n    .interactive()\n)\n\n\n\n\n\n\n\nNote: I’ve added the variable type identifiers (Q, N) to the previous example\nLots of features to create compound charts: repeated charts, faceted charts, vertical and horizontal stacking of subplots.\nSee the documentation for examples\n\n\nA grammar of interaction\nA relatively new addition to altair, vega, and vega-lite. This allows you to define what happens when users interact with your visualization.\n\n\n\n\n\n\nTip\n\n\n\nI highly recommend reading through the documentation section on interactive charts. Altair’s interaction language is very complex and you can do a lot, including adding widgets (e.g., sliders) and multiple kinds of selection windows.\n\n\n\n\nA faceted plot, now with interaction!\n\n# Create the selection box\nbrush = alt.selection_interval()\n\n\n(\n    alt.Chart(penguins)  # Create the chart\n    .mark_point()  # Use point markers\n    .encode(  # Encode\n        x=alt.X(\"flipper_length_mm\", scale=alt.Scale(zero=False)),  # X\n        y=alt.Y(\"bill_length_mm\", scale=alt.Scale(zero=False)),  # Y\n        # Use a conditional color based on brush\n        color=alt.condition(brush, \"species\", alt.value(\"lightgray\")),  # Color\n        tooltip=[\"species\", \"flipper_length_mm\", \"bill_length_mm\"],  # Tooltip\n    )\n    .add_params(brush)  # Add brush parameter\n    .properties(width=200, height=200)  # Set width/height\n    .facet(column=\"species\") # Facet\n)\n\n\n\n\n\n\n\n\n\nMore on conditions\nWe used the alt.condition() function to specify a conditional color for the markers. It takes three arguments:\n\nThe brush object determines if a data point is currently selected\nIf inside the brush, color the marker according to the “species” column\nIf outside the brush, use the literal hex color “lightgray”\n\n\n\nSelecting across multiple variables\nLet’s examine the relationship between flipper_length_mm, bill_length_mm, and body_mass_g\nWe’ll use a repeated chart that repeats variables across rows and columns.\nUse a conditional color again, based on a brush selection.\n\n# Setup the selection brush\nbrush = alt.selection(type=\"interval\", resolve=\"global\")\n\n# Setup the chart\n(\n    alt.Chart(penguins)\n    .mark_circle()\n    .encode(\n        x=alt.X(alt.repeat(\"column\"), type=\"quantitative\", scale=alt.Scale(zero=False)),\n        y=alt.Y(alt.repeat(\"row\"), type=\"quantitative\", scale=alt.Scale(zero=False)),\n        color=alt.condition(\n            brush, \"species:N\", alt.value(\"lightgray\")\n        ),  # conditional color\n    )\n    .properties(\n        width=200,\n        height=200,\n    )\n    .add_params(brush)\n    .repeat(  # repeat variables across rows and columns\n        row=[\"flipper_length_mm\", \"bill_length_mm\", \"body_mass_g\"],\n        column=[\"body_mass_g\", \"bill_length_mm\", \"flipper_length_mm\"],\n    )\n)\n\n/Users/nhand/mambaforge/envs/musa-550-fall-2023/lib/python3.10/site-packages/altair/utils/deprecation.py:65: AltairDeprecationWarning: 'selection' is deprecated.\n   Use 'selection_point()' or 'selection_interval()' instead; these functions also include more helpful docstrings.\n  warnings.warn(message, AltairDeprecationWarning, stacklevel=1)\n\n\n\n\n\n\n\n\n\n\nMore exploratory visualization\nLet’s try out some more features of Altair…these examples are meant as reference for you to showcase some common features.\n\n\n\n\n\n\nReminder\n\n\n\nThe Example Gallery is a great place to learn the full functionality of Altair and includes a lot of great examples!\n\n\n\nExample 1: Color schemes\n\nScatter flipper length vs body mass for each species, colored by sex\n\n\n(\n    alt.Chart(penguins)\n    .mark_point()\n    .encode(\n        x=alt.X(\"flipper_length_mm\", scale=alt.Scale(zero=False)),\n        y=alt.Y(\"body_mass_g\", scale=alt.Scale(zero=False)),\n        color=alt.Color(\"sex:N\", scale=alt.Scale(scheme=\"set2\")),\n    )\n    .properties(width=400, height=150)\n    .facet(row=\"species\")\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nI’ve specified the scale keyword to the alt.Color() object and passed a scheme value:\nscale=alt.Scale(scheme=\"set2\")\n\nThe scheme “set2” is a Color Brewer color. The available color schemes are very similar to those matplotlib. A list is available on the Vega documentation: https://vega.github.io/vega/docs/schemes/.\n\n\n\n\nExample 2: Histogram aggregations with count\n\nNext, plot the total number of penguins per species by the island they are found on.\n\n\n(\n    alt.Chart(penguins)\n    .mark_bar()\n    .encode(\n        # X should show the (normalized) count of each group\n        x=alt.X(\"*:Q\", aggregate=\"count\", stack=\"normalize\"), # The * is a placeholder here\n        y=\"island:N\",\n        color=\"species:N\",\n        tooltip=[\"island\", \"species\", \"count(*):Q\"],\n    )\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nI like to think of altair aggregations in terms of the pandas groupby syntax. Under the hood, altair is going to group our data by the other encodings we specified, “island” and “species”. The dimension (“X”) that gets specified as the count aggregation is then the size of each of those groups.\n\n\n\n\nExample 3: The count() shorthand\n\nPlot a histogram of number of penguins by flipper length, grouped by species.\n\n\n(\n    alt.Chart(penguins)\n    .mark_bar()\n    .encode(\n        x=alt.X(\"flipper_length_mm\", bin=alt.Bin(maxbins=20)),\n        y=\"count():Q\",  # Shorthand\n        color=\"species\",\n        tooltip=[\"species\", alt.Tooltip(\"count()\", title=\"Number of Penguins\")],\n    )\n    .properties(height=250)\n)\n\n\n\n\n\n\n\n\n\nExample 4: Binning data and using the mean aggregation\n\nFinally, let’s bin the data by body mass and plot the average flipper length per bin, colored by the species.\n\nIn this example, we use a “binning” transformation to bin the data along a certain encoding (“X” in this case), and then we will take the mean along the “Y” encoding.\n\n(\n    alt.Chart(penguins.dropna())\n    .mark_line()\n    .encode(\n        x=alt.X(\"body_mass_g:Q\", bin=alt.Bin(maxbins=10)), # Bin the data!\n        y=alt.Y(\n            \"mean(flipper_length_mm):Q\", scale=alt.Scale(zero=False) # Mean of flipper length\n        ),  \n        color=\"species:N\",\n        tooltip=[\"mean(flipper_length_mm):Q\", \"count():Q\"],\n    )\n    .properties(height=300, width=500)\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nIn addition to mean() and count(), you can apply a number of different transformations to the data before plotting, including binning, arbitrary functions, and filters.\nSee the Data Transformations section of the user guide for more details.\n\n\n\n\n\nDashboards become easy to make…\n\n# Setup a brush selection\nbrush = alt.selection(type=\"interval\")\n\n# The top scatterplot: flipper length vs bill length\npoints = (\n    alt.Chart()\n    .mark_point()\n    .encode(\n        x=alt.X(\"flipper_length_mm:Q\", scale=alt.Scale(zero=False)),\n        y=alt.Y(\"bill_length_mm:Q\", scale=alt.Scale(zero=False)),\n        color=alt.condition(brush, \"species:N\", alt.value(\"lightgray\")),\n    )\n    .properties(width=800)\n    .add_params(brush)\n)\n\n# The bottom bar plot\nbars = (\n    alt.Chart()\n    .mark_bar()\n    .encode(\n        x=\"count(species):Q\",\n        y=\"species:N\",\n        color=\"species:N\",\n    )\n    .transform_filter(\n        brush  # the filter transform uses the selection to filter the input data to this chart\n    )\n    .properties(width=800)\n)\n\n# Final chart is a vertical stack\nchart = alt.vconcat(points, bars, data=penguins)\n\n# Output the chart\nchart"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#exercise-visualizing-the-impact-of-the-measles-vaccination",
+    "href": "content/week-2/lecture-2B.html#exercise-visualizing-the-impact-of-the-measles-vaccination",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "Exercise: Visualizing the impact of the measles vaccination",
+    "text": "Exercise: Visualizing the impact of the measles vaccination\nLet’s reproduce this famous Wall Street Journal visualization showing measles incidence over time using altair.\nhttp://graphics.wsj.com/infectious-diseases-and-vaccines/\n\nStep 1: Load the data\n\n# Note we are using a relative path\npath = \"./data/measles_incidence.csv\"\n\n# Skip first two rows and convert \"-\" to NaN automatically\ndata = pd.read_csv(path, skiprows=2, na_values=\"-\")\n\ndata.head()\n\n\n\n\n\n\n\n\nYEAR\nWEEK\nALABAMA\nALASKA\nARIZONA\nARKANSAS\nCALIFORNIA\nCOLORADO\nCONNECTICUT\nDELAWARE\n...\nSOUTH DAKOTA\nTENNESSEE\nTEXAS\nUTAH\nVERMONT\nVIRGINIA\nWASHINGTON\nWEST VIRGINIA\nWISCONSIN\nWYOMING\n\n\n\n\n0\n1928\n1\n3.67\nNaN\n1.90\n4.11\n1.38\n8.38\n4.50\n8.58\n...\n5.69\n22.03\n1.18\n0.4\n0.28\nNaN\n14.83\n3.36\n1.54\n0.91\n\n\n1\n1928\n2\n6.25\nNaN\n6.40\n9.91\n1.80\n6.02\n9.00\n7.30\n...\n6.57\n16.96\n0.63\nNaN\n0.56\nNaN\n17.34\n4.19\n0.96\nNaN\n\n\n2\n1928\n3\n7.95\nNaN\n4.50\n11.15\n1.31\n2.86\n8.81\n15.88\n...\n2.04\n24.66\n0.62\n0.2\n1.12\nNaN\n15.67\n4.19\n4.79\n1.36\n\n\n3\n1928\n4\n12.58\nNaN\n1.90\n13.75\n1.87\n13.71\n10.40\n4.29\n...\n2.19\n18.86\n0.37\n0.2\n6.70\nNaN\n12.77\n4.66\n1.64\n3.64\n\n\n4\n1928\n5\n8.03\nNaN\n0.47\n20.79\n2.38\n5.13\n16.80\n5.58\n...\n3.94\n20.05\n1.57\n0.4\n6.70\nNaN\n18.83\n7.37\n2.91\n0.91\n\n\n\n\n5 rows × 53 columns\n\n\n\nNote: the data is weekly and in wide format\n\n\nStep 2: Calculate the total incidents in a given year per state\n\n\n\n\n\n\nHints\n\n\n\n\nYou’ll want to take the sum over weeks to get the annual total — you can take advantage of the groupby() then sum() work flow.\nIt will be helpful if you drop the WEEK column — you don’t need that in the grouping operation. Take a look at the df.drop(columns=[]) function (docs).\n\n\n\n\n\nStep 3: Transform to tidy format\n\n\n\n\n\n\nHints\n\n\n\nYou can use melt() to get tidy data. You should have 3 columns: year, state, and total incidence.\n\n\n\n\nStep 4: Make the plot\n\n\n\n\n\n\nHints\n\n\n\n\nTake a look at this heatmap example for an example of the syntax of Altair’s heatmap functionality.\nYou can use the mark_rect() function to encode the values as rectangles and then color them according to the average annual measles incidence per state.\nYou’ll want to take advantage of the custom color map defined below to best match the WSJ’s graphic.\n\n\n\n\n# Define a custom colormape using Hex codes & HTML color names\ncolormap = alt.Scale(\n    domain=[0, 100, 200, 300, 1000, 3000],\n    range=[\n        \"#F0F8FF\",\n        \"cornflowerblue\",\n        \"mediumseagreen\",\n        \"#FFEE00\",\n        \"darkorange\",\n        \"firebrick\",\n    ],\n    type=\"sqrt\",\n)\n\n\n\nChallenges\n\nDo you agree with the visualization choices made by the WSJ?\n\nTry experimenting with different color scales to see if you can improve the heatmap\nSee the names of available color maps in Altair\n\nTry adding a second chart above the heatmap that shows a line chart of the annual average across all 50 states.\n\n\nChallenge #1: Exploring other color maps\nThe categorical color scale choice is properly not the best. It’s best to use a perceptually uniform color scale like viridis. See below:\n\n\nChallenge #2: Add the annual average chart on top"
+  },
+  {
+    "objectID": "content/week-2/lecture-2B.html#thats-it",
+    "href": "content/week-2/lecture-2B.html#thats-it",
+    "title": "Week 2B: Data Visualization Fundamentals",
+    "section": "That’s it!",
+    "text": "That’s it!\n\nHW #1 due on Wednesday Sept 20 before the end of the day\nWrapping up altair and geospatial analysis and visualization next week!"
   },
   {
     "objectID": "schedule/402.html",
@@ -404,6 +565,216 @@
     "title": "Schedule: Section 402",
     "section": "",
     "text": "Note\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGithub Repo\n\n\n\nHTML Slides\n\n\n\nExecutable Slides\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\n\n\n\nExploratory Data Science in Python\n\n\n\n\n\n\n\n\n\n\nThursday, August 31\n\n\n\nLecture 1A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 1B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\n\nData Visualization Fundamentals\n\n\n\n\n\n\n\n\n\n\nThursday, September 7\n\n\n\nLecture 2A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 2B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\n\nGeospatial Data Analysis and GeoPandas\n\n\n\n\n\n\n\n\n\n\nThursday, September 14\n\n\n\nLecture 3A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 3B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\n\nMore Interactive Data Viz, Working with Raster Datasets\n\n\n\n\n\n\n\n\n\n\nThursday, September 21\n\n\n\nLecture 4A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 4B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\n\n\n\nOpenStreetMap, Urban Networks, and Interactive Web Maps\n\n\n\n\n\n\n\n\n\n\nThursday, September 28\n\n\n\nLecture 5A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 5B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\n\nWeb Scraping\n\n\n\n\n\n\n\n\n\n\nThursday, October 5\n\n\n\nLecture 6A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 6B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\n\n\n\nWorking with APIs\n\n\n\n\n\n\n\n\n\n\nThursday, October 19\n\n\n\nLecture 7A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 7B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\n\nAnalyzing and Visualizing Large Datasets\n\n\n\n\n\n\n\n\n\n\nThursday, October 26\n\n\n\nLecture 8A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 8B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\n\nFrom Notebooks to the Web: Part 1\n\n\n\n\n\n\n\n\n\n\nThursday, November 2\n\n\n\nLecture 9A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 9B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\n\nFrom Notebooks to the Web: Part 2\n\n\n\n\n\n\n\n\n\n\nThursday, November 9\n\n\n\nLecture 10A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 10B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\n\n\n\nCase Study: Predicting Home Prices in Philadelphia\n\n\n\n\n\n\n\n\n\n\nThursday, November 16\n\n\n\nLecture 11A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 11B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\n\n\n\nCase Study: Predicting Rideshare Demand\n\n\n\n\n\n\n\n\n\n\nTuesday, November 21\n\n\n\nLecture 12A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 12B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #6 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\n\n\n\nCase Study: Clustering Analysis in Python\n\n\n\n\n\n\n\n\n\n\nThursday, November 30\n\n\n\nLecture 13A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 13B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, December 4\n\n\n\nHW #6 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal project proposal due\n\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\n\nCase Study: Advanced Raster Analysis\n\n\n\n\n\n\n\n\n\n\nThursday, December 7\n\n\n\nLecture 14A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLecture 14B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, December 20\n\n\n\nFinal project due"
+  },
+  {
+    "objectID": "schedule/401.html",
+    "href": "schedule/401.html",
+    "title": "Schedule: Section 401",
+    "section": "",
+    "text": "Note\n\n\n\nThe schedule is tentative and could change in the future.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGithub Repo\n\n\n\nHTML Slides\n\n\n\nExecutable Slides\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\n\n\n\nExploratory Data Science in Python\n\n\n\n\n\n\n\n\n\n\nWednesday, August 30\n\n\n\nLecture 1A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 6\n\n\n\nLecture 1B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\n\nData Visualization Fundamentals\n\n\n\n\n\n\n\n\n\n\nMonday, September 11\n\n\n\nLecture 2A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 13\n\n\n\nLecture 2B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\n\nGeospatial Data Analysis and GeoPandas\n\n\n\n\n\n\n\n\n\n\nMonday, September 18\n\n\n\nLecture 3A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 20\n\n\n\nLecture 3B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #1 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\n\nMore Interactive Data Viz, Working with Raster Datasets\n\n\n\n\n\n\n\n\n\n\nMonday, September 25\n\n\n\nLecture 4A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, September 27\n\n\n\nLecture 4B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\n\n\n\nOpenStreetMap, Urban Networks, and Interactive Web Maps\n\n\n\n\n\n\n\n\n\n\nMonday, October 2\n\n\n\nLecture 5A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 4\n\n\n\nLecture 5B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #2 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\n\nWeb Scraping\n\n\n\n\n\n\n\n\n\n\nMonday, October 9\n\n\n\nLecture 6A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 11\n\n\n\nLecture 6B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\n\n\n\nWorking with APIs\n\n\n\n\n\n\n\n\n\n\nMonday, October 16\n\n\n\nLecture 7A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 18\n\n\n\nLecture 7B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #3 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\n\nAnalyzing and Visualizing Large Datasets\n\n\n\n\n\n\n\n\n\n\nMonday, October 23\n\n\n\nLecture 8A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, October 25\n\n\n\nLecture 8B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\n\nFrom Notebooks to the Web: Part 1\n\n\n\n\n\n\n\n\n\n\nMonday, October 30\n\n\n\nLecture 9A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 1\n\n\n\nLecture 9B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #4 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 assigned\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\n\nFrom Notebooks to the Web: Part 2\n\n\n\n\n\n\n\n\n\n\nMonday, November 6\n\n\n\nLecture 10A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 8\n\n\n\nLecture 10B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\n\n\n\nCase Study: Predicting Home Prices in Philadelphia\n\n\n\n\n\n\n\n\n\n\nMonday, November 13\n\n\n\nLecture 11A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, November 15\n\n\n\nLecture 11B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\n\n\n\nCase Study: Predicting Rideshare Demand\n\n\n\n\n\n\n\n\n\n\nMonday, November 20\n\n\n\nLecture 12A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #5 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #6 assigned\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, November 27\n\n\n\nLecture 12B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\n\n\n\nCase Study: Clustering Analysis in Python\n\n\n\n\n\n\n\n\n\n\nWednesday, November 29\n\n\n\nLecture 13A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, December 4\n\n\n\nLecture 13B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW #6 due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal project proposal due\n\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\n\nCase Study: Advanced Raster Analysis\n\n\n\n\n\n\n\n\n\n\nWednesday, December 6\n\n\n\nLecture 14A\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMonday, December 11\n\n\n\nLecture 14B\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWednesday, December 20\n\n\n\nFinal project due"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html",
+    "href": "content/week-2/lecture-2A.html",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "",
+    "text": "Section 401\nSep 11, 2023"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#housekeeping",
+    "href": "content/week-2/lecture-2A.html#housekeeping",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Housekeeping",
+    "text": "Housekeeping\n\nEd Discussion: https://edstem.org/us/courses/42616/discussion/\nHW #1 due on Wednesday 9/20\nOffice hours:\n\nNick: TBD\nTeresa: Fridays, 10:30AM to 12:00PM\nSign-up for time slots on Canvas calendar\n\n\nQuestions / concerns? - Email: nhand@design.upenn.edu - Post questions on Ed Discussion"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#guides",
+    "href": "content/week-2/lecture-2A.html#guides",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Guides",
+    "text": "Guides\nCheck out the guides section of the course website for\n\nSetting up Python\nUsing mamba\nJupyter notebooks and JupyterLab\nTroubleshooting Python installation issues\nTips for managing the folder structure on your laptop\n\n\n\n\n\n\n\nReminder\n\n\n\nSign up for free DataCamp access if you haven’t yet. See the course website for instructions.\nGood courses for some of the data viz libraries we’ll talk about today:\n\nIntroduction to Data Visualization with matplotlib\nIntroduction to Data Visualization with seaborn\nIntermediate Data Visualization with seaborn"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#git-github-resources",
+    "href": "content/week-2/lecture-2A.html#git-github-resources",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Git & GitHub Resources",
+    "text": "Git & GitHub Resources\n\nSetting up git\nManaging files on GitHub"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#reminder-following-along-with-lectures",
+    "href": "content/week-2/lecture-2A.html#reminder-following-along-with-lectures",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Reminder: following along with lectures",
+    "text": "Reminder: following along with lectures\n\nEasiest option: use Binder\n\n\n\nHarder option: downloading Github repository contents"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#todays-agenda",
+    "href": "content/week-2/lecture-2A.html#todays-agenda",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nA brief overview of data visualization\nPractical tips on color in data vizualization\nThe Python landscape:\n\nmatplotlib\nseaborn\naltair"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#a-brief-history",
+    "href": "content/week-2/lecture-2A.html#a-brief-history",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "A brief history",
+    "text": "A brief history\nStarting with two of my favorite historical examples, and their modern renditions…"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#example-1-the-pioneering-work-of-w.-e.-b.-du-bois",
+    "href": "content/week-2/lecture-2A.html#example-1-the-pioneering-work-of-w.-e.-b.-du-bois",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Example 1: the pioneering work of W. E. B. Du Bois",
+    "text": "Example 1: the pioneering work of W. E. B. Du Bois\n\n\n\nRe-making the Du Bois Spiral with census data\nUsing the Du Bois spiral to show the demographics of whites in seven states:\n\n \n\nGreen is urban, blue suburban, yellow small town, red rural. Source"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#section",
+    "href": "content/week-2/lecture-2A.html#section",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "",
+    "text": "Additional references\n\nA 6-part blog series on W. E. B. Du Bois’ Data Visualization\nAn article on historical data visualization\nW. E. B. Du Bois’s Data Portraits: Visualizing Black America"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#example-2-the-statistical-atlas-of-the-united-states",
+    "href": "content/week-2/lecture-2A.html#example-2-the-statistical-atlas-of-the-united-states",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Example 2: the Statistical Atlas of the United States",
+    "text": "Example 2: the Statistical Atlas of the United States\n\nFirst census: 1790\nFirst map for the census: 1850\nFirst Statistical Atlas: 1870\nLargely discontinued after 1890, except for the 2000 Census Atlas\n\n\nUsing modern data\nSee http://projects.flowingdata.com/atlas, by Nathan Yau\n\n\nIndustry and Earnings by Sex\n\n\n\nSource: American Community Survey, 5-Year, 2009-2013\n\n\nMedian Household Income\n\n\n\n\n\nMany more examples…"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#more-recentlytwo-main-movements",
+    "href": "content/week-2/lecture-2A.html#more-recentlytwo-main-movements",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "More recently…two main movements:",
+    "text": "More recently…two main movements:\n\n1st wave: clarity\n2nd wave: the grammar of visualization"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#section-1",
+    "href": "content/week-2/lecture-2A.html#section-1",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "",
+    "text": "Wave 1: Clarity\n\nPioneered by Edward Tufte and his release of The Visual Display of Quantitative Information in 1983\nFocuses on clarity, simplicity, and plain color schemes\nCharts should be immediately accessible and readable\n\n\nThe idea of “Chartjunk”\n\nCoined by Tufte in Visual Display\nAny unnecessary information on a chart\n\n\n\nSome extreme examples\n\n\n\n\n\n\n\n\n\nWave 2: the grammar of visualization\n\nInfluenced by The Grammar of Graphics by Leland Wilkinson in 1999\nFocuses on encoding data via channels onto geometry\nMapping data attributes on to graphical channels, e.g., length, angle, color, or position (or any other graphical character)\nLess focus on clarity, more on the encoding system\nLeads to many, many (perhaps confusing) ways of visualizing data\nggplot2 provides an R implementation of The Grammar of Graphics\nA few different Python libraries available\n\n\n\nWhere are we now?\n\nBoth movements converging together\nMore visualization libraries available now than ever\n\n\n\nA survey of common tools\n\n\n\n\nFrom a 2017 survey by Elijah Meeks\nFormer data visualization engineer at Apple, Netflix; now at Noteable\nExcellent data viz resource\nFind him on Twitter or Medium: @Elijah_Meeks\nExecutive director of the Data Visualization Society\n\n\n\nCommunity-based data viz organization\nGreat resources for beginners\nCheck out the Nightingale: The Data Visualization Society’s Blog"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#the-7-kinds-of-data-viz-people",
+    "href": "content/week-2/lecture-2A.html#the-7-kinds-of-data-viz-people",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "The 7 kinds of data viz people",
+    "text": "The 7 kinds of data viz people\n\nFrom this blog post\nIllustrations by Susie Lu\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee, e.g. Data Sketches"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#data-visualization-as-communication",
+    "href": "content/week-2/lecture-2A.html#data-visualization-as-communication",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Data visualization as communication",
+    "text": "Data visualization as communication\n\nData visualization is primarily a communication and design problem, not a technical one\nTwo main modes:\n\nFast: quickly understood or quickly made (or both!)\nSlow: more advanced, focus on design, takes longer to understand and/or longer to make"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#fast-visualization",
+    "href": "content/week-2/lecture-2A.html#fast-visualization",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Fast visualization",
+    "text": "Fast visualization\n\nClassic trope: a report for busy executives created by subject experts \\(\\rightarrow\\) as clear and simplified as possible\nLeads readers to think that if the chart is not immediately understood then it must be a failure\nThe dominant method of data visualization\n\nE.g., Create a Tableau Dashboard in Just 10 Minutes"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#moving-beyond-fast-visualizations",
+    "href": "content/week-2/lecture-2A.html#moving-beyond-fast-visualizations",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Moving beyond fast visualizations",
+    "text": "Moving beyond fast visualizations\n\nThinking about what charts say, beyond what is immediately clear\nFocusing on colors, design choices"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#example-fatalities-in-the-iraq-war",
+    "href": "content/week-2/lecture-2A.html#example-fatalities-in-the-iraq-war",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Example: Fatalities in the Iraq War",
+    "text": "Example: Fatalities in the Iraq War\nby Simon Scarr in 2011\n\n\n\nQuestion: What design choices drive home the implicit message?"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#data-visualization-as-storytelling",
+    "href": "content/week-2/lecture-2A.html#data-visualization-as-storytelling",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Data Visualization as Storytelling",
+    "text": "Data Visualization as Storytelling\nThe same data, but different design choices…\n\nA negative portrayal\n\n\n\n\n\nA positive portrayal"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#design-choices-matter-data-viz-has-never-been-more-important",
+    "href": "content/week-2/lecture-2A.html#design-choices-matter-data-viz-has-never-been-more-important",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Design choices matter & data viz has never been more important",
+    "text": "Design choices matter & data viz has never been more important\nSome examples from the past few years…\n\n\n\nData Viz’s Breakthrough Moment in the COVID-19 Crisis\nInterview with John Burn-Murdoch About his COVID Data Viz\nJohn Burn-Murdoch’s Twitter\nCOVID-19 Data Viz from the Financial Times\n\nCoronavirus Tracker\nGlobal Economic Recovery Tracker"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#data-viz-style-guides",
+    "href": "content/week-2/lecture-2A.html#data-viz-style-guides",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Data Viz Style Guides",
+    "text": "Data Viz Style Guides\nLots of companies, cities, institutions, etc. have started design guidelines to improve and standardize their data visualizations.\nOne I particularly like: City of London Data Design Guidelines\nFirst few pages are listed in the “Recommended Reading” portion of this week’s README.\nLondon’s style guide includes some basic data viz principles that everyone should know and includes the following example:\n\nCity of London Data Design Guidelines\n\nCity of London Data Design Guidelines"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#good-rules",
+    "href": "content/week-2/lecture-2A.html#good-rules",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Good rules",
+    "text": "Good rules\n\nLess is more — minimize “chartjunk”\nDon’t use legends if you can label directly\nUse color / line weight to focus the reader on the data you want to emphasize\nDon’t make the viewer tilt their head — Use titles/subtitles to explain what is being plotted"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#now-onto-colors",
+    "href": "content/week-2/lecture-2A.html#now-onto-colors",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Now onto colors…",
+    "text": "Now onto colors…\nChoose your colors carefully:\n\nSequential schemes: for continuous data that progresses from low to high\nDiverging schemes: for continuous data that emphasizes positive or negative deviations from a central value\nQualitative schemes: for data that has no inherent ordering, where color is used only to distinguish categories"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#colorbrewer-2.0",
+    "href": "content/week-2/lecture-2A.html#colorbrewer-2.0",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "ColorBrewer 2.0",
+    "text": "ColorBrewer 2.0\n\nThe classic tool for color selection\nHandles all three types of color schemes and provides a map-based visualization\nProvides explanations from Cynthia Brewer’s published works on color theory\n\n\n\n\n\nTests whether colors are colorblind safe, printer friendly, and photocopy safe\nColorBrewer palettes are included by default in matplotlib\n\nSee: http://colorbrewer2.org"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#perceptually-uniform-color-maps",
+    "href": "content/week-2/lecture-2A.html#perceptually-uniform-color-maps",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Perceptually uniform color maps",
+    "text": "Perceptually uniform color maps\n\nCreated for matplotlib and available by default\nperceptually uniform: equal steps in data are perceived as equal steps in the color space\nrobust to color blindness\ncolorful and beautiful\n\nFor quantitative data, these color maps are very strong options"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#need-more-colors",
+    "href": "content/week-2/lecture-2A.html#need-more-colors",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Need more colors?",
+    "text": "Need more colors?\nAlmost too many tools available…"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#some-of-my-favorites",
+    "href": "content/week-2/lecture-2A.html#some-of-my-favorites",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Some of my favorites",
+    "text": "Some of my favorites\n\nAdobe Color CC: allows you to explore other people’s color palettes and create new ones\nPaletton: similar to Adobe Color, but slightly more advanced\nChroma.js Color Scale Helper: create color palettes by interpolating between named HTML colors\nColorpicker for data: automatically generate new color palettes, but they aren’t always useful"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#making-sure-your-colors-work-viz-palette",
+    "href": "content/week-2/lecture-2A.html#making-sure-your-colors-work-viz-palette",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Making sure your colors work: Viz Palette",
+    "text": "Making sure your colors work: Viz Palette"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#wrapping-up-some-good-rules-to-live-by",
+    "href": "content/week-2/lecture-2A.html#wrapping-up-some-good-rules-to-live-by",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "Wrapping up: some good rules to live by",
+    "text": "Wrapping up: some good rules to live by\n\nOptimize your color map for your dataset\nThink about who your audience is\nAvoid palettes with too many colors: ColorBrewer stops at ~9 for a reason\nMaintain a theme and make it pretty\nThink about how color interacts with the other parts of the visualization\n\nNote: no easy way to get legend added to the plot in this case…"
+  },
+  {
+    "objectID": "content/week-2/lecture-2A.html#thats-it",
+    "href": "content/week-2/lecture-2A.html#thats-it",
+    "title": "Week 2: Data Visualization Fundamentals",
+    "section": "That’s it!",
+    "text": "That’s it!\n\nSee you next week when we continue Data Viz Fundamentals"
   },
   {
     "objectID": "content/index.html",

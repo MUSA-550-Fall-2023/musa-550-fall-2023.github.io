@@ -23,7 +23,7 @@ else:
 
 # Load the schedule data
 topics = pd.read_csv(root_dir / "data" / "week-topics.csv").sort_values(
-    "week", ascending=False
+    "week", ascending=True
 )
 
 
@@ -41,6 +41,7 @@ for i, r in topics.iterrows():
             "file": f"content/week-{r['week']}/index.qmd",
         }
     )
+
 
 # Update the config
 config["website"]["sidebar"][0]["contents"] = contents

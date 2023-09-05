@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geospatial Data Science in Python - Week 2: Data Visualization Fundamentals</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geospatial Data Science in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-schedule" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Schedule</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-schedule">    
+        <li>
+    <a class="dropdown-item" href="../../schedule/401.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../schedule/402.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Content</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../../assignment/overview.html" rel="" target="">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/401/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/402/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../resource/index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-box-arrow-up-right"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/MUSA-550-Fall-2023">
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://canvas.upenn.edu/courses/1740535">
+            Canvas
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://edstem.org/us/courses/42616/discussion/">
+            Ed Discussion
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#housekeeping" id="toc-housekeeping" class="nav-link active" data-scroll-target="#housekeeping">Housekeeping</a></li>
+  <li><a href="#guides" id="toc-guides" class="nav-link" data-scroll-target="#guides">Guides</a></li>
+  <li><a href="#git-github-resources" id="toc-git-github-resources" class="nav-link" data-scroll-target="#git-github-resources">Git &amp; GitHub Resources</a></li>
+  <li><a href="#reminder-following-along-with-lectures" id="toc-reminder-following-along-with-lectures" class="nav-link" data-scroll-target="#reminder-following-along-with-lectures">Reminder: following along with lectures</a>
+  <ul class="collapse">
+  <li><a href="#easiest-option-use-binder" id="toc-easiest-option-use-binder" class="nav-link" data-scroll-target="#easiest-option-use-binder">Easiest option: use Binder</a></li>
+  <li><a href="#harder-option-downloading-github-repository-contents" id="toc-harder-option-downloading-github-repository-contents" class="nav-link" data-scroll-target="#harder-option-downloading-github-repository-contents">Harder option: downloading Github repository contents</a></li>
+  </ul></li>
+  <li><a href="#todays-agenda" id="toc-todays-agenda" class="nav-link" data-scroll-target="#todays-agenda">Today’s agenda</a></li>
+  <li><a href="#a-brief-history" id="toc-a-brief-history" class="nav-link" data-scroll-target="#a-brief-history">A brief history</a></li>
+  <li><a href="#example-1-the-pioneering-work-of-w.-e.-b.-du-bois" id="toc-example-1-the-pioneering-work-of-w.-e.-b.-du-bois" class="nav-link" data-scroll-target="#example-1-the-pioneering-work-of-w.-e.-b.-du-bois">Example 1: the pioneering work of W. E. B. Du Bois</a>
+  <ul class="collapse">
+  <li><a href="#re-making-the-du-bois-spiral-with-census-data" id="toc-re-making-the-du-bois-spiral-with-census-data" class="nav-link" data-scroll-target="#re-making-the-du-bois-spiral-with-census-data">Re-making the Du Bois Spiral with census data</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#additional-references" id="toc-additional-references" class="nav-link" data-scroll-target="#additional-references">Additional references</a></li>
+  </ul></li>
+  <li><a href="#example-2-the-statistical-atlas-of-the-united-states" id="toc-example-2-the-statistical-atlas-of-the-united-states" class="nav-link" data-scroll-target="#example-2-the-statistical-atlas-of-the-united-states">Example 2: the Statistical Atlas of the United States</a>
+  <ul class="collapse">
+  <li><a href="#using-modern-data" id="toc-using-modern-data" class="nav-link" data-scroll-target="#using-modern-data">Using modern data</a></li>
+  <li><a href="#industry-and-earnings-by-sex" id="toc-industry-and-earnings-by-sex" class="nav-link" data-scroll-target="#industry-and-earnings-by-sex">Industry and Earnings by Sex</a></li>
+  <li><a href="#median-household-income" id="toc-median-household-income" class="nav-link" data-scroll-target="#median-household-income">Median Household Income</a></li>
+  <li><a href="#many-more-examples" id="toc-many-more-examples" class="nav-link" data-scroll-target="#many-more-examples">Many more examples…</a></li>
+  </ul></li>
+  <li><a href="#more-recentlytwo-main-movements" id="toc-more-recentlytwo-main-movements" class="nav-link" data-scroll-target="#more-recentlytwo-main-movements">More recently…two main movements:</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a>
+  <ul class="collapse">
+  <li><a href="#wave-1-clarity" id="toc-wave-1-clarity" class="nav-link" data-scroll-target="#wave-1-clarity">Wave 1: Clarity</a></li>
+  <li><a href="#wave-2-the-grammar-of-visualization" id="toc-wave-2-the-grammar-of-visualization" class="nav-link" data-scroll-target="#wave-2-the-grammar-of-visualization">Wave 2: the grammar of visualization</a></li>
+  <li><a href="#where-are-we-now" id="toc-where-are-we-now" class="nav-link" data-scroll-target="#where-are-we-now">Where are we now?</a></li>
+  <li><a href="#a-survey-of-common-tools" id="toc-a-survey-of-common-tools" class="nav-link" data-scroll-target="#a-survey-of-common-tools">A survey of common tools</a></li>
+  </ul></li>
+  <li><a href="#the-7-kinds-of-data-viz-people" id="toc-the-7-kinds-of-data-viz-people" class="nav-link" data-scroll-target="#the-7-kinds-of-data-viz-people">The 7 kinds of data viz people</a></li>
+  <li><a href="#data-visualization-as-communication" id="toc-data-visualization-as-communication" class="nav-link" data-scroll-target="#data-visualization-as-communication">Data visualization as communication</a></li>
+  <li><a href="#fast-visualization" id="toc-fast-visualization" class="nav-link" data-scroll-target="#fast-visualization">Fast visualization</a></li>
+  <li><a href="#moving-beyond-fast-visualizations" id="toc-moving-beyond-fast-visualizations" class="nav-link" data-scroll-target="#moving-beyond-fast-visualizations">Moving beyond fast visualizations</a></li>
+  <li><a href="#example-fatalities-in-the-iraq-war" id="toc-example-fatalities-in-the-iraq-war" class="nav-link" data-scroll-target="#example-fatalities-in-the-iraq-war">Example: Fatalities in the Iraq War</a></li>
+  <li><a href="#data-visualization-as-storytelling" id="toc-data-visualization-as-storytelling" class="nav-link" data-scroll-target="#data-visualization-as-storytelling">Data Visualization as Storytelling</a>
+  <ul class="collapse">
+  <li><a href="#a-negative-portrayal" id="toc-a-negative-portrayal" class="nav-link" data-scroll-target="#a-negative-portrayal">A negative portrayal</a></li>
+  <li><a href="#a-positive-portrayal" id="toc-a-positive-portrayal" class="nav-link" data-scroll-target="#a-positive-portrayal">A positive portrayal</a></li>
+  </ul></li>
+  <li><a href="#design-choices-matter-data-viz-has-never-been-more-important" id="toc-design-choices-matter-data-viz-has-never-been-more-important" class="nav-link" data-scroll-target="#design-choices-matter-data-viz-has-never-been-more-important">Design choices matter &amp; data viz has never been more important</a></li>
+  <li><a href="#data-viz-style-guides" id="toc-data-viz-style-guides" class="nav-link" data-scroll-target="#data-viz-style-guides">Data Viz Style Guides</a></li>
+  <li><a href="#good-rules" id="toc-good-rules" class="nav-link" data-scroll-target="#good-rules">Good rules</a></li>
+  <li><a href="#now-onto-colors" id="toc-now-onto-colors" class="nav-link" data-scroll-target="#now-onto-colors">Now onto colors…</a></li>
+  <li><a href="#colorbrewer-2.0" id="toc-colorbrewer-2.0" class="nav-link" data-scroll-target="#colorbrewer-2.0">ColorBrewer 2.0</a></li>
+  <li><a href="#perceptually-uniform-color-maps" id="toc-perceptually-uniform-color-maps" class="nav-link" data-scroll-target="#perceptually-uniform-color-maps">Perceptually uniform color maps</a></li>
+  <li><a href="#need-more-colors" id="toc-need-more-colors" class="nav-link" data-scroll-target="#need-more-colors">Need more colors?</a></li>
+  <li><a href="#some-of-my-favorites" id="toc-some-of-my-favorites" class="nav-link" data-scroll-target="#some-of-my-favorites">Some of my favorites</a></li>
+  <li><a href="#making-sure-your-colors-work-viz-palette" id="toc-making-sure-your-colors-work-viz-palette" class="nav-link" data-scroll-target="#making-sure-your-colors-work-viz-palette">Making sure your colors work: Viz Palette</a></li>
+  <li><a href="#wrapping-up-some-good-rules-to-live-by" id="toc-wrapping-up-some-good-rules-to-live-by" class="nav-link" data-scroll-target="#wrapping-up-some-good-rules-to-live-by">Wrapping up: some good rules to live by</a></li>
+  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 2: Data Visualization Fundamentals</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li>Section 401</li>
+<li>Sep 11, 2023</li>
+</ul>
+<section id="housekeeping" class="level2">
+<h2 class="anchored" data-anchor-id="housekeeping">Housekeeping</h2>
+<ul>
+<li>Ed Discussion: <a href="https://edstem.org/us/courses/42616/discussion/">https://edstem.org/us/courses/42616/discussion/</a></li>
+<li>HW #1 due on Wednesday 9/20</li>
+<li>Office hours:
+<ul>
+<li>Nick: TBD</li>
+<li>Teresa: Fridays, 10:30AM to 12:00PM</li>
+<li>Sign-up for time slots on Canvas calendar</li>
+</ul></li>
+</ul>
+<p>Questions / concerns? - Email: nhand@design.upenn.edu - Post questions on Ed Discussion</p>
+</section>
+<section id="guides" class="level2">
+<h2 class="anchored" data-anchor-id="guides">Guides</h2>
+<p>Check out the guides section of the course website for</p>
+<ul>
+<li><a href="https://musa-550-fall-2023.github.io/resource/install.html">Setting up Python</a></li>
+<li><a href="https://musa-550-fall-2023.github.io/resource/mamba.html">Using mamba</a></li>
+<li><a href="https://musa-550-fall-2023.github.io/resource/jupyter.html">Jupyter notebooks and JupyterLab</a></li>
+<li><a href="https://musa-550-fall-2023.github.io/resource/common-issues.html">Troubleshooting Python installation issues</a></li>
+<li><a href="https://musa-550-fall-2023.github.io/resource/file-paths.html">Tips for managing the folder structure on your laptop</a></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Reminder">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reminder
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sign up for free DataCamp access if you haven’t yet. See <a href="https://musa-550-fall-2023.github.io/resource/python.html#datacamp-courses">the course website</a> for instructions.</p>
+<p>Good courses for some of the data viz libraries we’ll talk about today:</p>
+<ul>
+<li><a href="https://www.datacamp.com/courses/introduction-to-data-visualization-with-matplotlib">Introduction to Data Visualization with matplotlib</a></li>
+<li><a href="https://www.datacamp.com/courses/introduction-to-data-visualization-with-seaborn">Introduction to Data Visualization with seaborn</a></li>
+<li><a href="https://www.datacamp.com/courses/intermediate-data-visualization-with-seaborn">Intermediate Data Visualization with seaborn</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="git-github-resources" class="level2">
+<h2 class="anchored" data-anchor-id="git-github-resources">Git &amp; GitHub Resources</h2>
+<ul>
+<li><a href="https://help.github.com/articles/set-up-git/">Setting up git</a></li>
+<li><a href="https://help.github.com/articles/managing-files-on-github/">Managing files on GitHub</a></li>
+</ul>
+</section>
+<section id="reminder-following-along-with-lectures" class="level2">
+<h2 class="anchored" data-anchor-id="reminder-following-along-with-lectures">Reminder: following along with lectures</h2>
+<section id="easiest-option-use-binder" class="level3">
+<h3 class="anchored" data-anchor-id="easiest-option-use-binder">Easiest option: use Binder</h3>
+<p><img src="imgs/week2-binder.png" class="img-fluid"></p>
+</section>
+<section id="harder-option-downloading-github-repository-contents" class="level3">
+<h3 class="anchored" data-anchor-id="harder-option-downloading-github-repository-contents">Harder option: downloading Github repository contents</h3>
+<p><img src="imgs/week2-download.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="todays-agenda" class="level2">
+<h2 class="anchored" data-anchor-id="todays-agenda">Today’s agenda</h2>
+<ul>
+<li>A brief overview of data visualization</li>
+<li>Practical tips on color in data vizualization</li>
+<li>The Python landscape:
+<ul>
+<li><a href="https://matplotlib.org/">matplotlib</a></li>
+<li><a href="https://seaborn.pydata.org/">seaborn</a></li>
+<li><a href="https://altair-viz.github.io/">altair</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="a-brief-history" class="level2">
+<h2 class="anchored" data-anchor-id="a-brief-history">A brief history</h2>
+<p>Starting with two of my favorite historical examples, and their modern renditions…</p>
+</section>
+<section id="example-1-the-pioneering-work-of-w.-e.-b.-du-bois" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-the-pioneering-work-of-w.-e.-b.-du-bois">Example 1: the pioneering work of W. E. B. Du Bois</h2>
+<p><img src="imgs/du-bois-1.png" class="img-fluid"></p>
+<p><img src="imgs/du-bois-2.png" class="img-fluid"></p>
+<section id="re-making-the-du-bois-spiral-with-census-data" class="level3">
+<h3 class="anchored" data-anchor-id="re-making-the-du-bois-spiral-with-census-data">Re-making the Du Bois Spiral with census data</h3>
+<p>Using the Du Bois spiral to show the demographics of whites in seven states:</p>
+<center>
+<img src="imgs/du-bois-3.png" width="850"> <img src="imgs/du-bois-4.png" width="600">
+</center>
+<p>Green is urban, blue suburban, yellow small town, red rural. <a href="http://bl.ocks.org/emeeks/raw/3993c03914e81f1d57650292b3001b27/">Source</a></p>
+</section>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<section id="additional-references" class="level3">
+<h3 class="anchored" data-anchor-id="additional-references">Additional references</h3>
+<ul>
+<li><a href="https://towardsdatascience.com/w-e-b-du-bois-staggering-data-visualizations-are-as-powerful-today-as-they-were-in-1900-64752c472ae4">A 6-part blog series on W. E. B. Du Bois’ Data Visualization</a></li>
+<li><a href="https://towardsdatascience.com/how-to-remake-historical-data-visualization-and-why-you-should-c25874fc4804">An article on historical data visualization</a></li>
+<li><a href="https://www.amazon.com/W-Boiss-Data-Portraits-Visualizing/dp/1616897066">W. E. B. Du Bois’s Data Portraits: Visualizing Black America</a></li>
+</ul>
+</section>
+</section>
+<section id="example-2-the-statistical-atlas-of-the-united-states" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-the-statistical-atlas-of-the-united-states">Example 2: the Statistical Atlas of the United States</h2>
+<ul>
+<li>First census: 1790</li>
+<li>First map for the census: 1850</li>
+<li>First Statistical Atlas: 1870</li>
+<li>Largely discontinued after 1890, except for the <a href="https://www.census.gov/library/publications/2007/dec/censr-29.html">2000 Census Atlas</a></li>
+</ul>
+<section id="using-modern-data" class="level3">
+<h3 class="anchored" data-anchor-id="using-modern-data">Using modern data</h3>
+<p>See <a href="http://projects.flowingdata.com/atlas">http://projects.flowingdata.com/atlas</a>, by Nathan Yau</p>
+</section>
+<section id="industry-and-earnings-by-sex" class="level3">
+<h3 class="anchored" data-anchor-id="industry-and-earnings-by-sex">Industry and Earnings by Sex</h3>
+<center>
+<img src="imgs/statistical-atlas-1.png" width="800">
+</center>
+<p>Source: American Community Survey, 5-Year, 2009-2013</p>
+</section>
+<section id="median-household-income" class="level3">
+<h3 class="anchored" data-anchor-id="median-household-income">Median Household Income</h3>
+<center>
+<img src="imgs/statistical-atlas-2.png" width="800">
+</center>
+</section>
+<section id="many-more-examples" class="level3">
+<h3 class="anchored" data-anchor-id="many-more-examples">Many more examples…</h3>
+<center>
+<img src="imgs/statistical-atlas-3.png" width="800">
+</center>
+</section>
+</section>
+<section id="more-recentlytwo-main-movements" class="level2">
+<h2 class="anchored" data-anchor-id="more-recentlytwo-main-movements">More recently…two main movements:</h2>
+<ul>
+<li>1st wave: clarity</li>
+<li>2nd wave: the grammar of visualization</li>
+</ul>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+<section id="wave-1-clarity" class="level3">
+<h3 class="anchored" data-anchor-id="wave-1-clarity">Wave 1: Clarity</h3>
+<ul>
+<li>Pioneered by Edward Tufte and his release of <strong>The Visual Display of Quantitative Information</strong> in 1983</li>
+<li>Focuses on clarity, simplicity, and plain color schemes</li>
+<li>Charts should be immediately accessible and readable</li>
+</ul>
+<section id="the-idea-of-chartjunk" class="level4">
+<h4 class="anchored" data-anchor-id="the-idea-of-chartjunk">The idea of “Chartjunk”</h4>
+<ul>
+<li>Coined by Tufte in <em>Visual Display</em></li>
+<li>Any unnecessary information on a chart</li>
+</ul>
+</section>
+<section id="some-extreme-examples" class="level4">
+<h4 class="anchored" data-anchor-id="some-extreme-examples">Some extreme examples</h4>
+<center>
+<img src="imgs/chartjunk-1.png" width="600">
+</center>
+<center>
+<img src="imgs/chartjunk-2.png" width="600">
+</center>
+</section>
+</section>
+<section id="wave-2-the-grammar-of-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="wave-2-the-grammar-of-visualization">Wave 2: the grammar of visualization</h3>
+<ul>
+<li><p>Influenced by <em>The Grammar of Graphics</em> by Leland Wilkinson in 1999</p></li>
+<li><p>Focuses on encoding data via channels onto geometry</p></li>
+<li><p>Mapping data attributes on to graphical channels, e.g., length, angle, color, or position (or any other graphical character)</p></li>
+<li><p>Less focus on clarity, more on the encoding system</p></li>
+<li><p>Leads to many, many (perhaps confusing) ways of visualizing data</p></li>
+<li><p><code>ggplot2</code> provides an R implementation of <em>The Grammar of Graphics</em></p></li>
+<li><p>A few different Python libraries available</p></li>
+</ul>
+</section>
+<section id="where-are-we-now" class="level3">
+<h3 class="anchored" data-anchor-id="where-are-we-now">Where are we now?</h3>
+<ul>
+<li>Both movements converging together</li>
+<li>More visualization libraries available now than ever</li>
+</ul>
+</section>
+<section id="a-survey-of-common-tools" class="level3">
+<h3 class="anchored" data-anchor-id="a-survey-of-common-tools">A survey of common tools</h3>
+<center>
+<img src="imgs/dataviz-state.png" width="800">
+</center>
+<ul>
+<li>From a <a href="https://medium.com/@Elijah_Meeks/2017-data-visualization-survey-results-40688830b9f2">2017 survey by Elijah Meeks</a></li>
+<li>Former data visualization engineer at Apple, Netflix; now at Noteable</li>
+<li>Excellent data viz resource</li>
+<li>Find him on <a href="https://twitter.com/Elijah_Meeks">Twitter</a> or <a href="https://medium.com/@Elijah_Meeks">Medium</a>: <span class="citation" data-cites="Elijah_Meeks">@Elijah_Meeks</span></li>
+<li>Executive director of the <a href="https://www.datavisualizationsociety.org/">Data Visualization Society</a></li>
+</ul>
+<p><img width="400" src="imgs/dataviz-society-logo.png"></p>
+<ul>
+<li>Community-based data viz organization</li>
+<li>Great resources for beginners</li>
+<li>Check out the <a href="https://medium.com/nightingale">Nightingale</a>: The Data Visualization Society’s Blog</li>
+</ul>
+</section>
+</section>
+<section id="the-7-kinds-of-data-viz-people" class="level2">
+<h2 class="anchored" data-anchor-id="the-7-kinds-of-data-viz-people">The 7 kinds of data viz people</h2>
+<ul>
+<li>From <a href="https://medium.com/visualizing-the-field/the-7-kinds-of-data-visualization-people-9964e80443a7">this blog post</a></li>
+<li>Illustrations by <a href="https://twitter.com/DataToViz">Susie Lu</a></li>
+</ul>
+<center>
+<img src="imgs/7-kinds-1.png" width="400">
+</center>
+<center>
+<img src="imgs/7-kinds-2.png" width="400">
+</center>
+<center>
+<img src="imgs/7-kinds-3.png" width="400">
+</center>
+<center>
+<img src="imgs/7-kinds-4.png" width="400">
+</center>
+<center>
+<img src="imgs/7-kinds-5.png" width="400">
+</center>
+<center>
+<img src="imgs/7-kinds-6.png" width="400">
+</center>
+<center>
+<img src="imgs/7-kinds-7.png" width="400">
+</center>
+<p>See, e.g.&nbsp;<a href="http://www.datasketch.es/">Data Sketches</a></p>
+</section>
+<section id="data-visualization-as-communication" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization-as-communication">Data visualization as communication</h2>
+<ul>
+<li>Data visualization is primarily a <em>communication</em> and <em>design</em> problem, not a technical one</li>
+<li>Two main modes:
+<ul>
+<li><strong>Fast</strong>: quickly understood or quickly made (or both!)</li>
+<li><strong>Slow</strong>: more advanced, focus on design, takes longer to understand and/or longer to make</li>
+</ul></li>
+</ul>
+</section>
+<section id="fast-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="fast-visualization">Fast visualization</h2>
+<ul>
+<li><strong>Classic trope</strong>: a report for busy executives created by subject experts <span class="math inline">\(\rightarrow\)</span> as clear and simplified as possible</li>
+<li>Leads readers to think that if the chart is not immediately understood then it must be a failure</li>
+<li>The dominant method of data visualization
+<ul>
+<li>E.g., <a href="https://www.tableau.com/about/blog/2015/12/how-format-beautiful-interactive-key-metrics-dashboard-46263">Create a Tableau Dashboard in Just 10 Minutes</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="moving-beyond-fast-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="moving-beyond-fast-visualizations">Moving beyond fast visualizations</h2>
+<ul>
+<li>Thinking about what charts <strong>say</strong>, beyond what is immediately clear</li>
+<li>Focusing on colors, design choices</li>
+</ul>
+</section>
+<section id="example-fatalities-in-the-iraq-war" class="level2">
+<h2 class="anchored" data-anchor-id="example-fatalities-in-the-iraq-war">Example: Fatalities in the Iraq War</h2>
+<p>by <a href="https://twitter.com/SimonScarr">Simon Scarr</a> in 2011</p>
+<center>
+<img src="imgs/iraq-bloody-toll-1.jpeg" width="700">
+</center>
+<p><strong>Question</strong>: What design choices drive home the implicit message?</p>
+<center>
+<img src="imgs/iraq-bloody-toll-2.png" width="700">
+</center>
+</section>
+<section id="data-visualization-as-storytelling" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization-as-storytelling">Data Visualization as Storytelling</h2>
+<p>The same data, but different design choices…</p>
+<section id="a-negative-portrayal" class="level3">
+<h3 class="anchored" data-anchor-id="a-negative-portrayal">A negative portrayal</h3>
+<center>
+<img src="imgs/negative-portrayal.png" width="600">
+</center>
+</section>
+<section id="a-positive-portrayal" class="level3">
+<h3 class="anchored" data-anchor-id="a-positive-portrayal">A positive portrayal</h3>
+<center>
+<img src="imgs/positive-portrayal.png" width="600">
+</center>
+</section>
+</section>
+<section id="design-choices-matter-data-viz-has-never-been-more-important" class="level2">
+<h2 class="anchored" data-anchor-id="design-choices-matter-data-viz-has-never-been-more-important">Design choices matter &amp; data viz has never been more important</h2>
+<p>Some examples from the past few years…</p>
+<p><img src="imgs/nyt-unemployment.jpeg" class="img-fluid"></p>
+<p><img src="imgs/ft-covid-map.png" class="img-fluid"></p>
+<ul>
+<li><a href="https://medium.com/nightingale/data-visualizations-breakthrough-moment-in-the-covid-19-crisis-ce46627c7db5">Data Viz’s Breakthrough Moment in the COVID-19 Crisis</a></li>
+<li><a href="https://medium.com/nightingale/how-john-burn-murdochs-influential-dataviz-helped-the-world-understand-coronavirus-6cb4a09795ae">Interview with John Burn-Murdoch About his COVID Data Viz</a></li>
+<li><a href="https://twitter.com/jburnmurdoch">John Burn-Murdoch’s Twitter</a></li>
+<li>COVID-19 Data Viz from the Financial Times
+<ul>
+<li><a href="https://www.ft.com/content/a2901ce8-5eb7-4633-b89c-cbdf5b386938">Coronavirus Tracker</a></li>
+<li><a href="https://www.ft.com/content/272354f2-f970-4ae4-a8ae-848c4baf8f4a">Global Economic Recovery Tracker</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="data-viz-style-guides" class="level2">
+<h2 class="anchored" data-anchor-id="data-viz-style-guides">Data Viz Style Guides</h2>
+<p>Lots of companies, cities, institutions, etc. have started <em>design guidelines</em> to improve and standardize their data visualizations.</p>
+<p>One I particularly like: <a href="https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/">City of London Data Design Guidelines</a></p>
+<p>First few pages are listed in the “Recommended Reading” portion of this week’s README.</p>
+<p>London’s style guide includes some basic data viz principles that everyone should know and includes the following example:</p>
+<p><img width="600" src="imgs/london-guide-1.png"></p>
+<p><a href="https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/">City of London Data Design Guidelines</a></p>
+<p><img width="600" src="imgs/london-guide-2.png"></p>
+<p><a href="https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/">City of London Data Design Guidelines</a></p>
+</section>
+<section id="good-rules" class="level2">
+<h2 class="anchored" data-anchor-id="good-rules">Good rules</h2>
+<ul>
+<li>Less is more — minimize “chartjunk”</li>
+<li>Don’t use legends if you can label directly</li>
+<li>Use color / line weight to focus the reader on the data you want to emphasize</li>
+<li>Don’t make the viewer tilt their head — Use titles/subtitles to explain what is being plotted</li>
+</ul>
+</section>
+<section id="now-onto-colors" class="level2">
+<h2 class="anchored" data-anchor-id="now-onto-colors">Now onto colors…</h2>
+<p>Choose your colors carefully:</p>
+<ul>
+<li><strong>Sequential</strong> schemes: for continuous data that progresses from low to high</li>
+<li><strong>Diverging</strong> schemes: for continuous data that emphasizes positive or negative deviations from a central value</li>
+<li><strong>Qualitative</strong> schemes: for data that has no inherent ordering, where color is used only to distinguish categories</li>
+</ul>
+</section>
+<section id="colorbrewer-2.0" class="level2">
+<h2 class="anchored" data-anchor-id="colorbrewer-2.0">ColorBrewer 2.0</h2>
+<ul>
+<li>The classic tool for color selection</li>
+<li>Handles all three types of color schemes and provides a map-based visualization</li>
+<li>Provides explanations from Cynthia Brewer’s published works on color theory</li>
+</ul>
+<center>
+<img src="imgs/color-brewer.png" width="800">
+</center>
+<ul>
+<li>Tests whether colors are colorblind safe, printer friendly, and photocopy safe</li>
+<li>ColorBrewer palettes are included by default in <code>matplotlib</code></li>
+</ul>
+<p>See: <a href="http://colorbrewer2.org">http://colorbrewer2.org</a></p>
+</section>
+<section id="perceptually-uniform-color-maps" class="level2">
+<h2 class="anchored" data-anchor-id="perceptually-uniform-color-maps">Perceptually uniform color maps</h2>
+<ul>
+<li>Created for <code>matplotlib</code> and available by default</li>
+<li><strong>perceptually uniform</strong>: equal steps in data are perceived as equal steps in the color space</li>
+<li>robust to color blindness</li>
+<li>colorful and beautiful</li>
+</ul>
+<p><strong>For quantitative data, these color maps are very strong options</strong></p>
+<center>
+<img src="imgs/colormaps.png" width="700">
+</center>
+</section>
+<section id="need-more-colors" class="level2">
+<h2 class="anchored" data-anchor-id="need-more-colors">Need more colors?</h2>
+<p>Almost too many tools available…</p>
+</section>
+<section id="some-of-my-favorites" class="level2">
+<h2 class="anchored" data-anchor-id="some-of-my-favorites">Some of my favorites</h2>
+<ul>
+<li><a href="https://color.adobe.com/explore">Adobe Color CC</a>: allows you to explore other people’s color palettes and create new ones</li>
+<li><a href="http://paletton.com/">Paletton</a>: similar to Adobe Color, but slightly more advanced</li>
+<li><a href="https://gka.github.io/palettes/">Chroma.js Color Scale Helper</a>: create color palettes by interpolating between named HTML colors</li>
+<li><a href="http://tristen.ca/hcl-picker">Colorpicker for data</a>: automatically generate new color palettes, but they aren’t always useful</li>
+</ul>
+</section>
+<section id="making-sure-your-colors-work-viz-palette" class="level2">
+<h2 class="anchored" data-anchor-id="making-sure-your-colors-work-viz-palette">Making sure your colors work: <a href="https://projects.susielu.com/viz-palette">Viz Palette</a></h2>
+<center>
+<img src="imgs/viz-palette.png" width="800">
+</center>
+</section>
+<section id="wrapping-up-some-good-rules-to-live-by" class="level2">
+<h2 class="anchored" data-anchor-id="wrapping-up-some-good-rules-to-live-by">Wrapping up: some good rules to live by</h2>
+<ul>
+<li>Optimize your color map for your dataset</li>
+<li>Think about who your audience is</li>
+<li>Avoid palettes with too many colors: ColorBrewer stops at ~9 for a reason</li>
+<li>Maintain a theme and make it pretty</li>
+<li>Think about how color interacts with the other parts of the visualization</li>
+</ul>
+<p><strong>Note:</strong> no easy way to get legend added to the plot in this case…</p>
+</section>
+<section id="thats-it" class="level2">
+<h2 class="anchored" data-anchor-id="thats-it">That’s it!</h2>
+<ul>
+<li>See you next week when we continue Data Viz Fundamentals</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by <a href="https://www.nickhand.dev">Nick Hand</a>, Quarto layout adapted from <a href="https://github.com/andrewheiss/datavizs23.classes.andrewheiss.com">Andrew Heiss’s Data Visualization with R course</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-python" aria-label="python"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/MUSA-550-Fall-2023/musa-550-fall-2023.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

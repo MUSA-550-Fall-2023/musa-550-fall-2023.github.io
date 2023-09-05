@@ -73,6 +73,8 @@ website:
     - content/index.qmd
     - file: content/week-1/index.qmd
       text: 1. Exploratory Data Science in Python
+    - file: content/week-2/index.qmd
+      text: 2. Data Visualization Fundamentals
     search: false
     style: docked
     title: Content
