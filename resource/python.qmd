@@ -68,8 +68,25 @@ The following tutorials assume no background in Python and provide a fairly comp
 - [Python for Social Science](https://gawron.sdsu.edu/python_for_ss/course_core/book_draft/index.html) (in particular, the first four chapters)
 - [Scientific Python Basics](https://bids.github.io/2016-01-14-berkeley/python/00-python-intro.html) from the Berkeley Institute for Data Science ([notebook version](https://bids.github.io/2016-01-14-berkeley/python/00-python-intro.ipynb))
 
-## More advanced tutorials
+## More in-depth resources
 
+There are two books available online for free that can serve as good resources for introductory Python basics as 
+well as more advanced data science concepts.
+
+### Python for Data Science
+
+The [Python for Data Analysis](https://wesmckinney.com/book/) book by Wes McKinney (the creator of Pandas)
+is an excellent resource that covers the pandas library in great detail. The first 
+few chapters are very good at covering the foundations of Python that we will use in this course:
+
+- [Chatper 2: Python Basics](https://wesmckinney.com/book/python-basics)
+- [Chapter 3: Built-in Python Features](https://wesmckinney.com/book/python-builtin)
+- [Chapter 4: NumPy Basics](https://wesmckinney.com/book/numpy-basics)
+- [Chapter 5: Intro to pandas](https://wesmckinney.com/book/pandas-basics)
+- [Chapter 9: Plotting & visualization](https://wesmckinney.com/book/plotting-and-visualization)
+
+
+### The Python Data Science Handbook
 The [The Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/) by [Jake VanderPlas](https://twitter.com/jakevdp) is a free, online textbook covering the Python basics needed for this course. It is a bit more advanced than the resources in the
 previous section and assumes some familiarity with Python.
 
