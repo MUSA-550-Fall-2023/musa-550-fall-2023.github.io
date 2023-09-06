@@ -73,7 +73,7 @@ The following tutorials assume no background in Python and provide a fairly comp
 There are two books available online for free that can serve as good resources for introductory Python basics as 
 well as more advanced data science concepts.
 
-### Python for Data Science
+### Python for Data Analysis
 
 The [Python for Data Analysis](https://wesmckinney.com/book/) book by Wes McKinney (the creator of Pandas)
 is an excellent resource that covers the pandas library in great detail. The first 
