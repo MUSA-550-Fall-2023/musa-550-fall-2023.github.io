@@ -1,0 +1,7 @@
+---
+title: "Week 3: Geospatial Data Analysis and GeoPandas"
+execute: 
+  echo: false
+---
+
+{{< include ../_header.qmd >}}
