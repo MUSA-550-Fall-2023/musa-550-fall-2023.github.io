@@ -75,6 +75,8 @@ website:
       text: 1. Exploratory Data Science in Python
     - file: content/week-2/index.qmd
       text: 2. Data Visualization Fundamentals
+    - file: content/week-3/index.qmd
+      text: 3. More Interactive Data Viz, Intro to Vector Data & GeoPandas
     search: false
     style: docked
     title: Content

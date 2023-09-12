@@ -1,9 +1,9 @@
 week,topic,module
 1,Exploratory Data Science in Python,Exploratory Data Science
 2,Data Visualization Fundamentals,Exploratory Data Science
-3,Geospatial Data Analysis and GeoPandas,Introduction to Geospatial Data Science
-4,"More Interactive Data Viz, Working with Raster Datasets",Introduction to Geospatial Data Science
-5,"OpenStreetMap, Urban Networks, and Interactive Web Maps",Introduction to Geospatial Data Science
+3,"More Interactive Data Viz, Intro to Vector Data & GeoPandas",Introduction to Geospatial Data Science
+4,"Geospatial Analysis & Mapping",Introduction to Geospatial Data Science
+5,"More Geospatial Analysis: Urban Networks and Raster Data",Introduction to Geospatial Data Science
 6,Web Scraping,Data Ingestion & Big Data
 7,Working with APIs,Data Ingestion & Big Data
 8,Analyzing and Visualizing Large Datasets,Data Ingestion & Big Data

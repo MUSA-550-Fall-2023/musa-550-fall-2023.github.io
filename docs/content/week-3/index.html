@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Geospatial Data Science in Python - Week 3: Geospatial Data Analysis and GeoPandas</title>
+<title>Geospatial Data Science in Python - Week 3: More Interactive Data Viz, Intro to Vector Data &amp; GeoPandas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,6 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../content/week-2/index.html" rel="prev">
 <link href="../../files/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -68,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -105,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../content/index.html" rel="" target="">
+    <a class="nav-link active" href="../../content/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Content</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -157,20 +158,70 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/week-3/index.html">3. More Interactive Data Viz, Intro to Vector Data &amp; GeoPandas</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Weekly Course Content</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/week-1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Exploratory Data Science in Python</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/week-2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Data Visualization Fundamentals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/week-3/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">3. More Interactive Data Viz, Intro to Vector Data &amp; GeoPandas</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
+  <li><a href="#general-background-reading" id="toc-general-background-reading" class="nav-link" data-scroll-target="#general-background-reading">General Background Reading</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#further-reading-references" id="toc-further-reading-references" class="nav-link" data-scroll-target="#further-reading-references">Further Reading / References</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 3: Geospatial Data Analysis and GeoPandas</h1>
+<h1 class="title">Week 3: More Interactive Data Viz, Intro to Vector Data &amp; GeoPandas</h1>
 </div>
 
 
@@ -204,11 +255,11 @@ ul.task-list li input[type="checkbox"] {
             &nbsp;
             <span>HTML slides:</span>
             &nbsp;
-            <a class="disabled" href="./lecture-3A.html">
+            <a class="" href="./lecture-3A.html">
                 Lecture 3A
             </a>
             &nbsp;
-            <a class="disabled" href="./lecture-3B.html">
+            <a class="" href="./lecture-3B.html">
                 Lecture 3B
             </a>
         </div>
@@ -219,11 +270,11 @@ ul.task-list li input[type="checkbox"] {
             &nbsp;
             <span>Executable slides:</span>
             &nbsp;
-            <a class="disabled" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-3%26urlpath%3Dlab%252Ftree%252Fweek-3%252Flecture-3A.ipynb%26branch%3Dmain">
+            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-3%26urlpath%3Dlab%252Ftree%252Fweek-3%252Flecture-3A.ipynb%26branch%3Dmain">
                 Lecture 3A
             </a>
             &nbsp;
-            <a class="disabled" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-3%26urlpath%3Dlab%252Ftree%252Fweek-3%252Flecture-3B.ipynb%26branch%3Dmain">
+            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-3%26urlpath%3Dlab%252Ftree%252Fweek-3%252Flecture-3B.ipynb%26branch%3Dmain">
                 Lecture 3B
             </a>
         </div>
@@ -231,8 +282,51 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<section id="topics" class="level2">
+<h2 class="anchored" data-anchor-id="topics">Topics</h2>
+<ul>
+<li>Interactive data viz with the holoviz ecosystem</li>
+<li>Vector data and introduction to GeoPandas</li>
+<li>Spatial relationships and joins</li>
+<li>Demo: 311 requests by neighborhood in Philadelphia</li>
+</ul>
+</section>
+<section id="general-background-reading" class="level2">
+<h2 class="anchored" data-anchor-id="general-background-reading">General Background Reading</h2>
+<p>Some general background readings that will help establish the foundation for this week’s work. From <a href="https://wesmckinney.com/book/">Python for Data Analysis</a> by Wes McKinney:</p>
+<ul>
+<li><a href="https://wesmckinney.com/book/python-basics">Chatper 2: Python Basics</a></li>
+<li><a href="https://wesmckinney.com/book/python-builtin">Chapter 3: Built-in Python Features</a></li>
+<li><a href="https://wesmckinney.com/book/numpy-basics">Chapter 4: NumPy Basics</a></li>
+<li><a href="https://wesmckinney.com/book/pandas-basics">Chapter 5: Intro to pandas</a></li>
+<li><a href="https://wesmckinney.com/book/plotting-and-visualization">Chapter 9: Plotting &amp; visualization</a></li>
+</ul>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<ul>
+<li><a href="http://geopandas.org/">GeoPandas</a>
+<ul>
+<li><a href="https://geopandas.org/en/latest/docs/user_guide/mapping.html">Choropleth Maps</a></li>
+<li><a href="https://geopandas.org/en/latest/gallery/create_geopandas_from_pandas.html">Converting DataFrames to GeoDataFrames</a></li>
+<li><a href="https://geopandas.org/en/stable/docs/user_guide/projections.html">Managing Projections</a></li>
+<li><a href="https://geopandas.org/en/latest/docs/user_guide/mergingdata.html">Merging Data</a></li>
+</ul></li>
+<li><a href="https://pysal.org/mapclassify/api.html">Classification Schemes</a></li>
+</ul>
+</section>
+<section id="further-reading-references" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading-references">Further Reading / References</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=vVX-PrBRtTY">West Wing and the Gall-Peters Projections</a></li>
+<li><a href="https://xkcd.com/977/">xkcd Comic on Projections</a></li>
+<li><a href="https://thetruesize.com/">The True Size Of</a></li>
+<li><a href="https://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/coordinate_reference_systems.html">Coordinate Reference Systems</a></li>
+<li><a href="http://epsg.io/">EPSG Codes</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -468,6 +562,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../content/week-2/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2. Data Visualization Fundamentals</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
