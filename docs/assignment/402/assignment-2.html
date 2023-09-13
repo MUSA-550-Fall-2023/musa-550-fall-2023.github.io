@@ -233,7 +233,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#assignment-2" id="toc-assignment-2" class="nav-link active" data-scroll-target="#assignment-2">Assignment #2</a>
+  <ul class="collapse">
+  <li><a href="#due-dates" id="toc-due-dates" class="nav-link" data-scroll-target="#due-dates">Due Dates</a></li>
+  <li><a href="#recommended-readings" id="toc-recommended-readings" class="nav-link" data-scroll-target="#recommended-readings">Recommended Readings</a></li>
+  <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference materials</a></li>
+  <li><a href="#exploratory-data-visualization" id="toc-exploratory-data-visualization" class="nav-link" data-scroll-target="#exploratory-data-visualization">Exploratory Data Visualization</a>
+  <ul class="collapse">
+  <li><a href="#part-1-select-a-dataset" id="toc-part-1-select-a-dataset" class="nav-link" data-scroll-target="#part-1-select-a-dataset">Part 1: Select a dataset</a></li>
+  <li><a href="#part-2-explore-and-visualize-the-data" id="toc-part-2-explore-and-visualize-the-data" class="nav-link" data-scroll-target="#part-2-explore-and-visualize-the-data">Part 2: Explore and visualize the data</a></li>
+  </ul></li>
+  <li><a href="#grading-guidelines" id="toc-grading-guidelines" class="nav-link" data-scroll-target="#grading-guidelines">Grading Guidelines</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -265,15 +283,118 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="assignment-header mt-2 mb-5">
 <div class="assignment-page-repo">
-<i class="fa-brands fa-github fa-sm"></i>&nbsp;<span>View materials:</span>&nbsp;<a class="disabled" href="https://github.com/MUSA-550-Fall-2023/assignment-2">MUSA-550-Fall-2023/assignment-2</a>
+<i class="fa-brands fa-github fa-sm"></i>&nbsp;<span>View materials:</span>&nbsp;<a class="" href="https://github.com/MUSA-550-Fall-2023/assignment-2">MUSA-550-Fall-2023/assignment-2</a>
 </div>
 <div class="assignment-page-repo">
-<i class="fa-brands fa-github fa-sm"></i>&nbsp;<span>Submission link:</span>&nbsp;<a class="disabled" href="">GitHub classroom</a>
+<i class="fa-brands fa-github fa-sm"></i>&nbsp;<span>Submission link:</span>&nbsp;<a class="" href="https://classroom.github.com/a/coiOv0PU">GitHub classroom</a>
 </div>
 </div>
-<p><em>Check back later for details!</em></p>
+<section id="assignment-2" class="level1">
+<h1>Assignment #2</h1>
+<section id="due-dates" class="level2">
+<h2 class="anchored" data-anchor-id="due-dates">Due Dates</h2>
+<blockquote class="blockquote">
+<p><strong>Section 402:</strong> Thursday, September 28 by end of day (11:59 PM)</p>
+</blockquote>
+</section>
+<section id="recommended-readings" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-readings">Recommended Readings</h2>
+<ul>
+<li>Matplotlib:
+<ul>
+<li><a href="https://pbpython.com/effective-matplotlib.html">Guide to getting started with matplotlib</a></li>
+<li><a href="https://wesmckinney.com/book/plotting-and-visualization">Plotting &amp; visualization chapter of Python for Data Analysis</a></li>
+<li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/04.00-introduction-to-matplotlib.html">Matplotlib chapter of the Data Science Handbook</a></li>
+</ul></li>
+<li>Altair:
+<ul>
+<li><a href="https://altair-viz.github.io/getting_started/starting.html">Introduction to Statistical Visualization</a></li>
+<li><a href="https://altair-viz.github.io/case_studies/exploring-weather.html">Exploring Seattle Weather: A Case Study</a></li>
+</ul></li>
+<li>Data viz design: <a href="https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/">Introductory slides of London’s design guidelines</a></li>
+</ul>
+</section>
+<section id="reference-materials" class="level2">
+<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
+<ul>
+<li><a href="https://matplotlib.org/">matplotlib</a></li>
+<li><a href="https://seaborn.pydata.org/">seaborn</a></li>
+<li><a href="https://altair-viz.github.io/">altair</a></li>
+</ul>
+</section>
+<section id="exploratory-data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-visualization">Exploratory Data Visualization</h2>
+<p>In this part, you’ll use matplotlib, seaborn, and altair to explore a dataset of your choosing and generate some charts in a Jupyter notebook.</p>
+<section id="part-1-select-a-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-select-a-dataset">Part 1: Select a dataset</h3>
+<p>For this assignment, you can choose your own dataset to explore. I recommend selecting a dataset from <a href="https://www.opendataphilly.org/">OpenDataPhilly</a>. You are welcome to to use a dataset from elsewhere, <strong>but please email your instructor and let them know what you want to analyze.</strong></p>
+<p>Datasets with timestamped entries will be particularly good for analysis, but there are many interesting datasets to consider. They include:</p>
+<ul>
+<li><a href="https://www.opendataphilly.org/dataset/311-service-and-information-requests">311 Requests</a></li>
+<li><a href="https://www.opendataphilly.org/dataset/voter-turnout">Voter turnout</a></li>
+<li><a href="https://www.opendataphilly.org/dataset/police-complaints">Complaints against police</a></li>
+<li><a href="https://www.opendataphilly.org/dataset/parking-violations">Parking violations</a></li>
+<li><a href="https://www.opendataphilly.org/dataset/shooting-victims">Shooting victims</a></li>
+<li><a href="https://www.opendataphilly.org/dataset/licenses-and-inspections-violations">L+I Violations</a></li>
+</ul>
+<p>and many more…</p>
+<p>For OpenDataPhilly datasets, data files can be downloaded in the form of CSV files.</p>
+</section>
+<section id="part-2-explore-and-visualize-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-explore-and-visualize-the-data">Part 2: Explore and visualize the data</h3>
+<p>From within a Jupyter notebook, you should explore the datasets and generate charts visualizing different aspects of the data.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li><strong>1 Matplotlib chart</strong> (of any type)
+<ul>
+<li>You should consider what aspect of the dataset might be best plotted using matplotlib.</li>
+<li>Include your reasoning for using matplotlib to visualize this specific aspect of the data.</li>
+<li>You will be graded on the aesthetics of the plot, namely, color choices and clarity.</li>
+</ul></li>
+<li><strong>1 seaborn chart</strong> (of any type)
+<ul>
+<li>Please include the motivation behind your choice for the type of seaborn plot used and why.</li>
+</ul></li>
+<li><strong>3 altair plots</strong>
+<ul>
+<li><strong>Both</strong> of the following techniques should be used:
+<ul>
+<li>A transformation (mean, count, binning, etc)</li>
+<li>Brush selection</li>
+</ul></li>
+</ul></li>
+<li>Include a short discussion (a few sentences) of the main conclusion of each chart (in a markdown cell below each chart). It does not need to be interesting or insightful, but it is good practice to always note the main conclusions so the notebook make sense after time passes.</li>
+<li><strong>Extra credit:</strong>: 2-chart altair dashboard,
+<ul>
+<li>This should be <strong>in addition to</strong> the 3 charts above</li>
+<li>Filtering on one chart should cross-filter the other chart (via <code>transform_filter()</code>)</li>
+</ul></li>
+</ul>
+<p><strong>Note:</strong> You may include geospatial charts to satisfy the above requirements, but you are not required to.</p>
+</section>
+</section>
+<section id="grading-guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="grading-guidelines">Grading Guidelines</h2>
+<p>See the <a href="./rubric.md">grading rubric</a> for more details.</p>
+<p><strong>Important:</strong> Your notebooks should be a polished finished product. For example:</p>
+<ul>
+<li>Please remove any extra or unneccesary code.</li>
+<li>Please try to use markdown cells with section headers to mark different sections of the analysis.</li>
+</ul>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p><strong>Note:</strong> Be sure to read the documentation for assignment <a href="https://musa-550-fall-2023.github.io/assignment/overview.html#guidelines">guidelines</a> and <a href="https://musa-550-fall-2023.github.io/assignment/overview.html#submission">submission</a>.</p>
+<p>We’ll be using GitHub for assignment submission again. The invitation link depends on your section. For this assignments, the links are:</p>
+<blockquote class="blockquote">
+<p><strong>Section 402</strong>: <a href="https://classroom.github.com/a/coiOv0PU">https://classroom.github.com/a/coiOv0PU</a></p>
+</blockquote>
+<p>Your assignment notebook should be added to this GitHub repository before the deadline.</p>
+<p><strong>Note:</strong> File sizes are limited to 25 MB when adding files to a repository via GitHub in a browser. If your dataset is larger than this, you can try compressing it into a “.zip” to make the file smaller, and then add it to the repository on GitHub. If you run into problems, please email your instructor for help.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
