@@ -6,6 +6,7 @@ execute:
 
 {{< include ../_header.qmd >}}
 
+
 ## Topics
 
 - Interactive data viz with the holoviz ecosystem
@@ -27,11 +28,9 @@ foundation for this week's work. From [Python for Data Analysis](https://wesmcki
 ## Documentation
 
 - [GeoPandas](http://geopandas.org/)
-  - [Choropleth Maps](https://geopandas.org/en/latest/docs/user_guide/mapping.html)
   - [Converting DataFrames to GeoDataFrames](https://geopandas.org/en/latest/gallery/create_geopandas_from_pandas.html)
   - [Managing Projections](https://geopandas.org/en/stable/docs/user_guide/projections.html)
   - [Merging Data](https://geopandas.org/en/latest/docs/user_guide/mergingdata.html)
-- [Classification Schemes](https://pysal.org/mapclassify/api.html)
 
 ## Further Reading / References
 
@@ -40,4 +39,4 @@ foundation for this week's work. From [Python for Data Analysis](https://wesmcki
 - [The True Size Of](https://thetruesize.com/)
 - [Coordinate Reference Systems](https://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)
 - [EPSG Codes](http://epsg.io/)
-
+- [HoloViz tutorial](https://holoviz.org/talks/index.html): introduction to the HoloViz ecosystem
