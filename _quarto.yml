@@ -77,6 +77,8 @@ website:
       text: 2. Data Visualization Fundamentals
     - file: content/week-3/index.qmd
       text: 3. More Interactive Data Viz, Intro to Vector Data & GeoPandas
+    - file: content/week-4/index.qmd
+      text: 4. Geospatial Analysis & Mapping
     search: false
     style: docked
     title: Content
