@@ -1194,7 +1194,49 @@
     "href": "assignment/401/assignment-2.html",
     "title": "HW #2",
     "section": "",
-    "text": "Assigned on Monday, September 25\n\n\nDue on Monday, October 9 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-2\n\n\n Submission link: GitHub classroom\n\n\nCheck back later for details!"
+    "text": "Assigned on Monday, September 25\n\n\nDue on Monday, October 9 at 11:59 PM"
+  },
+  {
+    "objectID": "assignment/401/assignment-2.html#due-dates",
+    "href": "assignment/401/assignment-2.html#due-dates",
+    "title": "HW #2",
+    "section": "Due Dates",
+    "text": "Due Dates\n\nSection 401: Monday, October 9 by end of day (11:59 PM)"
+  },
+  {
+    "objectID": "assignment/401/assignment-2.html#recommended-readings",
+    "href": "assignment/401/assignment-2.html#recommended-readings",
+    "title": "HW #2",
+    "section": "Recommended Readings",
+    "text": "Recommended Readings\n\nMatplotlib:\n\nGuide to getting started with matplotlib\nPlotting & visualization chapter of Python for Data Analysis\nMatplotlib chapter of the Data Science Handbook\n\nAltair:\n\nIntroduction to Statistical Visualization\nExploring Seattle Weather: A Case Study\n\nData viz design: Introductory slides of London’s design guidelines"
+  },
+  {
+    "objectID": "assignment/401/assignment-2.html#reference-materials",
+    "href": "assignment/401/assignment-2.html#reference-materials",
+    "title": "HW #2",
+    "section": "Reference materials",
+    "text": "Reference materials\n\nmatplotlib\nseaborn\naltair"
+  },
+  {
+    "objectID": "assignment/401/assignment-2.html#exploratory-data-visualization",
+    "href": "assignment/401/assignment-2.html#exploratory-data-visualization",
+    "title": "HW #2",
+    "section": "Exploratory Data Visualization",
+    "text": "Exploratory Data Visualization\nIn this part, you’ll use matplotlib, seaborn, and altair to explore a dataset of your choosing and generate some charts in a Jupyter notebook.\n\nPart 1: Select a dataset\nFor this assignment, you can choose your own dataset to explore. I recommend selecting a dataset from OpenDataPhilly. You are welcome to to use a dataset from elsewhere, but please email your instructor and let them know what you want to analyze.\nDatasets with timestamped entries will be particularly good for analysis, but there are many interesting datasets to consider. They include:\n\n311 Requests\nVoter turnout\nComplaints against police\nParking violations\nShooting victims\nL+I Violations\n\nand many more…\nFor OpenDataPhilly datasets, data files can be downloaded in the form of CSV files.\n\n\nPart 2: Explore and visualize the data\nFrom within a Jupyter notebook, you should explore the datasets and generate charts visualizing different aspects of the data.\nRequirements:\n\n1 Matplotlib chart (of any type)\n\nYou should consider what aspect of the dataset might be best plotted using matplotlib.\nInclude your reasoning for using matplotlib to visualize this specific aspect of the data.\nYou will be graded on the aesthetics of the plot, namely, color choices and clarity.\n\n1 seaborn chart (of any type)\n\nPlease include the motivation behind your choice for the type of seaborn plot used and why.\n\n3 altair plots\n\nBoth of the following techniques should be used:\n\nA transformation (mean, count, binning, etc)\nBrush selection\n\n\nInclude a short discussion (a few sentences) of the main conclusion of each chart (in a markdown cell below each chart). It does not need to be interesting or insightful, but it is good practice to always note the main conclusions so the notebook make sense after time passes.\nExtra credit:: 2-chart altair dashboard,\n\nThis should be in addition to the 3 charts above\nFiltering on one chart should cross-filter the other chart (via transform_filter())\n\n\nNote: You may include geospatial charts to satisfy the above requirements, but you are not required to."
+  },
+  {
+    "objectID": "assignment/401/assignment-2.html#grading-guidelines",
+    "href": "assignment/401/assignment-2.html#grading-guidelines",
+    "title": "HW #2",
+    "section": "Grading Guidelines",
+    "text": "Grading Guidelines\nSee the grading rubric for more details.\nImportant: Your notebooks should be a polished finished product. For example:\n\nPlease remove any extra or unneccesary code.\nPlease try to use markdown cells with section headers to mark different sections of the analysis."
+  },
+  {
+    "objectID": "assignment/401/assignment-2.html#submission",
+    "href": "assignment/401/assignment-2.html#submission",
+    "title": "HW #2",
+    "section": "Submission",
+    "text": "Submission\nNote: Be sure to read the documentation for assignment guidelines and submission.\nWe’ll be using GitHub for assignment submission again. The invitation link depends on your section. For this assignments, the links are:\n\nSection 401: https://classroom.github.com/a/HDaP31zx\n\nYour assignment notebook should be added to this GitHub repository before the deadline.\nNote: File sizes are limited to 25 MB when adding files to a repository via GitHub in a browser. If your dataset is larger than this, you can try compressing it into a “.zip” to make the file smaller, and then add it to the repository on GitHub. If you run into problems, please email your instructor for help."
   },
   {
     "objectID": "assignment/401/assignment-1.html",
