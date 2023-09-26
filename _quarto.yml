@@ -79,6 +79,8 @@ website:
       text: 3. More Interactive Data Viz, Intro to Vector Data & GeoPandas
     - file: content/week-4/index.qmd
       text: 4. Geospatial Analysis & Mapping
+    - file: content/week-5/index.qmd
+      text: '5. More Geospatial Analysis: Street Networks and Raster Data'
     search: false
     style: docked
     title: Content

@@ -82,7 +82,7 @@ you are not required to.
 
 ## Grading Guidelines
 
-See the [grading rubric](./rubric.md) for more details.
+See the [grading rubric](https://github.com/MUSA-550-Fall-2023/assignment-2/blob/main/rubric.md) for more details.
 
 **Important:** Your notebooks should be a polished finished product. For example:
 

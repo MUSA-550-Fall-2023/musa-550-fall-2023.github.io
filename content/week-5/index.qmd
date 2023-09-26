@@ -1,0 +1,36 @@
+---
+title: "Week 5: More Geospatial Analysis: Street Networks & Raster Data"
+execute: 
+  echo: false
+---
+
+{{< include ../_header.qmd >}}
+
+## Topics
+
+- Analyzing OpenStreetMap data with osmnx and pandana
+- Working with raster data in Python with rasterio
+
+## Reference & Additional Readings
+
+- OSMnx
+  - [GitHub](https://github.com/gboeing/osmnx)
+  - [Introductory Blog Post](https://geoffboeing.com/2016/11/osmnx-python-street-networks/)
+  - [Jupyter Notebook Examples](https://github.com/gboeing/osmnx-examples/tree/master/notebooks)
+  - [Documentation](https://osmnx.readthedocs.io)
+  - [Street orientation example](https://geoffboeing.com/2019/09/urban-street-network-orientation/)
+- Pandana
+  - [GitHub](https://github.com/UDST/pandana)
+  - [Jupyter Notebook Examples](https://github.com/UDST/pandana/tree/master/examples)
+  - [Documentation](http://udst.github.io/pandana/)
+- OpenStreetMap
+  - [OSM Wikipedia](https://wiki.openstreetmap.org/wiki)
+  - [List of OSM feature types](https://wiki.openstreetmap.org/wiki/Map_Features)
+  - [List of OSM amenities](https://wiki.openstreetmap.org/wiki/Key:amenity)
+- [Bounding box tool](http://boundingbox.klokantech.com/)
+- [Rasterio documentation](https://rasterio.readthedocs.io/en/latest/index.html)
+- [EarthPy examples gallery](https://earthpy.readthedocs.io/en/latest/gallery_vignettes/index.html)
+- [Plotting with rasterio](https://rasterio.readthedocs.io/en/stable/topics/plotting.html)
+- [LandSat bands](https://www.usgs.gov/faqs/what-are-best-landsat-spectral-bands-use-my-research?qt-news_science_products=0#qt-news_science_products)
+- [Tutorial on Landsat data](https://www.earthdatascience.org/courses/earth-analytics-python/multispectral-remote-sensing-in-python/landsat-bands-geotif-in-Python/)
+- [Xarray overview](http://xarray.pydata.org/en/stable/quick-overview.html)
