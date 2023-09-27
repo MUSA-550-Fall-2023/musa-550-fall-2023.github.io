@@ -1446,7 +1446,42 @@
     "href": "assignment/402/assignment-3.html",
     "title": "HW #3",
     "section": "",
-    "text": "Assigned on Thursday, September 28\n\n\nDue on Thursday, October 19 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-3\n\n\n Submission link: GitHub classroom\n\n\nCheck back later for details!"
+    "text": "Assigned on Thursday, September 28\n\n\nDue on Thursday, October 19 at 11:59 PM"
+  },
+  {
+    "objectID": "assignment/402/assignment-3.html#due-dates",
+    "href": "assignment/402/assignment-3.html#due-dates",
+    "title": "HW #3",
+    "section": "Due Dates",
+    "text": "Due Dates\n\nSection 402: October 19 by end of day"
+  },
+  {
+    "objectID": "assignment/402/assignment-3.html#topics-covered",
+    "href": "assignment/402/assignment-3.html#topics-covered",
+    "title": "HW #3",
+    "section": "Topics covered",
+    "text": "Topics covered\n\ngeopandas and spatial operations\nhvplot\nRaster data"
+  },
+  {
+    "objectID": "assignment/402/assignment-3.html#description",
+    "href": "assignment/402/assignment-3.html#description",
+    "title": "HW #3",
+    "section": "Description",
+    "text": "Description\nThis assignment will include two parts:\nIn Part 1, we’ll explore spatial trends evictions in Philadelphia using data from the Eviction Lab and building code violations using data from OpenDataPhilly.\nWe’ll be exploring the idea that evictions can occur as retaliation against renters for reporting code violations. Spatial correlations between evictions and code violations from the City’s Licenses and Inspections department can offer some insight into this question.\nIn Part 2, we’ll dive into the NDVI in Philadelphia more. Using Landsat data, we’ll calculate the NDVI within the city limits and compare it to the NDVI in the immediate suburbs. We’ll also calculate the NDVI at the locations of trees in Philadelphia, using a dataset of street trees from OpenDataPhilly.\n\nBackground readings\n\nHuffPost article\nPlanPhilly article\nThe Eviction Lab\nData Dictionary for Eviction Lab data available for download in this repository"
+  },
+  {
+    "objectID": "assignment/402/assignment-3.html#assignment-details",
+    "href": "assignment/402/assignment-3.html#assignment-details",
+    "title": "HW #3",
+    "section": "Assignment details",
+    "text": "Assignment details\nA skeleton Jupyter notebook is available in this repository that will walk you through the steps of the assignment. The completed notebook should be submitted as your assignment."
+  },
+  {
+    "objectID": "assignment/402/assignment-3.html#submission",
+    "href": "assignment/402/assignment-3.html#submission",
+    "title": "HW #3",
+    "section": "Submission",
+    "text": "Submission\nWe’ll be using GitHub for assignment submission again. You can set up your own private repository on GitHub for this assignment using the link below.\nThe invitation link will depend upon your section:\n\nSection 402: https://classroom.github.com/a/z7wf0lbS\n\nThe assignment should be added to this GitHub repository before the deadline. You can add files to the repository through the web (github.com) interface or using the command line locally on your machine."
   },
   {
     "objectID": "assignment/402/schedule.html",
