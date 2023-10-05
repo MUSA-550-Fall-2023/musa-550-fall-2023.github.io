@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Geospatial Data Science in Python - Week 2: Data Visualization Fundamentals</title>
+<title>Geospatial Data Science in Python - Week 6: Getting Data, Part 1: Web Scraping</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/week-3/index.html" rel="next">
-<link href="../../content/week-1/index.html" rel="prev">
+<link href="../../content/week-5/index.html" rel="prev">
 <link href="../../files/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -164,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/week-2/index.html">2. Data Visualization Fundamentals</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/week-6/index.html">6. Web Scraping</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -190,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/week-2/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../content/week-2/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2. Data Visualization Fundamentals</span></a>
   </div>
 </li>
@@ -214,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/week-6/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/week-6/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">6. Web Scraping</span></a>
   </div>
 </li>
@@ -228,11 +227,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
-  <li><a href="#recommended-readings" id="toc-recommended-readings" class="nav-link" data-scroll-target="#recommended-readings">Recommended Readings</a></li>
-  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
-  <li><a href="#other-readings" id="toc-other-readings" class="nav-link" data-scroll-target="#other-readings">Other Readings</a></li>
-  <li><a href="#color-resources" id="toc-color-resources" class="nav-link" data-scroll-target="#color-resources">Color Resources</a></li>
+  <li><a href="#recommended-readings" id="toc-recommended-readings" class="nav-link active" data-scroll-target="#recommended-readings">Recommended readings</a></li>
+  <li><a href="#new-packages" id="toc-new-packages" class="nav-link" data-scroll-target="#new-packages">New Packages</a></li>
+  <li><a href="#useful-links-and-reference-materials" id="toc-useful-links-and-reference-materials" class="nav-link" data-scroll-target="#useful-links-and-reference-materials">Useful Links and Reference Materials</a></li>
   </ul>
 </nav>
     </div>
@@ -241,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 2: Data Visualization Fundamentals</h1>
+<h1 class="title">Week 6: Getting Data, Part 1: Web Scraping</h1>
 </div>
 
 
@@ -259,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 
-<div class="content-dates">Content for lectures 2A and 2B</div>
+<div class="content-dates">Content for lectures 6A and 6B</div>
 <div class="content-header mt-2">
 
         <div class="content-page-repo">
@@ -267,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
             &nbsp;
             <span>View materials:</span>
             &nbsp;
-            <a href="https://github.com/MUSA-550-Fall-2023/week-2">MUSA-550-Fall-2023/week-2</a>
+            <a href="https://github.com/MUSA-550-Fall-2023/week-6">MUSA-550-Fall-2023/week-6</a>
         </div>
 
         <div class="content-page-repo">
@@ -275,12 +272,12 @@ ul.task-list li input[type="checkbox"] {
             &nbsp;
             <span>HTML slides:</span>
             &nbsp;
-            <a class="" href="./lecture-2A.html">
-                Lecture 2A
+            <a class="" href="./lecture-6A.html">
+                Lecture 6A
             </a>
             &nbsp;
-            <a class="" href="./lecture-2B.html">
-                Lecture 2B
+            <a class="" href="./lecture-6B.html">
+                Lecture 6B
             </a>
         </div>
         
@@ -290,92 +287,52 @@ ul.task-list li input[type="checkbox"] {
             &nbsp;
             <span>Executable slides:</span>
             &nbsp;
-            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-2%26urlpath%3Dlab%252Ftree%252Fweek-2%252Flecture-2A.ipynb%26branch%3Dmain">
-                Lecture 2A
+            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-6%26urlpath%3Dlab%252Ftree%252Fweek-6%252Flecture-6A.ipynb%26branch%3Dmain">
+                Lecture 6A
             </a>
             &nbsp;
-            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-2%26urlpath%3Dlab%252Ftree%252Fweek-2%252Flecture-2B.ipynb%26branch%3Dmain">
-                Lecture 2B
+            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-6%26urlpath%3Dlab%252Ftree%252Fweek-6%252Flecture-6B.ipynb%26branch%3Dmain">
+                Lecture 6B
             </a>
         </div>
         
 </div>
 </div>
 </div>
-<section id="topics" class="level2">
-<h2 class="anchored" data-anchor-id="topics">Topics</h2>
-<ul>
-<li>Color fundamentals and available tools</li>
-<li>Introduction to matplotlib, seaborn, and altair</li>
-</ul>
-</section>
 <section id="recommended-readings" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-readings">Recommended Readings</h2>
+<h2 class="anchored" data-anchor-id="recommended-readings">Recommended readings</h2>
 <ul>
-<li><a href="https://pbpython.com/effective-matplotlib.html">Guide to getting started with matplotlib</a></li>
-<li><a href="https://wesmckinney.com/book/plotting-and-visualization">Plotting &amp; visualization chapter of Python for Data Analysis</a>
+<li><a href="https://github.com/MUSA-550-Fall-2023/week-6/blob/main/css-selectors.md">BeautifulSoup and CSS Selectors</a></li>
+<li><a href="https://arxiv.org/abs/2305.19893">Web scraping: a promising tool for geographic data acquisition</a></li>
+<li>Web scraping in the news
 <ul>
-<li>A good introduction to plotting with matplotlib, pandas, and seaborn</li>
-</ul></li>
-<li>Altair:
-<ul>
-<li><a href="https://altair-viz.github.io/getting_started/starting.html">Introduction to Statistical Visualization</a></li>
-<li><a href="https://altair-viz.github.io/user_guide/interactions.html">Interactive charts with altair</a></li>
-<li><a href="https://altair-viz.github.io/case_studies/exploring-weather.html">Exploring Seattle Weather: A Case Study</a></li>
-</ul></li>
-<li>Data viz design: <a href="https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/">Introductory slides of London’s design guidelines</a></li>
-</ul>
-</section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<ul>
-<li><a href="https://matplotlib.org/">matplotlib</a>
-<ul>
-<li><a href="https://matplotlib.org/stable/gallery/index.html">Example plots</a></li>
-<li><a href="https://matplotlib.org/stable/plot_types/index.html">Plot types</a></li>
-</ul></li>
-<li><a href="https://seaborn.pydata.org/">seaborn docs homepage</a></li>
-<li><a href="https://seaborn.pydata.org/tutorial.html">Seaborn tutorial</a>
-<ul>
-<li><a href="https://seaborn.pydata.org/tutorial/relational.html">Visualizing statistical relationships</a></li>
-<li><a href="https://seaborn.pydata.org/tutorial/categorical.html">Categorical data</a></li>
-<li><a href="https://seaborn.pydata.org/tutorial/distributions.html">Visualizing the distribution of a data set</a></li>
-<li><a href="https://seaborn.pydata.org/tutorial/regression.html">Visualizing linear relationships</a></li>
-</ul></li>
-<li><a href="https://altair-viz.github.io/">altair</a>
-<ul>
-<li><a href="https://altair-viz.github.io/user_guide/data.html">The user guide</a></li>
-<li><a href="https://altair-viz.github.io/gallery/index.html">Example gallery</a></li>
+<li><a href="https://apnews.com/article/openai-lawsuit-authors-grisham-george-rr-martin-37f9073ab67ab25b7e6b2975b2a63bfe">OpenAI sued by authors (AP News)c</a></li>
+<li><a href="https://www.wired.com/story/clearview-ai-scraping-web/">Scraping the Web Is a Powerful Tool. Clearview AI Abused It (Wired)</a></li>
+<li><a href="https://techcrunch.com/2022/04/18/web-scraping-legal-court/">Web scraping is legal, US appeals court reaffirms (Techcrunch)</a></li>
 </ul></li>
 </ul>
 </section>
-<section id="other-readings" class="level2">
-<h2 class="anchored" data-anchor-id="other-readings">Other Readings</h2>
+<section id="new-packages" class="level2">
+<h2 class="anchored" data-anchor-id="new-packages">New Packages</h2>
 <ul>
-<li><a href="https://towardsdatascience.com/how-to-remake-historical-data-visualization-and-why-you-should-c25874fc4804">Remaking Historical Data Viz</a></li>
-<li><a href="http://projects.flowingdata.com/atlas/">Modern Statistical Atlas</a></li>
-<li><a href="https://towardsdatascience.com/w-e-b-du-bois-staggering-data-visualizations-are-as-powerful-today-as-they-were-in-1900-64752c472ae4">A 6-part blog series on W. E. B. Du Bois’ Data Visualization</a></li>
-<li><a href="http://www.datasketch.es/">Data Sketches</a></li>
-<li><a href="https://medium.com/visualizing-the-field/the-7-kinds-of-data-visualization-people-9964e80443a7">The 7 Kinds of Data Visualization People</a></li>
-<li><a href="https://medium.com/@Elijah_Meeks/data-visualization-fast-and-slow-d2653d4850b0">Fast vs Slow Data Visualization</a></li>
-<li><a href="https://medium.com/@Elijah_Meeks/what-charts-say-6e31cbba2047">What Charts Say</a></li>
-<li><a href="https://blog.datawrapper.de/colorguide/">Color Guide and Overview of Color Tools</a></li>
-<li><a href="http://www.visualisingdata.com/2015/01/make-grey-best-friend/">The Importance of Grey</a></li>
-<li><a href="https://www.youtube.com/watch?v=FytuB8nFHPQ">2017 PyCon presentation by Jake VanderPlas</a></li>
-<li><a href="https://medium.com/nightingale/how-john-burn-murdochs-influential-dataviz-helped-the-world-understand-coronavirus-6cb4a09795ae">Interview with John Burn-Murdoch about his COVID Data Viz</a></li>
+<li><a href="http://docs.python-requests.org/en/master/">Requests</a></li>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a></li>
+<li><a href="https://selenium-python.readthedocs.io">Selenium</a></li>
 </ul>
 </section>
-<section id="color-resources" class="level2">
-<h2 class="anchored" data-anchor-id="color-resources">Color Resources</h2>
+<section id="useful-links-and-reference-materials" class="level2">
+<h2 class="anchored" data-anchor-id="useful-links-and-reference-materials">Useful Links and Reference Materials</h2>
 <ul>
-<li><a href="http://colorbrewer2.org/">ColorBrewer 2.0</a></li>
-<li><a href="https://projects.susielu.com/viz-palette">Viz Palette</a></li>
-<li><a href="https://color.adobe.com/explore">Adobe Color CC</a></li>
-<li><a href="http://tristen.ca/hcl-picker">Colorpicker for data</a></li>
-<li><a href="https://gka.github.io/palettes/">Chroma.js Color Scale Helper</a></li>
-<li><a href="https://matplotlib.org/tutorials/colors/colormaps.html">Choosing Color Maps in Matplotlib</a></li>
-<li><a href="https://seaborn.pydata.org/tutorial/color_palettes.html">Choosing Color Palettes in seaborn</a></li>
-<li><a href="https://vega.github.io/vega/docs/schemes/">Names of available color maps in Altair</a></li>
+<li><a href="https://geoffboeing.com/2016/08/craigslist-rental-housing-insights/">Insights into Housing Markets from Scraping Craigslist</a>
+<ul>
+<li><a href="https://arxiv.org/pdf/1605.05397.pdf">and accompanying academic article</a></li>
+</ul></li>
+<li><a href="https://www.w3schools.com/html/html_intro.asp">HTML tutorial</a>
+<ul>
+<li>sections: introduction, basics, elements, attributes</li>
+</ul></li>
+<li><a href="https://www.learndatasci.com/tutorials/ultimate-guide-web-scraping-w-python-requests-and-beautifulsoup/">Tutorial on Web Scraping with Requests and BeautifulSoup</a></li>
+<li><a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS Selectors</a></li>
 </ul>
 
 
@@ -617,14 +574,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/week-1/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1. Exploratory Data Science in Python</span>
+      <a href="../../content/week-5/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">5. More Geospatial Analysis: Street Networks and Raster Data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/week-3/index.html" class="pagination-link">
-        <span class="nav-page-text">3. More Interactive Data Viz, Intro to Vector Data &amp; GeoPandas</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

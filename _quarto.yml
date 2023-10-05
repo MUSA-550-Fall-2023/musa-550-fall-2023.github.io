@@ -81,6 +81,8 @@ website:
       text: 4. Geospatial Analysis & Mapping
     - file: content/week-5/index.qmd
       text: '5. More Geospatial Analysis: Street Networks and Raster Data'
+    - file: content/week-6/index.qmd
+      text: 6. Web Scraping
     search: false
     style: docked
     title: Content

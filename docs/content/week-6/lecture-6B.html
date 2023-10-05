@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geospatial Data Science in Python - Week 6BWeb Scraping</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geospatial Data Science in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-schedule" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Schedule</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-schedule">    
+        <li>
+    <a class="dropdown-item" href="../../schedule/401.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../schedule/402.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Content</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../../assignment/overview.html" rel="" target="">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/401/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/402/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../resource/index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-box-arrow-up-right"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/MUSA-550-Fall-2023">
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://canvas.upenn.edu/courses/1740535">
+            Canvas
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://edstem.org/us/courses/42616/discussion/">
+            Ed Discussion
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 6B<br>Web Scraping</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li>Section 401</li>
+<li>Wednesday, October 11, 2023</li>
+</ul>
+<section id="week-6-agenda-web-scraping" class="level2">
+<h2 class="anchored" data-anchor-id="week-6-agenda-web-scraping">Week 6 agenda: web scraping</h2>
+<p><strong>Last time:</strong> - Why web scraping? - Getting familiar with the Web - Web scraping: extracting data from static sites</p>
+<p><strong>Today:</strong> - Practice with web scraping - How to deal with dynamic content</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with the usual imports</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We'll use these throughout</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="part-1-web-scraping-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-web-scraping-exercises">Part 1: Web scraping exercises</h2>
+<p>For each of the exercises, use the Web Inspector to inspect the structure of the relevant web page, and identify the HTML content you will need to scrape with Python.</p>
+<section id="the-number-of-days-until-the-general-election" class="level3">
+<h3 class="anchored" data-anchor-id="the-number-of-days-until-the-general-election">1. The number of days until the General Election</h3>
+<p>The relevant URL is: <a href="https://vote.phila.gov/">https://vote.phila.gov/</a></p>
+<p><strong>Hint:</strong> Select the <code>&lt;span&gt;</code> element that holds the number of days using the class name for the tag.</p>
+</section>
+<section id="how-many-millions-of-people-are-currently-experiencing-drought" class="level3">
+<h3 class="anchored" data-anchor-id="how-many-millions-of-people-are-currently-experiencing-drought">2. How many millions of people are currently experiencing drought?</h3>
+<p>Relevant URL: <a href="https://www.drought.gov/current-conditions">https://www.drought.gov/current-conditions</a></p>
+<p><strong>Hint:</strong> We’re interested in just a single HTML element so you can inspect the website, identify the right element, and copy the selector for the element.</p>
+</section>
+<section id="scrape-the-weitzman-school-directory" class="level3">
+<h3 class="anchored" data-anchor-id="scrape-the-weitzman-school-directory">3. Scrape the Weitzman School directory</h3>
+<p>The Weitzman School lists their directory of people on this page: <a href="https://www.design.upenn.edu/people/list">https://www.design.upenn.edu/people/list</a>. From this site, let’s extract out the person’s name, title, and associated department.</p>
+<p>This example is similar to the Inquirer Clean Plates demo from last lecture. The info we want for each person is wrapped up in a <code>&lt;div&gt;</code> element. You can select all of those elements, loop over each one in a “for” loop, extract the three pieces of content we want from each <code>&lt;div&gt;</code>, and then save the result to a list.</p>
+</section>
+</section>
+<section id="part-2-what-about-dynamic-content" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-what-about-dynamic-content">Part 2: What about dynamic content?</h2>
+<p>How do you scrape data that is loaded via Javascript or only appears after user interaction?</p>
+<center>
+<img src="imgs/yoda.png" width="700">
+</center>
+<section id="note-web-browser-needed" class="level3">
+<h3 class="anchored" data-anchor-id="note-web-browser-needed">Note: web browser needed</h3>
+<p>You’ll need a web browser installed to use <code>selenium</code>, e.g., FireFox, Google Chrome, Edge, etc.</p>
+</section>
+<section id="selenium" class="level3">
+<h3 class="anchored" data-anchor-id="selenium">Selenium</h3>
+<ul>
+<li>Designed as a framework for testing webpages during development</li>
+<li>Provides an interface to interact with webpages just as a user would</li>
+<li>Becoming increasingly popular for web scraping dynamic content from pages</li>
+</ul>
+</section>
+<section id="two-common-use-cases" class="level3">
+<h3 class="anchored" data-anchor-id="two-common-use-cases">Two common use cases</h3>
+<p>Two cases when requests.get() won’t work:</p>
+<ol type="1">
+<li>Many sites load content via javascript, so requests.get() won’t return anything. It doesn’t load any javascript on the page, just returns the static HTML content.</li>
+<li>If the site requires user interaction via buttons, dropdowns, etc., then get requests won’t be able to show that information.</li>
+</ol>
+<p>Selenium to the rescue!</p>
+</section>
+<section id="example-1-scraping-septa" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-scraping-septa">Example #1: Scraping SEPTA</h3>
+<ul>
+<li>URL: <a href="https://beta-realtime.septa.org/alerts">https://beta-realtime.septa.org/alerts</a></li>
+<li>Let’s see if we can extract the current set of alerts across the SEPTA system</li>
+</ul>
+<p><strong>Problem:</strong> content is loaded via Javascript!</p>
+<div class="cell" data-tags="[]" data-execution_count="149">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://beta-realtime.septa.org/alerts"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="150">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>requests.get(url).content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="150">
+<pre><code>b'&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt;\n    &lt;!-- Google Tag Manager --&gt;\n    &lt;script&gt;\n      (function (w, d, s, l, i) {\n        w[l] = w[l] || [];\n        w[l].push({ \'gtm.start\': new Date().getTime(), event: \'gtm.js\' });\n        var f = d.getElementsByTagName(s)[0],\n          j = d.createElement(s),\n          dl = l != \'dataLayer\' ? \'&amp;l=\' + l : \'\';\n        j.async = true;\n        j.src = \'https://www.googletagmanager.com/gtm.js?id=\' + i + dl;\n        f.parentNode.insertBefore(j, f);\n      })(window, document, \'script\', \'dataLayer\', \'GTM-59M5TWG\');\n    &lt;/script&gt;\n    &lt;!-- End Google Tag Manager --&gt;\n\n    &lt;meta charset="utf-8"&gt;\n    &lt;title&gt;\n      Southeastern Pennsylvania Transportation Authority | Serving Bucks, Chester, Delaware, Montgomery, and\n      Philadelphia counties\n    &lt;/title&gt;\n    &lt;base href="/"&gt;\n    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;\n    &lt;meta name="description" content="Serving Bucks, Chester, Delaware, Montgomery, and Philadelphia counties. Call (215) 580-7800 or TDD/TTY (215) 580-7853 for Customer Service."&gt;\n    &lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;\n    &lt;link rel="manifest" href="site.webmanifest"&gt;\n    &lt;meta name="msapplication-TileColor" content="#f3f7f7"&gt;\n    &lt;meta name="theme-color" content="#ffffff"&gt;\n  &lt;style&gt;@import"https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap";@charset "UTF-8";html,body{scroll-behavior:smooth}:root{--bs-blue:#0d6efd;--bs-indigo:#6610f2;--bs-purple:#6f42c1;--bs-pink:#d63384;--bs-red:#dc3545;--bs-orange:#fd7e14;--bs-yellow:#ffc107;--bs-green:#198754;--bs-teal:#20c997;--bs-cyan:#0dcaf0;--bs-black:#000;--bs-white:#fff;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-gray-100:#f8f9fa;--bs-gray-200:#e9ecef;--bs-gray-300:#dee2e6;--bs-gray-400:#ced4da;--bs-gray-500:#adb5bd;--bs-gray-600:#6c757d;--bs-gray-700:#495057;--bs-gray-800:#343a40;--bs-gray-900:#212529;--bs-primary:#0264f7;--bs-secondary:#6c757d;--bs-success:#198754;--bs-info:#0dcaf0;--bs-warning:#ffc107;--bs-danger:#dc3545;--bs-light:#f8f9fa;--bs-dark:#212529;--bs-example:#900;--bs-example2:rgb(5, 68, 0);--bs-example3:rgb(23, 100, 139);--bs-example4:rgb(175, 40, 132);--bs-trip-red:rgb(241, 71, 40);--bs-header-blue:#1f4fa3;--bs-input-blue:#103270;--bs-mfl-primary:#008ad8;--bs-mfl-secondary:#009ade;--bs-dark-secondary:#1a1818;--bs-black:#1a1818;--bs-bus:#1a1818;--bs-rail:#4c748c;--bs-lightergray:#eceaea;--bs-lightgray:#d5d5d5;--bs-gray:#757575;--bs-light-yellow:rgb(248, 245, 218);--bs-septa-darkblue:#202846;--bs-septa-lightblue:#1f3f7e;--bs-septa-lighterblue:#99c2ff;--bs-septa-ctablue:#2968d6;--bs-septa-accent:#10b0aa;--bs-septa-lightgray:#c4c4c4;--bs-L:#009ade;--bs-B:#fa6400;--bs-T:#61a60e;--bs-G:#ffd600;--bs-D:#e6427a;--bs-M:#60269e;--bs-neutral:#000000;--bs-null:#000000;--bs-primary-rgb:2, 100, 247;--bs-secondary-rgb:108, 117, 125;--bs-success-rgb:25, 135, 84;--bs-info-rgb:13, 202, 240;--bs-warning-rgb:255, 193, 7;--bs-danger-rgb:220, 53, 69;--bs-light-rgb:248, 249, 250;--bs-dark-rgb:33, 37, 41;--bs-example-rgb:153, 0, 0;--bs-example2-rgb:5, 68, 0;--bs-example3-rgb:23, 100, 139;--bs-example4-rgb:175, 40, 132;--bs-trip-red-rgb:241, 71, 40;--bs-header-blue-rgb:31, 79, 163;--bs-input-blue-rgb:16, 50, 112;--bs-mfl-primary-rgb:0, 138, 216;--bs-mfl-secondary-rgb:0, 154, 222;--bs-dark-secondary-rgb:26, 24, 24;--bs-black-rgb:26, 24, 24;--bs-bus-rgb:26, 24, 24;--bs-rail-rgb:76, 116, 140;--bs-lightergray-rgb:236, 234, 234;--bs-lightgray-rgb:213, 213, 213;--bs-gray-rgb:117, 117, 117;--bs-light-yellow-rgb:248, 245, 218;--bs-septa-darkblue-rgb:32, 40, 70;--bs-septa-lightblue-rgb:31, 63, 126;--bs-septa-lighterblue-rgb:153, 194, 255;--bs-septa-ctablue-rgb:41, 104, 214;--bs-septa-accent-rgb:16, 176, 170;--bs-septa-lightgray-rgb:196, 196, 196;--bs-L-rgb:0, 154, 222;--bs-B-rgb:250, 100, 0;--bs-T-rgb:97, 166, 14;--bs-G-rgb:255, 214, 0;--bs-D-rgb:230, 66, 122;--bs-M-rgb:96, 38, 158;--bs-neutral-rgb:0, 0, 0;--bs-null-rgb:0, 0, 0;--bs-white-rgb:255, 255, 255;--bs-black-rgb:0, 0, 0;--bs-body-color-rgb:33, 37, 41;--bs-body-bg-rgb:255, 255, 255;--bs-font-sans-serif:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--bs-font-monospace:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));--bs-body-font-family:Roboto, sans-serif;--bs-body-font-size:1rem;--bs-body-font-weight:400;--bs-body-line-height:1.5;--bs-body-color:#212529;--bs-body-bg:#fff;--bs-border-width:1px;--bs-border-style:solid;--bs-border-color:#dee2e6;--bs-border-color-translucent:rgba(0, 0, 0, .175);--bs-border-radius:.375rem;--bs-border-radius-sm:.25rem;--bs-border-radius-lg:.5rem;--bs-border-radius-xl:1rem;--bs-border-radius-2xl:2rem;--bs-border-radius-pill:50rem;--bs-link-color:#0d6efd;--bs-link-hover-color:#0a58ca;--bs-code-color:#d63384;--bs-highlight-bg:#fff3cd}*,*:before,*:after{box-sizing:border-box}@media (prefers-reduced-motion: no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:var(--bs-body-font-family);font-size:var(--bs-body-font-size);font-weight:var(--bs-body-font-weight);line-height:var(--bs-body-line-height);color:var(--bs-body-color);text-align:var(--bs-body-text-align);background-color:var(--bs-body-bg);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}:root{--primary-dark:#202846;--black:#1A1818}body{font-family:Roboto,sans-serif}&lt;/style&gt;&lt;link rel="stylesheet" href="styles.936c7ad72c5b9f54.css" media="print" onload="this.media=\'all\'"&gt;&lt;noscript&gt;&lt;link rel="stylesheet" href="styles.936c7ad72c5b9f54.css"&gt;&lt;/noscript&gt;&lt;/head&gt;\n  &lt;body&gt;\n    &lt;!-- Google Tag Manager (noscript) --&gt;\n    &lt;noscript&gt;&lt;iframe\n        src="https://www.googletagmanager.com/ns.html?id=GTM-59M5TWG"\n        height="0"\n        width="0"\n        style="display: none; visibility: hidden"\n      &gt;&lt;/iframe\n    &gt;&lt;/noscript&gt;\n    &lt;!-- End Google Tag Manager (noscript) --&gt;\n\n    &lt;app-root&gt;&lt;/app-root&gt;\n  &lt;script src="runtime.73a50d36fa41b9bf.js" type="module"&gt;&lt;/script&gt;&lt;script src="polyfills.174bc340856cccb6.js" type="module"&gt;&lt;/script&gt;&lt;script src="scripts.faf651b9a5f14fb2.js" defer&gt;&lt;/script&gt;&lt;script src="main.9cc42a1ddb87056f.js" type="module"&gt;&lt;/script&gt;\n\n&lt;/body&gt;&lt;/html&gt;'</code></pre>
+</div>
+</div>
+<p>Ah, nothing useful was returned – content must be loaded via javascript!</p>
+<p>When you see things like:</p>
+<pre><code>app-root&gt;&lt;/app-root&gt;
+&lt;script src="runtime.73a50d36fa41b9bf.js" type="module"&gt;&lt;/script&gt;
+&lt;script src="polyfills.174bc340856cccb6.js" type="module"&gt;&lt;/script&gt;
+&lt;script src="scripts.faf651b9a5f14fb2.js" defer&gt;&lt;/script&gt;
+&lt;script src="main.9cc42a1ddb87056f.js" type="module"&gt;&lt;/script&gt;</code></pre>
+<p>it means the website is loading content via javascript and replacing the content of <code>&lt;app-root&gt;</code> dynamically once the page is loaded.</p>
+</section>
+<section id="can-we-parse-it-with-selenium-yes" class="level3">
+<h3 class="anchored" data-anchor-id="can-we-parse-it-with-selenium-yes">Can we parse it with selenium? Yes!</h3>
+<p>Let’s use selenium to open a web browser, load the page, and then extract the HTML content AFTER the javascript has loaded the content</p>
+</section>
+<section id="initialize-the-driver" class="level3">
+<h3 class="anchored" data-anchor-id="initialize-the-driver">Initialize the driver</h3>
+<p>The initialization steps will depend on which browser you want to use!</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="151">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the webdriver from selenium</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important: Working on Binder
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are working on Binder, you’ll need to use FireFox in “headless” mode, which prevents a browser window from opening.</p>
+<p>If you are working locally, it’s better to run with the default options —&nbsp;you’ll be able to see the browser window open and change as we perform the web scraping.</p>
+</div>
+</div>
+<section id="using-google-chrome" class="level4">
+<h4 class="anchored" data-anchor-id="using-google-chrome">Using Google Chrome</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="152">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UNCOMMENT BELOW TO USE CHROME</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Chrome()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-firefox" class="level4">
+<h4 class="anchored" data-anchor-id="using-firefox">Using Firefox</h4>
+<p>If you are working on Binder, use the below code!</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="153">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UNCOMMENT BELOW IF ON BINDER</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>options <span class="op">=</span> webdriver.FirefoxOptions()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># IF ON BINDER, RUN IN "HEADLESS" MODE (NO BROWSER WINDOW IS OPENED)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># COMMENT THIS LINE IF WORKING LOCALLY</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># options.add_argument("--headless")</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#driver = webdriver.Firefox(options=options)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-microsoft-edge" class="level4">
+<h4 class="anchored" data-anchor-id="using-microsoft-edge">Using Microsoft Edge</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="154">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UNCOMMENT BELOW TO USE MICROSOFT EDGE</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#driver = webdriver.Edge()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Navigate to the URL in our opened browser:</p>
+<div class="cell" data-tags="[]" data-execution_count="157">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://beta-realtime.septa.org/alerts"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>driver.get(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After it loads, extract the HTML page source and pass it to BeautifulSoup:</p>
+<div class="cell" data-tags="[]" data-execution_count="158">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>septaSoup <span class="op">=</span> BeautifulSoup(driver.page_source, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, head to the web inspector to understand the structure of the website.</p>
+<p>It looks like</p>
+<p>First, select all of the <code>&lt;li&gt;</code> elements that hold the route name + alert info.</p>
+<div class="cell" data-tags="[]" data-execution_count="159">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>route_containers <span class="op">=</span> septaSoup.select(<span class="st">"ul.d-grid.gap-5 &gt; li"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="160">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(route_containers[<span class="dv">0</span>].prettify())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;li _ngcontent-gib-c36=""&gt;
+ &lt;app-route-display _ngcontent-gib-c36="" _nghost-gib-c32="" size="medium"&gt;
+  &lt;a _ngcontent-gib-c32="" class="align-items-center fw-bold m-0 metro medium bg-L" href="/schedules/L1" title="Market-Frankford Line" translate="no"&gt;
+   Market-Frankford Line
+  &lt;/a&gt;
+ &lt;/app-route-display&gt;
+ &lt;ul _ngcontent-gib-c36="" class="mt-3 rounded border border-lightgray route-alert-list"&gt;
+  &lt;li _ngcontent-gib-c36="" class="border-bottom border-lightgray alert-card"&gt;
+   &lt;app-card-alerts _ngcontent-gib-c36="" _nghost-gib-c13=""&gt;
+    &lt;div _ngcontent-gib-c13="" class="px-3 py-4 bg-light-yellow border-warning"&gt;
+     &lt;div _ngcontent-gib-c13="" class="d-flex gap-5 flex-row align-items-center"&gt;
+      &lt;div _ngcontent-gib-c13="" class="d-flex gap-3 flex-fill"&gt;
+       &lt;svg-icon _ngcontent-gib-c13=""&gt;
+        &lt;svg _ngcontent-gib-c13="" aria-hidden="true" fill="currentColor" height="33" style="width: 25px; fill: rgb(51, 51, 51);" viewbox="0 0 38 33" width="38" xmlns="http://www.w3.org/2000/svg"&gt;
+         &lt;path _ngcontent-gib-c13="" clip-rule="evenodd" d="M18.5641 0C17.521 0 16.5309 0.595113 15.9828 1.55497L0.406642 28.6422C0.141441 29.103 0 29.6213 0 30.1588C0 31.733 1.16688 33 2.61665 33H34.5115C35.9613 33 37.1282 31.733 37.1282 30.1588C37.1282 29.6213 36.9867 29.103 36.7215 28.6422L21.1454 1.55497C20.5973 0.595113 19.6072 0 18.5641 0ZM16.502 22V9.17627H20.627V22H16.502ZM16.502 25.7432V29.4099H20.627V25.7432H16.502Z" fill-rule="evenodd"&gt;
+         &lt;/path&gt;
+        &lt;/svg&gt;
+       &lt;/svg-icon&gt;
+       &lt;div _ngcontent-gib-c13=""&gt;
+        &lt;div _ngcontent-gib-c13="" class="d-flex gap-2 border-primary"&gt;
+         &lt;h5 _ngcontent-gib-c13="" class="m-0"&gt;
+          Alert
+         &lt;/h5&gt;
+         &lt;div _ngcontent-gib-c13="" class="badge d-flex align-items-center text-uppercase text-black bg-warning"&gt;
+          Current
+         &lt;/div&gt;
+         &lt;!-- --&gt;
+        &lt;/div&gt;
+        &lt;div _ngcontent-gib-c13=""&gt;
+         &lt;span class="NormalTextRun SCXW252560103 BCX8"&gt;
+          Passengers must board trains on the we
+         &lt;/span&gt;
+         &lt;span class="NormalTextRun SCXW252560103 BCX8"&gt;
+          st
+         &lt;/span&gt;
+         &lt;span class="NormalTextRun SCXW252560103 BCX8"&gt;
+          bound platforms from Allegheny to Huntingdon Stations from 8 p.m. until the end of service due to scheduled construction.
+         &lt;/span&gt;
+        &lt;/div&gt;
+       &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- --&gt;
+     &lt;/div&gt;
+     &lt;!-- --&gt;
+    &lt;/div&gt;
+   &lt;/app-card-alerts&gt;
+  &lt;/li&gt;
+  &lt;li _ngcontent-gib-c36="" class="border-bottom border-lightgray alert-card"&gt;
+   &lt;app-card-alerts _ngcontent-gib-c36="" _nghost-gib-c13=""&gt;
+    &lt;div _ngcontent-gib-c13="" class="px-3 py-4 cursor-pointer"&gt;
+     &lt;div _ngcontent-gib-c13="" class="d-flex gap-5 flex-row align-items-center"&gt;
+      &lt;div _ngcontent-gib-c13="" class="d-flex gap-3 flex-fill"&gt;
+       &lt;svg-icon _ngcontent-gib-c13=""&gt;
+        &lt;svg _ngcontent-gib-c13="" aria-hidden="true" height="33" id="b" style="width: 25px; fill: rgb(51, 51, 51);" viewbox="0 0 33 33" width="33" xmlns="http://www.w3.org/2000/svg"&gt;
+         &lt;g _ngcontent-gib-c13="" id="c"&gt;
+          &lt;path _ngcontent-gib-c13="" d="m4.71,0C2.11,0,0,2.11,0,4.71v23.57c0,2.6,2.11,4.71,4.71,4.71h23.57c2.6,0,4.71-2.11,4.71-4.71V4.71c0-2.6-2.11-4.71-4.71-4.71H4.71Zm11.79,7.07c.98,0,1.77.79,1.77,1.77v8.25c0,.98-.79,1.77-1.77,1.77s-1.77-.79-1.77-1.77v-8.25c0-.98.79-1.77,1.77-1.77Zm-2.36,16.5c0-1.3,1.06-2.36,2.36-2.36s2.36,1.06,2.36,2.36-1.06,2.36-2.36,2.36-2.36-1.06-2.36-2.36Z"&gt;
+          &lt;/path&gt;
+         &lt;/g&gt;
+        &lt;/svg&gt;
+       &lt;/svg-icon&gt;
+       &lt;div _ngcontent-gib-c13=""&gt;
+        &lt;div _ngcontent-gib-c13="" class="d-flex gap-2 border-primary"&gt;
+         &lt;h5 _ngcontent-gib-c13="" class="m-0"&gt;
+          Advisory
+         &lt;/h5&gt;
+         &lt;div _ngcontent-gib-c13="" class="badge d-flex align-items-center text-uppercase text-black bg-warning"&gt;
+          Current
+         &lt;/div&gt;
+         &lt;!-- --&gt;
+        &lt;/div&gt;
+        &lt;div _ngcontent-gib-c13=""&gt;
+         Early Weekend Station Closures
+        &lt;/div&gt;
+       &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;svg-icon _ngcontent-gib-c13="" class="d-flex"&gt;
+       &lt;svg _ngcontent-gib-c13="" aria-hidden="true" fill="none" style="width: 16px; height: 16px; fill: rgb(51, 51, 51);" viewbox="3.6 8.6 16.8 9.6" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;g _ngcontent-gib-c13=""&gt;
+         &lt;path _ngcontent-gib-c13="" d="M5.99998 7.2L12 13.2L18 7.2L20.4 8.4L12 16.8L3.59998 8.4L5.99998 7.2Z" fill="currentColor"&gt;
+         &lt;/path&gt;
+        &lt;/g&gt;
+       &lt;/svg&gt;
+      &lt;/svg-icon&gt;
+      &lt;!-- --&gt;
+     &lt;/div&gt;
+     &lt;!-- --&gt;
+    &lt;/div&gt;
+   &lt;/app-card-alerts&gt;
+  &lt;/li&gt;
+  &lt;li _ngcontent-gib-c36="" class="border-bottom border-lightgray alert-card"&gt;
+   &lt;app-card-alerts _ngcontent-gib-c36="" _nghost-gib-c13=""&gt;
+    &lt;div _ngcontent-gib-c13="" class="px-3 py-4 cursor-pointer"&gt;
+     &lt;div _ngcontent-gib-c13="" class="d-flex gap-5 flex-row align-items-center"&gt;
+      &lt;div _ngcontent-gib-c13="" class="d-flex gap-3 flex-fill"&gt;
+       &lt;svg-icon _ngcontent-gib-c13=""&gt;
+        &lt;svg _ngcontent-gib-c13="" aria-hidden="true" height="33" id="b" style="width: 25px; fill: rgb(51, 51, 51);" viewbox="0 0 33 33" width="33" xmlns="http://www.w3.org/2000/svg"&gt;
+         &lt;g _ngcontent-gib-c13="" id="c"&gt;
+          &lt;path _ngcontent-gib-c13="" d="m4.71,0C2.11,0,0,2.11,0,4.71v23.57c0,2.6,2.11,4.71,4.71,4.71h23.57c2.6,0,4.71-2.11,4.71-4.71V4.71c0-2.6-2.11-4.71-4.71-4.71H4.71Zm11.79,7.07c.98,0,1.77.79,1.77,1.77v8.25c0,.98-.79,1.77-1.77,1.77s-1.77-.79-1.77-1.77v-8.25c0-.98.79-1.77,1.77-1.77Zm-2.36,16.5c0-1.3,1.06-2.36,2.36-2.36s2.36,1.06,2.36,2.36-1.06,2.36-2.36,2.36-2.36-1.06-2.36-2.36Z"&gt;
+          &lt;/path&gt;
+         &lt;/g&gt;
+        &lt;/svg&gt;
+       &lt;/svg-icon&gt;
+       &lt;div _ngcontent-gib-c13=""&gt;
+        &lt;div _ngcontent-gib-c13="" class="d-flex gap-2 border-primary"&gt;
+         &lt;h5 _ngcontent-gib-c13="" class="m-0"&gt;
+          Advisory
+         &lt;/h5&gt;
+         &lt;div _ngcontent-gib-c13="" class="badge d-flex align-items-center text-uppercase text-black bg-warning"&gt;
+          Current
+         &lt;/div&gt;
+         &lt;!-- --&gt;
+        &lt;/div&gt;
+        &lt;div _ngcontent-gib-c13=""&gt;
+         Temporary Closure of 30th &amp;amp; Market Street Entrance
+        &lt;/div&gt;
+       &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;svg-icon _ngcontent-gib-c13="" class="d-flex"&gt;
+       &lt;svg _ngcontent-gib-c13="" aria-hidden="true" fill="none" style="width: 16px; height: 16px; fill: rgb(51, 51, 51);" viewbox="3.6 8.6 16.8 9.6" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;g _ngcontent-gib-c13=""&gt;
+         &lt;path _ngcontent-gib-c13="" d="M5.99998 7.2L12 13.2L18 7.2L20.4 8.4L12 16.8L3.59998 8.4L5.99998 7.2Z" fill="currentColor"&gt;
+         &lt;/path&gt;
+        &lt;/g&gt;
+       &lt;/svg&gt;
+      &lt;/svg-icon&gt;
+      &lt;!-- --&gt;
+     &lt;/div&gt;
+     &lt;!-- --&gt;
+    &lt;/div&gt;
+   &lt;/app-card-alerts&gt;
+  &lt;/li&gt;
+  &lt;li _ngcontent-gib-c36="" class="border-bottom border-lightgray alert-card"&gt;
+   &lt;app-card-alerts _ngcontent-gib-c36="" _nghost-gib-c13=""&gt;
+    &lt;div _ngcontent-gib-c13="" class="px-3 py-4 cursor-pointer"&gt;
+     &lt;div _ngcontent-gib-c13="" class="d-flex gap-5 flex-row align-items-center"&gt;
+      &lt;div _ngcontent-gib-c13="" class="d-flex gap-3 flex-fill"&gt;
+       &lt;svg-icon _ngcontent-gib-c13=""&gt;
+        &lt;svg _ngcontent-gib-c13="" aria-hidden="true" height="33" id="b" style="width: 25px; fill: rgb(51, 51, 51);" viewbox="0 0 33 33" width="33" xmlns="http://www.w3.org/2000/svg"&gt;
+         &lt;g _ngcontent-gib-c13="" id="c"&gt;
+          &lt;path _ngcontent-gib-c13="" d="m4.71,0C2.11,0,0,2.11,0,4.71v23.57c0,2.6,2.11,4.71,4.71,4.71h23.57c2.6,0,4.71-2.11,4.71-4.71V4.71c0-2.6-2.11-4.71-4.71-4.71H4.71Zm11.79,7.07c.98,0,1.77.79,1.77,1.77v8.25c0,.98-.79,1.77-1.77,1.77s-1.77-.79-1.77-1.77v-8.25c0-.98.79-1.77,1.77-1.77Zm-2.36,16.5c0-1.3,1.06-2.36,2.36-2.36s2.36,1.06,2.36,2.36-1.06,2.36-2.36,2.36-2.36-1.06-2.36-2.36Z"&gt;
+          &lt;/path&gt;
+         &lt;/g&gt;
+        &lt;/svg&gt;
+       &lt;/svg-icon&gt;
+       &lt;div _ngcontent-gib-c13=""&gt;
+        &lt;div _ngcontent-gib-c13="" class="d-flex gap-2 border-primary"&gt;
+         &lt;h5 _ngcontent-gib-c13="" class="m-0"&gt;
+          Advisory
+         &lt;/h5&gt;
+         &lt;div _ngcontent-gib-c13="" class="badge d-flex align-items-center text-uppercase text-black bg-secondary text-white"&gt;
+          Upcoming
+         &lt;/div&gt;
+         &lt;!-- --&gt;
+        &lt;/div&gt;
+        &lt;div _ngcontent-gib-c13=""&gt;
+         Late Night Deep Cleaning
+        &lt;/div&gt;
+       &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;svg-icon _ngcontent-gib-c13="" class="d-flex"&gt;
+       &lt;svg _ngcontent-gib-c13="" aria-hidden="true" fill="none" style="width: 16px; height: 16px; fill: rgb(51, 51, 51);" viewbox="3.6 8.6 16.8 9.6" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;g _ngcontent-gib-c13=""&gt;
+         &lt;path _ngcontent-gib-c13="" d="M5.99998 7.2L12 13.2L18 7.2L20.4 8.4L12 16.8L3.59998 8.4L5.99998 7.2Z" fill="currentColor"&gt;
+         &lt;/path&gt;
+        &lt;/g&gt;
+       &lt;/svg&gt;
+      &lt;/svg-icon&gt;
+      &lt;!-- --&gt;
+     &lt;/div&gt;
+     &lt;!-- --&gt;
+    &lt;/div&gt;
+   &lt;/app-card-alerts&gt;
+  &lt;/li&gt;
+  &lt;!-- --&gt;
+ &lt;/ul&gt;
+&lt;/li&gt;
+</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="161">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> route_container <span class="kw">in</span> route_containers:</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The route name</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    route_name <span class="op">=</span> route_container.select_one(<span class="st">"app-route-display"</span>).text.strip()</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Loop over list of alerts</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> alert_card <span class="kw">in</span> route_container.select(<span class="st">".alert-card"</span>):</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Type of alert</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        alert_type <span class="op">=</span> alert_card.select_one(<span class="st">"h5"</span>).text.strip()</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># The status, e.g. current</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        when <span class="op">=</span> alert_card.select_one(<span class="st">".badge"</span>).text.strip()</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Description</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        desc <span class="op">=</span> alert_card.select_one(</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"app-card-alerts &gt; div &gt; div &gt; div &gt; div &gt; div:nth-child(2)"</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        ).text.strip()</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Save it</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        data.append([route_name, alert_type, when, desc])</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>[<span class="st">"route_name"</span>, <span class="st">"alert_type"</span>, <span class="st">"when"</span>, <span class="st">"description"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data.head(n<span class="op">=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="162">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">route_name</th>
+<th data-quarto-table-cell-role="th">alert_type</th>
+<th data-quarto-table-cell-role="th">when</th>
+<th data-quarto-table-cell-role="th">description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Market-Frankford Line</td>
+<td>Alert</td>
+<td>Current</td>
+<td>Passengers must board trains on the westbound ...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Market-Frankford Line</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Early Weekend Station Closures</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Market-Frankford Line</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Temporary Closure of 30th &amp; Market Street Entr...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Market-Frankford Line</td>
+<td>Advisory</td>
+<td>Upcoming</td>
+<td>Late Night Deep Cleaning</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Route 10</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Temporary Closure of 30th &amp; Market Street Entr...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Route 10</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Station Deep Cleaning</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Route 10</td>
+<td>Advisory</td>
+<td>Upcoming</td>
+<td>Late Night Deep Cleaning</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Route 11</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Temporary Closure of 30th &amp; Market Street Entr...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Route 11</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Station Deep Cleaning</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Route 11</td>
+<td>Advisory</td>
+<td>Upcoming</td>
+<td>Late Night Deep Cleaning</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>Route 13</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Temporary Closure of 30th &amp; Market Street Entr...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Route 13</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Station Deep Cleaning</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Route 13</td>
+<td>Advisory</td>
+<td>Upcoming</td>
+<td>Late Night Deep Cleaning</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Route 34</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Temporary Closure of 30th &amp; Market Street Entr...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>Route 34</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Station Deep Cleaning</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Route 34</td>
+<td>Advisory</td>
+<td>Upcoming</td>
+<td>Late Night Deep Cleaning</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Route 34</td>
+<td>Detour</td>
+<td>Current</td>
+<td>24/7 Until Further Notice, EB via City Line av...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Route 36</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Temporary Closure of 30th &amp; Market Street Entr...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Route 36</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Station Deep Cleaning</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Route 36</td>
+<td>Advisory</td>
+<td>Current</td>
+<td>Shuttle Busing</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Success!</p>
+</section>
+</section>
+<section id="example-2-scraping-the-philadelphia-municipal-courts-portal" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-scraping-the-philadelphia-municipal-courts-portal">Example #2: Scraping the Philadelphia Municipal Courts portal</h3>
+<ul>
+<li>URL: https://ujsportal.pacourts.us/CaseSearch</li>
+<li>Given a Police incident number, we’ll see if there is an associated court case with the incident</li>
+</ul>
+<p><strong>Problem:</strong> we’ll need to click several buttons before we can see the info we want!</p>
+</section>
+<section id="run-the-scraping-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-scraping-analysis">Run the scraping analysis</h3>
+<p>Strategy:</p>
+<ul>
+<li>Rely on the Web Inspector to identify specific elements of the webpage</li>
+<li>Use Selenium to interact with the webpage
+<ul>
+<li>Change dropdown elements</li>
+<li>Click buttons</li>
+</ul></li>
+</ul>
+<section id="open-the-url" class="level4">
+<h4 class="anchored" data-anchor-id="open-the-url">1. Open the URL</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="163">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the URL</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://ujsportal.pacourts.us/CaseSearch"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>driver.get(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-a-dropdown-select-element" class="level4">
+<h4 class="anchored" data-anchor-id="create-a-dropdown-select-element">2. Create a dropdown “Select” element</h4>
+<p>We’ll need to: - Select the dropdown element on the main page by its ID - Initialize a <code>selenium</code> <code>Select()</code> object</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the Web Inspector to get the css selector of the dropdown select element</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dropdown_selector <span class="op">=</span> <span class="st">"#SearchBy-Control &gt; select"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="165">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the dropdown by the element's CSS selector</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>dropdown <span class="op">=</span> driver.find_element(By.CSS_SELECTOR, dropdown_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="166">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.ui <span class="im">import</span> Select</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a Select object</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>dropdown_select <span class="op">=</span> Select(dropdown)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="change-the-selected-text-in-the-dropdown" class="level4">
+<h4 class="anchored" data-anchor-id="change-the-selected-text-in-the-dropdown">3. Change the selected text in the dropdown</h4>
+<p>Change the selected element: “Police Incident/Complaint Number”</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="167">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the selected text in the dropdown element</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>dropdown_select.select_by_visible_text(<span class="st">"Incident Number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="set-the-incident-number" class="level4">
+<h4 class="anchored" data-anchor-id="set-the-incident-number">4. Set the incident number</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="168">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the input element for the DC number</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>incident_input_selector <span class="op">=</span> <span class="st">"#IncidentNumber-Control &gt; input"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>incident_input <span class="op">=</span> driver.find_element(By.CSS_SELECTOR, incident_input_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear any existing entry</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>incident_input.clear()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Input our example incident number</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>incident_input.send_keys(<span class="st">"1725088232"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="click-the-search-button" class="level4">
+<h4 class="anchored" data-anchor-id="click-the-search-button">5. Click the search button!</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="170">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Submit the search</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>search_button_id <span class="op">=</span> <span class="st">"btnSearch"</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>driver.find_element(By.ID, search_button_id).click()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use-beautifulsoup-to-parse-the-results" class="level4">
+<h4 class="anchored" data-anchor-id="use-beautifulsoup-to-parse-the-results">6. Use BeautifulSoup to parse the results</h4>
+<ul>
+<li>Use the <code>page_source</code> attribute to get the current HTML displayed on the page</li>
+<li>Initialize a “soup” object with the HTML</li>
+</ul>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="171">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>courtsSoup <span class="op">=</span> BeautifulSoup(driver.page_source, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Identify the element holding all of the results</li>
+<li>Within this container, find the <code>&lt;table&gt;</code> element and each <code>&lt;tr&gt;</code> element within the table</li>
+</ul>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="172">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the results container by its ID </span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>results_table <span class="op">=</span> courtsSoup.select_one(<span class="st">"#caseSearchResultGrid"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="173">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get all of the &lt;tr&gt; rows inside the tbody element </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: we using nested selections here!</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>results_rows <span class="op">=</span> results_table.select(<span class="st">"tbody &gt; tr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Example:</strong> The number of court cases</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="174">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of court cases</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>number_of_cases <span class="op">=</span> <span class="bu">len</span>(results_rows)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of courts cases: </span><span class="sc">{</span>number_of_cases<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of courts cases: 2</code></pre>
+</div>
+</div>
+<p><strong>Example:</strong> Extract the text elements from the first row of the results</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="175">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>first_row <span class="op">=</span> results_rows[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="176">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(first_row.prettify())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;tr class="slide-active"&gt;
+ &lt;td class="display-none"&gt;
+  1
+ &lt;/td&gt;
+ &lt;td class="display-none"&gt;
+  0
+ &lt;/td&gt;
+ &lt;td&gt;
+  MC-51-CR-0030672-2017
+ &lt;/td&gt;
+ &lt;td&gt;
+  Common Pleas
+ &lt;/td&gt;
+ &lt;td&gt;
+  Comm. v. Velquez, Victor
+ &lt;/td&gt;
+ &lt;td&gt;
+  Closed
+ &lt;/td&gt;
+ &lt;td&gt;
+  10/13/2017
+ &lt;/td&gt;
+ &lt;td&gt;
+  Velquez, Victor
+ &lt;/td&gt;
+ &lt;td&gt;
+  09/05/1974
+ &lt;/td&gt;
+ &lt;td&gt;
+  Philadelphia
+ &lt;/td&gt;
+ &lt;td&gt;
+  MC-01-51-Crim
+ &lt;/td&gt;
+ &lt;td&gt;
+  U0981035
+ &lt;/td&gt;
+ &lt;td&gt;
+  1725088232-0030672
+ &lt;/td&gt;
+ &lt;td&gt;
+  1725088232
+ &lt;/td&gt;
+ &lt;td class="display-none"&gt;
+ &lt;/td&gt;
+ &lt;td class="display-none"&gt;
+ &lt;/td&gt;
+ &lt;td class="display-none"&gt;
+ &lt;/td&gt;
+ &lt;td class="display-none"&gt;
+ &lt;/td&gt;
+ &lt;td&gt;
+  &lt;div class="grid inline-block"&gt;
+   &lt;div&gt;
+    &lt;div class="inline-block"&gt;
+     &lt;a class="icon-wrapper" href="/Report/CpDocketSheet?docketNumber=MC-51-CR-0030672-2017&amp;amp;dnh=%2FGgePQykMpAymRENgxLBzg%3D%3D" target="_blank"&gt;
+      &lt;img alt="Docket Sheet" class="icon-size" src="https://ujsportal.pacourts.us/resource/Images/svg-defs.svg?v=qJ77ypOpzSMFk7r1gsI6H0xjdteha_ZIjvGslGgQV2M#icon-document-letter-D" title="Docket Sheet"/&gt;
+      &lt;label class="link-text"&gt;
+       Docket Sheet
+      &lt;/label&gt;
+     &lt;/a&gt;
+    &lt;/div&gt;
+   &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="grid inline-block"&gt;
+   &lt;div&gt;
+    &lt;div class="inline-block"&gt;
+     &lt;a class="icon-wrapper" href="/Report/CpCourtSummary?docketNumber=MC-51-CR-0030672-2017&amp;amp;dnh=%2FGgePQykMpAymRENgxLBzg%3D%3D" target="_blank"&gt;
+      &lt;img alt="Court Summary" class="icon-size" src="https://ujsportal.pacourts.us/resource/Images/svg-defs.svg?v=qJ77ypOpzSMFk7r1gsI6H0xjdteha_ZIjvGslGgQV2M#icon-court-summary" title="Court Summary"/&gt;
+      &lt;label class="link-text"&gt;
+       Court Summary
+      &lt;/label&gt;
+     &lt;/a&gt;
+    &lt;/div&gt;
+   &lt;/div&gt;
+  &lt;/div&gt;
+ &lt;/td&gt;
+&lt;/tr&gt;
+</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="177">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract out all of the "&lt;td&gt;" cells from the first row</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>td_cells <span class="op">=</span> first_row.select(<span class="st">"td"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each &lt;td&gt; cell</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cell <span class="kw">in</span> td_cells:</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract out the text from the &lt;td&gt; element</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> cell.text</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print out text</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> text <span class="op">!=</span> <span class="st">""</span>:</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+0
+MC-51-CR-0030672-2017
+Common Pleas
+Comm. v. Velquez, Victor
+Closed
+10/13/2017
+Velquez, Victor
+09/05/1974
+Philadelphia
+MC-01-51-Crim
+U0981035
+1725088232-0030672
+1725088232
+Docket SheetCourt Summary</code></pre>
+</div>
+</div>
+</section>
+<section id="close-the-driver" class="level4">
+<h4 class="anchored" data-anchor-id="close-the-driver">7. Close the driver!</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="178">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>driver.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="thats-it" class="level2">
+<h2 class="anchored" data-anchor-id="thats-it">That’s it!</h2>
+<ul>
+<li>Next week: part 2 of “getting data” with APIs</li>
+<li>See you on Monday!</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by <a href="https://www.nickhand.dev">Nick Hand</a>, Quarto layout adapted from <a href="https://github.com/andrewheiss/datavizs23.classes.andrewheiss.com">Andrew Heiss’s Data Visualization with R course</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-python" aria-label="python"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/MUSA-550-Fall-2023/musa-550-fall-2023.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>
