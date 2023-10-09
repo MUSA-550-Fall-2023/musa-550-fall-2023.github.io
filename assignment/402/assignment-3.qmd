@@ -49,7 +49,7 @@ We'll be using GitHub for assignment submission again. You can set up your own p
 The invitation link will depend upon your section:
 
 
-> Section 402: https://classroom.github.com/a/z7wf0lbS
+> Section 402: [https://classroom.github.com/a/z7wf0lbS](https://classroom.github.com/a/z7wf0lbS)
 
 
 
