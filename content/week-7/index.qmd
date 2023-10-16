@@ -1,0 +1,28 @@
+---
+title: "Week 7: Getting Data, Part 2: Working with APIs"
+execute: 
+  echo: false
+---
+
+{{< include ../_header.qmd >}}
+
+## New Packages
+
+- [`cenpy`](https://cenpy-devs.github.io/cenpy/)
+- [`pygris`](https://walker-data.com/pygris/)
+- [`textblob`](https://github.com/sloria/textblob)
+- [`transformers`](https://huggingface.co/docs/transformers/index)
+- [`wordcloud`](https://github.com/amueller/word_cloud)
+
+## Reference Materials
+
+- [Census API User Guide](https://www.census.gov/data/developers/guidance/api-user-guide.html)
+- [Census API Tutorial](https://www.census.gov/content/dam/Census/programs-surveys/acs/guidance/training-presentations/20180614_API.pdf)
+- [Variable Names for Census Fields](https://api.census.gov/data.html)
+- [`cenpy` Documentation](https://cenpy-devs.github.io/cenpy/)
+  - [Introductory guide](https://nbviewer.jupyter.org/github/ljwolf/cenpy/blob/master/notebooks/automatic-wrapper.ipynb?flush_cache=true)
+- [Census Geographic Identifiers (GEOIDs)](https://www.census.gov/programs-surveys/geography/guidance/geo-identifiers.html)
+- [`pygris` Documentation](https://walker-data.com/pygris/)
+- [`textblob` Documentation](https://textblob.readthedocs.io/)
+- [`transformers` Documentation](https://huggingface.co/docs/transformers/index)
+- [`wordcloud` Documentation](https://amueller.github.io/word_cloud/)
