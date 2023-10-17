@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="week-6-agenda-web-scraping">Week 6 agenda: web scraping</h2>
 <p><strong>Last time:</strong> - Why web scraping? - Getting familiar with the Web - Web scraping: extracting data from static sites</p>
 <p><strong>Today:</strong> - Practice with web scraping - How to deal with dynamic content</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="1">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with the usual imports</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We'll use these throughout</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -240,11 +240,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="the-number-of-votes-for-cherelle-parker-in-the-may-mayoral-primary">1. The number of votes for Cherelle Parker in the May mayoral primary</h3>
 <p>The relevant URL is: <a href="https://philadelphiaresults.azurewebsites.us/ResultsSW.aspx?type=MAY&amp;map=CTY">https://philadelphiaresults.azurewebsites.us/ResultsSW.aspx?type=MAY&amp;map=CTY</a></p>
 <p><strong>Hint:</strong> We’re interested in just a single HTML element so you can inspect the website, identify the right element, and copy the selector for the element.</p>
+<div class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the request</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://philadelphiaresults.azurewebsites.us/ResultsSW.aspx?type=MAY&amp;map=CTY"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the soup for this page</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>soup1 <span class="op">=</span> BeautifulSoup(response.content, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the element holding the number of votes</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>selector <span class="op">=</span> <span class="st">"#ctl01 &gt; div.outside-wrapper &gt; div:nth-child(16) &gt; div:nth-child(1) &gt; div.section.group.winner &gt; div.col.display-results-box-f &gt; h1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the element</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>element <span class="op">=</span> soup1.select_one(selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the text of the element</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>votes_str <span class="op">=</span> element.text</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>votes_str</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>'81,080'</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to integer!</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>num_votes <span class="op">=</span> <span class="bu">int</span>(votes_str.replace(<span class="st">","</span>, <span class="st">""</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of votes for Cherelle Parker = </span><span class="sc">{</span>num_votes<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of votes for Cherelle Parker = 81080</code></pre>
+</div>
+</div>
 </section>
 <section id="how-many-millions-of-people-are-currently-experiencing-drought" class="level3">
 <h3 class="anchored" data-anchor-id="how-many-millions-of-people-are-currently-experiencing-drought">2. How many millions of people are currently experiencing drought?</h3>
 <p>Relevant URL: <a href="https://www.drought.gov/current-conditions">https://www.drought.gov/current-conditions</a></p>
 <p><strong>Hint:</strong> We’re interested in just a single HTML element so you can inspect the website, identify the right element, and copy the selector for the element.</p>
+<div class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the request</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://www.drought.gov/current-conditions"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the soup for this page</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>soup2 <span class="op">=</span> BeautifulSoup(response.content, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>selector <span class="op">=</span> <span class="st">"#block-uswds-drought-content &gt; div &gt; div &gt; div.grid-container.grid-container--standard.padding-top-6 &gt; div:nth-child(5) &gt; div &gt; div:nth-child(3) &gt; div &gt; div &gt; div.u--color--accent.text-center.font-sans-xl.field.field--name-field-number-stat.field--type-string.field--label-hidden"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>soup2.select_one(selector).text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>'95.8 Million'</code></pre>
+</div>
+</div>
 </section>
 <section id="scrape-the-weitzman-school-directory" class="level3">
 <h3 class="anchored" data-anchor-id="scrape-the-weitzman-school-directory">3. Scrape the Weitzman School directory</h3>
@@ -266,6 +318,160 @@ Tip
 <div class="callout-body-container callout-body">
 <p>This example is similar to the Inquirer Clean Plates demo from last lecture.</p>
 <p>The info we want for each person is wrapped up in a <code>&lt;div&gt;</code> element. You can select all of those elements, loop over each one in a “for” loop, extract the three pieces of content we want from each <code>&lt;div&gt;</code>, and then save the result to a list.</p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the request</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://www.design.upenn.edu/people/list"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the soup for this page</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>soup3 <span class="op">=</span> BeautifulSoup(response.content, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all rows</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> soup3.select(<span class="st">".views-row"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(rows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>536</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract out specific content from each row</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rows[<span class="dv">0</span>].prettify())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;div class="views-row"&gt;
+ &lt;a class="list-item profile-item" href="/graduate-admissions/people/anushka-samant"&gt;
+  &lt;span class="text"&gt;
+   &lt;span class="title heading-5"&gt;
+    Anushka Samant
+   &lt;/span&gt;
+   &lt;span class="meta body-small"&gt;
+    MCP '24
+   &lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="dept body-subhead"&gt;
+   Admissions
+  &lt;/span&gt;
+  &lt;span class="arrow"&gt;
+   &lt;span aria-hidden="true" class="fa fa-arrow-right"&gt;
+   &lt;/span&gt;
+  &lt;/span&gt;
+ &lt;/a&gt;
+ &lt;div class="views-field views-field-edit-node-1 edit"&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save content here</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over all rows</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> rows:</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Person name</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    person <span class="op">=</span> row.select_one(<span class="st">".title"</span>).text</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Title</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> row.select_one(<span class="st">".meta"</span>).text</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Deptarment</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    dept <span class="op">=</span> row.select_one(<span class="st">".dept"</span>).text.strip()</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    data.append({<span class="st">"person"</span>: person, <span class="st">"title"</span>: title, <span class="st">"dept"</span>: dept})</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person</th>
+<th data-quarto-table-cell-role="th">title</th>
+<th data-quarto-table-cell-role="th">dept</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Anushka Samant</td>
+<td>MCP '24</td>
+<td>Admissions</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Tom Abel</td>
+<td>External Faculty Collaborator</td>
+<td>Center for Environmental Building &amp; Design</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Mostafa Akbari</td>
+<td>PhD Candidate in Architecture</td>
+<td>Architecture</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Masoud Akbarzadeh</td>
+<td>Assistant Professor of Architecture</td>
+<td>Architecture</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Scott Aker</td>
+<td>Lecturer</td>
+<td>Architecture</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">531</td>
+<td>Dr. Hao Zheng</td>
+<td>PhD Architecture Alum, 2023</td>
+<td>PhD Architecture</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">532</td>
+<td>Yefan Zhi</td>
+<td>PhD Student in Architecture</td>
+<td>Architecture</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">533</td>
+<td>Cynthia Zhou</td>
+<td>Animator Researcher//Design and Fine Arts</td>
+<td>Penn Animation as Research Lab</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">534</td>
+<td>Jessica Zofchak</td>
+<td>Lecturer</td>
+<td>Architecture</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">535</td>
+<td>Syd Zolf</td>
+<td>Artist in Residence CPCW &amp; GSWS, FNAR Lecturer</td>
+<td>Fine Arts</td>
+</tr>
+</tbody>
+</table>
+
+<p>536 rows × 3 columns</p>
+</div>
 </div>
 </div>
 </section>
@@ -321,9 +527,9 @@ Note: web browser needed
 <section id="initialize-the-web-driver" class="level4">
 <h4 class="anchored" data-anchor-id="initialize-the-web-driver">1. Initialize the web driver</h4>
 <p>The initialization steps will depend on which browser you want to use!</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="229">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the webdriver from selenium</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the webdriver from selenium</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -341,81 +547,84 @@ Important: Working on Binder
 </div>
 <section id="using-google-chrome" class="level5">
 <h5 class="anchored" data-anchor-id="using-google-chrome">Using Google Chrome</h5>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="249">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UNCOMMENT BELOW TO USE CHROME</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Chrome()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UNCOMMENT BELOW TO USE CHROME</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Chrome()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-firefox" class="level5">
 <h5 class="anchored" data-anchor-id="using-firefox">Using Firefox</h5>
 <p>If you are working on Binder, use the below code!</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="250">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UNCOMMENT BELOW IF ON BINDER</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># options = webdriver.FirefoxOptions()</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># IF ON BINDER, RUN IN "HEADLESS" MODE (NO BROWSER WINDOW IS OPENED)</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># COMMENT THIS LINE IF WORKING LOCALLY</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># options.add_argument("--headless")</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#driver = webdriver.Firefox(options=options)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UNCOMMENT BELOW IF ON BINDER</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># options = webdriver.FirefoxOptions()</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># IF ON BINDER, RUN IN "HEADLESS" MODE (NO BROWSER WINDOW IS OPENED)</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># COMMENT THIS LINE IF WORKING LOCALLY</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># options.add_argument("--headless")</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># driver = webdriver.Firefox(options=options)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-microsoft-edge" class="level5">
 <h5 class="anchored" data-anchor-id="using-microsoft-edge">Using Microsoft Edge</h5>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="251">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UNCOMMENT BELOW TO USE MICROSOFT EDGE</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#driver = webdriver.Edge()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UNCOMMENT BELOW TO USE MICROSOFT EDGE</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#driver = webdriver.Edge()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="navigate-to-the-url" class="level4">
 <h4 class="anchored" data-anchor-id="navigate-to-the-url">2. Navigate to the URL</h4>
-<div class="cell" data-tags="[]" data-execution_count="252">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://property.phila.gov/"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>driver.get(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://property.phila.gov/"</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>driver.get(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="select-the-address-input-element" class="level4">
 <h4 class="anchored" data-anchor-id="select-the-address-input-element">3. Select the address input element</h4>
 <p>After it loads, let’s take a look in the web inspector. We’ll need to identify the search bar so we can input our desired address.</p>
 <p>It looks like the search bar has a class of <code>"pvm-search-control-input"</code>.</p>
-<div class="cell" data-tags="[]" data-execution_count="253">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the dot syntax for class selectors</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>address_input_selector <span class="op">=</span> <span class="st">".pvm-search-control-input"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the dot syntax for class selectors</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>address_input_selector <span class="op">=</span> <span class="st">".pvm-search-control-input"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can select it directly in selenium using the <code>driver.find_element()</code> function and telling selenium we are using a css selector to do the selection.</p>
-<div class="cell" data-tags="[]" data-execution_count="254">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="256">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the address input by the element's CSS selector</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>address_input <span class="op">=</span> driver.find_element(By.CSS_SELECTOR, address_input_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the address input by the element's CSS selector</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>address_input <span class="op">=</span> driver.find_element(By.CSS_SELECTOR, address_input_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="type-the-address" class="level4">
 <h4 class="anchored" data-anchor-id="type-the-address">4. Type the address</h4>
 <p>Use the <code>send_keys()</code> function to enter the text into the input element:</p>
-<div class="cell" data-tags="[]" data-execution_count="263">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input our example address</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>address_input.send_keys(<span class="st">"1739 Wallace St #102"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input our example address</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>address_input.send_keys(<span class="st">"1739 Wallace St #102"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="select-the-search-button-and-click-it" class="level4">
 <h4 class="anchored" data-anchor-id="select-the-search-button-and-click-it">5. Select the search button and click it</h4>
 <p>Using the web inspector, it looks like both the clear and search buttons have the class of <code>"pvm-search-control-button"</code>. Let’s select both, choose the second button, and click it.</p>
-<div class="cell" data-tags="[]" data-execution_count="267">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>button_selector <span class="op">=</span> <span class="st">".pvm-search-control-button"</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the button element</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>clear_button, search_button <span class="op">=</span> driver.find_elements(By.CSS_SELECTOR, button_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>button_selector <span class="op">=</span> <span class="st">".pvm-search-control-button"</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the button element</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>buttons <span class="op">=</span> driver.find_elements(By.CSS_SELECTOR, button_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="268">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Click it</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>search_button.click()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>delete_button, search_button <span class="op">=</span> buttons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Click it</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>search_button.click()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-beautifulsoup-to-parse-the-results" class="level4">
@@ -424,20 +633,20 @@ Important: Working on Binder
 <li>Use the <code>page_source</code> attribute to get the current HTML displayed on the page</li>
 <li>Initialize a “soup” object with the HTML</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="269">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>propertySoup <span class="op">=</span> BeautifulSoup(driver.page_source, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>propertySoup <span class="op">=</span> BeautifulSoup(driver.page_source, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>From the web inspector, it looks like the table we want has an ID of <code>"ownerProperties"</code>. Let’s select all of the elements with that ID:</p>
-<div class="cell" data-tags="[]" data-execution_count="270">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the # for ID selector</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>table_selector <span class="op">=</span> <span class="st">"#ownerProperties"</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> propertySoup.select(table_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the # for ID selector</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>table_selector <span class="op">=</span> <span class="st">"#ownerProperties"</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> propertySoup.select(table_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="271">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(tables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="271">
-<pre><code>3</code></pre>
+<div class="cell" data-tags="[]" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(tables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>2</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -450,30 +659,30 @@ Watch out!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We selected by element ID, which <em>should</em> be unique but sometimes isn’t! Here we see that three tables all share the same ID on the page.</p>
+<p>We selected by element ID, which <em>should</em> be unique but sometimes isn’t! Here we see that multiple tables all share the same ID on the page.</p>
 </div>
 </div>
 <p>The table we want is the second table on the page with the ID “ownerProperties” —&nbsp;let’s select it.</p>
-<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-tags="[]" data-execution_count="274">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tables[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="274">
+<div class="cell" data-tags="[]" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>tables[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>&lt;table class="stack" data-v-49670532="" id="ownerProperties" role="grid"&gt;&lt;thead data-v-49670532=""&gt;&lt;tr data-v-49670532=""&gt;&lt;th class="" data-v-49670532="" title=""&gt; Year &lt;/th&gt;&lt;th class="" data-v-49670532="" title=""&gt; Market Value &lt;/th&gt;&lt;th class="" data-v-49670532="" title=""&gt; Taxable Land &lt;/th&gt;&lt;th class="" data-v-49670532="" title=""&gt; Taxable Improvement &lt;/th&gt;&lt;th class="" data-v-49670532="" title=""&gt; Exempt Land &lt;/th&gt;&lt;th class="" data-v-49670532="" title=""&gt; Exempt Improvement &lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody data-v-49670532=""&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2024"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2024&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2024&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="291400"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$291,400&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$291,400&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="43700"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$43,700&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$43,700&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="247700"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$247,700&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$247,700&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2023"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2023&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2023&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="291400"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$291,400&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$291,400&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="43700"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$43,700&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$43,700&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="247700"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$247,700&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$247,700&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2022"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2022&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2022&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="264900"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$264,900&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$264,900&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="39735"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$39,735&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$39,735&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="225165"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$225,165&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$225,165&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2021"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2021&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2021&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="264900"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$264,900&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$264,900&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="39735"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$39,735&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$39,735&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="225165"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$225,165&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$225,165&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2020"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2020&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2020&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="264900"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$264,900&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$264,900&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="39735"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$39,735&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$39,735&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="225165"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$225,165&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$225,165&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2019"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2019&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2019&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="264900"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$264,900&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$264,900&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="39735"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$39,735&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$39,735&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="185165"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$185,165&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$185,165&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="40000"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$40,000&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$40,000&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2018"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2018&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2018&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="240800"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$240,800&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$240,800&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="38528"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$38,528&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$38,528&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="172272"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$172,272&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$172,272&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="30000"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$30,000&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$30,000&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2017"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2017&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2017&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="240800"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$240,800&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$240,800&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="38528"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$38,528&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$38,528&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="172272"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$172,272&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$172,272&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="30000"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$30,000&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$30,000&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2016"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2016&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2016&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="209400"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$209,400&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$209,400&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="20940"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$20,940&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$20,940&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="158460"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$158,460&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$158,460&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="30000"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$30,000&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$30,000&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="2015"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;2015&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;2015&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="209400"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$209,400&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$209,400&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="20940"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$20,940&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$20,940&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="158460"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$158,460&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$158,460&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$0&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="" data-v-6ed23da8="" sorttable_customkey="30000"&gt;&lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;&lt;div data-v-2ca357c0=""&gt;&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;b data-v-6ed23da8="" style="display: none;"&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;$30,000&lt;/div&gt;&lt;/b&gt;&lt;div data-v-6ed23da8=""&gt;&lt;!-- --&gt;&lt;div data-v-6ed23da8=""&gt;&lt;div data-v-6ed23da8=""&gt;$30,000&lt;/div&gt;&lt;!-- --&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;!-- --&gt;&lt;/tbody&gt;&lt;/table&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="275">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> tables[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> tables[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Select all the rows in the table (the <code>&lt;tr&gt;</code> elements):</p>
-<div class="cell" data-tags="[]" data-execution_count="276">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all row (&lt;tr&gt;) elements in the table</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> table.select(<span class="st">"tr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all row (&lt;tr&gt;) elements in the table tbody</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> table.select(<span class="st">"tbody tr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we can take a look at each <code>&lt;tr&gt;</code> element and extract each cell’s data in the <code>&lt;td&gt;</code> cell</p>
-<div class="cell" data-tags="[]" data-execution_count="281">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tr.prettify())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rows[<span class="dv">0</span>].prettify())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;tr class="" data-v-49670532="" data-v-6ed23da8=""&gt;
- &lt;td class="" data-v-6ed23da8="" sorttable_customkey="2015"&gt;
+ &lt;td class="" data-v-6ed23da8="" sorttable_customkey="2024"&gt;
   &lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;
    &lt;div data-v-2ca357c0=""&gt;
    &lt;/div&gt;
@@ -482,20 +691,20 @@ Watch out!
   &lt;b data-v-6ed23da8="" style="display: none;"&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
-    2015
+    2024
    &lt;/div&gt;
   &lt;/b&gt;
   &lt;div data-v-6ed23da8=""&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
     &lt;div data-v-6ed23da8=""&gt;
-     2015
+     2024
     &lt;/div&gt;
     &lt;!-- --&gt;
    &lt;/div&gt;
   &lt;/div&gt;
  &lt;/td&gt;
- &lt;td class="" data-v-6ed23da8="" sorttable_customkey="209400"&gt;
+ &lt;td class="" data-v-6ed23da8="" sorttable_customkey="291400"&gt;
   &lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;
    &lt;div data-v-2ca357c0=""&gt;
    &lt;/div&gt;
@@ -504,20 +713,20 @@ Watch out!
   &lt;b data-v-6ed23da8="" style="display: none;"&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
-    $209,400
+    $291,400
    &lt;/div&gt;
   &lt;/b&gt;
   &lt;div data-v-6ed23da8=""&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
     &lt;div data-v-6ed23da8=""&gt;
-     $209,400
+     $291,400
     &lt;/div&gt;
     &lt;!-- --&gt;
    &lt;/div&gt;
   &lt;/div&gt;
  &lt;/td&gt;
- &lt;td class="" data-v-6ed23da8="" sorttable_customkey="20940"&gt;
+ &lt;td class="" data-v-6ed23da8="" sorttable_customkey="43700"&gt;
   &lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;
    &lt;div data-v-2ca357c0=""&gt;
    &lt;/div&gt;
@@ -526,20 +735,20 @@ Watch out!
   &lt;b data-v-6ed23da8="" style="display: none;"&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
-    $20,940
+    $43,700
    &lt;/div&gt;
   &lt;/b&gt;
   &lt;div data-v-6ed23da8=""&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
     &lt;div data-v-6ed23da8=""&gt;
-     $20,940
+     $43,700
     &lt;/div&gt;
     &lt;!-- --&gt;
    &lt;/div&gt;
   &lt;/div&gt;
  &lt;/td&gt;
- &lt;td class="" data-v-6ed23da8="" sorttable_customkey="158460"&gt;
+ &lt;td class="" data-v-6ed23da8="" sorttable_customkey="247700"&gt;
   &lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;
    &lt;div data-v-2ca357c0=""&gt;
    &lt;/div&gt;
@@ -548,14 +757,14 @@ Watch out!
   &lt;b data-v-6ed23da8="" style="display: none;"&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
-    $158,460
+    $247,700
    &lt;/div&gt;
   &lt;/b&gt;
   &lt;div data-v-6ed23da8=""&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
     &lt;div data-v-6ed23da8=""&gt;
-     $158,460
+     $247,700
     &lt;/div&gt;
     &lt;!-- --&gt;
    &lt;/div&gt;
@@ -583,7 +792,7 @@ Watch out!
    &lt;/div&gt;
   &lt;/div&gt;
  &lt;/td&gt;
- &lt;td class="" data-v-6ed23da8="" sorttable_customkey="30000"&gt;
+ &lt;td class="" data-v-6ed23da8="" sorttable_customkey=""&gt;
   &lt;div data-v-2ca357c0="" data-v-6ed23da8=""&gt;
    &lt;div data-v-2ca357c0=""&gt;
    &lt;/div&gt;
@@ -592,14 +801,14 @@ Watch out!
   &lt;b data-v-6ed23da8="" style="display: none;"&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
-    $30,000
+    $0
    &lt;/div&gt;
   &lt;/b&gt;
   &lt;div data-v-6ed23da8=""&gt;
    &lt;!-- --&gt;
    &lt;div data-v-6ed23da8=""&gt;
     &lt;div data-v-6ed23da8=""&gt;
-     $30,000
+     $0
     &lt;/div&gt;
     &lt;!-- --&gt;
    &lt;/div&gt;
@@ -610,21 +819,21 @@ Watch out!
 </div>
 </div>
 <p>It looks like the content for each cell is inside a <code>&lt;b&gt;</code> tag inside a <code>&lt;td&gt;</code> cell:</p>
-<div class="cell" data-tags="[]" data-execution_count="283">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty list to store scraped data</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>scraped_data <span class="op">=</span> []</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over all rows but skip header row</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> rows[<span class="dv">1</span>:]:</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a list for each cell in this particular row</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    row_data <span class="op">=</span> [cell.text <span class="cf">for</span> cell <span class="kw">in</span> row.select(<span class="st">"td b"</span>)]</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save it</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    scraped_data.append(row_data)</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>scraped_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="283">
+<div class="cell" data-tags="[]" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty list to store scraped data</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>scraped_data <span class="op">=</span> []</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over all rows</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> rows:</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a list for each cell in this particular row</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    row_data <span class="op">=</span> [cell.text <span class="cf">for</span> cell <span class="kw">in</span> row.select(<span class="st">"td b"</span>)]</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save it</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    scraped_data.append(row_data)</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>scraped_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>[['2024', '$291,400', '$43,700', '$247,700', '$0', '$0'],
  ['2023', '$291,400', '$43,700', '$247,700', '$0', '$0'],
  ['2022', '$264,900', '$39,735', '$225,165', '$0', '$0'],
@@ -638,21 +847,21 @@ Watch out!
 </div>
 </div>
 <p>Make it into a DataFrame:</p>
-<div class="cell" data-tags="[]" data-execution_count="284">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>assessments <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    scraped_data,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Year"</span>,</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Market Value"</span>,</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Taxable Land"</span>,</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Taxable Improvement"</span>,</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Exempt Land"</span>,</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Exempt Improvement"</span>,</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>assessments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="284">
+<div class="cell" data-tags="[]" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>assessments <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    scraped_data,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Year"</span>,</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Market Value"</span>,</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Taxable Land"</span>,</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Taxable Improvement"</span>,</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Exempt Land"</span>,</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Exempt Improvement"</span>,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>assessments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
 <div>
 
 
@@ -789,60 +998,61 @@ Watch out!
 </ul>
 <section id="open-the-url" class="level4">
 <h4 class="anchored" data-anchor-id="open-the-url">1. Open the URL</h4>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="285">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the URL</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://ujsportal.pacourts.us/CaseSearch"</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>driver.get(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open the URL</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://ujsportal.pacourts.us/CaseSearch"</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>driver.get(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="create-a-dropdown-select-element" class="level4">
 <h4 class="anchored" data-anchor-id="create-a-dropdown-select-element">2. Create a dropdown “Select” element</h4>
 <p>We’ll need to: - Select the dropdown element on the main page by its ID - Initialize a <code>selenium</code> <code>Select()</code> object</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="286">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the Web Inspector to get the css selector of the dropdown select element</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>dropdown_selector <span class="op">=</span> <span class="st">"#SearchBy-Control &gt; select"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the Web Inspector to get the css selector of the dropdown select element</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>dropdown_selector <span class="op">=</span> <span class="st">"#SearchBy-Control &gt; select"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="287">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the dropdown by the element's CSS selector</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>dropdown <span class="op">=</span> driver.find_element(By.CSS_SELECTOR, dropdown_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the dropdown by the element's CSS selector</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>dropdown <span class="op">=</span> driver.find_element(By.CSS_SELECTOR, dropdown_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create the Select object:</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="288">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.ui <span class="im">import</span> Select</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a Select object</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>dropdown_select <span class="op">=</span> Select(dropdown)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.ui <span class="im">import</span> Select</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a Select object</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>dropdown_select <span class="op">=</span> Select(dropdown)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="change-the-selected-text-in-the-dropdown" class="level4">
 <h4 class="anchored" data-anchor-id="change-the-selected-text-in-the-dropdown">3. Change the selected text in the dropdown</h4>
 <p>Change the selected element: “Police Incident/Complaint Number”</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="289">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the selected text in the dropdown element</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>dropdown_select.select_by_visible_text(<span class="st">"Incident Number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the selected text in the dropdown element</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>dropdown_select.select_by_visible_text(<span class="st">"Incident Number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="set-the-incident-number" class="level4">
 <h4 class="anchored" data-anchor-id="set-the-incident-number">4. Set the incident number</h4>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="290">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the input element for the DC number</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>incident_input_selector <span class="op">=</span> <span class="st">"#IncidentNumber-Control &gt; input"</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>incident_input <span class="op">=</span> driver.find_element(By.CSS_SELECTOR, incident_input_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the input element for the DC number</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>incident_input_selector <span class="op">=</span> <span class="st">"#IncidentNumber-Control &gt; input[type=text]"</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>incident_input <span class="op">=</span> driver.find_element(By.CSS_SELECTOR, incident_input_selector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="291">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear any existing entry</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>incident_input.clear()</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Input our example incident number</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>incident_input.send_keys(<span class="st">"1725088232"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear any existing entry</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>incident_input.clear()</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Input our example incident number</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>incident_input.send_keys(<span class="st">"1725088232"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="click-the-search-button" class="level4">
 <h4 class="anchored" data-anchor-id="click-the-search-button">5. Click the search button!</h4>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="292">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Submit the search</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>search_button_selector <span class="op">=</span> <span class="st">"#btnSearch"</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>driver.find_element(By.CSS_SELECTOR, search_button_selector).click()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Submit the search</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>search_button_selector <span class="op">=</span> <span class="st">"#btnSearch"</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>search_button <span class="op">=</span> driver.find_element(By.CSS_SELECTOR, search_button_selector)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>search_button.click()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-beautifulsoup-to-parse-the-results-1" class="level4">
@@ -851,34 +1061,34 @@ Watch out!
 <li>Use the <code>page_source</code> attribute to get the current HTML displayed on the page</li>
 <li>Initialize a “soup” object with the HTML</li>
 </ul>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="293">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>courtsSoup <span class="op">=</span> BeautifulSoup(driver.page_source, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>courtsSoup <span class="op">=</span> BeautifulSoup(driver.page_source, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can: - Identify the element holding all of the results - Within this container, find the <code>&lt;table&gt;</code> element and each <code>&lt;tr&gt;</code> element within the table</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="294">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the results container by its ID </span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>results_table <span class="op">=</span> courtsSoup.select_one(<span class="st">"#caseSearchResultGrid"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the results container by its ID </span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>results_table <span class="op">=</span> courtsSoup.select_one(<span class="st">"#caseSearchResultGrid"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="295">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get all of the &lt;tr&gt; rows inside the tbody element </span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: we using nested selections here!</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>results_rows <span class="op">=</span> results_table.select(<span class="st">"tbody &gt; tr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get all of the &lt;tr&gt; rows inside the tbody element </span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: we using nested selections here!</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>results_rows <span class="op">=</span> results_table.select(<span class="st">"tbody &gt; tr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Example:</strong> The number of court cases</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="296">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of court cases</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>number_of_cases <span class="op">=</span> <span class="bu">len</span>(results_rows)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of courts cases: </span><span class="sc">{</span>number_of_cases<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of court cases</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>number_of_cases <span class="op">=</span> <span class="bu">len</span>(results_rows)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of courts cases: </span><span class="sc">{</span>number_of_cases<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of courts cases: 2</code></pre>
 </div>
 </div>
 <p><strong>Example:</strong> Extract the text elements from the first row of the results</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="297">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>first_row <span class="op">=</span> results_rows[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>first_row <span class="op">=</span> results_rows[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="298">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(first_row.prettify())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(first_row.prettify())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;tr class="slide-active"&gt;
  &lt;td class="display-none"&gt;
@@ -961,19 +1171,19 @@ Watch out!
 </code></pre>
 </div>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="299">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract out all of the "&lt;td&gt;" cells from the first row</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>td_cells <span class="op">=</span> first_row.select(<span class="st">"td"</span>)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each &lt;td&gt; cell</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cell <span class="kw">in</span> td_cells:</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract out the text from the &lt;td&gt; element</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> cell.text</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print out text</span></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> text <span class="op">!=</span> <span class="st">""</span>:</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract out all of the "&lt;td&gt;" cells from the first row</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>td_cells <span class="op">=</span> first_row.select(<span class="st">"td"</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each &lt;td&gt; cell</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cell <span class="kw">in</span> td_cells:</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract out the text from the &lt;td&gt; element</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> cell.text</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print out text</span></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> text <span class="op">!=</span> <span class="st">""</span>:</span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1
 0
@@ -995,8 +1205,8 @@ Docket SheetCourt Summary</code></pre>
 </section>
 <section id="close-the-driver" class="level4">
 <h4 class="anchored" data-anchor-id="close-the-driver">7. Close the driver!</h4>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="300">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>driver.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>driver.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
