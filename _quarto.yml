@@ -85,6 +85,8 @@ website:
       text: 6. Web Scraping
     - file: content/week-7/index.qmd
       text: 7. Working with APIs
+    - file: content/week-8/index.qmd
+      text: 8. Analyzing and Visualizing Large Datasets
     search: false
     style: docked
     title: Content
