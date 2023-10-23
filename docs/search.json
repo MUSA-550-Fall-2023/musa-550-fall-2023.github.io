@@ -263,7 +263,28 @@
     "href": "assignment/401/assignment-4.html",
     "title": "HW #4",
     "section": "",
-    "text": "Assigned on Monday, October 23\n\n\nDue on Monday, November 6 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-4\n\n\n Submission link: GitHub classroom\n\n\nCheck back later for details!"
+    "text": "Assigned on Monday, October 23\n\n\nDue on Monday, November 6 at 11:59 PM"
+  },
+  {
+    "objectID": "assignment/401/assignment-4.html#due-dates",
+    "href": "assignment/401/assignment-4.html#due-dates",
+    "title": "HW #4",
+    "section": "Due Dates",
+    "text": "Due Dates\n\nSection 401: November 6 by end of day"
+  },
+  {
+    "objectID": "assignment/401/assignment-4.html#description",
+    "href": "assignment/401/assignment-4.html#description",
+    "title": "HW #4",
+    "section": "Description",
+    "text": "Description\n\nPart 1: Visualizing crash data in Philadelphia**\nIn this section, you will use osmnx to analyze the crash incidence in Center City.\n\n\nPart 2: Scraping Craigslist\nIn this section, you will use Selenium and BeautifulSoup to scrape data for hundreds of apartments from Philadelphia’s Craigslist portal."
+  },
+  {
+    "objectID": "assignment/401/assignment-4.html#submission",
+    "href": "assignment/401/assignment-4.html#submission",
+    "title": "HW #4",
+    "section": "Submission",
+    "text": "Submission\nWe’ll be using GitHub for assignment submission again. You can set up your own private repository on GitHub for this assignment using the link below.\nThe invitation link will depend upon your section:\n\nSection 401: https://classroom.github.com/a/0M2iqf-N\n\nThe assignment should be added to this GitHub repository before the deadline. You can add files to the repository through the web (github.com) interface or using the command line locally on your machine."
   },
   {
     "objectID": "assignment/401/final-project-proposal.html",
@@ -1908,7 +1929,28 @@
     "href": "assignment/402/assignment-4.html",
     "title": "HW #4",
     "section": "",
-    "text": "Assigned on Monday, October 23\n\n\nDue on Monday, November 6 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-4\n\n\n Submission link: GitHub classroom\n\n\nCheck back later for details!"
+    "text": "Assigned on Monday, October 23\n\n\nDue on Monday, November 6 at 11:59 PM"
+  },
+  {
+    "objectID": "assignment/402/assignment-4.html#due-dates",
+    "href": "assignment/402/assignment-4.html#due-dates",
+    "title": "HW #4",
+    "section": "Due Dates",
+    "text": "Due Dates\n\nSection 402: November 6 by end of day"
+  },
+  {
+    "objectID": "assignment/402/assignment-4.html#description",
+    "href": "assignment/402/assignment-4.html#description",
+    "title": "HW #4",
+    "section": "Description",
+    "text": "Description\n\nPart 1: Visualizing crash data in Philadelphia**\nIn this section, you will use osmnx to analyze the crash incidence in Center City.\n\n\nPart 2: Scraping Craigslist\nIn this section, you will use Selenium and BeautifulSoup to scrape data for hundreds of apartments from Philadelphia’s Craigslist portal."
+  },
+  {
+    "objectID": "assignment/402/assignment-4.html#submission",
+    "href": "assignment/402/assignment-4.html#submission",
+    "title": "HW #4",
+    "section": "Submission",
+    "text": "Submission\nWe’ll be using GitHub for assignment submission again. You can set up your own private repository on GitHub for this assignment using the link below.\nThe invitation link will depend upon your section:\n\nSection 402: https://classroom.github.com/a/_ZVQ18JC\n\nThe assignment should be added to this GitHub repository before the deadline. You can add files to the repository through the web (github.com) interface or using the command line locally on your machine."
   },
   {
     "objectID": "assignment/402/assignment-6.html",
