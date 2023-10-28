@@ -1,5 +1,5 @@
 ---
-title: Installing Python and inital set-up
+title: Installing Python and initial set-up
 format:
     html:
         toc: true
