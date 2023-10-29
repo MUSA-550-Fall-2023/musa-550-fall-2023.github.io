@@ -237,6 +237,14 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#due-dates" id="toc-due-dates" class="nav-link active" data-scroll-target="#due-dates">Due dates</a></li>
+  <li><a href="#deliverable" id="toc-deliverable" class="nav-link" data-scroll-target="#deliverable">Deliverable</a>
+  <ul class="collapse">
+  <li><a href="#important" id="toc-important" class="nav-link" data-scroll-target="#important">Important</a></li>
+  </ul></li>
+  <li><a href="#group-projects" id="toc-group-projects" class="nav-link" data-scroll-target="#group-projects">Group projects</a></li>
+  <li><a href="#guidelines" id="toc-guidelines" class="nav-link" data-scroll-target="#guidelines">Guidelines</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#examples-from-past-semesters" id="toc-examples-from-past-semesters" class="nav-link" data-scroll-target="#examples-from-past-semesters">Examples from Past Semesters</a></li>
   </ul>
 </nav>
     </div>
@@ -270,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
 <i class="fa-brands fa-github fa-sm"></i>&nbsp;<span>View materials:</span>&nbsp;<a class="" href="https://github.com/MUSA-550-Fall-2023/final-project">MUSA-550-Fall-2023/final-project</a>
 </div>
 <div class="assignment-page-repo">
-<i class="fa-brands fa-github fa-sm"></i>&nbsp;<span>Submission link:</span>&nbsp;<a class="disabled" href="">GitHub classroom</a>
+<i class="fa-brands fa-github fa-sm"></i>&nbsp;<span>Submission link:</span>&nbsp;<a class="" href="https://classroom.github.com/a/FX7-CcSS">GitHub classroom</a>
 </div>
 </div>
 <p>The final project is to replicate the pipeline approach on a dataset (or datasets) of your choosing.</p>
@@ -281,6 +289,76 @@ ul.task-list li input[type="checkbox"] {
 <p>Written proposal due date: <strong>Monday, December 4th</strong> (or earlier)</p>
 <p>Project due date: <strong>Wednesday, December 20th at 11:59 PM</strong></p>
 <p><strong>Final projects must receive prior approval in the form of a written proposal.</strong></p>
+</section>
+<section id="deliverable" class="level2">
+<h2 class="anchored" data-anchor-id="deliverable">Deliverable</h2>
+<p>The final deliverable <strong>must include all both of the following items</strong>:</p>
+<ol type="1">
+<li><p>A Quarto website that summarizes the project and main results, using a combination of text, images, and interactive visualizations.</p>
+<p>The website should be hosted on GitHub Pages and should be generated from the <a href="https://github.com/MUSA-550-Fall-2023/quarto-website-template">Quarto website template repository</a>. The website should be a multi-page document that explains in depth all aspects of the project’s implementation as well as the final results.</p></li>
+<li><p>All code/notebooks/spreadsheets/datasets used. These materials should be submitted to your own specific GitHub repository, which can be created using the link below, depending on your section:</p>
+<blockquote class="blockquote">
+<p>Section 401: <a href="https://classroom.github.com/a/iA1Z_0Dv">https://classroom.github.com/a/iA1Z_0Dv</a></p>
+<p>Section 402: <a href="https://classroom.github.com/a/FX7-CcSS">https://classroom.github.com/a/FX7-CcSS</a></p>
+</blockquote>
+<p>In this repository, you should include all of the code used to collect, analyze, and visualize the data. You should also include a README file that includes the repository URL for the Quarto website set up in #1 above.</p></li>
+</ol>
+<section id="important" class="level3">
+<h3 class="anchored" data-anchor-id="important">Important</h3>
+<ul>
+<li>Be sure to include the URL for your Quarto website in the README of the main, submission repository.</li>
+<li>Be sure to include the names of everyone who worked on the final project somewhere in the README!</li>
+</ul>
+</section>
+</section>
+<section id="group-projects" class="level2">
+<h2 class="anchored" data-anchor-id="group-projects">Group projects</h2>
+<p>Group projects are permitted, <strong>with a maximum number of group members of 3</strong>. You are also permitted to combine this assignment with one you are working on for another course. But keep in mind that if you choose either of these options, the expectations for the project’s scope will be adjusted accordingly.</p>
+<p>If you combine this assignment with one from another course, the portion that you are submitting for this final project must be a clearly defined addition to the original project. In such a case, you will be graded only on the portion submitted for this course, not on the entire project.</p>
+</section>
+<section id="guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="guidelines">Guidelines</h2>
+<p>The project is open-ended. The topic and technologies used are up to you. However, the project must be sufficiently complex and challenging. Below is the list of possible requirements for the project. The number of requirements you must satisfy depends on the number of people in your group:</p>
+<ul>
+<li><strong>1 person</strong>: 2 requirements</li>
+<li><strong>2 people</strong>: 3 requirements</li>
+<li><strong>3 people</strong>: 4 requirements</li>
+</ul>
+<p>The list of requirements is:</p>
+<ul>
+<li>Data is collected through a means more sophisticated than downloading (e.g.&nbsp;scraping, API).</li>
+<li>At least one of the datasets contains more than 1,000,000 rows.</li>
+<li>It combines data collected from 3 or more different sources.</li>
+<li>The analysis of the data is reasonably complex, involving multiple steps (geospatial joins/operations, data shaping, data frame operations, etc).</li>
+<li>You use an osmnx or pandana to perform an analysis of street network data</li>
+<li>You use scikit-learn to perform a clustering analysis</li>
+<li>You analyze raster data using rasterio, rasterstats, or xarray.</li>
+<li>You perform a machine learning analysis with scikit-learn as part of the analysis.</li>
+<li>The project includes a deployed Panel dashboard</li>
+<li>The project includes multiple interactive visualizations that include a significant interactive component (cross-filtering, interactive widgets, etc)</li>
+</ul>
+<p>As a rough guideline, you should shoot for something that is 3-4 times as involved as the required assignments.</p>
+</section>
+<section id="grading" class="level2">
+<h2 class="anchored" data-anchor-id="grading">Grading</h2>
+<p>The final project is worth 45% of the final grade and will be graded on four criteria:</p>
+<ul>
+<li><strong>Concept</strong>: Is it sufficiently complex/challenging/sophisticated? Is the final product useful/interesting/creative?</li>
+<li><strong>Technical implementation</strong>: Was it well thought out? Was each step done correctly? Does it work as described? Is it consistent with the proposal?</li>
+<li><strong>Visualization</strong>: How well does the data visualization serve its purpose? Does it tell a clear story? Are the colors/layout/titles well-chosen?</li>
+<li><strong>Writeup</strong>: Is all of the above explained clearly? The writeup should be a multi-page document that explains in depth all aspects of the project’s implementation as well as the final results.</li>
+</ul>
+<hr>
+</section>
+<section id="examples-from-past-semesters" class="level2">
+<h2 class="anchored" data-anchor-id="examples-from-past-semesters">Examples from Past Semesters</h2>
+<p><strong>Note:</strong> Previous semesters used a different web-based template for presenting project results, so past projects will appear different. The template used in this semester is the <a href="https://github.com/MUSA-550-Fall-2023/quarto-website-template">Quarto website template</a>.</p>
+<ul>
+<li><a href="https://xinyimsumyee.github.io/tanalyxi/">An Analysis System for Taxi Data</a>: A series of planning, visualization and prediction tools around taxi ridership.</li>
+<li><a href="https://liziqun.github.io/MUSA620_Final_Project/">Hospitality in the Era of Airbnb</a>: An analysis of the impact of Airbnb on the hospitality industry in New York.</li>
+<li><a href="https://bri-ne.github.io/KarmaMine/Results.html">A Look at Reddit’s Values, IRL Events, and Possible Bad Actors</a>: An analysis of Reddit data to determine what redditors “value”</li>
+<li><a href="https://bamboo-forest-rain.github.io/Bluebike-Orange-Line/">Orange Line Shutdown Effects on Bluebike Ridership</a>: An analysis examining the effect of the orange line shutdown on Bluebike ridership in Boston, MA</li>
+</ul>
 
 
 </section>

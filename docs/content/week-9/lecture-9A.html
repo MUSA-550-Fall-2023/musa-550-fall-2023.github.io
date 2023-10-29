@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geospatial Data Science in Python - Lecture 9AFrom Notebooks to the Web: Quarto &amp; GitHub Pages</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geospatial Data Science in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-schedule" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Schedule</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-schedule">    
+        <li>
+    <a class="dropdown-item" href="../../schedule/401.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../schedule/402.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Content</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../../assignment/overview.html" rel="" target="">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/401/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/402/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../resource/index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-box-arrow-up-right"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/MUSA-550-Fall-2023">
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://canvas.upenn.edu/courses/1740535">
+            Canvas
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://edstem.org/us/courses/42616/discussion/">
+            Ed Discussion
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 9A<br>From Notebooks to the Web: Quarto &amp; GitHub Pages</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li>Section 401</li>
+<li>October 30, 2023</li>
+</ul>
+<section id="outline-for-the-rest-of-the-course" class="level2">
+<h2 class="anchored" data-anchor-id="outline-for-the-rest-of-the-course">Outline for the rest of the course</h2>
+<p>In the next two weeks, we’ll discuss ways to translate our analysis results to the Web in a meaningful way. We’ll cover two methods to do so, each with their own pros and cons:</p>
+<ul>
+<li>Embedding interactive charts on the Web via <a href="https://quarto.org/">Quarto</a></li>
+<li>Creating dashboards using the Python library <a href="https://panel.holoviz.org/">Panel</a></li>
+</ul>
+<p>Then, we transition into our “data science in the wild” case studies, where we’ll do a deeper dive into particular use cases, including:</p>
+<ul>
+<li>Predictive modeling and machine learning</li>
+<li>Clustering algorithms</li>
+<li>Advanced raster data</li>
+</ul>
+</section>
+<section id="the-final-project" class="level2">
+<h2 class="anchored" data-anchor-id="the-final-project">The final project</h2>
+<p>More details uploaded here: <a href="https://github.com/MUSA-550-Fall-2023/final-project">https://github.com/MUSA-550-Fall-2023/final-project</a></p>
+<section id="key-dates" class="level3">
+<h3 class="anchored" data-anchor-id="key-dates">Key dates</h3>
+<ul>
+<li>Written proposal due date: Monday, December 4th (or earlier)</li>
+<li>Project due date: Wednesday, December 20th at 11:59 PM</li>
+</ul>
+<p>Final projects must receive prior approval in the form of a written proposal.</p>
+</section>
+</section>
+<section id="sharing-work-online-with-quarto-github-pages" class="level2">
+<h2 class="anchored" data-anchor-id="sharing-work-online-with-quarto-github-pages">Sharing work online with Quarto &amp; GitHub Pages</h2>
+<p>We can create beautiful websites that describe complex technical analyses in Python using <a href="https://quarto.org">Quarto</a> and deploy them online using <a href="https://pages.github.com/">GitHub Pages</a>. This combination of tools is a really powerful way to create and share your work.</p>
+<section id="quarto" class="level3">
+<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
+<ul>
+<li>Quarto is a relatively new tool, but is becoming popular quickly.</li>
+<li>It’s the successor to the Rmarkdown ecosystem from the Rstudio team</li>
+<li>It combines functionality into a single tool and also extends its computation power to other languages.</li>
+<li>Most importantly for us, Quarto supports executing Python code, allowing us to convert Jupyter notebooks to HTML and share them online.</li>
+<li>You supports building multiple types of online content, including websites, blogs, and books.</li>
+</ul>
+</section>
+<section id="github-pages" class="level3">
+<h3 class="anchored" data-anchor-id="github-pages">GitHub Pages</h3>
+<ul>
+<li>GitHub Pages is static website generator that can be used to automatically generate a website from <em>any</em> GitHub repository.</li>
+<li>We’ll use it to deploy our website content generated using Quarto</li>
+<li>Even though GitHub Pages is a static site (no server to execute code), it can embed interactive charts and maps and maintain the interactive functionality</li>
+</ul>
+<p>Quarto + GitHub Pages is <em>very cool</em>, and allows you to build very complex websites. The main website for this course is developed using Quarto + GitHub Pages!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the final project, you’ll be asked to publish a Quarto website using GitHub pages that describes your analysis and results.</p>
+</div>
+</div>
+</section>
+<section id="the-example-quarto-site" class="level3">
+<h3 class="anchored" data-anchor-id="the-example-quarto-site">The example Quarto site</h3>
+<p>I’ve set up a working example website so we can walk through the main features of Quarto. It will help us learn the basics of Quarto and serve as a reference, along with Quarto documentation, as you start to customize your own site.</p>
+<p>And the published site is available at: <a href="https://musa-550-fall-2023.github.io/quarto-website-template/">https://musa-550-fall-2023.github.io/quarto-website-template/</a></p>
+<p>Let’s start by exploring the different parts of the site.</p>
+<p><img src="imgs/quarto-website-template.png" class="img-fluid"></p>
+<p>In particular, we see a sidebar with three main parts:</p>
+<ol type="1">
+<li>The main home page entitled “Welcome”</li>
+<li>And about page</li>
+<li>An “analysis” section with several sub-sections</li>
+</ol>
+</section>
+<section id="the-websites-repo" class="level3">
+<h3 class="anchored" data-anchor-id="the-websites-repo">The website’s repo</h3>
+<p>Let’s go to this website’s GitHub repository: <a href="https://github.com/MUSA-550-Fall-2023/quarto-website-template">https://github.com/MUSA-550-Fall-2023/quarto-website-template</a>.</p>
+<p>Let’s explore the different filenames first. Many of the files line up with the content we saw above displayed on the rendered website. These have red arrows marking them in the image below.</p>
+<p>You’ll see the “analysis” folder and the rest in this site are <code>.qmd</code> files, which are special Quarto-flavored markdown files. They primarily contain Markdown text but can also (optionally) include executable code blocks (such as Python or R). The <code>index.qmd</code> is the home page. If you click inside “analysis” you’ll see a mix of file types, including <code>.ipynb</code> Jupyter notebook files and a <code>.qmd</code> markdown file.</p>
+<p><img src="imgs/quarto-template-repo.png" class="img-fluid"></p>
+<p>The “docs” folder has all of the rendered HTML content that gets used to show the final website. The content matches all of the content in the input <code>.qmd</code> and <code>.ipynb</code> files, but these files have been processed by Quarto into HTML to be displayed in the browser.</p>
+</section>
+<section id="the-_quarto.yml-configuration-file" class="level3">
+<h3 class="anchored" data-anchor-id="the-_quarto.yml-configuration-file">The <code>_quarto.yml</code> configuration file</h3>
+<p>There is also a <code>_quarto.yml</code> file, which is the website’s configuration file. It is essentially metadata for the website that sets up the layout of the site and includes the order that the pages will be in. This is where you update the organization of your website: which page comes before another. If we compare side-by-side, you’ll see that the pages that appear on our website are listed there.</p>
+<p><img src="imgs/config-1.png" class="img-fluid" width="500"> <img src="imgs/config-2.png" class="img-fluid" width="400"></p>
+<p>Notice that there are multiple ways in the <code>_quarto.yml</code> for you to include a file in your website. Let’s take a closer look at the “contents” key, nested under the “sidebar” key.</p>
+<p>In the above image, the “Welcome” page we see in the left sidebar of the published website (left image) is represented in <code>_quarto.yml</code> (right image) over two lines, with line 36 indicating the file reference (index.qmd) and line 37 indicating the text to show up in the left sidebar (Welcome). However, all of the other files (either <code>.qmd</code> or <code>.ipynb</code>) are just represented by a single line.</p>
+<p>This represents two strategies for including a file in your website. By default, the title of a specified file will show up in the website’s sidebar, which is what is happening with most of the files in the sidebar. If you would like more control over what is written in the sidebar vs.&nbsp;the title of your files, then the approach we took with “Welcome” is what you’ll want to do: you’ll see that only “Welcome” shows up in the sidebar as we specified in <code>_quarto.yml</code>, but the page’s title says “MUSA 550 Final Project Template” (which I thought was too long for the sidebar).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This type of file (<code>.yml</code> or <code>.yaml</code>) is written in YAML (“Yet Another Markup Language”). In this language, <strong>spacing and indentation</strong> matters. Pay attention to whether text is indented by one, two, four, or other spaces, and make sure you follow it; if your site is not looking as expected it is likely a silent error in your YAML.</p>
+</div>
+</div>
+<p>Let’s explore the rest of the file:</p>
+<p><img src="imgs/config-file.png" class="img-fluid"></p>
+<p>A few key things to know:</p>
+<ul>
+<li>The “project” section tells Quarto to build a website and put the rendered output HTML in the “docs” folder</li>
+<li>The content under the “website” key customizes the different parts of the website
+<ul>
+<li>You can customize the title, site-url, and repo-url to match your repository</li>
+<li>Under “page-footer”, you can also customize the footer to say whatever you’d like</li>
+<li>Under “sidebar”, you can customize the logo that shows up in the sidebar and the icons that show up below it as well</li>
+<li>You should set the “contents” under “sidebar” to match the desired organization of your website</li>
+</ul></li>
+<li>The “html” key under “format” sets some sensible defaults for how the HTML content should look. These defaults affect all pages, but you can change them for any particular page on the website.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Take a look at the <a href="https://quarto.org/docs/output-formats/html-basics.html">user guide section on HTML</a> for some of the possible options for HTML pages.</p>
+<p>More info on themes is available on the <a href="https://quarto.org/docs/output-formats/html-themes.html">Quarto documentation</a>.</p>
+</div>
+</div>
+</section>
+<section id="adding-technical-content" class="level3">
+<h3 class="anchored" data-anchor-id="adding-technical-content">Adding technical content</h3>
+<p>You’ll notice in the <a href="https://github.com/MUSA-550-Fall-2023/quarto-website-template/tree/main/analysis">“analysis” folder</a> of the repo there are three Jupyter notebook files and a <code>.qmd</code> file.</p>
+<p>There are two main ways to embed Python code (and its associated output) in a Quarto website:</p>
+<ol type="1">
+<li>By directly using <code>.ipynb</code> files. Quarto will execute all cells in the file and convert to HTML.</li>
+<li>By including a Python code block in the <code>.qmd</code> markdown file directly.</li>
+</ol>
+<p>In many ways, <code>.ipynb</code> and <code>.qmd</code> files are very similar — you can think of them as a mix of Markdown text and executable Python code!</p>
+<section id="formating-code-blocks" class="level4">
+<h4 class="anchored" data-anchor-id="formating-code-blocks">Formating code blocks</h4>
+<p>Quarto let’s you customize how code blocks show up, or if they show up at all. This can be done in either:</p>
+<ul>
+<li>The metadata header for a file, or</li>
+<li>A comment in the code cell itself</li>
+</ul>
+</section>
+<section id="hiding-code-cells" class="level4">
+<h4 class="anchored" data-anchor-id="hiding-code-cells">1. Hiding code cells</h4>
+<p>For example, in the first cell of the <a href="https://github.com/MUSA-550-Fall-2023/quarto-website-template/blob/main/analysis/3-altair-hvplot.ipynb">3-altair-hvplot.ipynb</a> notebook file, we have a Markdown cell that hides all code via the <code>echo: false</code> option:</p>
+<p><img src="imgs/header-echo-false.png" class="img-fluid" width="700"></p>
+<p>But you can hide individual code cells from showing up in the output using a special comment in the cell:</p>
+<p><img src="imgs/code-cell-echo-false.png" class="img-fluid" width="700"></p>
+</section>
+<section id="folding-code-cells" class="level4">
+<h4 class="anchored" data-anchor-id="folding-code-cells">2. Folding code cells</h4>
+<p>Similarly, you can “echo” the code block’s content but “fold” it such that readers need to click an arrow to show the code block:</p>
+<p><img src="imgs/code-fold.png" class="img-fluid"></p>
+<p><img src="imgs/code-fold-2.png" class="img-fluid" width="700"></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check out the Quarto docs for more information on: - <a href="https://quarto.org/docs/reference/cells/cells-jupyter.html">Available options for Python code blocks</a> - <a href="https://quarto.org/docs/output-formats/html-code.html">Customizing HTML code block formatting</a></p>
+</div>
+</div>
+</section>
+</section>
+<section id="starting-from-a-template" class="level3">
+<h3 class="anchored" data-anchor-id="starting-from-a-template">Starting from a template</h3>
+<p>The example website we’ve been discussing today is a <em>template repository</em>. This means that you can use the template to get a completely independent copy of the repository under your own username. From then on, you can make any changes you’d like without affecting the original repository.</p>
+<p>Let’s walk through the steps for creating your own copy.</p>
+<section id="step-1-create-your-own-repository" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-create-your-own-repository">Step 1: Create your own repository</h4>
+<ul>
+<li>Start from the main repository: <a href="https://github.com/MUSA-550-Fall-2023/quarto-website-template">https://github.com/MUSA-550-Fall-2023/quarto-website-template</a></li>
+<li>This repository is a <em>template repository</em></li>
+<li>Click on the “Use this template” button and then “Create a new repository” to create your own version of the repository</li>
+</ul>
+<p><img src="imgs/template-1.png" class="img-fluid"></p>
+<p><br></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For more information, see <a href="https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template">this guide on creating a repository from a template</a>.</p>
+</div>
+</div>
+</section>
+<section id="step-2-choose-a-name-and-description" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-choose-a-name-and-description">Step 2: Choose a name and description</h4>
+<p><img src="imgs/template-2.png" class="img-fluid" width="700"></p>
+</section>
+<section id="step-3-set-up-the-repository-to-deploy-via-github-pages" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-set-up-the-repository-to-deploy-via-github-pages">Step 3: Set up the repository to deploy via GitHub Pages</h4>
+<p>If you have a repository with content rendered via Quarto, deploying via GitHub Pages is easy.</p>
+<p>First, make sure the “output-dir” key under “project” in your <code>_quarto.yml</code> file is set to “docs”. This ensures that the content for your rendered site is stored in the “docs” folder. <em>Note:</em> This is already set up in the template repository</p>
+<p>Then, go to the “Settings” tab for your repository, and turn on GitHub Pages on the “main” branch and tell it to use the “docs” folder.</p>
+<p><img src="imgs/gh-deploy-1.png" class="img-fluid" width="800"></p>
+<p>Click on the Pages button in the left sidebar, and under “Build and Deployment” make sure you are building from the “main” branch and “docs” folder.</p>
+<p>This will automatically build the website at the following URL: <code>https://[USERNAME].github.io/[REPOSITORY NAME]</code></p>
+<p><img src="imgs/gh-deploy-2.png" class="img-fluid" width="800"></p>
+</section>
+</section>
+<section id="the-editing-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="the-editing-workflow">The editing workflow</h3>
+<p>Now, let’s talk about how to make edits and customize the template repository! Since we’re most familiar with Jupyter notebook files, my suggested workflow is:</p>
+<ol type="1">
+<li>Clone or download your repository content from GitHub to your local computer.</li>
+<li>Author content in JupyterLab: write Markdown text, code, etc. JupyterLab will support editing both <code>.qmd</code> and <code>.ipynb</code> files.</li>
+<li>Update <code>_quarto.yml</code> as needed (for example, if you’ve created a new file you’d like included in your site)</li>
+<li>Render individual files and/or the whole website using quarto.</li>
+<li>Iterate and repeat as necessary.</li>
+<li>Commit and push your new website content back to GitHub, your updates will publish automatically!</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For this workflow, you’ll need to install both Quarto and Git (via GitHub Desktop). We’ll set these up and try it out in the exercise today.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-set-up-your-own-github-pages-project-page" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-set-up-your-own-github-pages-project-page">Exercise: Set up your own Github Pages project page</h2>
+<p>The goal of this exercise is to make a copy of the template repository, make some small changes, render the new site, and deploy via GitHub pages. We’ll need to do the following:</p>
+<section id="step-1-install-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-install-quarto">Step 1: Install Quarto</h3>
+<p>The site <a href="https://quarto.org/docs/get-started/">https://quarto.org/docs/get-started/</a> describes how to install Quarto, which will depend on your operating system.</p>
+<p>After following the installation instructions, you can test your installation by opening your command line (Terminal in Mac OS or Miniforge Prompt in Windows) and running:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This should print out the help message for the <code>quarto</code> command.</p>
+</section>
+<section id="step-2-install-github-desktop" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-install-github-desktop">Step 2: Install GitHub Desktop</h3>
+<p>We’ll be rendering our site content with the <code>quarto</code> command locally on our computer, which will generate lots of new changes in the “docs” folder of the website’s repository. We’ll then need to <em>commit</em> all of those changes to our version history, and push them to GitHub. It will be easiest to do this using the GitHub Desktop application.</p>
+<p>If you don’t have GitHub Desktop installed yet, you can download and install it here: <a href="https://desktop.github.com/">https://desktop.github.com/</a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you’re new to GitHub Desktop, check out the <a href="https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop">quickstart guide</a>.</p>
+</div>
+</div>
+</section>
+<section id="step-3-create-your-own-repository" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-create-your-own-repository">Step 3: Create your own repository</h3>
+<ul>
+<li>Use the above instructions to create your own copy of the template repository.</li>
+<li>Then, open the repository locally by clicking on the “&lt;&gt; Code” button and choosing the “Open in GitHub Desktop” option</li>
+</ul>
+<p><img src="imgs/open-in-gh-desktop.png" class="img-fluid"></p>
+</section>
+<section id="step-4-make-some-edits" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-make-some-edits">Step 4: Make some edits</h3>
+<p>First, find out the path for the downloaded repository and launch JupyterLab: - In GitHub Desktop, find out the path for the downloaded code by using the option to “Open in Explorer” or “View in Finder.” This should give you the file path of the downloaded repository. - Navigate to that folder, activate our course’s environment, and launch JupyterLab.</p>
+<p>Then, make some edits: - In JupyterLab, make changes to your <code>_quarto.yml</code> to update the name, repository info, etc. - Add a Jupyter notebook file with some example code and add it to the <code>_quarto.yml</code> file.</p>
+</section>
+<section id="step-5-preview-your-changes" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-preview-your-changes">Step 5: Preview your changes</h3>
+<p>You can launch a <em>local</em> version of your website to preview your changes. There are two steps involved:</p>
+<p><strong>Step 1.</strong> First, create a new Terminal within Jupyter Lab to use for Quarto commands</p>
+<p><img src="imgs/jupyter-terminal.png" class="img-fluid" width="700"></p>
+<p><strong>Step 2.</strong> Switch to the Terminal in JupyterLab and run the following command: <code>quarto preview .</code></p>
+<p>This should open a new tab in your browser with URL <code>localhost:3333</code> that will show a live preview of your site. You can make edits to the files in JupyterLab and the live preview will update automatically!</p>
+</section>
+<section id="step-6-render-your-website" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-render-your-website">Step 6: Render your website</h3>
+<p>Once you’re satisfied with your site via the preview, it’s time to render the full website. This create a fresh set of rendered content in the “docs” folder, which will contain all of the code necessary to deploy your website online.</p>
+<p>Once again, there are two steps involved:</p>
+<p><strong>Step 1.</strong> Open a Terminal in JupyterLab or return to a Terminal you opened earlier (instructions for finding the running terminals are available <a href="https://jupyterlab.readthedocs.io/en/stable/user/running.html">here</a>).</p>
+<p><strong>Step 2.</strong> Switch to the terminal in JupyterLab and run the following command: <code>quarto render .</code></p>
+<p>Now, we’re ready to push changes to GitHub and deploy!</p>
+</section>
+<section id="step-7-commit-and-push-your-changes" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-commit-and-push-your-changes">Step 7: Commit and push your changes</h3>
+<p>After the last step, we have updated content that we need to <em>commit</em> and <em>push</em> to GitHub. We’ll do that in GitHub Desktop. The steps involved are:</p>
+<ol type="1">
+<li>Open your repository in GitHub Desktop.</li>
+<li>You should see a number of <em>local changes</em> – this is the content we just generated when we rendered the site. We’ll need to <em>commit</em> these changes so they are saved in the repository’s version history. To do that, you can follow <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop#write-a-commit-message-and-push-your-changes">these instructions</a>. You’ll need to write a commit message and hit the “Commit to main” button in the lower left part of GitHub Desktop.</li>
+<li>Now, we’ll sync these changes with GitHub by <em>pushing</em> the changes. Instructions for how to do that are <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/pushing-changes-to-github-from-github-desktop">available here</a></li>
+</ol>
+<p>Once you push your changes, your repository will <em>automatically</em> update the deployed website!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by <a href="https://www.nickhand.dev">Nick Hand</a>, Quarto layout adapted from <a href="https://github.com/andrewheiss/datavizs23.classes.andrewheiss.com">Andrew Heiss’s Data Visualization with R course</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-python" aria-label="python"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/MUSA-550-Fall-2023/musa-550-fall-2023.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -87,6 +87,8 @@ website:
       text: 7. Working with APIs
     - file: content/week-8/index.qmd
       text: 8. Analyzing and Visualizing Large Datasets
+    - file: content/week-9/index.qmd
+      text: '9. From Notebooks to the Web: Part 1'
     search: false
     style: docked
     title: Content

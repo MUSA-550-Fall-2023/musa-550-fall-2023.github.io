@@ -203,6 +203,41 @@
     "text": "Due dates\nNote: Due dates are tentative and subject to change\nWritten proposal due date: Monday, December 4th (or earlier)\nProject due date: Wednesday, December 20th at 11:59 PM\nFinal projects must receive prior approval in the form of a written proposal."
   },
   {
+    "objectID": "assignment/402/final-project.html#deliverable",
+    "href": "assignment/402/final-project.html#deliverable",
+    "title": "Final Project",
+    "section": "Deliverable",
+    "text": "Deliverable\nThe final deliverable must include all both of the following items:\n\nA Quarto website that summarizes the project and main results, using a combination of text, images, and interactive visualizations.\nThe website should be hosted on GitHub Pages and should be generated from the Quarto website template repository. The website should be a multi-page document that explains in depth all aspects of the project’s implementation as well as the final results.\nAll code/notebooks/spreadsheets/datasets used. These materials should be submitted to your own specific GitHub repository, which can be created using the link below, depending on your section:\n\nSection 401: https://classroom.github.com/a/iA1Z_0Dv\nSection 402: https://classroom.github.com/a/FX7-CcSS\n\nIn this repository, you should include all of the code used to collect, analyze, and visualize the data. You should also include a README file that includes the repository URL for the Quarto website set up in #1 above.\n\n\nImportant\n\nBe sure to include the URL for your Quarto website in the README of the main, submission repository.\nBe sure to include the names of everyone who worked on the final project somewhere in the README!"
+  },
+  {
+    "objectID": "assignment/402/final-project.html#group-projects",
+    "href": "assignment/402/final-project.html#group-projects",
+    "title": "Final Project",
+    "section": "Group projects",
+    "text": "Group projects\nGroup projects are permitted, with a maximum number of group members of 3. You are also permitted to combine this assignment with one you are working on for another course. But keep in mind that if you choose either of these options, the expectations for the project’s scope will be adjusted accordingly.\nIf you combine this assignment with one from another course, the portion that you are submitting for this final project must be a clearly defined addition to the original project. In such a case, you will be graded only on the portion submitted for this course, not on the entire project."
+  },
+  {
+    "objectID": "assignment/402/final-project.html#guidelines",
+    "href": "assignment/402/final-project.html#guidelines",
+    "title": "Final Project",
+    "section": "Guidelines",
+    "text": "Guidelines\nThe project is open-ended. The topic and technologies used are up to you. However, the project must be sufficiently complex and challenging. Below is the list of possible requirements for the project. The number of requirements you must satisfy depends on the number of people in your group:\n\n1 person: 2 requirements\n2 people: 3 requirements\n3 people: 4 requirements\n\nThe list of requirements is:\n\nData is collected through a means more sophisticated than downloading (e.g. scraping, API).\nAt least one of the datasets contains more than 1,000,000 rows.\nIt combines data collected from 3 or more different sources.\nThe analysis of the data is reasonably complex, involving multiple steps (geospatial joins/operations, data shaping, data frame operations, etc).\nYou use an osmnx or pandana to perform an analysis of street network data\nYou use scikit-learn to perform a clustering analysis\nYou analyze raster data using rasterio, rasterstats, or xarray.\nYou perform a machine learning analysis with scikit-learn as part of the analysis.\nThe project includes a deployed Panel dashboard\nThe project includes multiple interactive visualizations that include a significant interactive component (cross-filtering, interactive widgets, etc)\n\nAs a rough guideline, you should shoot for something that is 3-4 times as involved as the required assignments."
+  },
+  {
+    "objectID": "assignment/402/final-project.html#grading",
+    "href": "assignment/402/final-project.html#grading",
+    "title": "Final Project",
+    "section": "Grading",
+    "text": "Grading\nThe final project is worth 45% of the final grade and will be graded on four criteria:\n\nConcept: Is it sufficiently complex/challenging/sophisticated? Is the final product useful/interesting/creative?\nTechnical implementation: Was it well thought out? Was each step done correctly? Does it work as described? Is it consistent with the proposal?\nVisualization: How well does the data visualization serve its purpose? Does it tell a clear story? Are the colors/layout/titles well-chosen?\nWriteup: Is all of the above explained clearly? The writeup should be a multi-page document that explains in depth all aspects of the project’s implementation as well as the final results."
+  },
+  {
+    "objectID": "assignment/402/final-project.html#examples-from-past-semesters",
+    "href": "assignment/402/final-project.html#examples-from-past-semesters",
+    "title": "Final Project",
+    "section": "Examples from Past Semesters",
+    "text": "Examples from Past Semesters\nNote: Previous semesters used a different web-based template for presenting project results, so past projects will appear different. The template used in this semester is the Quarto website template.\n\nAn Analysis System for Taxi Data: A series of planning, visualization and prediction tools around taxi ridership.\nHospitality in the Era of Airbnb: An analysis of the impact of Airbnb on the hospitality industry in New York.\nA Look at Reddit’s Values, IRL Events, and Possible Bad Actors: An analysis of Reddit data to determine what redditors “value”\nOrange Line Shutdown Effects on Bluebike Ridership: An analysis examining the effect of the orange line shutdown on Bluebike ridership in Boston, MA"
+  },
+  {
     "objectID": "assignment/401/schedule.html",
     "href": "assignment/401/schedule.html",
     "title": "Assignments: Section 401",
@@ -621,6 +656,41 @@
     "title": "Week 7AGetting Data, Part 2: Working with APIs",
     "section": "To be continued next time!",
     "text": "To be continued next time!\nSee you on Wednesday!"
+  },
+  {
+    "objectID": "content/week-9/lecture-9A.html",
+    "href": "content/week-9/lecture-9A.html",
+    "title": "Lecture 9AFrom Notebooks to the Web: Quarto & GitHub Pages",
+    "section": "",
+    "text": "Section 401\nOctober 30, 2023"
+  },
+  {
+    "objectID": "content/week-9/lecture-9A.html#outline-for-the-rest-of-the-course",
+    "href": "content/week-9/lecture-9A.html#outline-for-the-rest-of-the-course",
+    "title": "Lecture 9AFrom Notebooks to the Web: Quarto & GitHub Pages",
+    "section": "Outline for the rest of the course",
+    "text": "Outline for the rest of the course\nIn the next two weeks, we’ll discuss ways to translate our analysis results to the Web in a meaningful way. We’ll cover two methods to do so, each with their own pros and cons:\n\nEmbedding interactive charts on the Web via Quarto\nCreating dashboards using the Python library Panel\n\nThen, we transition into our “data science in the wild” case studies, where we’ll do a deeper dive into particular use cases, including:\n\nPredictive modeling and machine learning\nClustering algorithms\nAdvanced raster data"
+  },
+  {
+    "objectID": "content/week-9/lecture-9A.html#the-final-project",
+    "href": "content/week-9/lecture-9A.html#the-final-project",
+    "title": "Lecture 9AFrom Notebooks to the Web: Quarto & GitHub Pages",
+    "section": "The final project",
+    "text": "The final project\nMore details uploaded here: https://github.com/MUSA-550-Fall-2023/final-project\n\nKey dates\n\nWritten proposal due date: Monday, December 4th (or earlier)\nProject due date: Wednesday, December 20th at 11:59 PM\n\nFinal projects must receive prior approval in the form of a written proposal."
+  },
+  {
+    "objectID": "content/week-9/lecture-9A.html#sharing-work-online-with-quarto-github-pages",
+    "href": "content/week-9/lecture-9A.html#sharing-work-online-with-quarto-github-pages",
+    "title": "Lecture 9AFrom Notebooks to the Web: Quarto & GitHub Pages",
+    "section": "Sharing work online with Quarto & GitHub Pages",
+    "text": "Sharing work online with Quarto & GitHub Pages\nWe can create beautiful websites that describe complex technical analyses in Python using Quarto and deploy them online using GitHub Pages. This combination of tools is a really powerful way to create and share your work.\n\nQuarto\n\nQuarto is a relatively new tool, but is becoming popular quickly.\nIt’s the successor to the Rmarkdown ecosystem from the Rstudio team\nIt combines functionality into a single tool and also extends its computation power to other languages.\nMost importantly for us, Quarto supports executing Python code, allowing us to convert Jupyter notebooks to HTML and share them online.\nYou supports building multiple types of online content, including websites, blogs, and books.\n\n\n\nGitHub Pages\n\nGitHub Pages is static website generator that can be used to automatically generate a website from any GitHub repository.\nWe’ll use it to deploy our website content generated using Quarto\nEven though GitHub Pages is a static site (no server to execute code), it can embed interactive charts and maps and maintain the interactive functionality\n\nQuarto + GitHub Pages is very cool, and allows you to build very complex websites. The main website for this course is developed using Quarto + GitHub Pages!\n\n\n\n\n\n\nNote\n\n\n\nFor the final project, you’ll be asked to publish a Quarto website using GitHub pages that describes your analysis and results.\n\n\n\n\nThe example Quarto site\nI’ve set up a working example website so we can walk through the main features of Quarto. It will help us learn the basics of Quarto and serve as a reference, along with Quarto documentation, as you start to customize your own site.\nAnd the published site is available at: https://musa-550-fall-2023.github.io/quarto-website-template/\nLet’s start by exploring the different parts of the site.\n\nIn particular, we see a sidebar with three main parts:\n\nThe main home page entitled “Welcome”\nAnd about page\nAn “analysis” section with several sub-sections\n\n\n\nThe website’s repo\nLet’s go to this website’s GitHub repository: https://github.com/MUSA-550-Fall-2023/quarto-website-template.\nLet’s explore the different filenames first. Many of the files line up with the content we saw above displayed on the rendered website. These have red arrows marking them in the image below.\nYou’ll see the “analysis” folder and the rest in this site are .qmd files, which are special Quarto-flavored markdown files. They primarily contain Markdown text but can also (optionally) include executable code blocks (such as Python or R). The index.qmd is the home page. If you click inside “analysis” you’ll see a mix of file types, including .ipynb Jupyter notebook files and a .qmd markdown file.\n\nThe “docs” folder has all of the rendered HTML content that gets used to show the final website. The content matches all of the content in the input .qmd and .ipynb files, but these files have been processed by Quarto into HTML to be displayed in the browser.\n\n\nThe _quarto.yml configuration file\nThere is also a _quarto.yml file, which is the website’s configuration file. It is essentially metadata for the website that sets up the layout of the site and includes the order that the pages will be in. This is where you update the organization of your website: which page comes before another. If we compare side-by-side, you’ll see that the pages that appear on our website are listed there.\n \nNotice that there are multiple ways in the _quarto.yml for you to include a file in your website. Let’s take a closer look at the “contents” key, nested under the “sidebar” key.\nIn the above image, the “Welcome” page we see in the left sidebar of the published website (left image) is represented in _quarto.yml (right image) over two lines, with line 36 indicating the file reference (index.qmd) and line 37 indicating the text to show up in the left sidebar (Welcome). However, all of the other files (either .qmd or .ipynb) are just represented by a single line.\nThis represents two strategies for including a file in your website. By default, the title of a specified file will show up in the website’s sidebar, which is what is happening with most of the files in the sidebar. If you would like more control over what is written in the sidebar vs. the title of your files, then the approach we took with “Welcome” is what you’ll want to do: you’ll see that only “Welcome” shows up in the sidebar as we specified in _quarto.yml, but the page’s title says “MUSA 550 Final Project Template” (which I thought was too long for the sidebar).\n\n\n\n\n\n\nNote\n\n\n\nThis type of file (.yml or .yaml) is written in YAML (“Yet Another Markup Language”). In this language, spacing and indentation matters. Pay attention to whether text is indented by one, two, four, or other spaces, and make sure you follow it; if your site is not looking as expected it is likely a silent error in your YAML.\n\n\nLet’s explore the rest of the file:\n\nA few key things to know:\n\nThe “project” section tells Quarto to build a website and put the rendered output HTML in the “docs” folder\nThe content under the “website” key customizes the different parts of the website\n\nYou can customize the title, site-url, and repo-url to match your repository\nUnder “page-footer”, you can also customize the footer to say whatever you’d like\nUnder “sidebar”, you can customize the logo that shows up in the sidebar and the icons that show up below it as well\nYou should set the “contents” under “sidebar” to match the desired organization of your website\n\nThe “html” key under “format” sets some sensible defaults for how the HTML content should look. These defaults affect all pages, but you can change them for any particular page on the website.\n\n\n\n\n\n\n\nTip\n\n\n\nTake a look at the user guide section on HTML for some of the possible options for HTML pages.\nMore info on themes is available on the Quarto documentation.\n\n\n\n\nAdding technical content\nYou’ll notice in the “analysis” folder of the repo there are three Jupyter notebook files and a .qmd file.\nThere are two main ways to embed Python code (and its associated output) in a Quarto website:\n\nBy directly using .ipynb files. Quarto will execute all cells in the file and convert to HTML.\nBy including a Python code block in the .qmd markdown file directly.\n\nIn many ways, .ipynb and .qmd files are very similar — you can think of them as a mix of Markdown text and executable Python code!\n\nFormating code blocks\nQuarto let’s you customize how code blocks show up, or if they show up at all. This can be done in either:\n\nThe metadata header for a file, or\nA comment in the code cell itself\n\n\n\n1. Hiding code cells\nFor example, in the first cell of the 3-altair-hvplot.ipynb notebook file, we have a Markdown cell that hides all code via the echo: false option:\n\nBut you can hide individual code cells from showing up in the output using a special comment in the cell:\n\n\n\n2. Folding code cells\nSimilarly, you can “echo” the code block’s content but “fold” it such that readers need to click an arrow to show the code block:\n\n\n\n\n\n\n\n\nTip\n\n\n\nCheck out the Quarto docs for more information on: - Available options for Python code blocks - Customizing HTML code block formatting\n\n\n\n\n\nStarting from a template\nThe example website we’ve been discussing today is a template repository. This means that you can use the template to get a completely independent copy of the repository under your own username. From then on, you can make any changes you’d like without affecting the original repository.\nLet’s walk through the steps for creating your own copy.\n\nStep 1: Create your own repository\n\nStart from the main repository: https://github.com/MUSA-550-Fall-2023/quarto-website-template\nThis repository is a template repository\nClick on the “Use this template” button and then “Create a new repository” to create your own version of the repository\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFor more information, see this guide on creating a repository from a template.\n\n\n\n\nStep 2: Choose a name and description\n\n\n\nStep 3: Set up the repository to deploy via GitHub Pages\nIf you have a repository with content rendered via Quarto, deploying via GitHub Pages is easy.\nFirst, make sure the “output-dir” key under “project” in your _quarto.yml file is set to “docs”. This ensures that the content for your rendered site is stored in the “docs” folder. Note: This is already set up in the template repository\nThen, go to the “Settings” tab for your repository, and turn on GitHub Pages on the “main” branch and tell it to use the “docs” folder.\n\nClick on the Pages button in the left sidebar, and under “Build and Deployment” make sure you are building from the “main” branch and “docs” folder.\nThis will automatically build the website at the following URL: https://[USERNAME].github.io/[REPOSITORY NAME]\n\n\n\n\nThe editing workflow\nNow, let’s talk about how to make edits and customize the template repository! Since we’re most familiar with Jupyter notebook files, my suggested workflow is:\n\nClone or download your repository content from GitHub to your local computer.\nAuthor content in JupyterLab: write Markdown text, code, etc. JupyterLab will support editing both .qmd and .ipynb files.\nUpdate _quarto.yml as needed (for example, if you’ve created a new file you’d like included in your site)\nRender individual files and/or the whole website using quarto.\nIterate and repeat as necessary.\nCommit and push your new website content back to GitHub, your updates will publish automatically!\n\n\n\n\n\n\n\nImportant\n\n\n\nFor this workflow, you’ll need to install both Quarto and Git (via GitHub Desktop). We’ll set these up and try it out in the exercise today."
+  },
+  {
+    "objectID": "content/week-9/lecture-9A.html#exercise-set-up-your-own-github-pages-project-page",
+    "href": "content/week-9/lecture-9A.html#exercise-set-up-your-own-github-pages-project-page",
+    "title": "Lecture 9AFrom Notebooks to the Web: Quarto & GitHub Pages",
+    "section": "Exercise: Set up your own Github Pages project page",
+    "text": "Exercise: Set up your own Github Pages project page\nThe goal of this exercise is to make a copy of the template repository, make some small changes, render the new site, and deploy via GitHub pages. We’ll need to do the following:\n\nStep 1: Install Quarto\nThe site https://quarto.org/docs/get-started/ describes how to install Quarto, which will depend on your operating system.\nAfter following the installation instructions, you can test your installation by opening your command line (Terminal in Mac OS or Miniforge Prompt in Windows) and running:\nquarto --help\nThis should print out the help message for the quarto command.\n\n\nStep 2: Install GitHub Desktop\nWe’ll be rendering our site content with the quarto command locally on our computer, which will generate lots of new changes in the “docs” folder of the website’s repository. We’ll then need to commit all of those changes to our version history, and push them to GitHub. It will be easiest to do this using the GitHub Desktop application.\nIf you don’t have GitHub Desktop installed yet, you can download and install it here: https://desktop.github.com/\n\n\n\n\n\n\nTip\n\n\n\nIf you’re new to GitHub Desktop, check out the quickstart guide.\n\n\n\n\nStep 3: Create your own repository\n\nUse the above instructions to create your own copy of the template repository.\nThen, open the repository locally by clicking on the “&lt;&gt; Code” button and choosing the “Open in GitHub Desktop” option\n\n\n\n\nStep 4: Make some edits\nFirst, find out the path for the downloaded repository and launch JupyterLab: - In GitHub Desktop, find out the path for the downloaded code by using the option to “Open in Explorer” or “View in Finder.” This should give you the file path of the downloaded repository. - Navigate to that folder, activate our course’s environment, and launch JupyterLab.\nThen, make some edits: - In JupyterLab, make changes to your _quarto.yml to update the name, repository info, etc. - Add a Jupyter notebook file with some example code and add it to the _quarto.yml file.\n\n\nStep 5: Preview your changes\nYou can launch a local version of your website to preview your changes. There are two steps involved:\nStep 1. First, create a new Terminal within Jupyter Lab to use for Quarto commands\n\nStep 2. Switch to the Terminal in JupyterLab and run the following command: quarto preview .\nThis should open a new tab in your browser with URL localhost:3333 that will show a live preview of your site. You can make edits to the files in JupyterLab and the live preview will update automatically!\n\n\nStep 6: Render your website\nOnce you’re satisfied with your site via the preview, it’s time to render the full website. This create a fresh set of rendered content in the “docs” folder, which will contain all of the code necessary to deploy your website online.\nOnce again, there are two steps involved:\nStep 1. Open a Terminal in JupyterLab or return to a Terminal you opened earlier (instructions for finding the running terminals are available here).\nStep 2. Switch to the terminal in JupyterLab and run the following command: quarto render .\nNow, we’re ready to push changes to GitHub and deploy!\n\n\nStep 7: Commit and push your changes\nAfter the last step, we have updated content that we need to commit and push to GitHub. We’ll do that in GitHub Desktop. The steps involved are:\n\nOpen your repository in GitHub Desktop.\nYou should see a number of local changes – this is the content we just generated when we rendered the site. We’ll need to commit these changes so they are saved in the repository’s version history. To do that, you can follow these instructions. You’ll need to write a commit message and hit the “Commit to main” button in the lower left part of GitHub Desktop.\nNow, we’ll sync these changes with GitHub by pushing the changes. Instructions for how to do that are available here\n\nOnce you push your changes, your repository will automatically update the deployed website!"
   },
   {
     "objectID": "content/index.html",
@@ -1435,6 +1505,34 @@
     "text": "That’s it!\n\nComing up next: moving on to our “getting data” modules with APIs and web scraping\nSee you on Monday!"
   },
   {
+    "objectID": "content/week-9/index.html",
+    "href": "content/week-9/index.html",
+    "title": "Week 9: From Notebooks to the Web: Part 1",
+    "section": "",
+    "text": "Content for lectures 9A and 9B\n\n\n        \n            \n             \n            View materials:\n             \n            MUSA-550-Fall-2023/week-9\n        \n\n        \n            \n             \n            HTML slides:\n             \n            \n                Lecture 9A\n            \n             \n            \n                Lecture 9B\n            \n        \n        \n\n        \n            \n             \n            Executable slides:\n             \n            \n                Lecture 9A\n            \n             \n            \n                Lecture 9B"
+  },
+  {
+    "objectID": "content/week-9/index.html#topics",
+    "href": "content/week-9/index.html#topics",
+    "title": "Week 9: From Notebooks to the Web: Part 1",
+    "section": "Topics",
+    "text": "Topics\n\nQuarto websites\nPanel dashboards"
+  },
+  {
+    "objectID": "content/week-9/index.html#recommended-readingsvideos",
+    "href": "content/week-9/index.html#recommended-readingsvideos",
+    "title": "Week 9: From Notebooks to the Web: Part 1",
+    "section": "Recommended readings/videos",
+    "text": "Recommended readings/videos\n\nReproducible authoring with Quarto - Mine Çetinkaya-Rundel, Feb 2022 - slides, youtube\nQuarto tutorial for JupyterLab"
+  },
+  {
+    "objectID": "content/week-9/index.html#references",
+    "href": "content/week-9/index.html#references",
+    "title": "Week 9: From Notebooks to the Web: Part 1",
+    "section": "References",
+    "text": "References\n\nExample Quarto template repository\nQuarto user guide\nQuarto reference documentation\nQuarto gallery for websites: lots of good examples!\nInstalling Quarto\nGitHub Desktop documentation"
+  },
+  {
     "objectID": "content/week-7/index.html",
     "href": "content/week-7/index.html",
     "title": "Week 7: Getting Data, Part 2: Working with APIs",
@@ -1832,6 +1930,41 @@
     "title": "Final Project Proposal",
     "section": "Due dates",
     "text": "Due dates\nNote: Due dates are tentative and subject to change\nWritten proposal due date: Monday, December 4th (or earlier)\nProject due date: Wednesday, December 20th at 11:59 PM\nFinal projects must receive prior approval in the form of a written proposal."
+  },
+  {
+    "objectID": "assignment/401/final-project.html#deliverable",
+    "href": "assignment/401/final-project.html#deliverable",
+    "title": "Final Project Proposal",
+    "section": "Deliverable",
+    "text": "Deliverable\nThe final deliverable must include all both of the following items:\n\nA Quarto website that summarizes the project and main results, using a combination of text, images, and interactive visualizations.\nThe website should be hosted on GitHub Pages and should be generated from the Quarto website template repository. The website should be a multi-page document that explains in depth all aspects of the project’s implementation as well as the final results.\nAll code/notebooks/spreadsheets/datasets used. These materials should be submitted to your own specific GitHub repository, which can be created using the link below, depending on your section:\n\nSection 401: https://classroom.github.com/a/iA1Z_0Dv\nSection 402: https://classroom.github.com/a/FX7-CcSS\n\nIn this repository, you should include all of the code used to collect, analyze, and visualize the data. You should also include a README file that includes the repository URL for the Quarto website set up in #1 above.\n\n\nImportant\n\nBe sure to include the URL for your Quarto website in the README of the main, submission repository.\nBe sure to include the names of everyone who worked on the final project somewhere in the README!"
+  },
+  {
+    "objectID": "assignment/401/final-project.html#group-projects",
+    "href": "assignment/401/final-project.html#group-projects",
+    "title": "Final Project Proposal",
+    "section": "Group projects",
+    "text": "Group projects\nGroup projects are permitted, with a maximum number of group members of 3. You are also permitted to combine this assignment with one you are working on for another course. But keep in mind that if you choose either of these options, the expectations for the project’s scope will be adjusted accordingly.\nIf you combine this assignment with one from another course, the portion that you are submitting for this final project must be a clearly defined addition to the original project. In such a case, you will be graded only on the portion submitted for this course, not on the entire project."
+  },
+  {
+    "objectID": "assignment/401/final-project.html#guidelines",
+    "href": "assignment/401/final-project.html#guidelines",
+    "title": "Final Project Proposal",
+    "section": "Guidelines",
+    "text": "Guidelines\nThe project is open-ended. The topic and technologies used are up to you. However, the project must be sufficiently complex and challenging. Below is the list of possible requirements for the project. The number of requirements you must satisfy depends on the number of people in your group:\n\n1 person: 2 requirements\n2 people: 3 requirements\n3 people: 4 requirements\n\nThe list of requirements is:\n\nData is collected through a means more sophisticated than downloading (e.g. scraping, API).\nAt least one of the datasets contains more than 1,000,000 rows.\nIt combines data collected from 3 or more different sources.\nThe analysis of the data is reasonably complex, involving multiple steps (geospatial joins/operations, data shaping, data frame operations, etc).\nYou use an osmnx or pandana to perform an analysis of street network data\nYou use scikit-learn to perform a clustering analysis\nYou analyze raster data using rasterio, rasterstats, or xarray.\nYou perform a machine learning analysis with scikit-learn as part of the analysis.\nThe project includes a deployed Panel dashboard\nThe project includes multiple interactive visualizations that include a significant interactive component (cross-filtering, interactive widgets, etc)\n\nAs a rough guideline, you should shoot for something that is 3-4 times as involved as the required assignments."
+  },
+  {
+    "objectID": "assignment/401/final-project.html#grading",
+    "href": "assignment/401/final-project.html#grading",
+    "title": "Final Project Proposal",
+    "section": "Grading",
+    "text": "Grading\nThe final project is worth 45% of the final grade and will be graded on four criteria:\n\nConcept: Is it sufficiently complex/challenging/sophisticated? Is the final product useful/interesting/creative?\nTechnical implementation: Was it well thought out? Was each step done correctly? Does it work as described? Is it consistent with the proposal?\nVisualization: How well does the data visualization serve its purpose? Does it tell a clear story? Are the colors/layout/titles well-chosen?\nWriteup: Is all of the above explained clearly? The writeup should be a multi-page document that explains in depth all aspects of the project’s implementation as well as the final results."
+  },
+  {
+    "objectID": "assignment/401/final-project.html#examples-from-past-semesters",
+    "href": "assignment/401/final-project.html#examples-from-past-semesters",
+    "title": "Final Project Proposal",
+    "section": "Examples from Past Semesters",
+    "text": "Examples from Past Semesters\nNote: Previous semesters used a different web-based template for presenting project results, so past projects will appear different. The template used in this semester is the Quarto website template.\n\nAn Analysis System for Taxi Data: A series of planning, visualization and prediction tools around taxi ridership.\nHospitality in the Era of Airbnb: An analysis of the impact of Airbnb on the hospitality industry in New York.\nA Look at Reddit’s Values, IRL Events, and Possible Bad Actors: An analysis of Reddit data to determine what redditors “value”\nOrange Line Shutdown Effects on Bluebike Ridership: An analysis examining the effect of the orange line shutdown on Bluebike ridership in Boston, MA"
   },
   {
     "objectID": "assignment/401/assignment-5.html",
