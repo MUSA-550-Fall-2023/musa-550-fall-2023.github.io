@@ -190,12 +190,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#outline-for-the-rest-of-the-course" id="toc-outline-for-the-rest-of-the-course" class="nav-link active" data-scroll-target="#outline-for-the-rest-of-the-course">Outline for the rest of the course</a></li>
+  <li><a href="#the-final-project" id="toc-the-final-project" class="nav-link" data-scroll-target="#the-final-project">The final project</a>
+  <ul class="collapse">
+  <li><a href="#key-dates" id="toc-key-dates" class="nav-link" data-scroll-target="#key-dates">Key dates</a></li>
+  </ul></li>
+  <li><a href="#sharing-work-online-with-quarto-github-pages" id="toc-sharing-work-online-with-quarto-github-pages" class="nav-link" data-scroll-target="#sharing-work-online-with-quarto-github-pages">Sharing work online with Quarto &amp; GitHub Pages</a>
+  <ul class="collapse">
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages">GitHub Pages</a></li>
+  <li><a href="#the-example-quarto-site" id="toc-the-example-quarto-site" class="nav-link" data-scroll-target="#the-example-quarto-site">The example Quarto site</a></li>
+  <li><a href="#the-websites-repo" id="toc-the-websites-repo" class="nav-link" data-scroll-target="#the-websites-repo">The website’s repo</a></li>
+  <li><a href="#the-_quarto.yml-configuration-file" id="toc-the-_quarto.yml-configuration-file" class="nav-link" data-scroll-target="#the-_quarto.yml-configuration-file">The <code>_quarto.yml</code> configuration file</a></li>
+  <li><a href="#adding-technical-content" id="toc-adding-technical-content" class="nav-link" data-scroll-target="#adding-technical-content">Adding technical content</a></li>
+  <li><a href="#starting-from-a-template" id="toc-starting-from-a-template" class="nav-link" data-scroll-target="#starting-from-a-template">Starting from a template</a></li>
+  <li><a href="#the-editing-workflow" id="toc-the-editing-workflow" class="nav-link" data-scroll-target="#the-editing-workflow">The editing workflow</a></li>
+  </ul></li>
+  <li><a href="#exercise-set-up-your-own-github-pages-project-page" id="toc-exercise-set-up-your-own-github-pages-project-page" class="nav-link" data-scroll-target="#exercise-set-up-your-own-github-pages-project-page">Exercise: Set up your own Github Pages project page</a>
+  <ul class="collapse">
+  <li><a href="#step-1-install-quarto" id="toc-step-1-install-quarto" class="nav-link" data-scroll-target="#step-1-install-quarto">Step 1: Install Quarto</a></li>
+  <li><a href="#step-2-install-github-desktop" id="toc-step-2-install-github-desktop" class="nav-link" data-scroll-target="#step-2-install-github-desktop">Step 2: Install GitHub Desktop</a></li>
+  <li><a href="#step-3-create-your-own-repository" id="toc-step-3-create-your-own-repository" class="nav-link" data-scroll-target="#step-3-create-your-own-repository">Step 3: Create your own repository</a></li>
+  <li><a href="#step-4-make-some-edits" id="toc-step-4-make-some-edits" class="nav-link" data-scroll-target="#step-4-make-some-edits">Step 4: Make some edits</a></li>
+  <li><a href="#step-5-preview-your-changes" id="toc-step-5-preview-your-changes" class="nav-link" data-scroll-target="#step-5-preview-your-changes">Step 5: Preview your changes</a></li>
+  <li><a href="#step-6-render-your-website" id="toc-step-6-render-your-website" class="nav-link" data-scroll-target="#step-6-render-your-website">Step 6: Render your website</a></li>
+  <li><a href="#step-7-commit-and-push-your-changes" id="toc-step-7-commit-and-push-your-changes" class="nav-link" data-scroll-target="#step-7-commit-and-push-your-changes">Step 7: Commit and push your changes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -504,18 +537,19 @@ Tip
 </section>
 <section id="step-5-preview-your-changes" class="level3">
 <h3 class="anchored" data-anchor-id="step-5-preview-your-changes">Step 5: Preview your changes</h3>
-<p>You can launch a <em>local</em> version of your website to preview your changes. There are two steps involved:</p>
-<p><strong>Step 1.</strong> First, create a new Terminal within Jupyter Lab to use for Quarto commands</p>
-<p><img src="imgs/jupyter-terminal.png" class="img-fluid" width="700"></p>
-<p><strong>Step 2.</strong> Switch to the Terminal in JupyterLab and run the following command: <code>quarto preview .</code></p>
+<p>You can launch a <em>local</em> version of your website to preview your changes. There are three steps involved:</p>
+<p><strong>Step 1.</strong> First, launch a new Miniforge Prompt (Windows) or Terminal (Mac OS) window. Navigate to the folder for your Quarto website.</p>
+<p><strong>Step 2.</strong> From the command line, activate our course environment by running: <code>mamba activate musa-550-fall-2023</code></p>
+<p><strong>Step 3.</strong> From the command line, run the following command: <code>quarto preview .</code></p>
 <p>This should open a new tab in your browser with URL <code>localhost:3333</code> that will show a live preview of your site. You can make edits to the files in JupyterLab and the live preview will update automatically!</p>
 </section>
 <section id="step-6-render-your-website" class="level3">
 <h3 class="anchored" data-anchor-id="step-6-render-your-website">Step 6: Render your website</h3>
 <p>Once you’re satisfied with your site via the preview, it’s time to render the full website. This create a fresh set of rendered content in the “docs” folder, which will contain all of the code necessary to deploy your website online.</p>
-<p>Once again, there are two steps involved:</p>
-<p><strong>Step 1.</strong> Open a Terminal in JupyterLab or return to a Terminal you opened earlier (instructions for finding the running terminals are available <a href="https://jupyterlab.readthedocs.io/en/stable/user/running.html">here</a>).</p>
-<p><strong>Step 2.</strong> Switch to the terminal in JupyterLab and run the following command: <code>quarto render .</code></p>
+<p>Once again, there are three steps involved:</p>
+<p><strong>Step 1.</strong> First, launch a new Miniforge Prompt (Windows) or Terminal (Mac OS) window. Navigate to the folder for your Quarto website.</p>
+<p><strong>Step 2.</strong> From the command line, activate our course environment by running: <code>mamba activate musa-550-fall-2023</code></p>
+<p><strong>Step 3.</strong> From the command line, run the following command: <code>quarto render .</code></p>
 <p>Now, we’re ready to push changes to GitHub and deploy!</p>
 </section>
 <section id="step-7-commit-and-push-your-changes" class="level3">

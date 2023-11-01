@@ -12,14 +12,32 @@ execute:
 
 ## Recommended readings/videos
 
+### Quarto
 - Reproducible authoring with Quarto - Mine Çetinkaya-Rundel, Feb 2022 - [slides](https://mine-cetinkaya-rundel.github.io/2022-repro-toronto/#/title-slide), [youtube](https://www.youtube.com/watch?v=6p4vOKS6Xls)
 - [Quarto tutorial for JupyterLab](https://quarto.org/docs/get-started/hello/jupyter.html)
 
+### Panel
+
+- [PyData talk in Dec 2019 from the creator of Panel](https://www.youtube.com/watch?v=Ohr29FJjBi0)
+- [Components section of Panel User Guide](https://panel.holoviz.org/explanation/components/components_overview.html)
+- [API section of Panel User Guide](https://panel.holoviz.org/explanation/api/index.html)
+
 ## References
 
+### Quarto
 - [Example Quarto template repository](https://github.com/MUSA-550-Fall-2023/quarto-website-template)
 - [Quarto user guide](https://quarto.org/docs/guide/)
 - [Quarto reference documentation](https://quarto.org/docs/reference/)
 - [Quarto gallery for websites](https://quarto.org/docs/gallery/#websites): lots of good examples!
 - [Installing Quarto](https://quarto.org/docs/get-started/)
 - [GitHub Desktop documentation](https://docs.github.com/en/desktop)
+
+### Panel
+
+- [Documentation homepage](https://panel.holoviz.org)
+- [Core concepts](https://panel.holoviz.org/getting_started/core_concepts.html)
+    - An overview of the core concepts powering Panel dashboards
+- [App Gallery](https://panel.holoviz.org/gallery/index.html)
+    - Examples of end-to-end apps using Panel
+- [Reference Component Gallery](https://panel.holoviz.org/reference/index.html)
+    - Examples (code snippets) for the many different kinds of components possible in Panel dashboards

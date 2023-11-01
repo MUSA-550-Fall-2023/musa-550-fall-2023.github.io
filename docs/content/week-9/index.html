@@ -246,8 +246,16 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
-  <li><a href="#recommended-readingsvideos" id="toc-recommended-readingsvideos" class="nav-link" data-scroll-target="#recommended-readingsvideos">Recommended readings/videos</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#recommended-readingsvideos" id="toc-recommended-readingsvideos" class="nav-link" data-scroll-target="#recommended-readingsvideos">Recommended readings/videos</a>
+  <ul class="collapse">
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#panel" id="toc-panel" class="nav-link" data-scroll-target="#panel">Panel</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a>
+  <ul class="collapse">
+  <li><a href="#quarto-1" id="toc-quarto-1" class="nav-link" data-scroll-target="#quarto-1">Quarto</a></li>
+  <li><a href="#panel-1" id="toc-panel-1" class="nav-link" data-scroll-target="#panel-1">Panel</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -326,13 +334,26 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="recommended-readingsvideos" class="level2">
 <h2 class="anchored" data-anchor-id="recommended-readingsvideos">Recommended readings/videos</h2>
+<section id="quarto" class="level3">
+<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
 <ul>
 <li>Reproducible authoring with Quarto - Mine Çetinkaya-Rundel, Feb 2022 - <a href="https://mine-cetinkaya-rundel.github.io/2022-repro-toronto/#/title-slide">slides</a>, <a href="https://www.youtube.com/watch?v=6p4vOKS6Xls">youtube</a></li>
 <li><a href="https://quarto.org/docs/get-started/hello/jupyter.html">Quarto tutorial for JupyterLab</a></li>
 </ul>
 </section>
+<section id="panel" class="level3">
+<h3 class="anchored" data-anchor-id="panel">Panel</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Ohr29FJjBi0">PyData talk in Dec 2019 from the creator of Panel</a></li>
+<li><a href="https://panel.holoviz.org/explanation/components/components_overview.html">Components section of Panel User Guide</a></li>
+<li><a href="https://panel.holoviz.org/explanation/api/index.html">API section of Panel User Guide</a></li>
+</ul>
+</section>
+</section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
+<section id="quarto-1" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-1">Quarto</h3>
 <ul>
 <li><a href="https://github.com/MUSA-550-Fall-2023/quarto-website-template">Example Quarto template repository</a></li>
 <li><a href="https://quarto.org/docs/guide/">Quarto user guide</a></li>
@@ -341,8 +362,27 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://quarto.org/docs/get-started/">Installing Quarto</a></li>
 <li><a href="https://docs.github.com/en/desktop">GitHub Desktop documentation</a></li>
 </ul>
+</section>
+<section id="panel-1" class="level3">
+<h3 class="anchored" data-anchor-id="panel-1">Panel</h3>
+<ul>
+<li><a href="https://panel.holoviz.org">Documentation homepage</a></li>
+<li><a href="https://panel.holoviz.org/getting_started/core_concepts.html">Core concepts</a>
+<ul>
+<li>An overview of the core concepts powering Panel dashboards</li>
+</ul></li>
+<li><a href="https://panel.holoviz.org/gallery/index.html">App Gallery</a>
+<ul>
+<li>Examples of end-to-end apps using Panel</li>
+</ul></li>
+<li><a href="https://panel.holoviz.org/reference/index.html">Reference Component Gallery</a>
+<ul>
+<li>Examples (code snippets) for the many different kinds of components possible in Panel dashboards</li>
+</ul></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
