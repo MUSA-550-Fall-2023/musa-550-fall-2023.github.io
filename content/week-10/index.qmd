@@ -1,0 +1,42 @@
+
+---
+title: "Week 9: From Notebooks to the Web: Part 2"
+execute: 
+  echo: false
+---
+
+{{< include ../_header.qmd >}}
+
+
+## Recommended Viewing/Reading
+
+- [PyData talk in Dec 2019 from the creator of Panel](https://www.youtube.com/watch?v=Ohr29FJjBi0)
+- [Components section of Panel User Guide](https://panel.holoviz.org/explanation/components/components_overview.html)
+- [API section of Panel User Guide](https://panel.holoviz.org/explanation/api/index.html)
+- [Tutorial on Classes in Python](http://introtopython.org/classes.html)
+
+## Dashboard Examples
+
+We'll walk through two examples of [Panel](https://panel.holoviz.org) dashboards this week:
+
+1. [Visualizing recent shootings in Philadelphia using Altair, Folium, and Holoviews](https://github.com/MUSA-550-Fall-2023/philadelphia-shootings-app)
+2. [Visualizing NYC taxi trips with Datashader and Altair](https://github.com/MUSA-550-Fall-2023/datashader-nyc-taxi-app)
+
+
+## References
+
+
+- Panel
+- [Documentation homepage](https://panel.holoviz.org)
+- [Core concepts](https://panel.holoviz.org/getting_started/core_concepts.html)
+    - An overview of the core concepts powering Panel dashboards
+- [App Gallery](https://panel.holoviz.org/gallery/index.html)
+    - Examples of end-to-end apps using Panel
+- [Reference Component Gallery](https://panel.holoviz.org/reference/index.html)
+    - Examples (code snippets) for the many different kinds of components possible in Panel dashboards
+- [Datashader dashboard tutorial](https://examples.pyviz.org/datashader_dashboard/dashboard.html)
+  - Including a detailed walk-through of a Datashader-based dashboard
+- [Holoviews Reference Gallery](http://holoviews.org/reference/index.html)
+  - [Streams](http://holoviews.org/reference/index.html#streams)
+  - [DynamicMap](http://holoviews.org/reference/containers/bokeh/DynamicMap.html#bokeh-gallery-dynamicmap)
+- [Introduction to Python classes](http://introtopython.org/classes.html)

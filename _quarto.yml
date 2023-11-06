@@ -89,6 +89,8 @@ website:
       text: 8. Analyzing and Visualizing Large Datasets
     - file: content/week-9/index.qmd
       text: '9. From Notebooks to the Web: Part 1'
+    - file: content/week-10/index.qmd
+      text: '10. From Notebooks to the Web: Part 2'
     search: false
     style: docked
     title: Content
