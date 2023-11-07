@@ -186,7 +186,35 @@
     "href": "assignment/402/assignment-5.html",
     "title": "HW #5",
     "section": "",
-    "text": "Assigned on Monday, November 6\n\n\nDue on Monday, November 20 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-5\n\n\n Submission link: GitHub classroom\n\n\nCheck back later for details!"
+    "text": "Assigned on Monday, November 6\n\n\nDue on Monday, November 20 at 11:59 PM"
+  },
+  {
+    "objectID": "assignment/402/assignment-5.html#due-dates",
+    "href": "assignment/402/assignment-5.html#due-dates",
+    "title": "HW #5",
+    "section": "Due dates",
+    "text": "Due dates\nThe assignment is due Monday, November 20 by the end of the day for both sections."
+  },
+  {
+    "objectID": "assignment/402/assignment-5.html#description",
+    "href": "assignment/402/assignment-5.html#description",
+    "title": "HW #5",
+    "section": "Description",
+    "text": "Description\nIn this assignment, we’ll explore restaurant review data available through the Yelp Dataset Challenge. The dataset includes Yelp data for user reviews and business information for many metropolitan areas. I’ve already downloaded this dataset (8 GB total!) and extracted out the data files for reviews and restaurants in Philadelphia. I’ve placed these data files into the data directory in this repository.\nThis assignment is broken into two parts:\nPart 1: Analyzing correlations between restaurant reviews and census data\nWe’ll explore the relationship between restaurant reviews and the income levels of the restaurant’s surrounding area.\nPart 2: Exploring the impact of fast food restaurants\nWe’ll run a sentiment analysis on reviews of fast food restaurants and estimate income levels in neighborhoods with fast food restaurants. We’ll test how well our sentiment analysis works by comparing the number of stars to the sentiment of reviews.\nBackground readings - Does sentiment analysis work? - The Geography of Taste: Using Yelp to Study Urban Culture"
+  },
+  {
+    "objectID": "assignment/402/assignment-5.html#assignment-details",
+    "href": "assignment/402/assignment-5.html#assignment-details",
+    "title": "HW #5",
+    "section": "Assignment details",
+    "text": "Assignment details\nA skeleton Jupyter notebook is available in this repository that will walk you through the steps of the assignment. The completed notebook should be submitted as your assignment."
+  },
+  {
+    "objectID": "assignment/402/assignment-5.html#submission",
+    "href": "assignment/402/assignment-5.html#submission",
+    "title": "HW #5",
+    "section": "Submission",
+    "text": "Submission\nWe’ll be using GitHub for assignment submission again. You can set up your own private repository on GitHub for this assignment using the link below.\nThe invitation link will depend upon your section:\n\nSection 402: https://classroom.github.com/a/eUYIUqNa\n\nThe assignment should be added to this GitHub repository before the deadline. You can add files to the repository through the web (github.com) interface or using the command line locally on your machine."
   },
   {
     "objectID": "assignment/402/final-project.html",
@@ -2104,7 +2132,35 @@
     "href": "assignment/401/assignment-5.html",
     "title": "HW #5",
     "section": "",
-    "text": "Assigned on Monday, November 6\n\n\nDue on Monday, November 20 at 11:59 PM\n\n\n\n\n View materials: MUSA-550-Fall-2023/assignment-5\n\n\n Submission link: GitHub classroom\n\n\nCheck back later for details!"
+    "text": "Assigned on Monday, November 6\n\n\nDue on Monday, November 20 at 11:59 PM"
+  },
+  {
+    "objectID": "assignment/401/assignment-5.html#due-dates",
+    "href": "assignment/401/assignment-5.html#due-dates",
+    "title": "HW #5",
+    "section": "Due dates",
+    "text": "Due dates\nThe assignment is due Monday, November 20 by the end of the day for both sections."
+  },
+  {
+    "objectID": "assignment/401/assignment-5.html#description",
+    "href": "assignment/401/assignment-5.html#description",
+    "title": "HW #5",
+    "section": "Description",
+    "text": "Description\nIn this assignment, we’ll explore restaurant review data available through the Yelp Dataset Challenge. The dataset includes Yelp data for user reviews and business information for many metropolitan areas. I’ve already downloaded this dataset (8 GB total!) and extracted out the data files for reviews and restaurants in Philadelphia. I’ve placed these data files into the data directory in this repository.\nThis assignment is broken into two parts:\nPart 1: Analyzing correlations between restaurant reviews and census data\nWe’ll explore the relationship between restaurant reviews and the income levels of the restaurant’s surrounding area.\nPart 2: Exploring the impact of fast food restaurants\nWe’ll run a sentiment analysis on reviews of fast food restaurants and estimate income levels in neighborhoods with fast food restaurants. We’ll test how well our sentiment analysis works by comparing the number of stars to the sentiment of reviews.\nBackground readings - Does sentiment analysis work? - The Geography of Taste: Using Yelp to Study Urban Culture"
+  },
+  {
+    "objectID": "assignment/401/assignment-5.html#assignment-details",
+    "href": "assignment/401/assignment-5.html#assignment-details",
+    "title": "HW #5",
+    "section": "Assignment details",
+    "text": "Assignment details\nA skeleton Jupyter notebook is available in this repository that will walk you through the steps of the assignment. The completed notebook should be submitted as your assignment."
+  },
+  {
+    "objectID": "assignment/401/assignment-5.html#submission",
+    "href": "assignment/401/assignment-5.html#submission",
+    "title": "HW #5",
+    "section": "Submission",
+    "text": "Submission\nWe’ll be using GitHub for assignment submission again. You can set up your own private repository on GitHub for this assignment using the link below.\nThe invitation link will depend upon your section:\n\nSection 401: https://classroom.github.com/a/ukDo_3xe\n\nThe assignment should be added to this GitHub repository before the deadline. You can add files to the repository through the web (github.com) interface or using the command line locally on your machine."
   },
   {
     "objectID": "assignment/401/assignment-2.html",
