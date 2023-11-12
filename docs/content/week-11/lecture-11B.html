@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geospatial Data Science in Python - Lecture 11B: Clustering Analysis in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geospatial Data Science in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-schedule" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Schedule</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-schedule">    
+        <li>
+    <a class="dropdown-item" href="../../schedule/401.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../schedule/402.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Content</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../../assignment/overview.html" rel="" target="">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/401/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/402/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../resource/index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-box-arrow-up-right"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/MUSA-550-Fall-2023">
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://canvas.upenn.edu/courses/1740535">
+            Canvas
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://edstem.org/us/courses/42616/discussion/">
+            Ed Discussion
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#last-lecture-11a" id="toc-last-lecture-11a" class="nav-link active" data-scroll-target="#last-lecture-11a">Last lecture (11A)</a></li>
+  <li><a href="#today" id="toc-today" class="nav-link" data-scroll-target="#today">Today</a></li>
+  <li><a href="#part-2-spatial-clustering" id="toc-part-2-spatial-clustering" class="nav-link" data-scroll-target="#part-2-spatial-clustering">Part 2: Spatial clustering</a></li>
+  <li><a href="#dbscan" id="toc-dbscan" class="nav-link" data-scroll-target="#dbscan">DBSCAN</a></li>
+  <li><a href="#two-key-parameters" id="toc-two-key-parameters" class="nav-link" data-scroll-target="#two-key-parameters">Two key parameters</a>
+  <ul class="collapse">
+  <li><a href="#example-scenario" id="toc-example-scenario" class="nav-link" data-scroll-target="#example-scenario">Example Scenario</a></li>
+  </ul></li>
+  <li><a href="#importance-of-parameter-choices" id="toc-importance-of-parameter-choices" class="nav-link" data-scroll-target="#importance-of-parameter-choices">Importance of parameter choices</a></li>
+  <li><a href="#example-openstreetmap-gps-traces-in-philadelphia" id="toc-example-openstreetmap-gps-traces-in-philadelphia" class="nav-link" data-scroll-target="#example-openstreetmap-gps-traces-in-philadelphia">Example: OpenStreetMap GPS traces in Philadelphia</a></li>
+  <li><a href="#dbscan-basics" id="toc-dbscan-basics" class="nav-link" data-scroll-target="#dbscan-basics">DBSCAN basics</a></li>
+  <li><a href="#now-lets-plot-the-noise-and-clusters" id="toc-now-lets-plot-the-noise-and-clusters" class="nav-link" data-scroll-target="#now-lets-plot-the-noise-and-clusters">Now let’s plot the noise and clusters</a></li>
+  <li><a href="#extending-dbscan-beyond-just-spatial-coordinates" id="toc-extending-dbscan-beyond-just-spatial-coordinates" class="nav-link" data-scroll-target="#extending-dbscan-beyond-just-spatial-coordinates">Extending DBSCAN beyond just spatial coordinates</a></li>
+  <li><a href="#exercise-extracting-patterns-from-nyc-taxi-rides" id="toc-exercise-extracting-patterns-from-nyc-taxi-rides" class="nav-link" data-scroll-target="#exercise-extracting-patterns-from-nyc-taxi-rides">Exercise: Extracting patterns from NYC taxi rides</a>
+  <ul class="collapse">
+  <li><a href="#step-1-load-the-data" id="toc-step-1-load-the-data" class="nav-link" data-scroll-target="#step-1-load-the-data">Step 1: Load the data</a></li>
+  <li><a href="#step-2-extract-and-normalize-several-features" id="toc-step-2-extract-and-normalize-several-features" class="nav-link" data-scroll-target="#step-2-extract-and-normalize-several-features">Step 2: Extract and normalize several features</a></li>
+  <li><a href="#step-3-run-dbscan-to-extract-high-density-clusters" id="toc-step-3-run-dbscan-to-extract-high-density-clusters" class="nav-link" data-scroll-target="#step-3-run-dbscan-to-extract-high-density-clusters">Step 3: Run DBSCAN to extract high-density clusters</a></li>
+  <li><a href="#step-4-identify-the-5-largest-clusters" id="toc-step-4-identify-the-5-largest-clusters" class="nav-link" data-scroll-target="#step-4-identify-the-5-largest-clusters">Step 4: Identify the 5 largest clusters</a></li>
+  <li><a href="#step-5-get-mean-statistics-for-the-top-5-largest-clusters" id="toc-step-5-get-mean-statistics-for-the-top-5-largest-clusters" class="nav-link" data-scroll-target="#step-5-get-mean-statistics-for-the-top-5-largest-clusters">Step 5: Get mean statistics for the top 5 largest clusters</a></li>
+  <li><a href="#step-6a-visualize-the-top-5-largest-clusters" id="toc-step-6a-visualize-the-top-5-largest-clusters" class="nav-link" data-scroll-target="#step-6a-visualize-the-top-5-largest-clusters">Step 6a: Visualize the top 5 largest clusters</a></li>
+  </ul></li>
+  <li><a href="#if-youre-feeling-ambitious-and-time-permitting" id="toc-if-youre-feeling-ambitious-and-time-permitting" class="nav-link" data-scroll-target="#if-youre-feeling-ambitious-and-time-permitting">If you’re feeling ambitious, and time-permitting…</a>
+  <ul class="collapse">
+  <li><a href="#step-6b-visualizing-one-cluster-at-a-time" id="toc-step-6b-visualizing-one-cluster-at-a-time" class="nav-link" data-scroll-target="#step-6b-visualizing-one-cluster-at-a-time">Step 6b: Visualizing one cluster at a time</a></li>
+  <li><a href="#step-7-an-interactive-map-of-clusters-with-hvplot-datashader" id="toc-step-7-an-interactive-map-of-clusters-with-hvplot-datashader" class="nav-link" data-scroll-target="#step-7-an-interactive-map-of-clusters-with-hvplot-datashader">Step 7: an interactive map of clusters with hvplot + datashader</a></li>
+  </ul></li>
+  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 11B: Clustering Analysis in Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;skip&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Section 401</li>
+<li>Nov 15, 2023</li>
+</ul>
+<section id="last-lecture-11a" class="level2">
+<h2 class="anchored" data-anchor-id="last-lecture-11a">Last lecture (11A)</h2>
+<ul>
+<li>Introduction to clustering with scikit-learn</li>
+<li>K-means algorithm for non-spatial clustering</li>
+</ul>
+</section>
+<section id="today" class="level2">
+<h2 class="anchored" data-anchor-id="today">Today</h2>
+<ul>
+<li>Spatial clustering with the DBSCAN algorithm</li>
+<li>Exercise on spatial clustering of NYC taxi trips</li>
+</ul>
+</section>
+<section id="part-2-spatial-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-spatial-clustering">Part 2: Spatial clustering</h2>
+<p>Now on to the more traditional view of “clustering”…</p>
+</section>
+<section id="dbscan" class="level2">
+<h2 class="anchored" data-anchor-id="dbscan">DBSCAN</h2>
+<p>“Density-Based Spatial Clustering of Applications with Noise”</p>
+<ul>
+<li>Clusters are areas of <strong>high density</strong> separated by areas of low density.</li>
+<li>Can identify clusters of any shape</li>
+<li>Good at separating <strong>core samples</strong> in high-density regions from low-density <strong>noise</strong> samples</li>
+<li><strong>Best for spatial data</strong></li>
+</ul>
+</section>
+<section id="two-key-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="two-key-parameters">Two key parameters</h2>
+<ol type="1">
+<li><strong>eps</strong>: The maximum distance between two samples for them to be considered as in the same neighborhood.</li>
+<li><strong>min_samples</strong>: The number of samples in a neighborhood for a point to be considered as a core point (including the point itself).</li>
+</ol>
+<section id="example-scenario" class="level3">
+<h3 class="anchored" data-anchor-id="example-scenario">Example Scenario</h3>
+<p><img width="500" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/DBSCAN-Illustration.svg/1200px-DBSCAN-Illustration.svg.png" alt="DBSCAN-Illustration.svg"></p>
+<ul>
+<li><code>min_samples</code> = 4.</li>
+<li>Point A and the other red points are <strong>core points</strong>
+<ul>
+<li>There are at least <code>min_samples</code> (4) points (including the point itself) within a distance of <code>eps</code> from each of these points.</li>
+<li>These points are all reachable from one another, so they for a cluster</li>
+</ul></li>
+<li>Points B and C are <strong>edge points</strong> of the cluster
+<ul>
+<li>They are reachable (within a distance of <code>eps</code>) from the core points so they are part of the cluster</li>
+<li>They do not have at least <code>min_pts</code> within a distance of <code>eps</code> so they are not core points</li>
+</ul></li>
+<li>Point N is a <strong>noise point</strong> —&nbsp;it not within a distance of <code>eps</code> from any of the cluster points</li>
+</ul>
+</section>
+</section>
+<section id="importance-of-parameter-choices" class="level2">
+<h2 class="anchored" data-anchor-id="importance-of-parameter-choices">Importance of parameter choices</h2>
+<p>Higher <code>min_samples</code> or a lower <code>eps</code> requires a higher density necessary to form a cluster.</p>
+</section>
+<section id="example-openstreetmap-gps-traces-in-philadelphia" class="level2">
+<h2 class="anchored" data-anchor-id="example-openstreetmap-gps-traces-in-philadelphia">Example: OpenStreetMap GPS traces in Philadelphia</h2>
+<ul>
+<li>Data extracted from the set of 1 billion GPS traces from OSM.</li>
+<li>CRS is EPSG=3857 — <code>x</code> and <code>y</code> in units of meters</li>
+</ul>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>coords <span class="op">=</span> gpd.read_file(<span class="st">'./data/osm_gps_philadelphia.geojson'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>coords.head() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-8370750.5</td>
+<td>4865303.0</td>
+<td>POINT (-8370750.500 4865303.000)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-8368298.0</td>
+<td>4859096.5</td>
+<td>POINT (-8368298.000 4859096.500)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-8365991.0</td>
+<td>4860380.0</td>
+<td>POINT (-8365991.000 4860380.000)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-8372306.5</td>
+<td>4868231.0</td>
+<td>POINT (-8372306.500 4868231.000)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-8376768.5</td>
+<td>4864341.0</td>
+<td>POINT (-8376768.500 4864341.000)</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>num_points <span class="op">=</span> <span class="bu">len</span>(coords)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total number of points = </span><span class="sc">{</span>num_points<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total number of points = 52358</code></pre>
+</div>
+</div>
+</section>
+<section id="dbscan-basics" class="level2">
+<h2 class="anchored" data-anchor-id="dbscan-basics">DBSCAN basics</h2>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> dbscan </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dbscan?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span>
+dbscan<span class="ansi-blue-fg">(</span>
+    X<span class="ansi-blue-fg">,</span>
+    eps<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.5</span><span class="ansi-blue-fg">,</span>
+    <span class="ansi-blue-fg">*</span><span class="ansi-blue-fg">,</span>
+    min_samples<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">,</span>
+    metric<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">'minkowski'</span><span class="ansi-blue-fg">,</span>
+    metric_params<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    algorithm<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">'auto'</span><span class="ansi-blue-fg">,</span>
+    leaf_size<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">30</span><span class="ansi-blue-fg">,</span>
+    p<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">,</span>
+    sample_weight<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    n_jobs<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>
+Perform DBSCAN clustering from vector array or distance matrix.
+Read more in the :ref:`User Guide &lt;dbscan&gt;`.
+Parameters
+----------
+X : {array-like, sparse (CSR) matrix} of shape (n_samples, n_features) or             (n_samples, n_samples)
+    A feature array, or array of distances between samples if
+    ``metric='precomputed'``.
+eps : float, default=0.5
+    The maximum distance between two samples for one to be considered
+    as in the neighborhood of the other. This is not a maximum bound
+    on the distances of points within a cluster. This is the most
+    important DBSCAN parameter to choose appropriately for your data set
+    and distance function.
+min_samples : int, default=5
+    The number of samples (or total weight) in a neighborhood for a point
+    to be considered as a core point. This includes the point itself.
+metric : str or callable, default='minkowski'
+    The metric to use when calculating distance between instances in a
+    feature array. If metric is a string or callable, it must be one of
+    the options allowed by :func:`sklearn.metrics.pairwise_distances` for
+    its metric parameter.
+    If metric is "precomputed", X is assumed to be a distance matrix and
+    must be square during fit.
+    X may be a :term:`sparse graph &lt;sparse graph&gt;`,
+    in which case only "nonzero" elements may be considered neighbors.
+metric_params : dict, default=None
+    Additional keyword arguments for the metric function.
+    .. versionadded:: 0.19
+algorithm : {'auto', 'ball_tree', 'kd_tree', 'brute'}, default='auto'
+    The algorithm to be used by the NearestNeighbors module
+    to compute pointwise distances and find nearest neighbors.
+    See NearestNeighbors module documentation for details.
+leaf_size : int, default=30
+    Leaf size passed to BallTree or cKDTree. This can affect the speed
+    of the construction and query, as well as the memory required
+    to store the tree. The optimal value depends
+    on the nature of the problem.
+p : float, default=2
+    The power of the Minkowski metric to be used to calculate distance
+    between points.
+sample_weight : array-like of shape (n_samples,), default=None
+    Weight of each sample, such that a sample with a weight of at least
+    ``min_samples`` is by itself a core sample; a sample with negative
+    weight may inhibit its eps-neighbor from being core.
+    Note that weights are absolute, and default to 1.
+n_jobs : int, default=None
+    The number of parallel jobs to run for neighbors search. ``None`` means
+    1 unless in a :obj:`joblib.parallel_backend` context. ``-1`` means
+    using all processors. See :term:`Glossary &lt;n_jobs&gt;` for more details.
+    If precomputed distance are used, parallel execution is not available
+    and thus n_jobs will have no effect.
+Returns
+-------
+core_samples : ndarray of shape (n_core_samples,)
+    Indices of core samples.
+labels : ndarray of shape (n_samples,)
+    Cluster labels for each point.  Noisy samples are given the label -1.
+See Also
+--------
+DBSCAN : An estimator interface for this clustering algorithm.
+OPTICS : A similar estimator interface clustering at multiple values of
+    eps. Our implementation is optimized for memory usage.
+Notes
+-----
+For an example, see :ref:`examples/cluster/plot_dbscan.py
+&lt;sphx_glr_auto_examples_cluster_plot_dbscan.py&gt;`.
+This implementation bulk-computes all neighborhood queries, which increases
+the memory complexity to O(n.d) where d is the average number of neighbors,
+while original DBSCAN had memory complexity O(n). It may attract a higher
+memory complexity when querying these nearest neighborhoods, depending
+on the ``algorithm``.
+One way to avoid the query complexity is to pre-compute sparse
+neighborhoods in chunks using
+:func:`NearestNeighbors.radius_neighbors_graph
+&lt;sklearn.neighbors.NearestNeighbors.radius_neighbors_graph&gt;` with
+``mode='distance'``, then using ``metric='precomputed'`` here.
+Another way to reduce memory and computation time is to remove
+(near-)duplicate points and use ``sample_weight`` instead.
+:func:`cluster.optics &lt;sklearn.cluster.optics&gt;` provides a similar
+clustering with lower memory usage.
+References
+----------
+Ester, M., H. P. Kriegel, J. Sander, and X. Xu, `"A Density-Based
+Algorithm for Discovering Clusters in Large Spatial Databases with Noise"
+&lt;https://www.dbs.ifi.lmu.de/Publikationen/Papers/KDD-96.final.frame.pdf&gt;`_.
+In: Proceedings of the 2nd International Conference on Knowledge Discovery
+and Data Mining, Portland, OR, AAAI Press, pp. 226-231. 1996
+Schubert, E., Sander, J., Ester, M., Kriegel, H. P., &amp; Xu, X. (2017).
+:doi:`"DBSCAN revisited, revisited: why and how you should (still) use DBSCAN."
+&lt;10.1145/3068335&gt;`
+ACM Transactions on Database Systems (TODS), 42(3), 19.
+<span class="ansi-red-fg">File:</span>      ~/mambaforge/envs/musa-550-fall-2023/lib/python3.10/site-packages/sklearn/cluster/_dbscan.py
+<span class="ansi-red-fg">Type:</span>      function</pre>
+</div>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># some parameters to start with</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="dv">100</span>  <span class="co"># in meters</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>min_samples <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>cores, labels <span class="op">=</span> dbscan(coords[[<span class="st">"x"</span>, <span class="st">"y"</span>]], eps<span class="op">=</span>eps, min_samples<span class="op">=</span>min_samples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The function returns two objects, which we call <code>cores</code> and <code>labels</code>. <code>cores</code> contains the indices of each point which is classified as a core.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first 5 elements</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>cores[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="80">
+<pre><code>array([1, 2, 4, 6, 8])</code></pre>
+</div>
+</div>
+<p>The length of cores tells you how many core samples we have:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>num_cores <span class="op">=</span> <span class="bu">len</span>(cores)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of core samples = </span><span class="sc">{</span>num_cores<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of core samples = 29655</code></pre>
+</div>
+</div>
+<p>The <code>labels</code> tells you the cluster number each point belongs to. Those points classified as noise receive a cluster number of <code>-1</code>:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first 5 elements</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>labels[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="82">
+<pre><code>array([-1,  0,  0, -1,  1])</code></pre>
+</div>
+</div>
+<p>The <code>labels</code> array is the same length as our input data, so we can add it as a column in our original data frame</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add our labels to the original data</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>coords[<span class="st">'label'</span>] <span class="op">=</span> labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>coords.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+<th data-quarto-table-cell-role="th">label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-8370750.5</td>
+<td>4865303.0</td>
+<td>POINT (-8370750.500 4865303.000)</td>
+<td>-1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-8368298.0</td>
+<td>4859096.5</td>
+<td>POINT (-8368298.000 4859096.500)</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-8365991.0</td>
+<td>4860380.0</td>
+<td>POINT (-8365991.000 4860380.000)</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-8372306.5</td>
+<td>4868231.0</td>
+<td>POINT (-8372306.500 4868231.000)</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-8376768.5</td>
+<td>4864341.0</td>
+<td>POINT (-8376768.500 4864341.000)</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The number of clusters is the number of unique labels minus one (because noise has a label of -1)</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>num_clusters <span class="op">=</span> coords[<span class="st">'label'</span>].nunique() <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"number of clusters = </span><span class="sc">{</span>num_clusters<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>number of clusters = 42</code></pre>
+</div>
+</div>
+<p>We can group by the <code>label</code> column to get the size of each cluster:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cluster_sizes <span class="op">=</span> coords.groupby(<span class="st">'label'</span>, as_index<span class="op">=</span><span class="va">False</span>).size()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>cluster_sizes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">label</th>
+<th data-quarto-table-cell-role="th">size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-1</td>
+<td>19076</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0</td>
+<td>17763</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>4116</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2</td>
+<td>269</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>3</td>
+<td>2094</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>4</td>
+<td>131</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>5</td>
+<td>127</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>6</td>
+<td>116</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>7</td>
+<td>2077</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>8</td>
+<td>225</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>9</td>
+<td>1051</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>10</td>
+<td>260</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>11</td>
+<td>765</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>12</td>
+<td>131</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>13</td>
+<td>110</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>14</td>
+<td>300</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>15</td>
+<td>137</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>16</td>
+<td>591</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>17</td>
+<td>387</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>18</td>
+<td>274</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>19</td>
+<td>154</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>20</td>
+<td>294</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>21</td>
+<td>71</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>22</td>
+<td>154</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>23</td>
+<td>74</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>24</td>
+<td>106</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>25</td>
+<td>135</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>26</td>
+<td>86</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>27</td>
+<td>277</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>28</td>
+<td>134</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">30</td>
+<td>29</td>
+<td>90</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">31</td>
+<td>30</td>
+<td>102</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32</td>
+<td>31</td>
+<td>57</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">33</td>
+<td>32</td>
+<td>51</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">34</td>
+<td>33</td>
+<td>83</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">35</td>
+<td>34</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36</td>
+<td>35</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">37</td>
+<td>36</td>
+<td>78</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">38</td>
+<td>37</td>
+<td>53</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">39</td>
+<td>38</td>
+<td>68</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">40</td>
+<td>39</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">41</td>
+<td>40</td>
+<td>91</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">42</td>
+<td>41</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="87">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All points get assigned a cluster label (-1 reserved for noise)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cluster_sizes[<span class="st">'size'</span>].<span class="bu">sum</span>() <span class="op">==</span> num_points</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="87">
+<pre><code>True</code></pre>
+</div>
+</div>
+<p>The number of noise points is the size of the cluster with label “-1”:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>num_noise <span class="op">=</span> cluster_sizes.iloc[<span class="dv">0</span>][<span class="st">'size'</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"number of noise points = </span><span class="sc">{</span>num_noise<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>number of noise points = 19076</code></pre>
+</div>
+</div>
+<p>If points aren’t noise or core samples, they must be edges:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>num_edges <span class="op">=</span> num_points <span class="op">-</span> num_cores <span class="op">-</span> num_noise</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of edge points = </span><span class="sc">{</span>num_edges<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of edge points = 3627</code></pre>
+</div>
+</div>
+</section>
+<section id="now-lets-plot-the-noise-and-clusters" class="level2">
+<h2 class="anchored" data-anchor-id="now-lets-plot-the-noise-and-clusters">Now let’s plot the noise and clusters</h2>
+<ul>
+<li>Extract each cluster: select points with the same label number</li>
+<li>Plot the cluster centers: the mean <code>x</code> and mean <code>y</code> value for each cluster</li>
+</ul>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup figure and axis</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>f, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>), facecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the noise samples in grey</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>noise <span class="op">=</span> coords.loc[coords[<span class="st">"label"</span>] <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>ax.scatter(noise[<span class="st">"x"</span>], noise[<span class="st">"y"</span>], c<span class="op">=</span><span class="st">"grey"</span>, s<span class="op">=</span><span class="dv">5</span>, linewidth<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each cluster number</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label_num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, num_clusters):</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the samples with this label number</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    this_cluster <span class="op">=</span> coords.loc[coords[<span class="st">"label"</span>] <span class="op">==</span> label_num]</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the mean (x,y) point for this cluster in red</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    x_mean <span class="op">=</span> this_cluster[<span class="st">"x"</span>].mean()</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    y_mean <span class="op">=</span> this_cluster[<span class="st">"y"</span>].mean()</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot this centroid point in red</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    ax.scatter(x_mean, y_mean, linewidth<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Format</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>ax.set_axis_off()</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">"equal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="lecture-11B_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="extending-dbscan-beyond-just-spatial-coordinates" class="level2">
+<h2 class="anchored" data-anchor-id="extending-dbscan-beyond-just-spatial-coordinates">Extending DBSCAN beyond just spatial coordinates</h2>
+<p>DBSCAN can perform high-density clusters from more than just spatial coordinates, as long as they are properly normalized</p>
+</section>
+<section id="exercise-extracting-patterns-from-nyc-taxi-rides" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-extracting-patterns-from-nyc-taxi-rides">Exercise: Extracting patterns from NYC taxi rides</h2>
+<p>I’ve extracted data for taxi pickups or drop offs occurring in the Williamsburg neighborhood of NYC from the NYC taxi open data.</p>
+<p>Includes data for: - Pickup/dropoff location - Fare amount - Trip distance - Pickup/dropoff hour</p>
+<p><strong>Goal:</strong> identify clusters of similar taxi rides that are not only clustered spatially, but also clustered for features like hour of day and trip distance</p>
+<p>Inspired by <a href="https://carto.com/blog/using-location-data-identify-communities-williamsburg-ny/">this CARTO blog post</a></p>
+<section id="step-1-load-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-load-the-data">Step 1: Load the data</h3>
+<p>See the <code>data/williamsburg_taxi_trips.csv</code> file in this week’s repository.</p>
+</section>
+<section id="step-2-extract-and-normalize-several-features" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-extract-and-normalize-several-features">Step 2: Extract and normalize several features</h3>
+<p>We will focus on the following columns: - <code>pickup_x</code> and <code>pickup_y</code> - <code>dropoff_x</code> and <code>dropoff_y</code> - <code>trip_distance</code> - <code>pickup_hour</code></p>
+<p>Use the <code>StandardScaler</code> to normalize these features.</p>
+</section>
+<section id="step-3-run-dbscan-to-extract-high-density-clusters" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-run-dbscan-to-extract-high-density-clusters">Step 3: Run DBSCAN to extract high-density clusters</h3>
+<ul>
+<li>We want the highest density clusters, ideally no more than about 30-50 clusters.</li>
+<li>Run the DBSCAN and experiment with different values of <code>eps</code> and <code>min_samples</code>
+<ul>
+<li>I started with <code>eps</code> of 0.25 and <code>min_samples</code> of 50</li>
+</ul></li>
+<li>Add the labels to the original data frame and calculate the number of clusters. It should be less than 50 or so.</li>
+</ul>
+<p><strong>Hint:</strong> If the algorithm is taking a long time to run (more than a few minutes), the <code>eps</code> is probably too big!</p>
+</section>
+<section id="step-4-identify-the-5-largest-clusters" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-identify-the-5-largest-clusters">Step 4: Identify the 5 largest clusters</h3>
+<p>Group by the label, calculate and sort the sizes to find the label numbers of the top 5 largest clusters</p>
+</section>
+<section id="step-5-get-mean-statistics-for-the-top-5-largest-clusters" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-get-mean-statistics-for-the-top-5-largest-clusters">Step 5: Get mean statistics for the top 5 largest clusters</h3>
+<p>To better identify trends in the top 5 clusters, calculate the mean trip distance and pickup_hour for each of the clusters.</p>
+</section>
+<section id="step-6a-visualize-the-top-5-largest-clusters" class="level3">
+<h3 class="anchored" data-anchor-id="step-6a-visualize-the-top-5-largest-clusters">Step 6a: Visualize the top 5 largest clusters</h3>
+<p>Now visualize the top 5 largest clusters: - plot the dropoffs and pickups (same color) for the 5 largest clusters - include the “noise” samples, shown in gray</p>
+<p><strong>Hints:</strong> - For a given cluster, plot the dropoffs and pickups with the same color so we can visualize patterns in the taxi trips - A good color scheme for a black background is given below</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a good color scheme for a black background</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'aqua'</span>, <span class="st">'lime'</span>, <span class="st">'red'</span>, <span class="st">'fuchsia'</span>, <span class="st">'yellow'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># EXAMPLE: enumerating a list</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, label_num <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]):</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"i = </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"label_num = </span><span class="sc">{</span>label_num<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>i = 0
+label_num = 0
+i = 1
+label_num = 1
+i = 2
+label_num = 2
+i = 3
+label_num = 3
+i = 4
+label_num = 4</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="if-youre-feeling-ambitious-and-time-permitting" class="level2">
+<h2 class="anchored" data-anchor-id="if-youre-feeling-ambitious-and-time-permitting">If you’re feeling ambitious, and time-permitting…</h2>
+<section id="step-6b-visualizing-one-cluster-at-a-time" class="level3">
+<h3 class="anchored" data-anchor-id="step-6b-visualizing-one-cluster-at-a-time">Step 6b: Visualizing one cluster at a time</h3>
+<p>Another good way to visualize the results is to explore the other clusters one at a time, plotting both the pickups and dropoffs to identify the trends.</p>
+<p>Use different colors for pickups/dropoffs to easily identify them.</p>
+<p>Make it a function so we can repeat it easily:</p>
+</section>
+<section id="step-7-an-interactive-map-of-clusters-with-hvplot-datashader" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-an-interactive-map-of-clusters-with-hvplot-datashader">Step 7: an interactive map of clusters with hvplot + datashader</h3>
+<ul>
+<li>We’ll plot the pickup/dropoff locations for the top 5 clusters</li>
+<li>Use the <code>.hvplot.scatter()</code> function to plot the x/y points</li>
+<li>Specify the <code>c=</code> keyword as the column holding the cluster label</li>
+<li>Specify the aggregator as <code>ds.count_cat("label")</code> —&nbsp;this will color the data points using our categorical color map</li>
+<li>Use the <code>datashade=True</code> keyword to tell hvplot to use datashader</li>
+<li>Add a background tile using Geoviews</li>
+<li>Combine the pickups, dropoffs, and background tile into a single interactive map</li>
+</ul>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-tags="[]" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># map colors to the top 5 cluster labels</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>color_key <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(top5_labels, [<span class="st">'aqua'</span>, <span class="st">'lime'</span>, <span class="st">'red'</span>, <span class="st">'fuchsia'</span>, <span class="st">'yellow'</span>]))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(color_key)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{1: 'aqua', 2: 'lime', 3: 'red', 0: 'fuchsia', 6: 'yellow'}</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="thats-it" class="level2">
+<h2 class="anchored" data-anchor-id="thats-it">That’s it!</h2>
+<p>Next time, regressions with scikit-learn!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by <a href="https://www.nickhand.dev">Nick Hand</a>, Quarto layout adapted from <a href="https://github.com/andrewheiss/datavizs23.classes.andrewheiss.com">Andrew Heiss’s Data Visualization with R course</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-python" aria-label="python"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/MUSA-550-Fall-2023/musa-550-fall-2023.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

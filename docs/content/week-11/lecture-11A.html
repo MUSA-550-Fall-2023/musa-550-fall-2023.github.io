@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geospatial Data Science in Python - Week 11: Clustering Analysis in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geospatial Data Science in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-schedule" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Schedule</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-schedule">    
+        <li>
+    <a class="dropdown-item" href="../../schedule/401.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../schedule/402.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Content</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../../assignment/overview.html" rel="" target="">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/401/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/402/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../resource/index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-box-arrow-up-right"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/MUSA-550-Fall-2023">
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://canvas.upenn.edu/courses/1740535">
+            Canvas
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://edstem.org/us/courses/42616/discussion/">
+            Ed Discussion
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#clustering-in-python" id="toc-clustering-in-python" class="nav-link active" data-scroll-target="#clustering-in-python">Clustering in Python</a></li>
+  <li><a href="#machine-learning-and-ai" id="toc-machine-learning-and-ai" class="nav-link" data-scroll-target="#machine-learning-and-ai">“Machine learning” and “AI”</a>
+  <ul class="collapse">
+  <li><a href="#supervised" id="toc-supervised" class="nav-link" data-scroll-target="#supervised">Supervised</a></li>
+  <li><a href="#unsupervised" id="toc-unsupervised" class="nav-link" data-scroll-target="#unsupervised">Unsupervised</a></li>
+  </ul></li>
+  <li><a href="#machine-learning-in-python-scikit-learn" id="toc-machine-learning-in-python-scikit-learn" class="nav-link" data-scroll-target="#machine-learning-in-python-scikit-learn">Machine learning in Python: scikit-learn</a></li>
+  <li><a href="#clustering-is-just-one-of-many-features" id="toc-clustering-is-just-one-of-many-features" class="nav-link" data-scroll-target="#clustering-is-just-one-of-many-features">Clustering is just one (of many) features</a></li>
+  <li><a href="#part-1-non-spatial-clustering" id="toc-part-1-non-spatial-clustering" class="nav-link" data-scroll-target="#part-1-non-spatial-clustering">Part 1: Non-spatial clustering</a>
+  <ul class="collapse">
+  <li><a href="#some-intuition" id="toc-some-intuition" class="nav-link" data-scroll-target="#some-intuition">Some intuition</a></li>
+  <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">K-Means clustering</a></li>
+  <li><a href="#this-is-just-one-of-several-clustering-methods" id="toc-this-is-just-one-of-several-clustering-methods" class="nav-link" data-scroll-target="#this-is-just-one-of-several-clustering-methods">This is just one of several clustering methods</a></li>
+  <li><a href="#how-does-it-work" id="toc-how-does-it-work" class="nav-link" data-scroll-target="#how-does-it-work">How does it work?</a></li>
+  <li><a href="#k-means-in-action" id="toc-k-means-in-action" class="nav-link" data-scroll-target="#k-means-in-action">K-means in action</a></li>
+  <li><a href="#example-clustering-countries-by-health-and-income" id="toc-example-clustering-countries-by-health-and-income" class="nav-link" data-scroll-target="#example-clustering-countries-by-health-and-income">Example: Clustering countries by health and income</a></li>
+  <li><a href="#exercise-clustering-neighborhoods-by-airbnb-stats" id="toc-exercise-clustering-neighborhoods-by-airbnb-stats" class="nav-link" data-scroll-target="#exercise-clustering-neighborhoods-by-airbnb-stats">Exercise: Clustering neighborhoods by Airbnb stats</a></li>
+  <li><a href="#why-5-groups" id="toc-why-5-groups" class="nav-link" data-scroll-target="#why-5-groups">Why 5 groups?</a></li>
+  <li><a href="#the-kneed-package" id="toc-the-kneed-package" class="nav-link" data-scroll-target="#the-kneed-package">The <code>kneed</code> package</a></li>
+  </ul></li>
+  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 11: Clustering Analysis in Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;skip&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Section 401</li>
+<li>Nov 13, 2023</li>
+</ul>
+<section id="clustering-in-python" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-in-python">Clustering in Python</h2>
+<ul>
+<li>Both spatial and non-spatial datasets</li>
+<li>Two new techniques:
+<ul>
+<li>Non-spatial: <strong>K-means</strong></li>
+<li>Spatial: <strong>DBSCAN</strong></li>
+</ul></li>
+<li>Two labs/exercises this week:
+<ol type="1">
+<li>Grouping Philadelphia neighborhoods by AirBnb listings</li>
+<li>Identifying clusters in taxi rides in NYC</li>
+</ol></li>
+</ul>
+</section>
+<section id="machine-learning-and-ai" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning-and-ai">“Machine learning” and “AI”</h2>
+<p><img src="imgs/machine_learning.jpg" class="img-fluid"></p>
+<ul>
+<li>The computer <strong>learns</strong> patterns and properties of an input data set without the user specifying them beforehand</li>
+<li>Can be both <strong>supervised</strong> and <strong>unsupervised</strong></li>
+</ul>
+<section id="supervised" class="level3">
+<h3 class="anchored" data-anchor-id="supervised">Supervised</h3>
+<ul>
+<li>Example: classification</li>
+<li>Given a training set of <strong>labeled</strong> data, learn to assign labels to new data</li>
+</ul>
+</section>
+<section id="unsupervised" class="level3">
+<h3 class="anchored" data-anchor-id="unsupervised">Unsupervised</h3>
+<ul>
+<li>Example: clustering</li>
+<li>Identify structure / clusters in data without any prior knowledge</li>
+</ul>
+</section>
+</section>
+<section id="machine-learning-in-python-scikit-learn" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning-in-python-scikit-learn">Machine learning in Python: scikit-learn</h2>
+<ul>
+<li>State-of-the-art machine learning in Python</li>
+<li>Easy to use, lots of functionality</li>
+</ul>
+</section>
+<section id="clustering-is-just-one-of-many-features" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-is-just-one-of-many-features">Clustering is just one (of many) features</h2>
+<p><img src="imgs/scikit_learn.png" class="img-fluid"></p>
+<p><a href="https://scikit-learn.org/stable/">https://scikit-learn.org/stable/</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We will focus on clustering algorithms today and discuss a few other machine learning techniques in the next two weeks. If there is a specific scikit-learn use case we won’t cover, I’m open to ideas for incorporating it as part of the final project.</p>
+</div>
+</div>
+</section>
+<section id="part-1-non-spatial-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-non-spatial-clustering">Part 1: Non-spatial clustering</h2>
+<p><strong>The goal</strong></p>
+<p>Partition a dataset into groups that have a similar set of attributes, <strong>or features</strong>, within the group and a dissimilar set of features between groups.</p>
+<p>Minimize the <em>intra-cluster</em> variance and maximize the <em>inter-cluster</em> variance of features.</p>
+<section id="some-intuition" class="level3">
+<h3 class="anchored" data-anchor-id="some-intuition">Some intuition</h3>
+<p><img src="imgs/clustering.png" class="img-fluid"></p>
+</section>
+<section id="k-means-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="k-means-clustering">K-Means clustering</h3>
+<ul>
+<li>Simple but robust clustering algorithm</li>
+<li>Widely used</li>
+<li><strong>Important:</strong> user must specify the number of clusters</li>
+<li><strong>Cannot</strong> be used to find density-based clusters</li>
+</ul>
+</section>
+<section id="this-is-just-one-of-several-clustering-methods" class="level3">
+<h3 class="anchored" data-anchor-id="this-is-just-one-of-several-clustering-methods">This is just one of several clustering methods</h3>
+<p><a href="https://scikit-learn.org/stable/modules/clustering.html#overview-of-clustering-methods">https://scikit-learn.org/stable/modules/clustering.html#overview-of-clustering-methods</a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A good introduction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check out <a href="https://www.youtube.com/watch?v=0D4LnsJr85Y">Andrew Ng’s Coursera lecture</a> on unsupervised clustering.</p>
+</div>
+</div>
+</section>
+<section id="how-does-it-work" class="level3">
+<h3 class="anchored" data-anchor-id="how-does-it-work">How does it work?</h3>
+<p><strong>Minimizes the intra-cluster variance</strong>: minimizes the sum of the squared distances between all points in a cluster and the cluster centroid</p>
+</section>
+<section id="k-means-in-action" class="level3">
+<h3 class="anchored" data-anchor-id="k-means-in-action">K-means in action</h3>
+<p><img src="imgs/K-means_convergence.gif" class="img-fluid"></p>
+</section>
+<section id="example-clustering-countries-by-health-and-income" class="level3">
+<h3 class="anchored" data-anchor-id="example-clustering-countries-by-health-and-income">Example: Clustering countries by health and income</h3>
+<ul>
+<li>Health expectancy in years vs.&nbsp;GDP per capita and population for 187 countries (as of 2015)</li>
+<li>Data from <a href="https://www.gapminder.org/data/">Gapminder</a></li>
+</ul>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vega_datasets <span class="im">import</span> data <span class="im">as</span> vega_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Read the data from a URL:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(vega_data.gapminder_health_income.url)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>gapminder.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">health</th>
+<th data-quarto-table-cell-role="th">population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Afghanistan</td>
+<td>1925</td>
+<td>57.63</td>
+<td>32526562</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Albania</td>
+<td>10620</td>
+<td>76.00</td>
+<td>2896679</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Algeria</td>
+<td>13434</td>
+<td>76.50</td>
+<td>39666519</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Andorra</td>
+<td>46577</td>
+<td>84.10</td>
+<td>70473</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Angola</td>
+<td>7615</td>
+<td>61.00</td>
+<td>25021974</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Plot it with altair:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    alt.Chart(gapminder)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    .mark_circle()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    .encode(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        alt.X(<span class="st">"income:Q"</span>, scale<span class="op">=</span>alt.Scale(<span class="bu">type</span><span class="op">=</span><span class="st">"log"</span>)),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        alt.Y(<span class="st">"health:Q"</span>, scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="st">"population:Q"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        tooltip<span class="op">=</span><span class="bu">list</span>(gapminder.columns),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    .properties(width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    .interactive()</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<style>
+  #altair-viz-3f1f705ce2234db6a665e80e0f27000f.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-3f1f705ce2234db6a665e80e0f27000f.vega-embed details,
+  #altair-viz-3f1f705ce2234db6a665e80e0f27000f.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-3f1f705ce2234db6a665e80e0f27000f"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-3f1f705ce2234db6a665e80e0f27000f") {
+      outputDiv = document.getElementById("altair-viz-3f1f705ce2234db6a665e80e0f27000f");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7e3b7ef5d72a8470b0044710e8a24cca"}, "mark": {"type": "circle"}, "encoding": {"size": {"field": "population", "type": "quantitative"}, "tooltip": [{"field": "country", "type": "nominal"}, {"field": "income", "type": "quantitative"}, {"field": "health", "type": "quantitative"}, {"field": "population", "type": "quantitative"}], "x": {"field": "income", "scale": {"type": "log"}, "type": "quantitative"}, "y": {"field": "health", "scale": {"zero": false}, "type": "quantitative"}}, "height": 600, "params": [{"name": "param_1", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "width": 800, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-7e3b7ef5d72a8470b0044710e8a24cca": [{"country": "Afghanistan", "income": 1925, "health": 57.63, "population": 32526562}, {"country": "Albania", "income": 10620, "health": 76.0, "population": 2896679}, {"country": "Algeria", "income": 13434, "health": 76.5, "population": 39666519}, {"country": "Andorra", "income": 46577, "health": 84.1, "population": 70473}, {"country": "Angola", "income": 7615, "health": 61.0, "population": 25021974}, {"country": "Antigua and Barbuda", "income": 21049, "health": 75.2, "population": 91818}, {"country": "Argentina", "income": 17344, "health": 76.2, "population": 43416755}, {"country": "Armenia", "income": 7763, "health": 74.4, "population": 3017712}, {"country": "Australia", "income": 44056, "health": 81.8, "population": 23968973}, {"country": "Austria", "income": 44401, "health": 81.0, "population": 8544586}, {"country": "Azerbaijan", "income": 16986, "health": 72.9, "population": 9753968}, {"country": "Bahamas", "income": 22818, "health": 72.3, "population": 388019}, {"country": "Bahrain", "income": 44138, "health": 79.2, "population": 1377237}, {"country": "Bangladesh", "income": 3161, "health": 70.1, "population": 160995642}, {"country": "Barbados", "income": 12984, "health": 75.8, "population": 284215}, {"country": "Belarus", "income": 17415, "health": 70.4, "population": 9495826}, {"country": "Belgium", "income": 41240, "health": 80.4, "population": 11299192}, {"country": "Belize", "income": 8501, "health": 70.0, "population": 359287}, {"country": "Benin", "income": 1830, "health": 65.5, "population": 10879829}, {"country": "Bhutan", "income": 7983, "health": 70.2, "population": 774830}, {"country": "Bolivia", "income": 6295, "health": 72.3, "population": 10724705}, {"country": "Bosnia and Herzegovina", "income": 9833, "health": 77.9, "population": 3810416}, {"country": "Botswana", "income": 17196, "health": 66.4, "population": 2262485}, {"country": "Brazil", "income": 15441, "health": 75.6, "population": 207847528}, {"country": "Brunei", "income": 73003, "health": 78.7, "population": 423188}, {"country": "Bulgaria", "income": 16371, "health": 74.9, "population": 7149787}, {"country": "Burkina Faso", "income": 1654, "health": 62.8, "population": 18105570}, {"country": "Burundi", "income": 777, "health": 60.4, "population": 11178921}, {"country": "Cambodia", "income": 3267, "health": 68.4, "population": 15577899}, {"country": "Cameroon", "income": 2897, "health": 59.5, "population": 23344179}, {"country": "Canada", "income": 43294, "health": 81.7, "population": 35939927}, {"country": "Cape Verde", "income": 6514, "health": 74.6, "population": 520502}, {"country": "Central African Republic", "income": 599, "health": 53.8, "population": 4900274}, {"country": "Chad", "income": 2191, "health": 57.7, "population": 14037472}, {"country": "Chile", "income": 22465, "health": 79.3, "population": 17948141}, {"country": "China", "income": 13334, "health": 76.9, "population": 1376048943}, {"country": "Colombia", "income": 12761, "health": 75.8, "population": 48228704}, {"country": "Comoros", "income": 1472, "health": 64.1, "population": 788474}, {"country": "Congo, Dem. Rep.", "income": 809, "health": 58.3, "population": 77266814}, {"country": "Congo, Rep.", "income": 6220, "health": 61.9, "population": 4620330}, {"country": "Costa Rica", "income": 14132, "health": 80.0, "population": 4807850}, {"country": "Cote d'Ivoire", "income": 3491, "health": 60.33, "population": 22701556}, {"country": "Croatia", "income": 20260, "health": 78.0, "population": 4240317}, {"country": "Cuba", "income": 21291, "health": 78.5, "population": 11389562}, {"country": "Cyprus", "income": 29797, "health": 82.6, "population": 1165300}, {"country": "Czech Republic", "income": 29437, "health": 78.6, "population": 10543186}, {"country": "Denmark", "income": 43495, "health": 80.1, "population": 5669081}, {"country": "Djibouti", "income": 3139, "health": 64.63, "population": 887861}, {"country": "Dominica", "income": 10503, "health": 74.6, "population": 72680}, {"country": "Dominican Republic", "income": 12837, "health": 73.8, "population": 10528391}, {"country": "Ecuador", "income": 10996, "health": 75.2, "population": 16144363}, {"country": "Egypt", "income": 11031, "health": 71.3, "population": 91508084}, {"country": "El Salvador", "income": 7776, "health": 74.1, "population": 6126583}, {"country": "Equatorial Guinea", "income": 31087, "health": 60.63, "population": 845060}, {"country": "Eritrea", "income": 1129, "health": 62.9, "population": 5227791}, {"country": "Estonia", "income": 26812, "health": 76.8, "population": 1312558}, {"country": "Ethiopia", "income": 1520, "health": 63.6, "population": 99390750}, {"country": "Fiji", "income": 7925, "health": 66.3, "population": 892145}, {"country": "Finland", "income": 38923, "health": 80.8, "population": 5503457}, {"country": "France", "income": 37599, "health": 81.9, "population": 64395345}, {"country": "Gabon", "income": 18627, "health": 60.53, "population": 1725292}, {"country": "Gambia", "income": 1644, "health": 65.1, "population": 1990924}, {"country": "Georgia", "income": 7474, "health": 73.3, "population": 3999812}, {"country": "Germany", "income": 44053, "health": 81.1, "population": 80688545}, {"country": "Ghana", "income": 4099, "health": 65.5, "population": 27409893}, {"country": "Greece", "income": 25430, "health": 79.8, "population": 10954617}, {"country": "Grenada", "income": 11593, "health": 71.7, "population": 106825}, {"country": "Guatemala", "income": 7279, "health": 73.1, "population": 16342897}, {"country": "Guinea", "income": 1225, "health": 60.8, "population": 12608590}, {"country": "Guinea-Bissau", "income": 1386, "health": 53.4, "population": 1844325}, {"country": "Guyana", "income": 6816, "health": 64.4, "population": 767085}, {"country": "Haiti", "income": 1710, "health": 65.3, "population": 10711067}, {"country": "Honduras", "income": 4270, "health": 72.4, "population": 8075060}, {"country": "Hungary", "income": 24200, "health": 76.2, "population": 9855023}, {"country": "Iceland", "income": 42182, "health": 82.8, "population": 329425}, {"country": "India", "income": 5903, "health": 66.8, "population": 1311050527}, {"country": "Indonesia", "income": 10504, "health": 70.9, "population": 257563815}, {"country": "Iran", "income": 15573, "health": 78.5, "population": 79109272}, {"country": "Iraq", "income": 14646, "health": 72.1, "population": 36423395}, {"country": "Ireland", "income": 47758, "health": 80.4, "population": 4688465}, {"country": "Israel", "income": 31590, "health": 82.4, "population": 8064036}, {"country": "Italy", "income": 33297, "health": 82.1, "population": 59797685}, {"country": "Jamaica", "income": 8606, "health": 75.5, "population": 2793335}, {"country": "Japan", "income": 36162, "health": 83.5, "population": 126573481}, {"country": "Jordan", "income": 11752, "health": 78.3, "population": 7594547}, {"country": "Kazakhstan", "income": 23468, "health": 68.2, "population": 17625226}, {"country": "Kenya", "income": 2898, "health": 66.63, "population": 46050302}, {"country": "Kiribati", "income": 1824, "health": 62.4, "population": 112423}, {"country": "Kuwait", "income": 82633, "health": 80.7, "population": 3892115}, {"country": "Kyrgyz Republic", "income": 3245, "health": 69.0, "population": 5939962}, {"country": "Lao", "income": 5212, "health": 66.4, "population": 6802023}, {"country": "Latvia", "income": 23282, "health": 75.7, "population": 1970503}, {"country": "Lebanon", "income": 17050, "health": 78.5, "population": 5850743}, {"country": "Lesotho", "income": 2598, "health": 48.5, "population": 2135022}, {"country": "Liberia", "income": 958, "health": 63.9, "population": 4503438}, {"country": "Libya", "income": 17261, "health": 76.2, "population": 6278438}, {"country": "Lithuania", "income": 26665, "health": 75.4, "population": 2878405}, {"country": "Luxembourg", "income": 88314, "health": 81.1, "population": 567110}, {"country": "Macedonia, FYR", "income": 12547, "health": 77.0, "population": 2078453}, {"country": "Madagascar", "income": 1400, "health": 64.7, "population": 24235390}, {"country": "Malawi", "income": 799, "health": 60.22, "population": 17215232}, {"country": "Malaysia", "income": 24320, "health": 75.1, "population": 30331007}, {"country": "Maldives", "income": 14408, "health": 79.5, "population": 363657}, {"country": "Mali", "income": 1684, "health": 57.6, "population": 17599694}, {"country": "Malta", "income": 30265, "health": 82.1, "population": 418670}, {"country": "Marshall Islands", "income": 3661, "health": 65.1, "population": 52993}, {"country": "Mauritania", "income": 3877, "health": 65.7, "population": 4067564}, {"country": "Mauritius", "income": 18350, "health": 73.9, "population": 1273212}, {"country": "Mexico", "income": 16850, "health": 74.5, "population": 127017224}, {"country": "Micronesia, Fed. Sts.", "income": 3510, "health": 67.0, "population": 104460}, {"country": "Moldova", "income": 4896, "health": 72.7, "population": 4068897}, {"country": "Mongolia", "income": 11819, "health": 65.3, "population": 2959134}, {"country": "Montenegro", "income": 14833, "health": 75.8, "population": 625781}, {"country": "Morocco", "income": 7319, "health": 74.7, "population": 34377511}, {"country": "Mozambique", "income": 1176, "health": 56.4, "population": 27977863}, {"country": "Myanmar", "income": 4012, "health": 67.9, "population": 53897154}, {"country": "Namibia", "income": 10040, "health": 61.0, "population": 2458830}, {"country": "Nepal", "income": 2352, "health": 71.2, "population": 28513700}, {"country": "Netherlands", "income": 45784, "health": 80.6, "population": 16924929}, {"country": "New Zealand", "income": 34186, "health": 80.6, "population": 4528526}, {"country": "Nicaragua", "income": 4712, "health": 76.8, "population": 6082032}, {"country": "Niger", "income": 943, "health": 62.2, "population": 19899120}, {"country": "Nigeria", "income": 5727, "health": 61.33, "population": 182201962}, {"country": "North Korea", "income": 1390, "health": 71.4, "population": 25155317}, {"country": "Norway", "income": 64304, "health": 81.6, "population": 5210967}, {"country": "Oman", "income": 48226, "health": 75.7, "population": 4490541}, {"country": "Pakistan", "income": 4743, "health": 66.5, "population": 188924874}, {"country": "Panama", "income": 20485, "health": 78.2, "population": 3929141}, {"country": "Papua New Guinea", "income": 2529, "health": 60.6, "population": 7619321}, {"country": "Paraguay", "income": 8219, "health": 73.9, "population": 6639123}, {"country": "Peru", "income": 11903, "health": 77.5, "population": 31376670}, {"country": "Philippines", "income": 6876, "health": 70.2, "population": 100699395}, {"country": "Poland", "income": 24787, "health": 77.3, "population": 38611794}, {"country": "Portugal", "income": 26437, "health": 79.8, "population": 10349803}, {"country": "Qatar", "income": 132877, "health": 82.0, "population": 2235355}, {"country": "Romania", "income": 19203, "health": 76.8, "population": 19511324}, {"country": "Russia", "income": 23038, "health": 73.13, "population": 143456918}, {"country": "Rwanda", "income": 1549, "health": 66.53, "population": 11609666}, {"country": "Samoa", "income": 5558, "health": 72.2, "population": 193228}, {"country": "Sao Tome and Principe", "income": 3003, "health": 68.8, "population": 190344}, {"country": "Saudi Arabia", "income": 52469, "health": 78.1, "population": 31540372}, {"country": "Senegal", "income": 2251, "health": 66.1, "population": 15129273}, {"country": "Serbia", "income": 12908, "health": 78.1, "population": 8850975}, {"country": "Seychelles", "income": 25684, "health": 73.7, "population": 96471}, {"country": "Sierra Leone", "income": 2085, "health": 58.5, "population": 6453184}, {"country": "Singapore", "income": 80794, "health": 82.1, "population": 5603740}, {"country": "Slovak Republic", "income": 27204, "health": 76.4, "population": 5426258}, {"country": "Slovenia", "income": 28550, "health": 80.2, "population": 2067526}, {"country": "Solomon Islands", "income": 2047, "health": 64.1, "population": 583591}, {"country": "Somalia", "income": 624, "health": 58.7, "population": 10787104}, {"country": "South Africa", "income": 12509, "health": 63.72, "population": 54490406}, {"country": "South Korea", "income": 34644, "health": 80.7, "population": 50293439}, {"country": "South Sudan", "income": 3047, "health": 58.0, "population": 12339812}, {"country": "Spain", "income": 32979, "health": 81.7, "population": 46121699}, {"country": "Sri Lanka", "income": 10624, "health": 76.5, "population": 20715010}, {"country": "St. Lucia", "income": 9997, "health": 74.5, "population": 184999}, {"country": "St. Vincent and the Grenadines", "income": 10435, "health": 72.9, "population": 109462}, {"country": "Sudan", "income": 3975, "health": 69.5, "population": 40234882}, {"country": "Suriname", "income": 17125, "health": 70.5, "population": 542975}, {"country": "Swaziland", "income": 6095, "health": 51.5, "population": 1286970}, {"country": "Sweden", "income": 44892, "health": 82.0, "population": 9779426}, {"country": "Switzerland", "income": 56118, "health": 82.9, "population": 8298663}, {"country": "Syria", "income": 4637, "health": 70.26, "population": 18502413}, {"country": "Tajikistan", "income": 2582, "health": 71.0, "population": 8481855}, {"country": "Tanzania", "income": 2571, "health": 63.43, "population": 53470420}, {"country": "Thailand", "income": 14512, "health": 75.1, "population": 67959359}, {"country": "Timor-Leste", "income": 2086, "health": 72.4, "population": 1184765}, {"country": "Togo", "income": 1433, "health": 64.23, "population": 7304578}, {"country": "Tonga", "income": 5069, "health": 70.5, "population": 106170}, {"country": "Trinidad and Tobago", "income": 30113, "health": 71.4, "population": 1360088}, {"country": "Tunisia", "income": 11126, "health": 77.3, "population": 11253554}, {"country": "Turkey", "income": 19360, "health": 76.5, "population": 78665830}, {"country": "Turkmenistan", "income": 15865, "health": 67.9, "population": 5373502}, {"country": "Uganda", "income": 1680, "health": 60.8, "population": 39032383}, {"country": "Ukraine", "income": 8449, "health": 72.1, "population": 44823765}, {"country": "United Arab Emirates", "income": 60749, "health": 76.6, "population": 9156963}, {"country": "United Kingdom", "income": 38225, "health": 81.4, "population": 64715810}, {"country": "United States", "income": 53354, "health": 79.1, "population": 321773631}, {"country": "Uruguay", "income": 20438, "health": 77.3, "population": 3431555}, {"country": "Uzbekistan", "income": 5598, "health": 70.1, "population": 29893488}, {"country": "Vanuatu", "income": 2912, "health": 65.0, "population": 264652}, {"country": "Venezuela", "income": 15753, "health": 75.8, "population": 31108083}, {"country": "Vietnam", "income": 5623, "health": 76.5, "population": 93447601}, {"country": "West Bank and Gaza", "income": 4319, "health": 75.2, "population": 4668466}, {"country": "Yemen", "income": 3887, "health": 67.6, "population": 26832215}, {"country": "Zambia", "income": 4034, "health": 58.96, "population": 16211767}, {"country": "Zimbabwe", "income": 1801, "health": 60.01, "population": 15602751}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<section id="k-means-with-scikit-learn" class="level4">
+<h4 class="anchored" data-anchor-id="k-means-with-scikit-learn">K-Means with scikit-learn</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s start with 5 clusters</p>
+<div class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>KMeans?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Init signature:</span>
+KMeans<span class="ansi-blue-fg">(</span>
+    n_clusters<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">,</span>
+    <span class="ansi-blue-fg">*</span><span class="ansi-blue-fg">,</span>
+    init<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">'k-means++'</span><span class="ansi-blue-fg">,</span>
+    n_init<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">'warn'</span><span class="ansi-blue-fg">,</span>
+    max_iter<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">300</span><span class="ansi-blue-fg">,</span>
+    tol<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.0001</span><span class="ansi-blue-fg">,</span>
+    verbose<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span>
+    random_state<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    copy_x<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+    algorithm<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">'lloyd'</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>     
+K-Means clustering.
+Read more in the :ref:`User Guide &lt;k_means&gt;`.
+Parameters
+----------
+n_clusters : int, default=8
+    The number of clusters to form as well as the number of
+    centroids to generate.
+init : {'k-means++', 'random'}, callable or array-like of shape             (n_clusters, n_features), default='k-means++'
+    Method for initialization:
+    'k-means++' : selects initial cluster centroids using sampling based on
+    an empirical probability distribution of the points' contribution to the
+    overall inertia. This technique speeds up convergence. The algorithm
+    implemented is "greedy k-means++". It differs from the vanilla k-means++
+    by making several trials at each sampling step and choosing the best centroid
+    among them.
+    'random': choose `n_clusters` observations (rows) at random from data
+    for the initial centroids.
+    If an array is passed, it should be of shape (n_clusters, n_features)
+    and gives the initial centers.
+    If a callable is passed, it should take arguments X, n_clusters and a
+    random state and return an initialization.
+n_init : 'auto' or int, default=10
+    Number of times the k-means algorithm is run with different centroid
+    seeds. The final results is the best output of `n_init` consecutive runs
+    in terms of inertia. Several runs are recommended for sparse
+    high-dimensional problems (see :ref:`kmeans_sparse_high_dim`).
+    When `n_init='auto'`, the number of runs depends on the value of init:
+    10 if using `init='random'` or `init` is a callable;
+    1 if using `init='k-means++'` or `init` is an array-like.
+    .. versionadded:: 1.2
+       Added 'auto' option for `n_init`.
+    .. versionchanged:: 1.4
+       Default value for `n_init` will change from 10 to `'auto'` in version 1.4.
+max_iter : int, default=300
+    Maximum number of iterations of the k-means algorithm for a
+    single run.
+tol : float, default=1e-4
+    Relative tolerance with regards to Frobenius norm of the difference
+    in the cluster centers of two consecutive iterations to declare
+    convergence.
+verbose : int, default=0
+    Verbosity mode.
+random_state : int, RandomState instance or None, default=None
+    Determines random number generation for centroid initialization. Use
+    an int to make the randomness deterministic.
+    See :term:`Glossary &lt;random_state&gt;`.
+copy_x : bool, default=True
+    When pre-computing distances it is more numerically accurate to center
+    the data first. If copy_x is True (default), then the original data is
+    not modified. If False, the original data is modified, and put back
+    before the function returns, but small numerical differences may be
+    introduced by subtracting and then adding the data mean. Note that if
+    the original data is not C-contiguous, a copy will be made even if
+    copy_x is False. If the original data is sparse, but not in CSR format,
+    a copy will be made even if copy_x is False.
+algorithm : {"lloyd", "elkan", "auto", "full"}, default="lloyd"
+    K-means algorithm to use. The classical EM-style algorithm is `"lloyd"`.
+    The `"elkan"` variation can be more efficient on some datasets with
+    well-defined clusters, by using the triangle inequality. However it's
+    more memory intensive due to the allocation of an extra array of shape
+    `(n_samples, n_clusters)`.
+    `"auto"` and `"full"` are deprecated and they will be removed in
+    Scikit-Learn 1.3. They are both aliases for `"lloyd"`.
+    .. versionchanged:: 0.18
+        Added Elkan algorithm
+    .. versionchanged:: 1.1
+        Renamed "full" to "lloyd", and deprecated "auto" and "full".
+        Changed "auto" to use "lloyd" instead of "elkan".
+Attributes
+----------
+cluster_centers_ : ndarray of shape (n_clusters, n_features)
+    Coordinates of cluster centers. If the algorithm stops before fully
+    converging (see ``tol`` and ``max_iter``), these will not be
+    consistent with ``labels_``.
+labels_ : ndarray of shape (n_samples,)
+    Labels of each point
+inertia_ : float
+    Sum of squared distances of samples to their closest cluster center,
+    weighted by the sample weights if provided.
+n_iter_ : int
+    Number of iterations run.
+n_features_in_ : int
+    Number of features seen during :term:`fit`.
+    .. versionadded:: 0.24
+feature_names_in_ : ndarray of shape (`n_features_in_`,)
+    Names of features seen during :term:`fit`. Defined only when `X`
+    has feature names that are all strings.
+    .. versionadded:: 1.0
+See Also
+--------
+MiniBatchKMeans : Alternative online implementation that does incremental
+    updates of the centers positions using mini-batches.
+    For large scale learning (say n_samples &gt; 10k) MiniBatchKMeans is
+    probably much faster than the default batch implementation.
+Notes
+-----
+The k-means problem is solved using either Lloyd's or Elkan's algorithm.
+The average complexity is given by O(k n T), where n is the number of
+samples and T is the number of iteration.
+The worst case complexity is given by O(n^(k+2/p)) with
+n = n_samples, p = n_features.
+Refer to :doi:`"How slow is the k-means method?" D. Arthur and S. Vassilvitskii -
+SoCG2006.&lt;10.1145/1137856.1137880&gt;` for more details.
+In practice, the k-means algorithm is very fast (one of the fastest
+clustering algorithms available), but it falls in local minima. That's why
+it can be useful to restart it several times.
+If the algorithm stops before fully converging (because of ``tol`` or
+``max_iter``), ``labels_`` and ``cluster_centers_`` will not be consistent,
+i.e. the ``cluster_centers_`` will not be the means of the points in each
+cluster. Also, the estimator will reassign ``labels_`` after the last
+iteration to make ``labels_`` consistent with ``predict`` on the training
+set.
+Examples
+--------
+&gt;&gt;&gt; from sklearn.cluster import KMeans
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; X = np.array([[1, 2], [1, 4], [1, 0],
+...               [10, 2], [10, 4], [10, 0]])
+&gt;&gt;&gt; kmeans = KMeans(n_clusters=2, random_state=0, n_init="auto").fit(X)
+&gt;&gt;&gt; kmeans.labels_
+array([1, 1, 1, 0, 0, 0], dtype=int32)
+&gt;&gt;&gt; kmeans.predict([[0, 0], [12, 3]])
+array([1, 0], dtype=int32)
+&gt;&gt;&gt; kmeans.cluster_centers_
+array([[10.,  2.],
+       [ 1.,  2.]])
+<span class="ansi-red-fg">File:</span>           ~/mambaforge/envs/musa-550-fall-2023/lib/python3.10/site-packages/sklearn/cluster/_kmeans.py
+<span class="ansi-red-fg">Type:</span>           ABCMeta
+<span class="ansi-red-fg">Subclasses:</span>     </pre>
+</div>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">5</span>, n_init<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Lot’s of optional parameters, but <code>n_clusters</code> is the most important:</p>
+</section>
+<section id="lets-fit-just-income-first" class="level4">
+<h4 class="anchored" data-anchor-id="lets-fit-just-income-first">Let’s fit just income first</h4>
+<p>Use the <code>fit()</code> function</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>kmeans.fit(gapminder[[<span class="st">'income'</span>]])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="extract-the-cluster-labels" class="level4">
+<h4 class="anchored" data-anchor-id="extract-the-cluster-labels">Extract the cluster labels</h4>
+<p>Use the <code>labels_</code> attribute</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'label'</span>] <span class="op">=</span> kmeans.labels_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="how-big-are-our-clusters" class="level4">
+<h4 class="anchored" data-anchor-id="how-big-are-our-clusters">How big are our clusters?</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gapminder.groupby(<span class="st">'label'</span>).size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>label
+0    106
+1      6
+2     50
+3      1
+4     24
+dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-it-again-coloring-by-our-labels" class="level4">
+<h4 class="anchored" data-anchor-id="plot-it-again-coloring-by-our-labels">Plot it again, coloring by our labels</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    alt.Chart(gapminder)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    .mark_circle()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    .encode(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        alt.X(<span class="st">"income:Q"</span>, scale<span class="op">=</span>alt.Scale(<span class="bu">type</span><span class="op">=</span><span class="st">"log"</span>)),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        alt.Y(<span class="st">"health:Q"</span>, scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="st">"population:Q"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>alt.Color(<span class="st">"label:N"</span>, scale<span class="op">=</span>alt.Scale(scheme<span class="op">=</span><span class="st">"dark2"</span>)),</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        tooltip<span class="op">=</span><span class="bu">list</span>(gapminder.columns),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    .properties(width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    .interactive()</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+<style>
+  #altair-viz-83eddae6dd0848f6aa07ee9491213d98.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-83eddae6dd0848f6aa07ee9491213d98.vega-embed details,
+  #altair-viz-83eddae6dd0848f6aa07ee9491213d98.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-83eddae6dd0848f6aa07ee9491213d98"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-83eddae6dd0848f6aa07ee9491213d98") {
+      outputDiv = document.getElementById("altair-viz-83eddae6dd0848f6aa07ee9491213d98");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-d9e6fabb9055911832784c2d26798428"}, "mark": {"type": "circle"}, "encoding": {"color": {"field": "label", "scale": {"scheme": "dark2"}, "type": "nominal"}, "size": {"field": "population", "type": "quantitative"}, "tooltip": [{"field": "country", "type": "nominal"}, {"field": "income", "type": "quantitative"}, {"field": "health", "type": "quantitative"}, {"field": "population", "type": "quantitative"}, {"field": "label", "type": "quantitative"}], "x": {"field": "income", "scale": {"type": "log"}, "type": "quantitative"}, "y": {"field": "health", "scale": {"zero": false}, "type": "quantitative"}}, "height": 600, "params": [{"name": "param_2", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "width": 800, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-d9e6fabb9055911832784c2d26798428": [{"country": "Afghanistan", "income": 1925, "health": 57.63, "population": 32526562, "label": 0}, {"country": "Albania", "income": 10620, "health": 76.0, "population": 2896679, "label": 0}, {"country": "Algeria", "income": 13434, "health": 76.5, "population": 39666519, "label": 2}, {"country": "Andorra", "income": 46577, "health": 84.1, "population": 70473, "label": 4}, {"country": "Angola", "income": 7615, "health": 61.0, "population": 25021974, "label": 0}, {"country": "Antigua and Barbuda", "income": 21049, "health": 75.2, "population": 91818, "label": 2}, {"country": "Argentina", "income": 17344, "health": 76.2, "population": 43416755, "label": 2}, {"country": "Armenia", "income": 7763, "health": 74.4, "population": 3017712, "label": 0}, {"country": "Australia", "income": 44056, "health": 81.8, "population": 23968973, "label": 4}, {"country": "Austria", "income": 44401, "health": 81.0, "population": 8544586, "label": 4}, {"country": "Azerbaijan", "income": 16986, "health": 72.9, "population": 9753968, "label": 2}, {"country": "Bahamas", "income": 22818, "health": 72.3, "population": 388019, "label": 2}, {"country": "Bahrain", "income": 44138, "health": 79.2, "population": 1377237, "label": 4}, {"country": "Bangladesh", "income": 3161, "health": 70.1, "population": 160995642, "label": 0}, {"country": "Barbados", "income": 12984, "health": 75.8, "population": 284215, "label": 0}, {"country": "Belarus", "income": 17415, "health": 70.4, "population": 9495826, "label": 2}, {"country": "Belgium", "income": 41240, "health": 80.4, "population": 11299192, "label": 4}, {"country": "Belize", "income": 8501, "health": 70.0, "population": 359287, "label": 0}, {"country": "Benin", "income": 1830, "health": 65.5, "population": 10879829, "label": 0}, {"country": "Bhutan", "income": 7983, "health": 70.2, "population": 774830, "label": 0}, {"country": "Bolivia", "income": 6295, "health": 72.3, "population": 10724705, "label": 0}, {"country": "Bosnia and Herzegovina", "income": 9833, "health": 77.9, "population": 3810416, "label": 0}, {"country": "Botswana", "income": 17196, "health": 66.4, "population": 2262485, "label": 2}, {"country": "Brazil", "income": 15441, "health": 75.6, "population": 207847528, "label": 2}, {"country": "Brunei", "income": 73003, "health": 78.7, "population": 423188, "label": 1}, {"country": "Bulgaria", "income": 16371, "health": 74.9, "population": 7149787, "label": 2}, {"country": "Burkina Faso", "income": 1654, "health": 62.8, "population": 18105570, "label": 0}, {"country": "Burundi", "income": 777, "health": 60.4, "population": 11178921, "label": 0}, {"country": "Cambodia", "income": 3267, "health": 68.4, "population": 15577899, "label": 0}, {"country": "Cameroon", "income": 2897, "health": 59.5, "population": 23344179, "label": 0}, {"country": "Canada", "income": 43294, "health": 81.7, "population": 35939927, "label": 4}, {"country": "Cape Verde", "income": 6514, "health": 74.6, "population": 520502, "label": 0}, {"country": "Central African Republic", "income": 599, "health": 53.8, "population": 4900274, "label": 0}, {"country": "Chad", "income": 2191, "health": 57.7, "population": 14037472, "label": 0}, {"country": "Chile", "income": 22465, "health": 79.3, "population": 17948141, "label": 2}, {"country": "China", "income": 13334, "health": 76.9, "population": 1376048943, "label": 2}, {"country": "Colombia", "income": 12761, "health": 75.8, "population": 48228704, "label": 0}, {"country": "Comoros", "income": 1472, "health": 64.1, "population": 788474, "label": 0}, {"country": "Congo, Dem. Rep.", "income": 809, "health": 58.3, "population": 77266814, "label": 0}, {"country": "Congo, Rep.", "income": 6220, "health": 61.9, "population": 4620330, "label": 0}, {"country": "Costa Rica", "income": 14132, "health": 80.0, "population": 4807850, "label": 2}, {"country": "Cote d'Ivoire", "income": 3491, "health": 60.33, "population": 22701556, "label": 0}, {"country": "Croatia", "income": 20260, "health": 78.0, "population": 4240317, "label": 2}, {"country": "Cuba", "income": 21291, "health": 78.5, "population": 11389562, "label": 2}, {"country": "Cyprus", "income": 29797, "health": 82.6, "population": 1165300, "label": 2}, {"country": "Czech Republic", "income": 29437, "health": 78.6, "population": 10543186, "label": 2}, {"country": "Denmark", "income": 43495, "health": 80.1, "population": 5669081, "label": 4}, {"country": "Djibouti", "income": 3139, "health": 64.63, "population": 887861, "label": 0}, {"country": "Dominica", "income": 10503, "health": 74.6, "population": 72680, "label": 0}, {"country": "Dominican Republic", "income": 12837, "health": 73.8, "population": 10528391, "label": 0}, {"country": "Ecuador", "income": 10996, "health": 75.2, "population": 16144363, "label": 0}, {"country": "Egypt", "income": 11031, "health": 71.3, "population": 91508084, "label": 0}, {"country": "El Salvador", "income": 7776, "health": 74.1, "population": 6126583, "label": 0}, {"country": "Equatorial Guinea", "income": 31087, "health": 60.63, "population": 845060, "label": 2}, {"country": "Eritrea", "income": 1129, "health": 62.9, "population": 5227791, "label": 0}, {"country": "Estonia", "income": 26812, "health": 76.8, "population": 1312558, "label": 2}, {"country": "Ethiopia", "income": 1520, "health": 63.6, "population": 99390750, "label": 0}, {"country": "Fiji", "income": 7925, "health": 66.3, "population": 892145, "label": 0}, {"country": "Finland", "income": 38923, "health": 80.8, "population": 5503457, "label": 4}, {"country": "France", "income": 37599, "health": 81.9, "population": 64395345, "label": 4}, {"country": "Gabon", "income": 18627, "health": 60.53, "population": 1725292, "label": 2}, {"country": "Gambia", "income": 1644, "health": 65.1, "population": 1990924, "label": 0}, {"country": "Georgia", "income": 7474, "health": 73.3, "population": 3999812, "label": 0}, {"country": "Germany", "income": 44053, "health": 81.1, "population": 80688545, "label": 4}, {"country": "Ghana", "income": 4099, "health": 65.5, "population": 27409893, "label": 0}, {"country": "Greece", "income": 25430, "health": 79.8, "population": 10954617, "label": 2}, {"country": "Grenada", "income": 11593, "health": 71.7, "population": 106825, "label": 0}, {"country": "Guatemala", "income": 7279, "health": 73.1, "population": 16342897, "label": 0}, {"country": "Guinea", "income": 1225, "health": 60.8, "population": 12608590, "label": 0}, {"country": "Guinea-Bissau", "income": 1386, "health": 53.4, "population": 1844325, "label": 0}, {"country": "Guyana", "income": 6816, "health": 64.4, "population": 767085, "label": 0}, {"country": "Haiti", "income": 1710, "health": 65.3, "population": 10711067, "label": 0}, {"country": "Honduras", "income": 4270, "health": 72.4, "population": 8075060, "label": 0}, {"country": "Hungary", "income": 24200, "health": 76.2, "population": 9855023, "label": 2}, {"country": "Iceland", "income": 42182, "health": 82.8, "population": 329425, "label": 4}, {"country": "India", "income": 5903, "health": 66.8, "population": 1311050527, "label": 0}, {"country": "Indonesia", "income": 10504, "health": 70.9, "population": 257563815, "label": 0}, {"country": "Iran", "income": 15573, "health": 78.5, "population": 79109272, "label": 2}, {"country": "Iraq", "income": 14646, "health": 72.1, "population": 36423395, "label": 2}, {"country": "Ireland", "income": 47758, "health": 80.4, "population": 4688465, "label": 4}, {"country": "Israel", "income": 31590, "health": 82.4, "population": 8064036, "label": 2}, {"country": "Italy", "income": 33297, "health": 82.1, "population": 59797685, "label": 4}, {"country": "Jamaica", "income": 8606, "health": 75.5, "population": 2793335, "label": 0}, {"country": "Japan", "income": 36162, "health": 83.5, "population": 126573481, "label": 4}, {"country": "Jordan", "income": 11752, "health": 78.3, "population": 7594547, "label": 0}, {"country": "Kazakhstan", "income": 23468, "health": 68.2, "population": 17625226, "label": 2}, {"country": "Kenya", "income": 2898, "health": 66.63, "population": 46050302, "label": 0}, {"country": "Kiribati", "income": 1824, "health": 62.4, "population": 112423, "label": 0}, {"country": "Kuwait", "income": 82633, "health": 80.7, "population": 3892115, "label": 1}, {"country": "Kyrgyz Republic", "income": 3245, "health": 69.0, "population": 5939962, "label": 0}, {"country": "Lao", "income": 5212, "health": 66.4, "population": 6802023, "label": 0}, {"country": "Latvia", "income": 23282, "health": 75.7, "population": 1970503, "label": 2}, {"country": "Lebanon", "income": 17050, "health": 78.5, "population": 5850743, "label": 2}, {"country": "Lesotho", "income": 2598, "health": 48.5, "population": 2135022, "label": 0}, {"country": "Liberia", "income": 958, "health": 63.9, "population": 4503438, "label": 0}, {"country": "Libya", "income": 17261, "health": 76.2, "population": 6278438, "label": 2}, {"country": "Lithuania", "income": 26665, "health": 75.4, "population": 2878405, "label": 2}, {"country": "Luxembourg", "income": 88314, "health": 81.1, "population": 567110, "label": 1}, {"country": "Macedonia, FYR", "income": 12547, "health": 77.0, "population": 2078453, "label": 0}, {"country": "Madagascar", "income": 1400, "health": 64.7, "population": 24235390, "label": 0}, {"country": "Malawi", "income": 799, "health": 60.22, "population": 17215232, "label": 0}, {"country": "Malaysia", "income": 24320, "health": 75.1, "population": 30331007, "label": 2}, {"country": "Maldives", "income": 14408, "health": 79.5, "population": 363657, "label": 2}, {"country": "Mali", "income": 1684, "health": 57.6, "population": 17599694, "label": 0}, {"country": "Malta", "income": 30265, "health": 82.1, "population": 418670, "label": 2}, {"country": "Marshall Islands", "income": 3661, "health": 65.1, "population": 52993, "label": 0}, {"country": "Mauritania", "income": 3877, "health": 65.7, "population": 4067564, "label": 0}, {"country": "Mauritius", "income": 18350, "health": 73.9, "population": 1273212, "label": 2}, {"country": "Mexico", "income": 16850, "health": 74.5, "population": 127017224, "label": 2}, {"country": "Micronesia, Fed. Sts.", "income": 3510, "health": 67.0, "population": 104460, "label": 0}, {"country": "Moldova", "income": 4896, "health": 72.7, "population": 4068897, "label": 0}, {"country": "Mongolia", "income": 11819, "health": 65.3, "population": 2959134, "label": 0}, {"country": "Montenegro", "income": 14833, "health": 75.8, "population": 625781, "label": 2}, {"country": "Morocco", "income": 7319, "health": 74.7, "population": 34377511, "label": 0}, {"country": "Mozambique", "income": 1176, "health": 56.4, "population": 27977863, "label": 0}, {"country": "Myanmar", "income": 4012, "health": 67.9, "population": 53897154, "label": 0}, {"country": "Namibia", "income": 10040, "health": 61.0, "population": 2458830, "label": 0}, {"country": "Nepal", "income": 2352, "health": 71.2, "population": 28513700, "label": 0}, {"country": "Netherlands", "income": 45784, "health": 80.6, "population": 16924929, "label": 4}, {"country": "New Zealand", "income": 34186, "health": 80.6, "population": 4528526, "label": 4}, {"country": "Nicaragua", "income": 4712, "health": 76.8, "population": 6082032, "label": 0}, {"country": "Niger", "income": 943, "health": 62.2, "population": 19899120, "label": 0}, {"country": "Nigeria", "income": 5727, "health": 61.33, "population": 182201962, "label": 0}, {"country": "North Korea", "income": 1390, "health": 71.4, "population": 25155317, "label": 0}, {"country": "Norway", "income": 64304, "health": 81.6, "population": 5210967, "label": 1}, {"country": "Oman", "income": 48226, "health": 75.7, "population": 4490541, "label": 4}, {"country": "Pakistan", "income": 4743, "health": 66.5, "population": 188924874, "label": 0}, {"country": "Panama", "income": 20485, "health": 78.2, "population": 3929141, "label": 2}, {"country": "Papua New Guinea", "income": 2529, "health": 60.6, "population": 7619321, "label": 0}, {"country": "Paraguay", "income": 8219, "health": 73.9, "population": 6639123, "label": 0}, {"country": "Peru", "income": 11903, "health": 77.5, "population": 31376670, "label": 0}, {"country": "Philippines", "income": 6876, "health": 70.2, "population": 100699395, "label": 0}, {"country": "Poland", "income": 24787, "health": 77.3, "population": 38611794, "label": 2}, {"country": "Portugal", "income": 26437, "health": 79.8, "population": 10349803, "label": 2}, {"country": "Qatar", "income": 132877, "health": 82.0, "population": 2235355, "label": 3}, {"country": "Romania", "income": 19203, "health": 76.8, "population": 19511324, "label": 2}, {"country": "Russia", "income": 23038, "health": 73.13, "population": 143456918, "label": 2}, {"country": "Rwanda", "income": 1549, "health": 66.53, "population": 11609666, "label": 0}, {"country": "Samoa", "income": 5558, "health": 72.2, "population": 193228, "label": 0}, {"country": "Sao Tome and Principe", "income": 3003, "health": 68.8, "population": 190344, "label": 0}, {"country": "Saudi Arabia", "income": 52469, "health": 78.1, "population": 31540372, "label": 4}, {"country": "Senegal", "income": 2251, "health": 66.1, "population": 15129273, "label": 0}, {"country": "Serbia", "income": 12908, "health": 78.1, "population": 8850975, "label": 0}, {"country": "Seychelles", "income": 25684, "health": 73.7, "population": 96471, "label": 2}, {"country": "Sierra Leone", "income": 2085, "health": 58.5, "population": 6453184, "label": 0}, {"country": "Singapore", "income": 80794, "health": 82.1, "population": 5603740, "label": 1}, {"country": "Slovak Republic", "income": 27204, "health": 76.4, "population": 5426258, "label": 2}, {"country": "Slovenia", "income": 28550, "health": 80.2, "population": 2067526, "label": 2}, {"country": "Solomon Islands", "income": 2047, "health": 64.1, "population": 583591, "label": 0}, {"country": "Somalia", "income": 624, "health": 58.7, "population": 10787104, "label": 0}, {"country": "South Africa", "income": 12509, "health": 63.72, "population": 54490406, "label": 0}, {"country": "South Korea", "income": 34644, "health": 80.7, "population": 50293439, "label": 4}, {"country": "South Sudan", "income": 3047, "health": 58.0, "population": 12339812, "label": 0}, {"country": "Spain", "income": 32979, "health": 81.7, "population": 46121699, "label": 4}, {"country": "Sri Lanka", "income": 10624, "health": 76.5, "population": 20715010, "label": 0}, {"country": "St. Lucia", "income": 9997, "health": 74.5, "population": 184999, "label": 0}, {"country": "St. Vincent and the Grenadines", "income": 10435, "health": 72.9, "population": 109462, "label": 0}, {"country": "Sudan", "income": 3975, "health": 69.5, "population": 40234882, "label": 0}, {"country": "Suriname", "income": 17125, "health": 70.5, "population": 542975, "label": 2}, {"country": "Swaziland", "income": 6095, "health": 51.5, "population": 1286970, "label": 0}, {"country": "Sweden", "income": 44892, "health": 82.0, "population": 9779426, "label": 4}, {"country": "Switzerland", "income": 56118, "health": 82.9, "population": 8298663, "label": 4}, {"country": "Syria", "income": 4637, "health": 70.26, "population": 18502413, "label": 0}, {"country": "Tajikistan", "income": 2582, "health": 71.0, "population": 8481855, "label": 0}, {"country": "Tanzania", "income": 2571, "health": 63.43, "population": 53470420, "label": 0}, {"country": "Thailand", "income": 14512, "health": 75.1, "population": 67959359, "label": 2}, {"country": "Timor-Leste", "income": 2086, "health": 72.4, "population": 1184765, "label": 0}, {"country": "Togo", "income": 1433, "health": 64.23, "population": 7304578, "label": 0}, {"country": "Tonga", "income": 5069, "health": 70.5, "population": 106170, "label": 0}, {"country": "Trinidad and Tobago", "income": 30113, "health": 71.4, "population": 1360088, "label": 2}, {"country": "Tunisia", "income": 11126, "health": 77.3, "population": 11253554, "label": 0}, {"country": "Turkey", "income": 19360, "health": 76.5, "population": 78665830, "label": 2}, {"country": "Turkmenistan", "income": 15865, "health": 67.9, "population": 5373502, "label": 2}, {"country": "Uganda", "income": 1680, "health": 60.8, "population": 39032383, "label": 0}, {"country": "Ukraine", "income": 8449, "health": 72.1, "population": 44823765, "label": 0}, {"country": "United Arab Emirates", "income": 60749, "health": 76.6, "population": 9156963, "label": 1}, {"country": "United Kingdom", "income": 38225, "health": 81.4, "population": 64715810, "label": 4}, {"country": "United States", "income": 53354, "health": 79.1, "population": 321773631, "label": 4}, {"country": "Uruguay", "income": 20438, "health": 77.3, "population": 3431555, "label": 2}, {"country": "Uzbekistan", "income": 5598, "health": 70.1, "population": 29893488, "label": 0}, {"country": "Vanuatu", "income": 2912, "health": 65.0, "population": 264652, "label": 0}, {"country": "Venezuela", "income": 15753, "health": 75.8, "population": 31108083, "label": 2}, {"country": "Vietnam", "income": 5623, "health": 76.5, "population": 93447601, "label": 0}, {"country": "West Bank and Gaza", "income": 4319, "health": 75.2, "population": 4668466, "label": 0}, {"country": "Yemen", "income": 3887, "health": 67.6, "population": 26832215, "label": 0}, {"country": "Zambia", "income": 4034, "health": 58.96, "population": 16211767, "label": 0}, {"country": "Zimbabwe", "income": 1801, "health": 60.01, "population": 15602751, "label": 0}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+</section>
+<section id="calculate-average-income-by-group" class="level4">
+<h4 class="anchored" data-anchor-id="calculate-average-income-by-group">Calculate average income by group</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gapminder.groupby(<span class="st">"label"</span>)[<span class="st">'income'</span>].mean().sort_values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>label
+0      5279.830189
+2     21040.820000
+4     42835.500000
+1     74966.166667
+3    132877.000000
+Name: income, dtype: float64</code></pre>
+</div>
+</div>
+<p>Data is nicely partitioned into income levels</p>
+</section>
+<section id="how-about-health-income-and-population" class="level4">
+<h4 class="anchored" data-anchor-id="how-about-health-income-and-population">How about health, income, and population?</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit all three columns</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>kmeans.fit(gapminder[[<span class="st">'income'</span>, <span class="st">'health'</span>, <span class="st">'population'</span>]])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the labels</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'label'</span>] <span class="op">=</span> kmeans.labels_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">health</th>
+<th data-quarto-table-cell-role="th">population</th>
+<th data-quarto-table-cell-role="th">label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Afghanistan</td>
+<td>1925</td>
+<td>57.63</td>
+<td>32526562</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Albania</td>
+<td>10620</td>
+<td>76.00</td>
+<td>2896679</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Algeria</td>
+<td>13434</td>
+<td>76.50</td>
+<td>39666519</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Andorra</td>
+<td>46577</td>
+<td>84.10</td>
+<td>70473</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Angola</td>
+<td>7615</td>
+<td>61.00</td>
+<td>25021974</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">182</td>
+<td>Vietnam</td>
+<td>5623</td>
+<td>76.50</td>
+<td>93447601</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">183</td>
+<td>West Bank and Gaza</td>
+<td>4319</td>
+<td>75.20</td>
+<td>4668466</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">184</td>
+<td>Yemen</td>
+<td>3887</td>
+<td>67.60</td>
+<td>26832215</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">185</td>
+<td>Zambia</td>
+<td>4034</td>
+<td>58.96</td>
+<td>16211767</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">186</td>
+<td>Zimbabwe</td>
+<td>1801</td>
+<td>60.01</td>
+<td>15602751</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+<p>187 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    alt.Chart(gapminder)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    .mark_circle()</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    .encode(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        alt.X(<span class="st">"income:Q"</span>, scale<span class="op">=</span>alt.Scale(<span class="bu">type</span><span class="op">=</span><span class="st">"log"</span>)),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        alt.Y(<span class="st">"health:Q"</span>, scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="st">"population:Q"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>alt.Color(<span class="st">"label:N"</span>, scale<span class="op">=</span>alt.Scale(scheme<span class="op">=</span><span class="st">"dark2"</span>)),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        tooltip<span class="op">=</span><span class="bu">list</span>(gapminder.columns),</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    .properties(width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    .interactive()</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+
+<style>
+  #altair-viz-87ba2fd581864b03b19dc5dc57f21fc1.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-87ba2fd581864b03b19dc5dc57f21fc1.vega-embed details,
+  #altair-viz-87ba2fd581864b03b19dc5dc57f21fc1.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-87ba2fd581864b03b19dc5dc57f21fc1"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-87ba2fd581864b03b19dc5dc57f21fc1") {
+      outputDiv = document.getElementById("altair-viz-87ba2fd581864b03b19dc5dc57f21fc1");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-9bdcb01d9ae7af8ba89f000028eeb5f1"}, "mark": {"type": "circle"}, "encoding": {"color": {"field": "label", "scale": {"scheme": "dark2"}, "type": "nominal"}, "size": {"field": "population", "type": "quantitative"}, "tooltip": [{"field": "country", "type": "nominal"}, {"field": "income", "type": "quantitative"}, {"field": "health", "type": "quantitative"}, {"field": "population", "type": "quantitative"}, {"field": "label", "type": "quantitative"}], "x": {"field": "income", "scale": {"type": "log"}, "type": "quantitative"}, "y": {"field": "health", "scale": {"zero": false}, "type": "quantitative"}}, "height": 600, "params": [{"name": "param_3", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "width": 800, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-9bdcb01d9ae7af8ba89f000028eeb5f1": [{"country": "Afghanistan", "income": 1925, "health": 57.63, "population": 32526562, "label": 2}, {"country": "Albania", "income": 10620, "health": 76.0, "population": 2896679, "label": 2}, {"country": "Algeria", "income": 13434, "health": 76.5, "population": 39666519, "label": 0}, {"country": "Andorra", "income": 46577, "health": 84.1, "population": 70473, "label": 2}, {"country": "Angola", "income": 7615, "health": 61.0, "population": 25021974, "label": 2}, {"country": "Antigua and Barbuda", "income": 21049, "health": 75.2, "population": 91818, "label": 2}, {"country": "Argentina", "income": 17344, "health": 76.2, "population": 43416755, "label": 0}, {"country": "Armenia", "income": 7763, "health": 74.4, "population": 3017712, "label": 2}, {"country": "Australia", "income": 44056, "health": 81.8, "population": 23968973, "label": 2}, {"country": "Austria", "income": 44401, "health": 81.0, "population": 8544586, "label": 2}, {"country": "Azerbaijan", "income": 16986, "health": 72.9, "population": 9753968, "label": 2}, {"country": "Bahamas", "income": 22818, "health": 72.3, "population": 388019, "label": 2}, {"country": "Bahrain", "income": 44138, "health": 79.2, "population": 1377237, "label": 2}, {"country": "Bangladesh", "income": 3161, "health": 70.1, "population": 160995642, "label": 4}, {"country": "Barbados", "income": 12984, "health": 75.8, "population": 284215, "label": 2}, {"country": "Belarus", "income": 17415, "health": 70.4, "population": 9495826, "label": 2}, {"country": "Belgium", "income": 41240, "health": 80.4, "population": 11299192, "label": 2}, {"country": "Belize", "income": 8501, "health": 70.0, "population": 359287, "label": 2}, {"country": "Benin", "income": 1830, "health": 65.5, "population": 10879829, "label": 2}, {"country": "Bhutan", "income": 7983, "health": 70.2, "population": 774830, "label": 2}, {"country": "Bolivia", "income": 6295, "health": 72.3, "population": 10724705, "label": 2}, {"country": "Bosnia and Herzegovina", "income": 9833, "health": 77.9, "population": 3810416, "label": 2}, {"country": "Botswana", "income": 17196, "health": 66.4, "population": 2262485, "label": 2}, {"country": "Brazil", "income": 15441, "health": 75.6, "population": 207847528, "label": 4}, {"country": "Brunei", "income": 73003, "health": 78.7, "population": 423188, "label": 2}, {"country": "Bulgaria", "income": 16371, "health": 74.9, "population": 7149787, "label": 2}, {"country": "Burkina Faso", "income": 1654, "health": 62.8, "population": 18105570, "label": 2}, {"country": "Burundi", "income": 777, "health": 60.4, "population": 11178921, "label": 2}, {"country": "Cambodia", "income": 3267, "health": 68.4, "population": 15577899, "label": 2}, {"country": "Cameroon", "income": 2897, "health": 59.5, "population": 23344179, "label": 2}, {"country": "Canada", "income": 43294, "health": 81.7, "population": 35939927, "label": 0}, {"country": "Cape Verde", "income": 6514, "health": 74.6, "population": 520502, "label": 2}, {"country": "Central African Republic", "income": 599, "health": 53.8, "population": 4900274, "label": 2}, {"country": "Chad", "income": 2191, "health": 57.7, "population": 14037472, "label": 2}, {"country": "Chile", "income": 22465, "health": 79.3, "population": 17948141, "label": 2}, {"country": "China", "income": 13334, "health": 76.9, "population": 1376048943, "label": 1}, {"country": "Colombia", "income": 12761, "health": 75.8, "population": 48228704, "label": 0}, {"country": "Comoros", "income": 1472, "health": 64.1, "population": 788474, "label": 2}, {"country": "Congo, Dem. Rep.", "income": 809, "health": 58.3, "population": 77266814, "label": 0}, {"country": "Congo, Rep.", "income": 6220, "health": 61.9, "population": 4620330, "label": 2}, {"country": "Costa Rica", "income": 14132, "health": 80.0, "population": 4807850, "label": 2}, {"country": "Cote d'Ivoire", "income": 3491, "health": 60.33, "population": 22701556, "label": 2}, {"country": "Croatia", "income": 20260, "health": 78.0, "population": 4240317, "label": 2}, {"country": "Cuba", "income": 21291, "health": 78.5, "population": 11389562, "label": 2}, {"country": "Cyprus", "income": 29797, "health": 82.6, "population": 1165300, "label": 2}, {"country": "Czech Republic", "income": 29437, "health": 78.6, "population": 10543186, "label": 2}, {"country": "Denmark", "income": 43495, "health": 80.1, "population": 5669081, "label": 2}, {"country": "Djibouti", "income": 3139, "health": 64.63, "population": 887861, "label": 2}, {"country": "Dominica", "income": 10503, "health": 74.6, "population": 72680, "label": 2}, {"country": "Dominican Republic", "income": 12837, "health": 73.8, "population": 10528391, "label": 2}, {"country": "Ecuador", "income": 10996, "health": 75.2, "population": 16144363, "label": 2}, {"country": "Egypt", "income": 11031, "health": 71.3, "population": 91508084, "label": 0}, {"country": "El Salvador", "income": 7776, "health": 74.1, "population": 6126583, "label": 2}, {"country": "Equatorial Guinea", "income": 31087, "health": 60.63, "population": 845060, "label": 2}, {"country": "Eritrea", "income": 1129, "health": 62.9, "population": 5227791, "label": 2}, {"country": "Estonia", "income": 26812, "health": 76.8, "population": 1312558, "label": 2}, {"country": "Ethiopia", "income": 1520, "health": 63.6, "population": 99390750, "label": 0}, {"country": "Fiji", "income": 7925, "health": 66.3, "population": 892145, "label": 2}, {"country": "Finland", "income": 38923, "health": 80.8, "population": 5503457, "label": 2}, {"country": "France", "income": 37599, "health": 81.9, "population": 64395345, "label": 0}, {"country": "Gabon", "income": 18627, "health": 60.53, "population": 1725292, "label": 2}, {"country": "Gambia", "income": 1644, "health": 65.1, "population": 1990924, "label": 2}, {"country": "Georgia", "income": 7474, "health": 73.3, "population": 3999812, "label": 2}, {"country": "Germany", "income": 44053, "health": 81.1, "population": 80688545, "label": 0}, {"country": "Ghana", "income": 4099, "health": 65.5, "population": 27409893, "label": 2}, {"country": "Greece", "income": 25430, "health": 79.8, "population": 10954617, "label": 2}, {"country": "Grenada", "income": 11593, "health": 71.7, "population": 106825, "label": 2}, {"country": "Guatemala", "income": 7279, "health": 73.1, "population": 16342897, "label": 2}, {"country": "Guinea", "income": 1225, "health": 60.8, "population": 12608590, "label": 2}, {"country": "Guinea-Bissau", "income": 1386, "health": 53.4, "population": 1844325, "label": 2}, {"country": "Guyana", "income": 6816, "health": 64.4, "population": 767085, "label": 2}, {"country": "Haiti", "income": 1710, "health": 65.3, "population": 10711067, "label": 2}, {"country": "Honduras", "income": 4270, "health": 72.4, "population": 8075060, "label": 2}, {"country": "Hungary", "income": 24200, "health": 76.2, "population": 9855023, "label": 2}, {"country": "Iceland", "income": 42182, "health": 82.8, "population": 329425, "label": 2}, {"country": "India", "income": 5903, "health": 66.8, "population": 1311050527, "label": 1}, {"country": "Indonesia", "income": 10504, "health": 70.9, "population": 257563815, "label": 3}, {"country": "Iran", "income": 15573, "health": 78.5, "population": 79109272, "label": 0}, {"country": "Iraq", "income": 14646, "health": 72.1, "population": 36423395, "label": 0}, {"country": "Ireland", "income": 47758, "health": 80.4, "population": 4688465, "label": 2}, {"country": "Israel", "income": 31590, "health": 82.4, "population": 8064036, "label": 2}, {"country": "Italy", "income": 33297, "health": 82.1, "population": 59797685, "label": 0}, {"country": "Jamaica", "income": 8606, "health": 75.5, "population": 2793335, "label": 2}, {"country": "Japan", "income": 36162, "health": 83.5, "population": 126573481, "label": 4}, {"country": "Jordan", "income": 11752, "health": 78.3, "population": 7594547, "label": 2}, {"country": "Kazakhstan", "income": 23468, "health": 68.2, "population": 17625226, "label": 2}, {"country": "Kenya", "income": 2898, "health": 66.63, "population": 46050302, "label": 0}, {"country": "Kiribati", "income": 1824, "health": 62.4, "population": 112423, "label": 2}, {"country": "Kuwait", "income": 82633, "health": 80.7, "population": 3892115, "label": 2}, {"country": "Kyrgyz Republic", "income": 3245, "health": 69.0, "population": 5939962, "label": 2}, {"country": "Lao", "income": 5212, "health": 66.4, "population": 6802023, "label": 2}, {"country": "Latvia", "income": 23282, "health": 75.7, "population": 1970503, "label": 2}, {"country": "Lebanon", "income": 17050, "health": 78.5, "population": 5850743, "label": 2}, {"country": "Lesotho", "income": 2598, "health": 48.5, "population": 2135022, "label": 2}, {"country": "Liberia", "income": 958, "health": 63.9, "population": 4503438, "label": 2}, {"country": "Libya", "income": 17261, "health": 76.2, "population": 6278438, "label": 2}, {"country": "Lithuania", "income": 26665, "health": 75.4, "population": 2878405, "label": 2}, {"country": "Luxembourg", "income": 88314, "health": 81.1, "population": 567110, "label": 2}, {"country": "Macedonia, FYR", "income": 12547, "health": 77.0, "population": 2078453, "label": 2}, {"country": "Madagascar", "income": 1400, "health": 64.7, "population": 24235390, "label": 2}, {"country": "Malawi", "income": 799, "health": 60.22, "population": 17215232, "label": 2}, {"country": "Malaysia", "income": 24320, "health": 75.1, "population": 30331007, "label": 2}, {"country": "Maldives", "income": 14408, "health": 79.5, "population": 363657, "label": 2}, {"country": "Mali", "income": 1684, "health": 57.6, "population": 17599694, "label": 2}, {"country": "Malta", "income": 30265, "health": 82.1, "population": 418670, "label": 2}, {"country": "Marshall Islands", "income": 3661, "health": 65.1, "population": 52993, "label": 2}, {"country": "Mauritania", "income": 3877, "health": 65.7, "population": 4067564, "label": 2}, {"country": "Mauritius", "income": 18350, "health": 73.9, "population": 1273212, "label": 2}, {"country": "Mexico", "income": 16850, "health": 74.5, "population": 127017224, "label": 4}, {"country": "Micronesia, Fed. Sts.", "income": 3510, "health": 67.0, "population": 104460, "label": 2}, {"country": "Moldova", "income": 4896, "health": 72.7, "population": 4068897, "label": 2}, {"country": "Mongolia", "income": 11819, "health": 65.3, "population": 2959134, "label": 2}, {"country": "Montenegro", "income": 14833, "health": 75.8, "population": 625781, "label": 2}, {"country": "Morocco", "income": 7319, "health": 74.7, "population": 34377511, "label": 2}, {"country": "Mozambique", "income": 1176, "health": 56.4, "population": 27977863, "label": 2}, {"country": "Myanmar", "income": 4012, "health": 67.9, "population": 53897154, "label": 0}, {"country": "Namibia", "income": 10040, "health": 61.0, "population": 2458830, "label": 2}, {"country": "Nepal", "income": 2352, "health": 71.2, "population": 28513700, "label": 2}, {"country": "Netherlands", "income": 45784, "health": 80.6, "population": 16924929, "label": 2}, {"country": "New Zealand", "income": 34186, "health": 80.6, "population": 4528526, "label": 2}, {"country": "Nicaragua", "income": 4712, "health": 76.8, "population": 6082032, "label": 2}, {"country": "Niger", "income": 943, "health": 62.2, "population": 19899120, "label": 2}, {"country": "Nigeria", "income": 5727, "health": 61.33, "population": 182201962, "label": 4}, {"country": "North Korea", "income": 1390, "health": 71.4, "population": 25155317, "label": 2}, {"country": "Norway", "income": 64304, "health": 81.6, "population": 5210967, "label": 2}, {"country": "Oman", "income": 48226, "health": 75.7, "population": 4490541, "label": 2}, {"country": "Pakistan", "income": 4743, "health": 66.5, "population": 188924874, "label": 4}, {"country": "Panama", "income": 20485, "health": 78.2, "population": 3929141, "label": 2}, {"country": "Papua New Guinea", "income": 2529, "health": 60.6, "population": 7619321, "label": 2}, {"country": "Paraguay", "income": 8219, "health": 73.9, "population": 6639123, "label": 2}, {"country": "Peru", "income": 11903, "health": 77.5, "population": 31376670, "label": 2}, {"country": "Philippines", "income": 6876, "health": 70.2, "population": 100699395, "label": 0}, {"country": "Poland", "income": 24787, "health": 77.3, "population": 38611794, "label": 0}, {"country": "Portugal", "income": 26437, "health": 79.8, "population": 10349803, "label": 2}, {"country": "Qatar", "income": 132877, "health": 82.0, "population": 2235355, "label": 2}, {"country": "Romania", "income": 19203, "health": 76.8, "population": 19511324, "label": 2}, {"country": "Russia", "income": 23038, "health": 73.13, "population": 143456918, "label": 4}, {"country": "Rwanda", "income": 1549, "health": 66.53, "population": 11609666, "label": 2}, {"country": "Samoa", "income": 5558, "health": 72.2, "population": 193228, "label": 2}, {"country": "Sao Tome and Principe", "income": 3003, "health": 68.8, "population": 190344, "label": 2}, {"country": "Saudi Arabia", "income": 52469, "health": 78.1, "population": 31540372, "label": 2}, {"country": "Senegal", "income": 2251, "health": 66.1, "population": 15129273, "label": 2}, {"country": "Serbia", "income": 12908, "health": 78.1, "population": 8850975, "label": 2}, {"country": "Seychelles", "income": 25684, "health": 73.7, "population": 96471, "label": 2}, {"country": "Sierra Leone", "income": 2085, "health": 58.5, "population": 6453184, "label": 2}, {"country": "Singapore", "income": 80794, "health": 82.1, "population": 5603740, "label": 2}, {"country": "Slovak Republic", "income": 27204, "health": 76.4, "population": 5426258, "label": 2}, {"country": "Slovenia", "income": 28550, "health": 80.2, "population": 2067526, "label": 2}, {"country": "Solomon Islands", "income": 2047, "health": 64.1, "population": 583591, "label": 2}, {"country": "Somalia", "income": 624, "health": 58.7, "population": 10787104, "label": 2}, {"country": "South Africa", "income": 12509, "health": 63.72, "population": 54490406, "label": 0}, {"country": "South Korea", "income": 34644, "health": 80.7, "population": 50293439, "label": 0}, {"country": "South Sudan", "income": 3047, "health": 58.0, "population": 12339812, "label": 2}, {"country": "Spain", "income": 32979, "health": 81.7, "population": 46121699, "label": 0}, {"country": "Sri Lanka", "income": 10624, "health": 76.5, "population": 20715010, "label": 2}, {"country": "St. Lucia", "income": 9997, "health": 74.5, "population": 184999, "label": 2}, {"country": "St. Vincent and the Grenadines", "income": 10435, "health": 72.9, "population": 109462, "label": 2}, {"country": "Sudan", "income": 3975, "health": 69.5, "population": 40234882, "label": 0}, {"country": "Suriname", "income": 17125, "health": 70.5, "population": 542975, "label": 2}, {"country": "Swaziland", "income": 6095, "health": 51.5, "population": 1286970, "label": 2}, {"country": "Sweden", "income": 44892, "health": 82.0, "population": 9779426, "label": 2}, {"country": "Switzerland", "income": 56118, "health": 82.9, "population": 8298663, "label": 2}, {"country": "Syria", "income": 4637, "health": 70.26, "population": 18502413, "label": 2}, {"country": "Tajikistan", "income": 2582, "health": 71.0, "population": 8481855, "label": 2}, {"country": "Tanzania", "income": 2571, "health": 63.43, "population": 53470420, "label": 0}, {"country": "Thailand", "income": 14512, "health": 75.1, "population": 67959359, "label": 0}, {"country": "Timor-Leste", "income": 2086, "health": 72.4, "population": 1184765, "label": 2}, {"country": "Togo", "income": 1433, "health": 64.23, "population": 7304578, "label": 2}, {"country": "Tonga", "income": 5069, "health": 70.5, "population": 106170, "label": 2}, {"country": "Trinidad and Tobago", "income": 30113, "health": 71.4, "population": 1360088, "label": 2}, {"country": "Tunisia", "income": 11126, "health": 77.3, "population": 11253554, "label": 2}, {"country": "Turkey", "income": 19360, "health": 76.5, "population": 78665830, "label": 0}, {"country": "Turkmenistan", "income": 15865, "health": 67.9, "population": 5373502, "label": 2}, {"country": "Uganda", "income": 1680, "health": 60.8, "population": 39032383, "label": 0}, {"country": "Ukraine", "income": 8449, "health": 72.1, "population": 44823765, "label": 0}, {"country": "United Arab Emirates", "income": 60749, "health": 76.6, "population": 9156963, "label": 2}, {"country": "United Kingdom", "income": 38225, "health": 81.4, "population": 64715810, "label": 0}, {"country": "United States", "income": 53354, "health": 79.1, "population": 321773631, "label": 3}, {"country": "Uruguay", "income": 20438, "health": 77.3, "population": 3431555, "label": 2}, {"country": "Uzbekistan", "income": 5598, "health": 70.1, "population": 29893488, "label": 2}, {"country": "Vanuatu", "income": 2912, "health": 65.0, "population": 264652, "label": 2}, {"country": "Venezuela", "income": 15753, "health": 75.8, "population": 31108083, "label": 2}, {"country": "Vietnam", "income": 5623, "health": 76.5, "population": 93447601, "label": 0}, {"country": "West Bank and Gaza", "income": 4319, "health": 75.2, "population": 4668466, "label": 2}, {"country": "Yemen", "income": 3887, "health": 67.6, "population": 26832215, "label": 2}, {"country": "Zambia", "income": 4034, "health": 58.96, "population": 16211767, "label": 2}, {"country": "Zimbabwe", "income": 1801, "health": 60.01, "population": 15602751, "label": 2}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+</section>
+<section id="it.didnt-work-that-well" class="level4">
+<h4 class="anchored" data-anchor-id="it.didnt-work-that-well">It….didn’t work that well</h4>
+<p>What’s wrong?</p>
+<p><strong>K-means is distance-based, but our features have wildly different distance scales</strong></p>
+</section>
+<section id="scikit-learn-to-the-rescue-pre-processing" class="level4">
+<h4 class="anchored" data-anchor-id="scikit-learn-to-the-rescue-pre-processing">scikit-learn to the rescue: pre-processing</h4>
+<ul>
+<li>Scikit-learn has a utility to normalize features with an average of zero and a variance of 1</li>
+<li>Use the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html"><code>StandardScaler</code></a> class</li>
+</ul>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler, RobustScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use-the-fit_transform-function-to-scale-your-features" class="level4">
+<h4 class="anchored" data-anchor-id="use-the-fit_transform-function-to-scale-your-features">Use the <code>fit_transform()</code> function to scale your features</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gapminder_scaled <span class="op">=</span> scaler.fit_transform(gapminder[[<span class="st">'income'</span>, <span class="st">'health'</span>, <span class="st">'population'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Important</strong>: The <code>fit_transform()</code> function converts the DataFrame to a numpy array:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit_transform() converts the data into a numpy array</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>gapminder_scaled[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>array([[-0.79481258, -1.8171424 , -0.04592039],
+       [-0.34333373,  0.55986273, -0.25325837],
+       [-0.1972197 ,  0.62456075,  0.00404216],
+       [ 1.52369617,  1.6079706 , -0.27303503],
+       [-0.49936524, -1.38107777, -0.09843447]])</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of zero</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>gapminder_scaled.mean(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>array([ 8.07434927e-17, -1.70511258e-15, -1.89984689e-17])</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance of one</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>gapminder_scaled.std(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>array([1., 1., 1.])</code></pre>
+</div>
+</div>
+</section>
+<section id="now-fit-the-scaled-features" class="level4">
+<h4 class="anchored" data-anchor-id="now-fit-the-scaled-features">Now fit the scaled features</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the fit</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>kmeans.fit(gapminder_scaled)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the labels</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'label'</span>] <span class="op">=</span> kmeans.labels_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    alt.Chart(gapminder)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    .mark_circle()</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    .encode(</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>        alt.X(<span class="st">"income:Q"</span>, scale<span class="op">=</span>alt.Scale(<span class="bu">type</span><span class="op">=</span><span class="st">"log"</span>)),</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>        alt.Y(<span class="st">"health:Q"</span>, scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)),</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        size<span class="op">=</span><span class="st">"population:Q"</span>,</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>alt.Color(<span class="st">"label:N"</span>, scale<span class="op">=</span>alt.Scale(scheme<span class="op">=</span><span class="st">"dark2"</span>)),</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>        tooltip<span class="op">=</span><span class="bu">list</span>(gapminder.columns),</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    .properties(width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    .interactive()</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+
+<style>
+  #altair-viz-bf339b7a13bc44e4bba1db4b29a58540.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-bf339b7a13bc44e4bba1db4b29a58540.vega-embed details,
+  #altair-viz-bf339b7a13bc44e4bba1db4b29a58540.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-bf339b7a13bc44e4bba1db4b29a58540"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-bf339b7a13bc44e4bba1db4b29a58540") {
+      outputDiv = document.getElementById("altair-viz-bf339b7a13bc44e4bba1db4b29a58540");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c92387706a33a28cc7b11ad841f4502b"}, "mark": {"type": "circle"}, "encoding": {"color": {"field": "label", "scale": {"scheme": "dark2"}, "type": "nominal"}, "size": {"field": "population", "type": "quantitative"}, "tooltip": [{"field": "country", "type": "nominal"}, {"field": "income", "type": "quantitative"}, {"field": "health", "type": "quantitative"}, {"field": "population", "type": "quantitative"}, {"field": "label", "type": "quantitative"}], "x": {"field": "income", "scale": {"type": "log"}, "type": "quantitative"}, "y": {"field": "health", "scale": {"zero": false}, "type": "quantitative"}}, "height": 600, "params": [{"name": "param_4", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "width": 800, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-c92387706a33a28cc7b11ad841f4502b": [{"country": "Afghanistan", "income": 1925, "health": 57.63, "population": 32526562, "label": 0}, {"country": "Albania", "income": 10620, "health": 76.0, "population": 2896679, "label": 1}, {"country": "Algeria", "income": 13434, "health": 76.5, "population": 39666519, "label": 1}, {"country": "Andorra", "income": 46577, "health": 84.1, "population": 70473, "label": 4}, {"country": "Angola", "income": 7615, "health": 61.0, "population": 25021974, "label": 0}, {"country": "Antigua and Barbuda", "income": 21049, "health": 75.2, "population": 91818, "label": 1}, {"country": "Argentina", "income": 17344, "health": 76.2, "population": 43416755, "label": 1}, {"country": "Armenia", "income": 7763, "health": 74.4, "population": 3017712, "label": 1}, {"country": "Australia", "income": 44056, "health": 81.8, "population": 23968973, "label": 4}, {"country": "Austria", "income": 44401, "health": 81.0, "population": 8544586, "label": 4}, {"country": "Azerbaijan", "income": 16986, "health": 72.9, "population": 9753968, "label": 1}, {"country": "Bahamas", "income": 22818, "health": 72.3, "population": 388019, "label": 1}, {"country": "Bahrain", "income": 44138, "health": 79.2, "population": 1377237, "label": 4}, {"country": "Bangladesh", "income": 3161, "health": 70.1, "population": 160995642, "label": 1}, {"country": "Barbados", "income": 12984, "health": 75.8, "population": 284215, "label": 1}, {"country": "Belarus", "income": 17415, "health": 70.4, "population": 9495826, "label": 1}, {"country": "Belgium", "income": 41240, "health": 80.4, "population": 11299192, "label": 4}, {"country": "Belize", "income": 8501, "health": 70.0, "population": 359287, "label": 1}, {"country": "Benin", "income": 1830, "health": 65.5, "population": 10879829, "label": 0}, {"country": "Bhutan", "income": 7983, "health": 70.2, "population": 774830, "label": 1}, {"country": "Bolivia", "income": 6295, "health": 72.3, "population": 10724705, "label": 1}, {"country": "Bosnia and Herzegovina", "income": 9833, "health": 77.9, "population": 3810416, "label": 1}, {"country": "Botswana", "income": 17196, "health": 66.4, "population": 2262485, "label": 0}, {"country": "Brazil", "income": 15441, "health": 75.6, "population": 207847528, "label": 1}, {"country": "Brunei", "income": 73003, "health": 78.7, "population": 423188, "label": 2}, {"country": "Bulgaria", "income": 16371, "health": 74.9, "population": 7149787, "label": 1}, {"country": "Burkina Faso", "income": 1654, "health": 62.8, "population": 18105570, "label": 0}, {"country": "Burundi", "income": 777, "health": 60.4, "population": 11178921, "label": 0}, {"country": "Cambodia", "income": 3267, "health": 68.4, "population": 15577899, "label": 0}, {"country": "Cameroon", "income": 2897, "health": 59.5, "population": 23344179, "label": 0}, {"country": "Canada", "income": 43294, "health": 81.7, "population": 35939927, "label": 4}, {"country": "Cape Verde", "income": 6514, "health": 74.6, "population": 520502, "label": 1}, {"country": "Central African Republic", "income": 599, "health": 53.8, "population": 4900274, "label": 0}, {"country": "Chad", "income": 2191, "health": 57.7, "population": 14037472, "label": 0}, {"country": "Chile", "income": 22465, "health": 79.3, "population": 17948141, "label": 1}, {"country": "China", "income": 13334, "health": 76.9, "population": 1376048943, "label": 3}, {"country": "Colombia", "income": 12761, "health": 75.8, "population": 48228704, "label": 1}, {"country": "Comoros", "income": 1472, "health": 64.1, "population": 788474, "label": 0}, {"country": "Congo, Dem. Rep.", "income": 809, "health": 58.3, "population": 77266814, "label": 0}, {"country": "Congo, Rep.", "income": 6220, "health": 61.9, "population": 4620330, "label": 0}, {"country": "Costa Rica", "income": 14132, "health": 80.0, "population": 4807850, "label": 1}, {"country": "Cote d'Ivoire", "income": 3491, "health": 60.33, "population": 22701556, "label": 0}, {"country": "Croatia", "income": 20260, "health": 78.0, "population": 4240317, "label": 1}, {"country": "Cuba", "income": 21291, "health": 78.5, "population": 11389562, "label": 1}, {"country": "Cyprus", "income": 29797, "health": 82.6, "population": 1165300, "label": 4}, {"country": "Czech Republic", "income": 29437, "health": 78.6, "population": 10543186, "label": 4}, {"country": "Denmark", "income": 43495, "health": 80.1, "population": 5669081, "label": 4}, {"country": "Djibouti", "income": 3139, "health": 64.63, "population": 887861, "label": 0}, {"country": "Dominica", "income": 10503, "health": 74.6, "population": 72680, "label": 1}, {"country": "Dominican Republic", "income": 12837, "health": 73.8, "population": 10528391, "label": 1}, {"country": "Ecuador", "income": 10996, "health": 75.2, "population": 16144363, "label": 1}, {"country": "Egypt", "income": 11031, "health": 71.3, "population": 91508084, "label": 1}, {"country": "El Salvador", "income": 7776, "health": 74.1, "population": 6126583, "label": 1}, {"country": "Equatorial Guinea", "income": 31087, "health": 60.63, "population": 845060, "label": 0}, {"country": "Eritrea", "income": 1129, "health": 62.9, "population": 5227791, "label": 0}, {"country": "Estonia", "income": 26812, "health": 76.8, "population": 1312558, "label": 1}, {"country": "Ethiopia", "income": 1520, "health": 63.6, "population": 99390750, "label": 0}, {"country": "Fiji", "income": 7925, "health": 66.3, "population": 892145, "label": 0}, {"country": "Finland", "income": 38923, "health": 80.8, "population": 5503457, "label": 4}, {"country": "France", "income": 37599, "health": 81.9, "population": 64395345, "label": 4}, {"country": "Gabon", "income": 18627, "health": 60.53, "population": 1725292, "label": 0}, {"country": "Gambia", "income": 1644, "health": 65.1, "population": 1990924, "label": 0}, {"country": "Georgia", "income": 7474, "health": 73.3, "population": 3999812, "label": 1}, {"country": "Germany", "income": 44053, "health": 81.1, "population": 80688545, "label": 4}, {"country": "Ghana", "income": 4099, "health": 65.5, "population": 27409893, "label": 0}, {"country": "Greece", "income": 25430, "health": 79.8, "population": 10954617, "label": 4}, {"country": "Grenada", "income": 11593, "health": 71.7, "population": 106825, "label": 1}, {"country": "Guatemala", "income": 7279, "health": 73.1, "population": 16342897, "label": 1}, {"country": "Guinea", "income": 1225, "health": 60.8, "population": 12608590, "label": 0}, {"country": "Guinea-Bissau", "income": 1386, "health": 53.4, "population": 1844325, "label": 0}, {"country": "Guyana", "income": 6816, "health": 64.4, "population": 767085, "label": 0}, {"country": "Haiti", "income": 1710, "health": 65.3, "population": 10711067, "label": 0}, {"country": "Honduras", "income": 4270, "health": 72.4, "population": 8075060, "label": 1}, {"country": "Hungary", "income": 24200, "health": 76.2, "population": 9855023, "label": 1}, {"country": "Iceland", "income": 42182, "health": 82.8, "population": 329425, "label": 4}, {"country": "India", "income": 5903, "health": 66.8, "population": 1311050527, "label": 3}, {"country": "Indonesia", "income": 10504, "health": 70.9, "population": 257563815, "label": 1}, {"country": "Iran", "income": 15573, "health": 78.5, "population": 79109272, "label": 1}, {"country": "Iraq", "income": 14646, "health": 72.1, "population": 36423395, "label": 1}, {"country": "Ireland", "income": 47758, "health": 80.4, "population": 4688465, "label": 4}, {"country": "Israel", "income": 31590, "health": 82.4, "population": 8064036, "label": 4}, {"country": "Italy", "income": 33297, "health": 82.1, "population": 59797685, "label": 4}, {"country": "Jamaica", "income": 8606, "health": 75.5, "population": 2793335, "label": 1}, {"country": "Japan", "income": 36162, "health": 83.5, "population": 126573481, "label": 4}, {"country": "Jordan", "income": 11752, "health": 78.3, "population": 7594547, "label": 1}, {"country": "Kazakhstan", "income": 23468, "health": 68.2, "population": 17625226, "label": 1}, {"country": "Kenya", "income": 2898, "health": 66.63, "population": 46050302, "label": 0}, {"country": "Kiribati", "income": 1824, "health": 62.4, "population": 112423, "label": 0}, {"country": "Kuwait", "income": 82633, "health": 80.7, "population": 3892115, "label": 2}, {"country": "Kyrgyz Republic", "income": 3245, "health": 69.0, "population": 5939962, "label": 0}, {"country": "Lao", "income": 5212, "health": 66.4, "population": 6802023, "label": 0}, {"country": "Latvia", "income": 23282, "health": 75.7, "population": 1970503, "label": 1}, {"country": "Lebanon", "income": 17050, "health": 78.5, "population": 5850743, "label": 1}, {"country": "Lesotho", "income": 2598, "health": 48.5, "population": 2135022, "label": 0}, {"country": "Liberia", "income": 958, "health": 63.9, "population": 4503438, "label": 0}, {"country": "Libya", "income": 17261, "health": 76.2, "population": 6278438, "label": 1}, {"country": "Lithuania", "income": 26665, "health": 75.4, "population": 2878405, "label": 1}, {"country": "Luxembourg", "income": 88314, "health": 81.1, "population": 567110, "label": 2}, {"country": "Macedonia, FYR", "income": 12547, "health": 77.0, "population": 2078453, "label": 1}, {"country": "Madagascar", "income": 1400, "health": 64.7, "population": 24235390, "label": 0}, {"country": "Malawi", "income": 799, "health": 60.22, "population": 17215232, "label": 0}, {"country": "Malaysia", "income": 24320, "health": 75.1, "population": 30331007, "label": 1}, {"country": "Maldives", "income": 14408, "health": 79.5, "population": 363657, "label": 1}, {"country": "Mali", "income": 1684, "health": 57.6, "population": 17599694, "label": 0}, {"country": "Malta", "income": 30265, "health": 82.1, "population": 418670, "label": 4}, {"country": "Marshall Islands", "income": 3661, "health": 65.1, "population": 52993, "label": 0}, {"country": "Mauritania", "income": 3877, "health": 65.7, "population": 4067564, "label": 0}, {"country": "Mauritius", "income": 18350, "health": 73.9, "population": 1273212, "label": 1}, {"country": "Mexico", "income": 16850, "health": 74.5, "population": 127017224, "label": 1}, {"country": "Micronesia, Fed. Sts.", "income": 3510, "health": 67.0, "population": 104460, "label": 0}, {"country": "Moldova", "income": 4896, "health": 72.7, "population": 4068897, "label": 1}, {"country": "Mongolia", "income": 11819, "health": 65.3, "population": 2959134, "label": 0}, {"country": "Montenegro", "income": 14833, "health": 75.8, "population": 625781, "label": 1}, {"country": "Morocco", "income": 7319, "health": 74.7, "population": 34377511, "label": 1}, {"country": "Mozambique", "income": 1176, "health": 56.4, "population": 27977863, "label": 0}, {"country": "Myanmar", "income": 4012, "health": 67.9, "population": 53897154, "label": 0}, {"country": "Namibia", "income": 10040, "health": 61.0, "population": 2458830, "label": 0}, {"country": "Nepal", "income": 2352, "health": 71.2, "population": 28513700, "label": 1}, {"country": "Netherlands", "income": 45784, "health": 80.6, "population": 16924929, "label": 4}, {"country": "New Zealand", "income": 34186, "health": 80.6, "population": 4528526, "label": 4}, {"country": "Nicaragua", "income": 4712, "health": 76.8, "population": 6082032, "label": 1}, {"country": "Niger", "income": 943, "health": 62.2, "population": 19899120, "label": 0}, {"country": "Nigeria", "income": 5727, "health": 61.33, "population": 182201962, "label": 0}, {"country": "North Korea", "income": 1390, "health": 71.4, "population": 25155317, "label": 1}, {"country": "Norway", "income": 64304, "health": 81.6, "population": 5210967, "label": 4}, {"country": "Oman", "income": 48226, "health": 75.7, "population": 4490541, "label": 4}, {"country": "Pakistan", "income": 4743, "health": 66.5, "population": 188924874, "label": 0}, {"country": "Panama", "income": 20485, "health": 78.2, "population": 3929141, "label": 1}, {"country": "Papua New Guinea", "income": 2529, "health": 60.6, "population": 7619321, "label": 0}, {"country": "Paraguay", "income": 8219, "health": 73.9, "population": 6639123, "label": 1}, {"country": "Peru", "income": 11903, "health": 77.5, "population": 31376670, "label": 1}, {"country": "Philippines", "income": 6876, "health": 70.2, "population": 100699395, "label": 1}, {"country": "Poland", "income": 24787, "health": 77.3, "population": 38611794, "label": 1}, {"country": "Portugal", "income": 26437, "health": 79.8, "population": 10349803, "label": 4}, {"country": "Qatar", "income": 132877, "health": 82.0, "population": 2235355, "label": 2}, {"country": "Romania", "income": 19203, "health": 76.8, "population": 19511324, "label": 1}, {"country": "Russia", "income": 23038, "health": 73.13, "population": 143456918, "label": 1}, {"country": "Rwanda", "income": 1549, "health": 66.53, "population": 11609666, "label": 0}, {"country": "Samoa", "income": 5558, "health": 72.2, "population": 193228, "label": 1}, {"country": "Sao Tome and Principe", "income": 3003, "health": 68.8, "population": 190344, "label": 0}, {"country": "Saudi Arabia", "income": 52469, "health": 78.1, "population": 31540372, "label": 4}, {"country": "Senegal", "income": 2251, "health": 66.1, "population": 15129273, "label": 0}, {"country": "Serbia", "income": 12908, "health": 78.1, "population": 8850975, "label": 1}, {"country": "Seychelles", "income": 25684, "health": 73.7, "population": 96471, "label": 1}, {"country": "Sierra Leone", "income": 2085, "health": 58.5, "population": 6453184, "label": 0}, {"country": "Singapore", "income": 80794, "health": 82.1, "population": 5603740, "label": 2}, {"country": "Slovak Republic", "income": 27204, "health": 76.4, "population": 5426258, "label": 1}, {"country": "Slovenia", "income": 28550, "health": 80.2, "population": 2067526, "label": 4}, {"country": "Solomon Islands", "income": 2047, "health": 64.1, "population": 583591, "label": 0}, {"country": "Somalia", "income": 624, "health": 58.7, "population": 10787104, "label": 0}, {"country": "South Africa", "income": 12509, "health": 63.72, "population": 54490406, "label": 0}, {"country": "South Korea", "income": 34644, "health": 80.7, "population": 50293439, "label": 4}, {"country": "South Sudan", "income": 3047, "health": 58.0, "population": 12339812, "label": 0}, {"country": "Spain", "income": 32979, "health": 81.7, "population": 46121699, "label": 4}, {"country": "Sri Lanka", "income": 10624, "health": 76.5, "population": 20715010, "label": 1}, {"country": "St. Lucia", "income": 9997, "health": 74.5, "population": 184999, "label": 1}, {"country": "St. Vincent and the Grenadines", "income": 10435, "health": 72.9, "population": 109462, "label": 1}, {"country": "Sudan", "income": 3975, "health": 69.5, "population": 40234882, "label": 1}, {"country": "Suriname", "income": 17125, "health": 70.5, "population": 542975, "label": 1}, {"country": "Swaziland", "income": 6095, "health": 51.5, "population": 1286970, "label": 0}, {"country": "Sweden", "income": 44892, "health": 82.0, "population": 9779426, "label": 4}, {"country": "Switzerland", "income": 56118, "health": 82.9, "population": 8298663, "label": 4}, {"country": "Syria", "income": 4637, "health": 70.26, "population": 18502413, "label": 1}, {"country": "Tajikistan", "income": 2582, "health": 71.0, "population": 8481855, "label": 1}, {"country": "Tanzania", "income": 2571, "health": 63.43, "population": 53470420, "label": 0}, {"country": "Thailand", "income": 14512, "health": 75.1, "population": 67959359, "label": 1}, {"country": "Timor-Leste", "income": 2086, "health": 72.4, "population": 1184765, "label": 1}, {"country": "Togo", "income": 1433, "health": 64.23, "population": 7304578, "label": 0}, {"country": "Tonga", "income": 5069, "health": 70.5, "population": 106170, "label": 1}, {"country": "Trinidad and Tobago", "income": 30113, "health": 71.4, "population": 1360088, "label": 1}, {"country": "Tunisia", "income": 11126, "health": 77.3, "population": 11253554, "label": 1}, {"country": "Turkey", "income": 19360, "health": 76.5, "population": 78665830, "label": 1}, {"country": "Turkmenistan", "income": 15865, "health": 67.9, "population": 5373502, "label": 1}, {"country": "Uganda", "income": 1680, "health": 60.8, "population": 39032383, "label": 0}, {"country": "Ukraine", "income": 8449, "health": 72.1, "population": 44823765, "label": 1}, {"country": "United Arab Emirates", "income": 60749, "health": 76.6, "population": 9156963, "label": 4}, {"country": "United Kingdom", "income": 38225, "health": 81.4, "population": 64715810, "label": 4}, {"country": "United States", "income": 53354, "health": 79.1, "population": 321773631, "label": 4}, {"country": "Uruguay", "income": 20438, "health": 77.3, "population": 3431555, "label": 1}, {"country": "Uzbekistan", "income": 5598, "health": 70.1, "population": 29893488, "label": 1}, {"country": "Vanuatu", "income": 2912, "health": 65.0, "population": 264652, "label": 0}, {"country": "Venezuela", "income": 15753, "health": 75.8, "population": 31108083, "label": 1}, {"country": "Vietnam", "income": 5623, "health": 76.5, "population": 93447601, "label": 1}, {"country": "West Bank and Gaza", "income": 4319, "health": 75.2, "population": 4668466, "label": 1}, {"country": "Yemen", "income": 3887, "health": 67.6, "population": 26832215, "label": 0}, {"country": "Zambia", "income": 4034, "health": 58.96, "population": 16211767, "label": 0}, {"country": "Zimbabwe", "income": 1801, "health": 60.01, "population": 15602751, "label": 0}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of countries per cluster</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>gapminder.groupby(<span class="st">"label"</span>).size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>label
+0    62
+1    85
+2     5
+3     2
+4    33
+dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average population per cluster</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>gapminder.groupby(<span class="st">"label"</span>)[<span class="st">'population'</span>].mean().sort_values() <span class="op">/</span> <span class="fl">1e6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>label
+2       2.544302
+0      21.191274
+1      26.478761
+4      31.674060
+3    1343.549735
+Name: population, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average life expectancy per cluster</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>gapminder.groupby(<span class="st">"label"</span>)[<span class="st">'health'</span>].mean().sort_values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>label
+0    62.342097
+3    71.850000
+1    74.376353
+4    80.830303
+2    80.920000
+Name: health, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average income per cluster</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>gapminder.groupby(<span class="st">"label"</span>)[<span class="st">'income'</span>].mean().sort_values() <span class="op">/</span> <span class="fl">1e3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>label
+0     4.136016
+3     9.618500
+1    13.347376
+4    41.048818
+2    91.524200
+Name: income, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>gapminder.loc[gapminder[<span class="st">'label'</span>]<span class="op">==</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">health</th>
+<th data-quarto-table-cell-role="th">population</th>
+<th data-quarto-table-cell-role="th">label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Andorra</td>
+<td>46577</td>
+<td>84.1</td>
+<td>70473</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Australia</td>
+<td>44056</td>
+<td>81.8</td>
+<td>23968973</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Austria</td>
+<td>44401</td>
+<td>81.0</td>
+<td>8544586</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Bahrain</td>
+<td>44138</td>
+<td>79.2</td>
+<td>1377237</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Belgium</td>
+<td>41240</td>
+<td>80.4</td>
+<td>11299192</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">30</td>
+<td>Canada</td>
+<td>43294</td>
+<td>81.7</td>
+<td>35939927</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">44</td>
+<td>Cyprus</td>
+<td>29797</td>
+<td>82.6</td>
+<td>1165300</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">45</td>
+<td>Czech Republic</td>
+<td>29437</td>
+<td>78.6</td>
+<td>10543186</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">46</td>
+<td>Denmark</td>
+<td>43495</td>
+<td>80.1</td>
+<td>5669081</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">58</td>
+<td>Finland</td>
+<td>38923</td>
+<td>80.8</td>
+<td>5503457</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">59</td>
+<td>France</td>
+<td>37599</td>
+<td>81.9</td>
+<td>64395345</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">63</td>
+<td>Germany</td>
+<td>44053</td>
+<td>81.1</td>
+<td>80688545</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">65</td>
+<td>Greece</td>
+<td>25430</td>
+<td>79.8</td>
+<td>10954617</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">74</td>
+<td>Iceland</td>
+<td>42182</td>
+<td>82.8</td>
+<td>329425</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">79</td>
+<td>Ireland</td>
+<td>47758</td>
+<td>80.4</td>
+<td>4688465</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">80</td>
+<td>Israel</td>
+<td>31590</td>
+<td>82.4</td>
+<td>8064036</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">81</td>
+<td>Italy</td>
+<td>33297</td>
+<td>82.1</td>
+<td>59797685</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">83</td>
+<td>Japan</td>
+<td>36162</td>
+<td>83.5</td>
+<td>126573481</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">104</td>
+<td>Malta</td>
+<td>30265</td>
+<td>82.1</td>
+<td>418670</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">118</td>
+<td>Netherlands</td>
+<td>45784</td>
+<td>80.6</td>
+<td>16924929</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">119</td>
+<td>New Zealand</td>
+<td>34186</td>
+<td>80.6</td>
+<td>4528526</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">124</td>
+<td>Norway</td>
+<td>64304</td>
+<td>81.6</td>
+<td>5210967</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">125</td>
+<td>Oman</td>
+<td>48226</td>
+<td>75.7</td>
+<td>4490541</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">133</td>
+<td>Portugal</td>
+<td>26437</td>
+<td>79.8</td>
+<td>10349803</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">140</td>
+<td>Saudi Arabia</td>
+<td>52469</td>
+<td>78.1</td>
+<td>31540372</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">147</td>
+<td>Slovenia</td>
+<td>28550</td>
+<td>80.2</td>
+<td>2067526</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">151</td>
+<td>South Korea</td>
+<td>34644</td>
+<td>80.7</td>
+<td>50293439</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">153</td>
+<td>Spain</td>
+<td>32979</td>
+<td>81.7</td>
+<td>46121699</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">160</td>
+<td>Sweden</td>
+<td>44892</td>
+<td>82.0</td>
+<td>9779426</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">161</td>
+<td>Switzerland</td>
+<td>56118</td>
+<td>82.9</td>
+<td>8298663</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">175</td>
+<td>United Arab Emirates</td>
+<td>60749</td>
+<td>76.6</td>
+<td>9156963</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">176</td>
+<td>United Kingdom</td>
+<td>38225</td>
+<td>81.4</td>
+<td>64715810</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">177</td>
+<td>United States</td>
+<td>53354</td>
+<td>79.1</td>
+<td>321773631</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>kmeans.inertia_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>80.72009578392847</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>gapminder.loc[gapminder[<span class="st">'label'</span>]<span class="op">==</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">health</th>
+<th data-quarto-table-cell-role="th">population</th>
+<th data-quarto-table-cell-role="th">label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Andorra</td>
+<td>46577</td>
+<td>84.1</td>
+<td>70473</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Australia</td>
+<td>44056</td>
+<td>81.8</td>
+<td>23968973</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Austria</td>
+<td>44401</td>
+<td>81.0</td>
+<td>8544586</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Bahrain</td>
+<td>44138</td>
+<td>79.2</td>
+<td>1377237</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Belgium</td>
+<td>41240</td>
+<td>80.4</td>
+<td>11299192</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">30</td>
+<td>Canada</td>
+<td>43294</td>
+<td>81.7</td>
+<td>35939927</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">44</td>
+<td>Cyprus</td>
+<td>29797</td>
+<td>82.6</td>
+<td>1165300</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">45</td>
+<td>Czech Republic</td>
+<td>29437</td>
+<td>78.6</td>
+<td>10543186</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">46</td>
+<td>Denmark</td>
+<td>43495</td>
+<td>80.1</td>
+<td>5669081</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">58</td>
+<td>Finland</td>
+<td>38923</td>
+<td>80.8</td>
+<td>5503457</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">59</td>
+<td>France</td>
+<td>37599</td>
+<td>81.9</td>
+<td>64395345</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">63</td>
+<td>Germany</td>
+<td>44053</td>
+<td>81.1</td>
+<td>80688545</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">65</td>
+<td>Greece</td>
+<td>25430</td>
+<td>79.8</td>
+<td>10954617</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">74</td>
+<td>Iceland</td>
+<td>42182</td>
+<td>82.8</td>
+<td>329425</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">79</td>
+<td>Ireland</td>
+<td>47758</td>
+<td>80.4</td>
+<td>4688465</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">80</td>
+<td>Israel</td>
+<td>31590</td>
+<td>82.4</td>
+<td>8064036</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">81</td>
+<td>Italy</td>
+<td>33297</td>
+<td>82.1</td>
+<td>59797685</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">83</td>
+<td>Japan</td>
+<td>36162</td>
+<td>83.5</td>
+<td>126573481</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">104</td>
+<td>Malta</td>
+<td>30265</td>
+<td>82.1</td>
+<td>418670</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">118</td>
+<td>Netherlands</td>
+<td>45784</td>
+<td>80.6</td>
+<td>16924929</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">119</td>
+<td>New Zealand</td>
+<td>34186</td>
+<td>80.6</td>
+<td>4528526</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">124</td>
+<td>Norway</td>
+<td>64304</td>
+<td>81.6</td>
+<td>5210967</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">125</td>
+<td>Oman</td>
+<td>48226</td>
+<td>75.7</td>
+<td>4490541</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">133</td>
+<td>Portugal</td>
+<td>26437</td>
+<td>79.8</td>
+<td>10349803</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">140</td>
+<td>Saudi Arabia</td>
+<td>52469</td>
+<td>78.1</td>
+<td>31540372</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">147</td>
+<td>Slovenia</td>
+<td>28550</td>
+<td>80.2</td>
+<td>2067526</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">151</td>
+<td>South Korea</td>
+<td>34644</td>
+<td>80.7</td>
+<td>50293439</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">153</td>
+<td>Spain</td>
+<td>32979</td>
+<td>81.7</td>
+<td>46121699</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">160</td>
+<td>Sweden</td>
+<td>44892</td>
+<td>82.0</td>
+<td>9779426</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">161</td>
+<td>Switzerland</td>
+<td>56118</td>
+<td>82.9</td>
+<td>8298663</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">175</td>
+<td>United Arab Emirates</td>
+<td>60749</td>
+<td>76.6</td>
+<td>9156963</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">176</td>
+<td>United Kingdom</td>
+<td>38225</td>
+<td>81.4</td>
+<td>64715810</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">177</td>
+<td>United States</td>
+<td>53354</td>
+<td>79.1</td>
+<td>321773631</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-clustering-neighborhoods-by-airbnb-stats" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-clustering-neighborhoods-by-airbnb-stats">Exercise: Clustering neighborhoods by Airbnb stats</h3>
+<p>I’ve extracted neighborhood Airbnb statistics for Philadelphia neighborhoods from <a href="http://tomslee.net/airbnb-data">Tom Slee’s website</a>.</p>
+<p>The data includes average price per person, overall satisfaction, and number of listings.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Two good references for Airbnb data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="http://tomslee.net/airbnb-data">Tom Slee’s website</a></li>
+<li><a href="http://insideairbnb.com/get-the-data.html">Inside Airbnb</a></li>
+</ul>
+<p>Original research study: <a href="http://insideairbnb.com/reports/how-airbnbs-data-hid-the-facts-in-new-york-city.pdf">How Airbnb’s Data Hid the Facts in New York City</a></p>
+</div>
+</div>
+<section id="step-1-load-the-data-with-pandas" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-load-the-data-with-pandas">Step 1: Load the data with pandas</h4>
+<p>The data is available in CSV format (“philly_airbnb_by_neighborhoods.csv”) in the “data/” folder of the repository.</p>
+</section>
+<section id="step-2-perform-the-k-means-fit" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-perform-the-k-means-fit">Step 2: Perform the K-Means fit</h4>
+<ul>
+<li>Use our three features: <code>price_per_person</code>, <code>overall_satisfaction</code>, <code>N</code></li>
+<li>I used 5 clusters, but you are welcome to experiment with different values! We will discuss what the <em>optimal</em> number is after we go through the solutions!</li>
+<li>Scaling the features is recommended, but if the scales aren’t too different, so probably isn’t necessary in this case</li>
+</ul>
+</section>
+<section id="step-3-calculate-average-features-per-cluster" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-calculate-average-features-per-cluster">Step 3: Calculate average features per cluster</h4>
+<p>To gain some insight into our clusters, after calculating the K-Means labels: - group by the <code>label</code> column - calculate the <code>mean()</code> of each of our features - calculate the number of neighborhoods per cluster</p>
+</section>
+<section id="step-4-plot-a-choropleth-coloring-neighborhoods-by-their-cluster-label" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-plot-a-choropleth-coloring-neighborhoods-by-their-cluster-label">Step 4: Plot a choropleth, coloring neighborhoods by their cluster label</h4>
+<ul>
+<li>Part 1: Load the Philadelphia neighborhoods available in the data directory:
+<ul>
+<li><code>./data/philly_neighborhoods.geojson</code></li>
+</ul></li>
+<li>Part 2: Merge the Airbnb data (with labels) and the neighborhood polygons</li>
+<li>Part 3: Use geopandas to plot the neighborhoods
+<ul>
+<li>The <code>categorical=True</code> and <code>legend=True</code> keywords will be useful here</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-5-plot-an-interactive-map" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-plot-an-interactive-map">Step 5: Plot an interactive map</h4>
+<p>Use hvplot / geopandas to plot the clustering results with a tooltip for neighborhood name and tooltip.</p>
+</section>
+<section id="based-on-these-results-where-would-you-want-to-stay" class="level4">
+<h4 class="anchored" data-anchor-id="based-on-these-results-where-would-you-want-to-stay">Based on these results, where would you want to stay?</h4>
+</section>
+</section>
+<section id="why-5-groups" class="level3">
+<h3 class="anchored" data-anchor-id="why-5-groups">Why 5 groups?</h3>
+<p>Use the <a href="https://en.wikipedia.org/wiki/Elbow_method_(clustering)">“Elbow” method</a>…</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of clusters to try out</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>n_clusters <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">10</span>))</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run kmeans for each value of k</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>inertias <span class="op">=</span> []</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> n_clusters:</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize and run</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, n_init<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(scaled_airbnb_data)</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save the "inertia"</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    inertias.append(kmeans.inertia_)</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot it!</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>plt.plot(n_clusters, inertias, marker<span class="op">=</span><span class="st">'o'</span>, ms<span class="op">=</span><span class="dv">10</span>, mfc<span class="op">=</span><span class="st">'white'</span>, lw<span class="op">=</span><span class="dv">4</span>, mew<span class="op">=</span><span class="dv">3</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="lecture-11A_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="the-kneed-package" class="level3">
+<h3 class="anchored" data-anchor-id="the-kneed-package">The <code>kneed</code> package</h3>
+<p>There is also a nice package called kneed that can determine the “knee” point quantitatively, using the <a href="https://raghavan.usc.edu/papers/kneedle-simplex11.pdf">kneedle algorithm</a>.</p>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>n_clusters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
+<pre><code>[2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> kneed <span class="im">import</span> KneeLocator</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the knee algorithm</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>kn <span class="op">=</span> KneeLocator(n_clusters, inertias, curve<span class="op">=</span><span class="st">'convex'</span>, direction<span class="op">=</span><span class="st">'decreasing'</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the knee </span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kn.knee)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="thats-it" class="level2">
+<h2 class="anchored" data-anchor-id="thats-it">That’s it!</h2>
+<p>More clustering on Wednesday!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by <a href="https://www.nickhand.dev">Nick Hand</a>, Quarto layout adapted from <a href="https://github.com/andrewheiss/datavizs23.classes.andrewheiss.com">Andrew Heiss’s Data Visualization with R course</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-python" aria-label="python"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/MUSA-550-Fall-2023/musa-550-fall-2023.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

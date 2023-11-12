@@ -91,6 +91,8 @@ website:
       text: '9. From Notebooks to the Web: Part 1'
     - file: content/week-10/index.qmd
       text: '10. From Notebooks to the Web: Part 2'
+    - file: content/week-11/index.qmd
+      text: '11. Case Study: Clustering Analysis in Python'
     search: false
     style: docked
     title: Content
