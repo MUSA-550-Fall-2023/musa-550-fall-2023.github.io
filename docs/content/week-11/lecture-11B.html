@@ -193,47 +193,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#last-lecture-11a" id="toc-last-lecture-11a" class="nav-link active" data-scroll-target="#last-lecture-11a">Last lecture (11A)</a></li>
-  <li><a href="#today" id="toc-today" class="nav-link" data-scroll-target="#today">Today</a></li>
-  <li><a href="#part-2-spatial-clustering" id="toc-part-2-spatial-clustering" class="nav-link" data-scroll-target="#part-2-spatial-clustering">Part 2: Spatial clustering</a></li>
-  <li><a href="#dbscan" id="toc-dbscan" class="nav-link" data-scroll-target="#dbscan">DBSCAN</a></li>
-  <li><a href="#two-key-parameters" id="toc-two-key-parameters" class="nav-link" data-scroll-target="#two-key-parameters">Two key parameters</a>
-  <ul class="collapse">
-  <li><a href="#example-scenario" id="toc-example-scenario" class="nav-link" data-scroll-target="#example-scenario">Example Scenario</a></li>
-  </ul></li>
-  <li><a href="#importance-of-parameter-choices" id="toc-importance-of-parameter-choices" class="nav-link" data-scroll-target="#importance-of-parameter-choices">Importance of parameter choices</a></li>
-  <li><a href="#example-openstreetmap-gps-traces-in-philadelphia" id="toc-example-openstreetmap-gps-traces-in-philadelphia" class="nav-link" data-scroll-target="#example-openstreetmap-gps-traces-in-philadelphia">Example: OpenStreetMap GPS traces in Philadelphia</a></li>
-  <li><a href="#dbscan-basics" id="toc-dbscan-basics" class="nav-link" data-scroll-target="#dbscan-basics">DBSCAN basics</a></li>
-  <li><a href="#now-lets-plot-the-noise-and-clusters" id="toc-now-lets-plot-the-noise-and-clusters" class="nav-link" data-scroll-target="#now-lets-plot-the-noise-and-clusters">Now let’s plot the noise and clusters</a></li>
-  <li><a href="#extending-dbscan-beyond-just-spatial-coordinates" id="toc-extending-dbscan-beyond-just-spatial-coordinates" class="nav-link" data-scroll-target="#extending-dbscan-beyond-just-spatial-coordinates">Extending DBSCAN beyond just spatial coordinates</a></li>
-  <li><a href="#exercise-extracting-patterns-from-nyc-taxi-rides" id="toc-exercise-extracting-patterns-from-nyc-taxi-rides" class="nav-link" data-scroll-target="#exercise-extracting-patterns-from-nyc-taxi-rides">Exercise: Extracting patterns from NYC taxi rides</a>
-  <ul class="collapse">
-  <li><a href="#step-1-load-the-data" id="toc-step-1-load-the-data" class="nav-link" data-scroll-target="#step-1-load-the-data">Step 1: Load the data</a></li>
-  <li><a href="#step-2-extract-and-normalize-several-features" id="toc-step-2-extract-and-normalize-several-features" class="nav-link" data-scroll-target="#step-2-extract-and-normalize-several-features">Step 2: Extract and normalize several features</a></li>
-  <li><a href="#step-3-run-dbscan-to-extract-high-density-clusters" id="toc-step-3-run-dbscan-to-extract-high-density-clusters" class="nav-link" data-scroll-target="#step-3-run-dbscan-to-extract-high-density-clusters">Step 3: Run DBSCAN to extract high-density clusters</a></li>
-  <li><a href="#step-4-identify-the-5-largest-clusters" id="toc-step-4-identify-the-5-largest-clusters" class="nav-link" data-scroll-target="#step-4-identify-the-5-largest-clusters">Step 4: Identify the 5 largest clusters</a></li>
-  <li><a href="#step-5-get-mean-statistics-for-the-top-5-largest-clusters" id="toc-step-5-get-mean-statistics-for-the-top-5-largest-clusters" class="nav-link" data-scroll-target="#step-5-get-mean-statistics-for-the-top-5-largest-clusters">Step 5: Get mean statistics for the top 5 largest clusters</a></li>
-  <li><a href="#step-6a-visualize-the-top-5-largest-clusters" id="toc-step-6a-visualize-the-top-5-largest-clusters" class="nav-link" data-scroll-target="#step-6a-visualize-the-top-5-largest-clusters">Step 6a: Visualize the top 5 largest clusters</a></li>
-  </ul></li>
-  <li><a href="#if-youre-feeling-ambitious-and-time-permitting" id="toc-if-youre-feeling-ambitious-and-time-permitting" class="nav-link" data-scroll-target="#if-youre-feeling-ambitious-and-time-permitting">If you’re feeling ambitious, and time-permitting…</a>
-  <ul class="collapse">
-  <li><a href="#step-6b-visualizing-one-cluster-at-a-time" id="toc-step-6b-visualizing-one-cluster-at-a-time" class="nav-link" data-scroll-target="#step-6b-visualizing-one-cluster-at-a-time">Step 6b: Visualizing one cluster at a time</a></li>
-  <li><a href="#step-7-an-interactive-map-of-clusters-with-hvplot-datashader" id="toc-step-7-an-interactive-map-of-clusters-with-hvplot-datashader" class="nav-link" data-scroll-target="#step-7-an-interactive-map-of-clusters-with-hvplot-datashader">Step 7: an interactive map of clusters with hvplot + datashader</a></li>
-  </ul></li>
-  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
