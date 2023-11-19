@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geospatial Data Science in Python - Week 12A: Predictive modeling with scikit-learn</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Geospatial Data Science in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-schedule" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Schedule</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-schedule">    
+        <li>
+    <a class="dropdown-item" href="../../schedule/401.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../schedule/402.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html" rel="" target="">
+ <span class="menu-text">Content</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../../assignment/overview.html" rel="" target="">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/401/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 401</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../assignment/402/schedule.html" rel="" target="">
+ <span class="dropdown-text">Section 402</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../resource/index.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-box-arrow-up-right"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/MUSA-550-Fall-2023">
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://canvas.upenn.edu/courses/1740535">
+            Canvas
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://edstem.org/us/courses/42616/discussion/">
+            Ed Discussion
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#last-week" id="toc-last-week" class="nav-link active" data-scroll-target="#last-week">Last week</a></li>
+  <li><a href="#reminder-clustering-is-an-example-of-unsupervised-learning" id="toc-reminder-clustering-is-an-example-of-unsupervised-learning" class="nav-link" data-scroll-target="#reminder-clustering-is-an-example-of-unsupervised-learning">Reminder: clustering is an example of <em>unsupervised learning</em></a></li>
+  <li><a href="#today-an-example-of-supervised-learning" id="toc-today-an-example-of-supervised-learning" class="nav-link" data-scroll-target="#today-an-example-of-supervised-learning">Today: an example of <em>supervised learning</em></a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples:</a></li>
+  <li><a href="#model-based-learning" id="toc-model-based-learning" class="nav-link" data-scroll-target="#model-based-learning">Model-based learning</a></li>
+  <li><a href="#machine-learning-is-really-just-an-optimization-problem" id="toc-machine-learning-is-really-just-an-optimization-problem" class="nav-link" data-scroll-target="#machine-learning-is-really-just-an-optimization-problem">Machine learning is really just an <strong>optimization problem</strong></a>
+  <ul class="collapse">
+  <li><a href="#choose-a-model" id="toc-choose-a-model" class="nav-link" data-scroll-target="#choose-a-model">1. Choose a model</a></li>
+  <li><a href="#the-model-has-an-associated-cost-function" id="toc-the-model-has-an-associated-cost-function" class="nav-link" data-scroll-target="#the-model-has-an-associated-cost-function">2. The model has an associated cost function</a></li>
+  <li><a href="#learn-the-best-model-parameters" id="toc-learn-the-best-model-parameters" class="nav-link" data-scroll-target="#learn-the-best-model-parameters">3. “Learn” the best model parameters</a></li>
+  </ul></li>
+  <li><a href="#recap-the-steps-involved" id="toc-recap-the-steps-involved" class="nav-link" data-scroll-target="#recap-the-steps-involved">Recap: the steps involved</a></li>
+  <li><a href="#what-could-go-wrong" id="toc-what-could-go-wrong" class="nav-link" data-scroll-target="#what-could-go-wrong">What could go wrong?</a>
+  <ul class="collapse">
+  <li><a href="#mistake-1-bad-data" id="toc-mistake-1-bad-data" class="nav-link" data-scroll-target="#mistake-1-bad-data">Mistake #1: “bad data”</a></li>
+  <li><a href="#mistake-2-bad-algorithm" id="toc-mistake-2-bad-algorithm" class="nav-link" data-scroll-target="#mistake-2-bad-algorithm">Mistake #2: “bad algorithm”</a></li>
+  </ul></li>
+  <li><a href="#regularization-keeping-it-simple" id="toc-regularization-keeping-it-simple" class="nav-link" data-scroll-target="#regularization-keeping-it-simple">Regularization: keeping it simple</a></li>
+  <li><a href="#key-question-how-do-we-know-if-a-model-will-perform-well-on-new-data" id="toc-key-question-how-do-we-know-if-a-model-will-perform-well-on-new-data" class="nav-link" data-scroll-target="#key-question-how-do-we-know-if-a-model-will-perform-well-on-new-data">Key question: How do we know if a model will perform well on new data?</a></li>
+  <li><a href="#option-1-a-traintest-split" id="toc-option-1-a-traintest-split" class="nav-link" data-scroll-target="#option-1-a-traintest-split">Option #1: a train/test split</a></li>
+  <li><a href="#option-2-k-fold-cross-validation" id="toc-option-2-k-fold-cross-validation" class="nav-link" data-scroll-target="#option-2-k-fold-cross-validation">Option #2: <em>k</em>-fold cross-validation</a></li>
+  <li><a href="#lets-try-out-a-simple-example-does-money-make-people-happier" id="toc-lets-try-out-a-simple-example-does-money-make-people-happier" class="nav-link" data-scroll-target="#lets-try-out-a-simple-example-does-money-make-people-happier">Let’s try out a simple example: does money make people happier?</a>
+  <ul class="collapse">
+  <li><a href="#make-a-quick-plot" id="toc-make-a-quick-plot" class="nav-link" data-scroll-target="#make-a-quick-plot">Make a quick plot</a></li>
+  <li><a href="#theres-a-roughly-linear-trend-herelets-start-there" id="toc-theres-a-roughly-linear-trend-herelets-start-there" class="nav-link" data-scroll-target="#theres-a-roughly-linear-trend-herelets-start-there">There’s a roughly linear trend here…let’s start there</a></li>
+  <li><a href="#whats-with-the-_-at-the-end-of-variable-names" id="toc-whats-with-the-_-at-the-end-of-variable-names" class="nav-link" data-scroll-target="#whats-with-the-_-at-the-end-of-variable-names">What’s with the “_” at the end of variable names?</a></li>
+  <li><a href="#how-good-is-the-fit" id="toc-how-good-is-the-fit" class="nav-link" data-scroll-target="#how-good-is-the-fit">How good is the fit?</a></li>
+  <li><a href="#lets-plot-the-data-and-the-predicted-values" id="toc-lets-plot-the-data-and-the-predicted-values" class="nav-link" data-scroll-target="#lets-plot-the-data-and-the-predicted-values">Let’s plot the data and the predicted values</a></li>
+  <li><a href="#not-bad.but-what-did-we-do-wrong" id="toc-not-bad.but-what-did-we-do-wrong" class="nav-link" data-scroll-target="#not-bad.but-what-did-we-do-wrong">Not bad….but what did we do wrong?</a></li>
+  <li><a href="#two-problems" id="toc-two-problems" class="nav-link" data-scroll-target="#two-problems">Two Problems!</a></li>
+  <li><a href="#can-we-do-better-lets-do-some-feature-engineering" id="toc-can-we-do-better-lets-do-some-feature-engineering" class="nav-link" data-scroll-target="#can-we-do-better-lets-do-some-feature-engineering">Can we do better? Let’s do some feature engineering…</a></li>
+  <li><a href="#now-we-have-two-transformations-to-make" id="toc-now-we-have-two-transformations-to-make" class="nav-link" data-scroll-target="#now-we-have-two-transformations-to-make">Now we have two transformations to make:</a></li>
+  <li><a href="#pipelines-making-multiple-transformations-much-easier" id="toc-pipelines-making-multiple-transformations-much-easier" class="nav-link" data-scroll-target="#pipelines-making-multiple-transformations-much-easier">Pipelines: making multiple transformations <em>much</em> easier</a></li>
+  <li><a href="#how-about-large-polynomial-degrees" id="toc-how-about-large-polynomial-degrees" class="nav-link" data-scroll-target="#how-about-large-polynomial-degrees">How about large polynomial degrees?</a></li>
+  <li><a href="#overfitting-alert" id="toc-overfitting-alert" class="nav-link" data-scroll-target="#overfitting-alert">Overfitting alert!</a></li>
+  <li><a href="#regularization-to-the-rescue" id="toc-regularization-to-the-rescue" class="nav-link" data-scroll-target="#regularization-to-the-rescue">Regularization to the rescue?</a></li>
+  </ul></li>
+  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 12A: Predictive modeling with scikit-learn</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;skip&quot;}">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Nov 19, 2023</li>
+<li>Section 401</li>
+</ul>
+<section id="last-week" class="level2">
+<h2 class="anchored" data-anchor-id="last-week">Last week</h2>
+<ul>
+<li>A crash course on clustering
+<ul>
+<li>non-spatial: k-means</li>
+<li>spatial: DBSCAN</li>
+</ul></li>
+<li>An introduction to scikit-learn</li>
+</ul>
+</section>
+<section id="reminder-clustering-is-an-example-of-unsupervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="reminder-clustering-is-an-example-of-unsupervised-learning">Reminder: clustering is an example of <em>unsupervised learning</em></h2>
+<ul>
+<li>Clustering tries to detect previously unknown structure in your input dataset</li>
+<li>Only requires the data set as input, no associated labels or prediction targets</li>
+</ul>
+</section>
+<section id="today-an-example-of-supervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="today-an-example-of-supervised-learning">Today: an example of <em>supervised learning</em></h2>
+<ul>
+<li><strong>Key distinction</strong>: requires a training data set as well as the desired solutions (called <em>labels</em>) as inputs to the algorithm</li>
+<li>Two main types:
+<ul>
+<li><strong>Classification</strong>: samples belong to two or more classes and we want to learn from already labeled data how to predict the class of unlabeled data.</li>
+<li><strong>Regression</strong>: predicting a continuous variable from a training dataset</li>
+</ul></li>
+</ul>
+<p><img src="imgs/classification-vs-regression.png" width="800"></p>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples:</h2>
+<ul>
+<li><strong>Classification</strong>: a spam filter to classify new emails as spam / not spam based on past examples</li>
+<li><strong>Regression</strong>: predicting housing prices based on property characteristics</li>
+</ul>
+<p><strong>Today, we’ll walk through an end-to-end regression example to predict Philadelphia’s housing prices</strong></p>
+</section>
+<section id="model-based-learning" class="level2">
+<h2 class="anchored" data-anchor-id="model-based-learning">Model-based learning</h2>
+<ul>
+<li>Select a model that can represent the data</li>
+<li>Use the training data to identify the best model parameters (by minimizing a <em>cost function</em>)</li>
+<li>Make predictions on new data — and hope that your model <em>generalizes</em> well to new data!</li>
+</ul>
+</section>
+<section id="machine-learning-is-really-just-an-optimization-problem" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning-is-really-just-an-optimization-problem">Machine learning is really just an <strong>optimization problem</strong></h2>
+<p>Given your training set of data, which model parameters best represent the observed data?</p>
+<section id="choose-a-model" class="level3">
+<h3 class="anchored" data-anchor-id="choose-a-model">1. Choose a model</h3>
+<p><img src="imgs/model-1.png" width="400"></p>
+</section>
+<section id="the-model-has-an-associated-cost-function" class="level3">
+<h3 class="anchored" data-anchor-id="the-model-has-an-associated-cost-function">2. The model has an associated cost function</h3>
+<p>The <em>cost function</em> measures the difference between the model’s predictions and the observed data</p>
+<p><img src="imgs/model-2.png" width="450"></p>
+</section>
+<section id="learn-the-best-model-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="learn-the-best-model-parameters">3. “Learn” the best model parameters</h3>
+<p>In scikit-learn, you will call the <code>fit()</code> method on your algorithm.</p>
+<p><img src="imgs/model-3.png" width="600"></p>
+</section>
+</section>
+<section id="recap-the-steps-involved" class="level2">
+<h2 class="anchored" data-anchor-id="recap-the-steps-involved">Recap: the steps involved</h2>
+<ol type="1">
+<li>Wrangle and understand data.</li>
+<li>Select a model that would be best for your dataset.</li>
+<li>Train the model on the training data — the learning algorithm searches for the best model parameters</li>
+<li>Apply the model to new data to make predictions.</li>
+</ol>
+<p><strong>Key goal: how we can do this in a way to ensure the model is as generalizable as possible?</strong></p>
+</section>
+<section id="what-could-go-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="what-could-go-wrong">What could go wrong?</h2>
+<p><img src="https://media.giphy.com/media/nDxjSaLT9gFig/giphy.gif" width="600"></p>
+<section id="mistake-1-bad-data" class="level3">
+<h3 class="anchored" data-anchor-id="mistake-1-bad-data">Mistake #1: “bad data”</h3>
+<p>Or: “garbage in, garbage out”</p>
+<p><strong>Common issues:</strong></p>
+<ul>
+<li>Not enough training data</li>
+<li>Training data isn’t representative of the unseen data that you want to make predictions for</li>
+<li>Poor quality data — errors, missing data, outliers</li>
+<li>Poor features in the training set
+<ul>
+<li>You’ll often hear the phrase <em>feature engineering</em> to describe the process of improving your input dataset:</li>
+<li>Involves: feature selection, feature extraction, creating new features</li>
+</ul></li>
+</ul>
+</section>
+<section id="mistake-2-bad-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="mistake-2-bad-algorithm">Mistake #2: “bad algorithm”</h3>
+<ul>
+<li>Overfitting the training data (more on this shortly)
+<ul>
+<li>model performs well, too well in fact, on the training set, and does not generalize well</li>
+<li>model is <strong>too complex</strong> for your training set</li>
+</ul></li>
+<li>Underfitting the training data
+<ul>
+<li>model is <strong>not complex enough</strong></li>
+<li>predictions will be inacurrate, but adding more model parameters (making it more complex) will help improve the accuracy</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="regularization-keeping-it-simple" class="level2">
+<h2 class="anchored" data-anchor-id="regularization-keeping-it-simple">Regularization: keeping it simple</h2>
+<ul>
+<li>We can <em>regularize</em> our model to prevent the model from getting too complex and avoid overfitting</li>
+<li>Adds a penalty to the cost function that prevents parameters from getting too large</li>
+<li>Can effectively think of regularization as forcing some model parameters to be close, not quite, zero</li>
+</ul>
+<p><img src="imgs/regularization.png" width="600"></p>
+</section>
+<section id="key-question-how-do-we-know-if-a-model-will-perform-well-on-new-data" class="level2">
+<h2 class="anchored" data-anchor-id="key-question-how-do-we-know-if-a-model-will-perform-well-on-new-data">Key question: How do we know if a model will perform well on new data?</h2>
+<p><img src="https://media.giphy.com/media/3ohhwjIjLLWBh4EQRW/giphy.gif" width="600"></p>
+<p><strong>Note:</strong> Crossing your fingers and hoping for the best is not the recommended strategy</p>
+</section>
+<section id="option-1-a-traintest-split" class="level2">
+<h2 class="anchored" data-anchor-id="option-1-a-traintest-split">Option #1: a train/test split</h2>
+<ul>
+<li>Split your data into two sets: the <em>training set</em> and the <em>test set</em></li>
+<li>Train on the training set and test on the test set!</li>
+<li>The accuracy on the test set provides a measure of how well your model generalizes</li>
+</ul>
+<p>Common to use 80% of data for your training set and 20% for your test set</p>
+<ul>
+<li>Still run the risk that you’ve selected the best model parameters for this <strong>specific</strong> training/test combination</li>
+<li>For example:
+<ul>
+<li>Does the model work best on a 80/20 split, a 60/40 split, 70/30? How to decide the test/train split?</li>
+<li>If you are using regularization, did your regularization strength parameter work only on this specific training set?</li>
+</ul></li>
+</ul>
+</section>
+<section id="option-2-k-fold-cross-validation" class="level2">
+<h2 class="anchored" data-anchor-id="option-2-k-fold-cross-validation">Option #2: <em>k</em>-fold cross-validation</h2>
+<ol type="1">
+<li>Break the data into a training set and test set</li>
+<li>Split the training set into <em>k</em> subsets (or folds), holding out one subset as the test set</li>
+<li>Run the learning algorithm on each combination of subsets, using the average of all of the runs to find the best fitting model parameters</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For more information, see the <a href="https://scikit-learn.org/stable/modules/cross_validation.html">scikit-learn docs</a>.</p>
+</div>
+</div>
+<p><img src="imgs/crossval.png" width="600"></p>
+</section>
+<section id="lets-try-out-a-simple-example-does-money-make-people-happier" class="level2">
+<h2 class="anchored" data-anchor-id="lets-try-out-a-simple-example-does-money-make-people-happier">Let’s try out a simple example: does money make people happier?</h2>
+<p>We’ll load data compiled from two data sources: - The <em>Better Life Index</em> from the <a href="https://stats.oecd.org/index.aspx?DataSetCode=BLI">OECD’s website</a> - GDP per capita from the <a href="https://www.imf.org/external/pubs/ft/weo/2016/01/weodata/weorept.aspx?pr.x=32&amp;pr.y=8&amp;sy=2015&amp;ey=2015&amp;scsm=1&amp;ssd=1&amp;sort=country&amp;ds=.&amp;br=1&amp;c=512,668,914,672,612,946,614,137,311,962,213,674,911,676,193,548,122,556,912,678,313,181,419,867,513,682,316,684,913,273,124,868,339,921,638,948,514,943,218,686,963,688,616,518,223,728,516,558,918,138,748,196,618,278,624,692,522,694,622,142,156,449,626,564,628,565,228,283,924,853,233,288,632,293,636,566,634,964,238,182,662,453,960,968,423,922,935,714,128,862,611,135,321,716,243,456,248,722,469,942,253,718,642,724,643,576,939,936,644,961,819,813,172,199,132,733,646,184,648,524,915,361,134,362,652,364,174,732,328,366,258,734,656,144,654,146,336,463,263,528,268,923,532,738,944,578,176,537,534,742,536,866,429,369,433,744,178,186,436,925,136,869,343,746,158,926,439,466,916,112,664,111,826,298,542,927,967,846,443,299,917,582,544,474,941,754,446,698,666&amp;s=NGDPDPC&amp;grp=0&amp;a">IMF’s website</a></p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"./data/gdp_vs_satisfaction.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="make-a-quick-plot" class="level3">
+<h3 class="anchored" data-anchor-id="make-a-quick-plot">Make a quick plot</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hvplot.pandas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data.hvplot.scatter(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"gdp_per_capita"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"life_satisfaction"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    hover_cols<span class="op">=</span>[<span class="st">"Country"</span>],</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    ylim<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">9</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    xlim<span class="op">=</span>(<span class="fl">1e3</span>, <span class="fl">1.1e5</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="theres-a-roughly-linear-trend-herelets-start-there" class="level3">
+<h3 class="anchored" data-anchor-id="theres-a-roughly-linear-trend-herelets-start-there">There’s a roughly linear trend here…let’s start there</h3>
+<p><img src="imgs/life-happy.png" width="600"></p>
+<p>A simple model with only two parameters</p>
+<p>Use the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">LinearRegression</a> model object from scikit-learn.</p>
+<p>This is not <em>really</em> machine learning — it simply finds the <a href="https://en.wikipedia.org/wiki/Ordinary_least_squares">Ordinary Least Squares</a> fit to the data.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our input features (in this case we only have 1)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[<span class="st">'gdp_per_capita'</span>].values</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X[:, np.newaxis]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The labels (values we are trying to predict)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'life_satisfaction'</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>X.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>y.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Watch out! Scikit-learn expects the features to be a 2D array with shape: <code>(number of observations, number of features)</code>.</p>
+<p>In this case, we are explicitly adding a second axis with the <code>np.newaxis</code> variable.</p>
+</div>
+</div>
+<p>Now, fit the model using the <code>model.fit(X, y)</code> syntax.</p>
+<p>This will “train” our model, using an optimization algorithm to identify the bestfit parameters.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model.coef_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>intercept <span class="op">=</span> model.intercept_</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> model.coef_[<span class="dv">0</span>]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"bestfit intercept = </span><span class="sc">{</span>intercept<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"bestfit slope = </span><span class="sc">{</span>slope<span class="sc">:.2e}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="whats-with-the-_-at-the-end-of-variable-names" class="level3">
+<h3 class="anchored" data-anchor-id="whats-with-the-_-at-the-end-of-variable-names">What’s with the “_” at the end of variable names?</h3>
+<p>These represent “estimated” properties of the model —&nbsp;this is how scikit learn signals to the user that these attributes depend on the <code>fit()</code> function being called beforehand.</p>
+<p>More info <a href="https://scikit-learn.org/dev/developers/develop.html#estimated-attributes">here</a>.</p>
+<p><strong>Note:</strong> In this case, our model is the same as ordinary least squares, and no actually optimization is performed since an exact solution exists.</p>
+</section>
+<section id="how-good-is-the-fit" class="level3">
+<h3 class="anchored" data-anchor-id="how-good-is-the-fit">How good is the fit?</h3>
+<ul>
+<li>Each scikit learn model has a built-in <code>score()</code> function that provides a score to evaluate the fit by.</li>
+<li>In the case of the linear model, the score is the R-squared coefficient of the fit</li>
+</ul>
+<p><strong>Note:</strong> you must call the <code>fit()</code> function before calling the <code>score()</code> function.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Rsq <span class="op">=</span> model.score(X, y)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Rsq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lets-plot-the-data-and-the-predicted-values" class="level3">
+<h3 class="anchored" data-anchor-id="lets-plot-the-data-and-the-predicted-values">Let’s plot the data and the predicted values</h3>
+<p>Use the <code>predict()</code> function to predict new values.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The values we want to predict (ranging from our min to max GDP per capita)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>gdp_pred <span class="op">=</span> np.linspace(<span class="fl">1e3</span>, <span class="fl">1.1e5</span>, <span class="dv">100</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sklearn needs the second axis!</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> gdp_pred[:, np.newaxis]</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">"fivethirtyeight"</span>):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the predicted values</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    ax.plot(X_pred <span class="op">/</span> <span class="fl">1e5</span>, y_pred, label<span class="op">=</span><span class="st">"Predicted values"</span>, color<span class="op">=</span><span class="st">"#666666"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Training data</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    ax.scatter(</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"gdp_per_capita"</span>] <span class="op">/</span> <span class="fl">1e5</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"life_satisfaction"</span>],</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">"Training data"</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        s<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        zorder<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"#f40000"</span>,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"GDP Per Capita ($</span><span class="ch">\\</span><span class="st">times$ $10^5$)"</span>)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Life Satisfaction"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="not-bad.but-what-did-we-do-wrong" class="level3">
+<h3 class="anchored" data-anchor-id="not-bad.but-what-did-we-do-wrong">Not bad….but what did we do wrong?</h3>
+<p><img src="https://media.giphy.com/media/1Bh2zyW2yuBEalV0rO/giphy.gif" width="500"></p>
+</section>
+<section id="two-problems" class="level3">
+<h3 class="anchored" data-anchor-id="two-problems">Two Problems!</h3>
+<section id="we-also-fit-and-evaluated-our-model-on-the-same-training-set" class="level4">
+<h4 class="anchored" data-anchor-id="we-also-fit-and-evaluated-our-model-on-the-same-training-set">1. We also fit and evaluated our model on the same training set!</h4>
+</section>
+<section id="we-didnt-scale-our-input-data-features" class="level4">
+<h4 class="anchored" data-anchor-id="we-didnt-scale-our-input-data-features">2. We didn’t scale our input data features!</h4>
+<p>Scikit learn provides a utility function to split our input data:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I'll use a 70/30% split</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>train_set, test_set <span class="op">=</span> train_test_split(data, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These are new DataFrame objects, with lengths determined by the split percentage:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"size of full dataset = "</span>, <span class="bu">len</span>(data))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"size of training dataset = "</span>, <span class="bu">len</span>(train_set))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"size of test dataset = "</span>, <span class="bu">len</span>(test_set))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, make our feature and label arrays:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Features</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train_set[<span class="st">'gdp_per_capita'</span>].values</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_train[:, np.newaxis]</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test_set[<span class="st">'gdp_per_capita'</span>].values</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> X_test[:, np.newaxis]</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train_set[<span class="st">'life_satisfaction'</span>].values</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test_set[<span class="st">'life_satisfaction'</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html"><code>StandardScaler</code></a> to scale the GDP per capita:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale the training features</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale the test features</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>X_test_scaled <span class="op">=</span> scaler.fit_transform(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, let’s fit on the <em>training set</em> and evaluate on the <em>test set</em></p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model.fit(X_train_scaled, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>model.score(X_test_scaled, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Unsurprisingly, our fit gets worst when we test on unseen data</strong></p>
+<p>Our accuracy was artifically inflated the first time, since we trained and tested on the same data.</p>
+</section>
+</section>
+<section id="can-we-do-better-lets-do-some-feature-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="can-we-do-better-lets-do-some-feature-engineering">Can we do better? Let’s do some feature engineering…</h3>
+<p>We’ll use scikit learn’s <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html"><code>PolynomialFeatures</code></a> to add new polynomial features from the GDP per capita.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="lets-try-up-to-degree-3-polynomials-x3" class="level4">
+<h4 class="anchored" data-anchor-id="lets-try-up-to-degree-3-polynomials-x3">Let’s try up to degree 3 polynomials (<span class="math inline">\(x^3\)</span>)</h4>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="now-we-have-two-transformations-to-make" class="level3">
+<h3 class="anchored" data-anchor-id="now-we-have-two-transformations-to-make">Now we have two transformations to make:</h3>
+<ol type="1">
+<li>Scale our features</li>
+<li>Create the polynomial features</li>
+</ol>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Training</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>X_train_scaled_poly <span class="op">=</span> poly.fit_transform(scaler.fit_transform(X_train))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Test</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>X_test_scaled_poly <span class="op">=</span> poly.fit_transform(scaler.fit_transform(X_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>X_train_scaled_poly.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>model.fit(X_train_scaled_poly, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model.score(X_test_scaled_poly, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>The accuracy improved!</strong></p>
+</section>
+<section id="pipelines-making-multiple-transformations-much-easier" class="level3">
+<h3 class="anchored" data-anchor-id="pipelines-making-multiple-transformations-much-easier">Pipelines: making multiple transformations <em>much</em> easier</h3>
+<p>We can turn our preprocessing steps into a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline"><code>Pipeline</code></a> object using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline"><code>make_pipeline()</code></a> function.</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> make_pipeline(StandardScaler(), PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>pipe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Individual steps can be accessed via their names in a dict-like fashion:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>pipe[<span class="st">'standardscaler'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>pipe[<span class="st">'polynomialfeatures'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s apply this pipeline to our predicted GDP values for our plot:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(pipe.fit_transform(X_pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">"fivethirtyeight"</span>):</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the predicted values</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> model.predict(pipe.fit_transform(X_pred))</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    ax.plot(X_pred <span class="op">/</span> <span class="fl">1e5</span> , y_pred, label<span class="op">=</span><span class="st">"Predicted values"</span>, color<span class="op">=</span><span class="st">"#666666"</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Training data</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    ax.scatter(</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"gdp_per_capita"</span>] <span class="op">/</span> <span class="fl">1e5</span>,</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"life_satisfaction"</span>],</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">"Training data"</span>,</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>        s<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>        zorder<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"#f40000"</span>,</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"GDP Per Capita ($</span><span class="ch">\\</span><span class="st">times$ $10^5$)"</span>)</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Life Satisfaction"</span>)<span class="op">;</span></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>The additional polynomial features introduced some curvature and improved the fit!</strong></p>
+</section>
+<section id="how-about-large-polynomial-degrees" class="level3">
+<h3 class="anchored" data-anchor-id="how-about-large-polynomial-degrees">How about large polynomial degrees?</h3>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">"fivethirtyeight"</span>):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Original data set</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    ax.scatter(</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"gdp_per_capita"</span>] <span class="op">/</span> <span class="fl">1e5</span>,</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"life_satisfaction"</span>],</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">"Training data"</span>,</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>        s<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>        zorder<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"#666666"</span>,</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the predicted values</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> degree <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>]:</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"degree = </span><span class="sc">{</span>degree<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create out pipeline</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> make_pipeline(StandardScaler(), PolynomialFeatures(degree<span class="op">=</span>degree))</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fit the model on the training set</span></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>        model.fit(p.fit_transform(X_train), y_train)</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Evaluate on the training set</span></span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>        training_score <span class="op">=</span> model.score(p.fit_transform(X_train), y_train)</span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Training Score = </span><span class="sc">{</span>training_score<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Evaluate on the test set</span></span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>        test_score <span class="op">=</span> model.score(p.fit_transform(X_test), y_test)</span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Test Score = </span><span class="sc">{</span>test_score<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot</span></span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> model.predict(p.fit_transform(X_pred))</span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>        ax.plot(X_pred <span class="op">/</span> <span class="fl">1e5</span>, y_pred, label<span class="op">=</span><span class="ss">f"Degree = </span><span class="sc">{</span>degree<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>()</span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>    ax.legend(ncol<span class="op">=</span><span class="dv">2</span>, loc<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="dv">4</span>, <span class="dv">9</span>)</span>
+<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"GDP Per Capita ($</span><span class="ch">\\</span><span class="st">times$ $10^5$)"</span>)</span>
+<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Life Satisfaction"</span>)</span>
+<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="overfitting-alert" class="level3">
+<h3 class="anchored" data-anchor-id="overfitting-alert">Overfitting alert!</h3>
+<p>As we increase the polynomial degree, two things happen:</p>
+<ol type="1">
+<li>Training accuracy goes way up</li>
+<li>Test accuracy goes way down</li>
+</ol>
+<p>This is the classic case of overfitting — our model does not generalize well at all.</p>
+</section>
+<section id="regularization-to-the-rescue" class="level3">
+<h3 class="anchored" data-anchor-id="regularization-to-the-rescue">Regularization to the rescue?</h3>
+<ul>
+<li>The <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"><code>Ridge</code></a> adds regularization to the linear regression least squares model</li>
+<li>Parameter <em>alpha</em> determines the level of regularization</li>
+<li>Larger values of <em>alpha</em> mean stronger regularization — results in a “simpler” bestfit</li>
+</ul>
+<p><strong>Remember, regularization penalizes large parameter values and complex fits</strong></p>
+</section>
+</section>
+<section id="thats-it" class="level2">
+<h2 class="anchored" data-anchor-id="thats-it">That’s it!</h2>
+<p>To be continued next time!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by <a href="https://www.nickhand.dev">Nick Hand</a>, Quarto layout adapted from <a href="https://github.com/andrewheiss/datavizs23.classes.andrewheiss.com">Andrew Heiss’s Data Visualization with R course</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-python" aria-label="python"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/MUSA-550-Fall-2023/musa-550-fall-2023.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

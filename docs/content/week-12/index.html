@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Geospatial Data Science in Python - Week 6: Getting Data, Part 1: Web Scraping</title>
+<title>Geospatial Data Science in Python - Week 12: Predictive Modeling with Scikit-Learn</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/week-7/index.html" rel="next">
-<link href="../../content/week-5/index.html" rel="prev">
+<link href="../../content/week-11/index.html" rel="prev">
 <link href="../../files/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -164,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/week-6/index.html">6. Web Scraping</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/week-12/index.html">12. Predictive Modeling with Scikit-Learn</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -214,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/week-6/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../content/week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">6. Web Scraping</span></a>
   </div>
 </li>
@@ -250,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/week-12/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/week-12/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">12. Predictive Modeling with Scikit-Learn</span></a>
   </div>
 </li>
@@ -264,9 +263,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#recommended-readings" id="toc-recommended-readings" class="nav-link active" data-scroll-target="#recommended-readings">Recommended readings</a></li>
-  <li><a href="#new-packages" id="toc-new-packages" class="nav-link" data-scroll-target="#new-packages">New Packages</a></li>
-  <li><a href="#useful-links-and-reference-materials" id="toc-useful-links-and-reference-materials" class="nav-link" data-scroll-target="#useful-links-and-reference-materials">Useful Links and Reference Materials</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link active" data-scroll-target="#reference">Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -275,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 6: Getting Data, Part 1: Web Scraping</h1>
+<h1 class="title">Week 12: Predictive Modeling with Scikit-Learn</h1>
 </div>
 
 
@@ -293,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 
-<div class="content-dates">Content for lectures 6A and 6B</div>
+<div class="content-dates">Content for lectures 12A and 12B</div>
 <div class="content-header mt-2">
 
         <div class="content-page-repo">
@@ -301,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
             &nbsp;
             <span>View materials:</span>
             &nbsp;
-            <a href="https://github.com/MUSA-550-Fall-2023/week-6">MUSA-550-Fall-2023/week-6</a>
+            <a href="https://github.com/MUSA-550-Fall-2023/week-12">MUSA-550-Fall-2023/week-12</a>
         </div>
 
         <div class="content-page-repo">
@@ -309,12 +306,12 @@ ul.task-list li input[type="checkbox"] {
             &nbsp;
             <span>HTML slides:</span>
             &nbsp;
-            <a class="" href="./lecture-6A.html">
-                Lecture 6A
+            <a class="" href="./lecture-12A.html">
+                Lecture 12A
             </a>
             &nbsp;
-            <a class="" href="./lecture-6B.html">
-                Lecture 6B
+            <a class="" href="./lecture-12B.html">
+                Lecture 12B
             </a>
         </div>
         
@@ -324,52 +321,38 @@ ul.task-list li input[type="checkbox"] {
             &nbsp;
             <span>Executable slides:</span>
             &nbsp;
-            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-6%26urlpath%3Dlab%252Ftree%252Fweek-6%252Flecture-6A.ipynb%26branch%3Dmain">
-                Lecture 6A
+            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-12%26urlpath%3Dlab%252Ftree%252Fweek-12%252Flecture-12A.ipynb%26branch%3Dmain">
+                Lecture 12A
             </a>
             &nbsp;
-            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-6%26urlpath%3Dlab%252Ftree%252Fweek-6%252Flecture-6B.ipynb%26branch%3Dmain">
-                Lecture 6B
+            <a class="" href="https://mybinder.org/v2/gh/MUSA-550-Fall-2023/python-environment/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FMUSA-550-Fall-2023%252Fweek-12%26urlpath%3Dlab%252Ftree%252Fweek-12%252Flecture-12B.ipynb%26branch%3Dmain">
+                Lecture 12B
             </a>
         </div>
         
 </div>
 </div>
 </div>
-<section id="recommended-readings" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-readings">Recommended readings</h2>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
 <ul>
-<li><a href="https://github.com/MUSA-550-Fall-2023/week-6/blob/main/css-selectors.md">BeautifulSoup and CSS Selectors</a></li>
-<li><a href="https://arxiv.org/abs/2305.19893">Web scraping: a promising tool for geographic data acquisition</a></li>
-<li>Web scraping in the news
+<li>scikit-learn
 <ul>
-<li><a href="https://apnews.com/article/openai-lawsuit-authors-grisham-george-rr-martin-37f9073ab67ab25b7e6b2975b2a63bfe">OpenAI sued by authors (AP News)c</a></li>
-<li><a href="https://www.wired.com/story/clearview-ai-scraping-web/">Scraping the Web Is a Powerful Tool. Clearview AI Abused It (Wired)</a></li>
-<li><a href="https://techcrunch.com/2022/04/18/web-scraping-legal-court/">Web scraping is legal, US appeals court reaffirms (Techcrunch)</a></li>
+<li><a href="https://scikit-learn.org/stable/user_guide.html">User guide</a></li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html">RandomForestRegressor</a></li>
+<li><a href="https://scikit-learn.org/stable/auto_examples/compose/plot_column_transformer_mixed_types.html">Column transformer example</a></li>
 </ul></li>
-</ul>
-</section>
-<section id="new-packages" class="level2">
-<h2 class="anchored" data-anchor-id="new-packages">New Packages</h2>
+<li><a href="https://towardsdatascience.com/https-medium-com-lorrli-classification-and-regression-analysis-with-decision-trees-c43cdbc58054">Decision trees</a></li>
+<li>Machine learning models in the real estate industry
 <ul>
-<li><a href="http://docs.python-requests.org/en/master/">Requests</a></li>
-<li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a></li>
-<li><a href="https://selenium-python.readthedocs.io">Selenium</a></li>
-</ul>
-</section>
-<section id="useful-links-and-reference-materials" class="level2">
-<h2 class="anchored" data-anchor-id="useful-links-and-reference-materials">Useful Links and Reference Materials</h2>
-<ul>
-<li><a href="https://geoffboeing.com/2016/08/craigslist-rental-housing-insights/">Insights into Housing Markets from Scraping Craigslist</a>
-<ul>
-<li><a href="https://arxiv.org/pdf/1605.05397.pdf">and accompanying academic article</a></li>
+<li><a href="https://spectrum.ieee.org/computing/software/the-secret-of-airbnbs-pricing-algorithm">Airbnb recommends pricing to hosts</a></li>
+<li><a href="https://www.trulia.com/blog/tech/image-recognition/">Trulia converts house photos to house features</a></li>
+<li><a href="https://www.zillow.com/research/zestimate-forecast-methodology/">Zillow’s Zestimate</a></li>
 </ul></li>
-<li><a href="https://www.w3schools.com/html/html_intro.asp">HTML tutorial</a>
-<ul>
-<li>sections: introduction, basics, elements, attributes</li>
-</ul></li>
-<li><a href="https://www.learndatasci.com/tutorials/ultimate-guide-web-scraping-w-python-requests-and-beautifulsoup/">Tutorial on Web Scraping with Requests and BeautifulSoup</a></li>
-<li><a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS Selectors</a></li>
+<li><a href="https://github.com/ResidentMario/missingno">The missingno package</a></li>
+<li><a href="https://www.phila.gov/OPA/Documents/Property%20Assessment%20Methodology.pdf">Presentation on the Office of Property Assessment’s methodology</a></li>
+<li><a href="https://controller.phila.gov/philadelphia-audits/property-assessment-review/">City Controller analysis of property assessments</a></li>
+<li><a href="https://urbanspatial.github.io/AlgorithmicFairness_ACodebasedPrimerForPublicSectorDataScientists">Algorithmic fairness with case study on modeling Philadelphia’s home values</a></li>
 </ul>
 
 
@@ -611,14 +594,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/week-5/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">5. More Geospatial Analysis: Street Networks and Raster Data</span>
+      <a href="../../content/week-11/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">11. Case Study: Clustering Analysis in Python</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/week-7/index.html" class="pagination-link">
-        <span class="nav-page-text">7. Working with APIs</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

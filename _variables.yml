@@ -1,5 +1,5 @@
 # Current week
-current_week: 11
+current_week: 12
 
 install:
   default_python_version: "3.10"
