@@ -92,9 +92,9 @@ website:
     - file: content/week-10/index.qmd
       text: '10. From Notebooks to the Web: Part 2'
     - file: content/week-11/index.qmd
-      text: '11. Case Study: Clustering Analysis in Python'
+      text: 11. Clustering Analysis in Python
     - file: content/week-12/index.qmd
-      text: 12. Predictive Modeling with Scikit-Learn
+      text: 12. Predictive Modeling with Scikit-Learn, Part 1
     search: false
     style: docked
     title: Content

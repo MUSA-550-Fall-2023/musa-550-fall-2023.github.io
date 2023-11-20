@@ -9,9 +9,9 @@ week,topic,module
 8,Analyzing and Visualizing Large Datasets,Data Ingestion & Big Data
 9,From Notebooks to the Web: Part 1,From Exploration to Storytelling
 10,From Notebooks to the Web: Part 2,From Exploration to Storytelling
-11,Case Study: Clustering Analysis in Python,Geospatial Data Science in the Wild
-12,Predictive Modeling with Scikit-Learn,Geospatial Data Science in the Wild
-13,"Predictive Modeling with Scikit-Learn, Continued",Geospatial Data Science in the Wild
-14,Case Study: Advanced Raster Analysis,Geospatial Data Science in the Wild
+11,Clustering Analysis in Python,Geospatial Data Science in the Wild
+12,"Predictive Modeling with Scikit-Learn, Part 1",Geospatial Data Science in the Wild
+13,"Predictive Modeling with Scikit-Learn, Part 2",Geospatial Data Science in the Wild
+14,Advanced Raster Analysis,Geospatial Data Science in the Wild
 
 
