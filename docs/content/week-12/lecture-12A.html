@@ -192,57 +192,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#last-week" id="toc-last-week" class="nav-link active" data-scroll-target="#last-week">Last week</a></li>
-  <li><a href="#reminder-clustering-is-an-example-of-unsupervised-learning" id="toc-reminder-clustering-is-an-example-of-unsupervised-learning" class="nav-link" data-scroll-target="#reminder-clustering-is-an-example-of-unsupervised-learning">Reminder: clustering is an example of <em>unsupervised learning</em></a></li>
-  <li><a href="#today-an-example-of-supervised-learning" id="toc-today-an-example-of-supervised-learning" class="nav-link" data-scroll-target="#today-an-example-of-supervised-learning">Today: an example of <em>supervised learning</em></a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples:</a></li>
-  <li><a href="#model-based-learning" id="toc-model-based-learning" class="nav-link" data-scroll-target="#model-based-learning">Model-based learning</a></li>
-  <li><a href="#machine-learning-is-really-just-an-optimization-problem" id="toc-machine-learning-is-really-just-an-optimization-problem" class="nav-link" data-scroll-target="#machine-learning-is-really-just-an-optimization-problem">Machine learning is really just an <strong>optimization problem</strong></a>
-  <ul class="collapse">
-  <li><a href="#choose-a-model" id="toc-choose-a-model" class="nav-link" data-scroll-target="#choose-a-model">1. Choose a model</a></li>
-  <li><a href="#the-model-has-an-associated-cost-function" id="toc-the-model-has-an-associated-cost-function" class="nav-link" data-scroll-target="#the-model-has-an-associated-cost-function">2. The model has an associated cost function</a></li>
-  <li><a href="#learn-the-best-model-parameters" id="toc-learn-the-best-model-parameters" class="nav-link" data-scroll-target="#learn-the-best-model-parameters">3. “Learn” the best model parameters</a></li>
-  </ul></li>
-  <li><a href="#recap-the-steps-involved" id="toc-recap-the-steps-involved" class="nav-link" data-scroll-target="#recap-the-steps-involved">Recap: the steps involved</a></li>
-  <li><a href="#what-could-go-wrong" id="toc-what-could-go-wrong" class="nav-link" data-scroll-target="#what-could-go-wrong">What could go wrong?</a>
-  <ul class="collapse">
-  <li><a href="#mistake-1-bad-data" id="toc-mistake-1-bad-data" class="nav-link" data-scroll-target="#mistake-1-bad-data">Mistake #1: “bad data”</a></li>
-  <li><a href="#mistake-2-bad-algorithm" id="toc-mistake-2-bad-algorithm" class="nav-link" data-scroll-target="#mistake-2-bad-algorithm">Mistake #2: “bad algorithm”</a></li>
-  </ul></li>
-  <li><a href="#regularization-keeping-it-simple" id="toc-regularization-keeping-it-simple" class="nav-link" data-scroll-target="#regularization-keeping-it-simple">Regularization: keeping it simple</a></li>
-  <li><a href="#key-question-how-do-we-know-if-a-model-will-perform-well-on-new-data" id="toc-key-question-how-do-we-know-if-a-model-will-perform-well-on-new-data" class="nav-link" data-scroll-target="#key-question-how-do-we-know-if-a-model-will-perform-well-on-new-data">Key question: How do we know if a model will perform well on new data?</a></li>
-  <li><a href="#option-1-a-traintest-split" id="toc-option-1-a-traintest-split" class="nav-link" data-scroll-target="#option-1-a-traintest-split">Option #1: a train/test split</a></li>
-  <li><a href="#option-2-k-fold-cross-validation" id="toc-option-2-k-fold-cross-validation" class="nav-link" data-scroll-target="#option-2-k-fold-cross-validation">Option #2: <em>k</em>-fold cross-validation</a></li>
-  <li><a href="#lets-try-out-a-simple-example-does-money-make-people-happier" id="toc-lets-try-out-a-simple-example-does-money-make-people-happier" class="nav-link" data-scroll-target="#lets-try-out-a-simple-example-does-money-make-people-happier">Let’s try out a simple example: does money make people happier?</a>
-  <ul class="collapse">
-  <li><a href="#make-a-quick-plot" id="toc-make-a-quick-plot" class="nav-link" data-scroll-target="#make-a-quick-plot">Make a quick plot</a></li>
-  <li><a href="#theres-a-roughly-linear-trend-herelets-start-there" id="toc-theres-a-roughly-linear-trend-herelets-start-there" class="nav-link" data-scroll-target="#theres-a-roughly-linear-trend-herelets-start-there">There’s a roughly linear trend here…let’s start there</a></li>
-  <li><a href="#whats-with-the-_-at-the-end-of-variable-names" id="toc-whats-with-the-_-at-the-end-of-variable-names" class="nav-link" data-scroll-target="#whats-with-the-_-at-the-end-of-variable-names">What’s with the “_” at the end of variable names?</a></li>
-  <li><a href="#how-good-is-the-fit" id="toc-how-good-is-the-fit" class="nav-link" data-scroll-target="#how-good-is-the-fit">How good is the fit?</a></li>
-  <li><a href="#lets-plot-the-data-and-the-predicted-values" id="toc-lets-plot-the-data-and-the-predicted-values" class="nav-link" data-scroll-target="#lets-plot-the-data-and-the-predicted-values">Let’s plot the data and the predicted values</a></li>
-  <li><a href="#not-bad.but-what-did-we-do-wrong" id="toc-not-bad.but-what-did-we-do-wrong" class="nav-link" data-scroll-target="#not-bad.but-what-did-we-do-wrong">Not bad….but what did we do wrong?</a></li>
-  <li><a href="#two-problems" id="toc-two-problems" class="nav-link" data-scroll-target="#two-problems">Two Problems!</a></li>
-  <li><a href="#can-we-do-better-lets-do-some-feature-engineering" id="toc-can-we-do-better-lets-do-some-feature-engineering" class="nav-link" data-scroll-target="#can-we-do-better-lets-do-some-feature-engineering">Can we do better? Let’s do some feature engineering…</a></li>
-  <li><a href="#now-we-have-two-transformations-to-make" id="toc-now-we-have-two-transformations-to-make" class="nav-link" data-scroll-target="#now-we-have-two-transformations-to-make">Now we have two transformations to make:</a></li>
-  <li><a href="#pipelines-making-multiple-transformations-much-easier" id="toc-pipelines-making-multiple-transformations-much-easier" class="nav-link" data-scroll-target="#pipelines-making-multiple-transformations-much-easier">Pipelines: making multiple transformations <em>much</em> easier</a></li>
-  <li><a href="#how-about-large-polynomial-degrees" id="toc-how-about-large-polynomial-degrees" class="nav-link" data-scroll-target="#how-about-large-polynomial-degrees">How about large polynomial degrees?</a></li>
-  <li><a href="#overfitting-alert" id="toc-overfitting-alert" class="nav-link" data-scroll-target="#overfitting-alert">Overfitting alert!</a></li>
-  <li><a href="#regularization-to-the-rescue" id="toc-regularization-to-the-rescue" class="nav-link" data-scroll-target="#regularization-to-the-rescue">Regularization to the rescue?</a></li>
-  </ul></li>
-  <li><a href="#thats-it" id="toc-thats-it" class="nav-link" data-scroll-target="#thats-it">That’s it!</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -780,7 +735,140 @@ Caution
 <li>Larger values of <em>alpha</em> mean stronger regularization — results in a “simpler” bestfit</li>
 </ul>
 <p><strong>Remember, regularization penalizes large parameter values and complex fits</strong></p>
+<p>Let’s gain some intuition:</p>
+<ul>
+<li>Fix the polynomial degree to 3</li>
+<li>Try out alpha values of 0, 10, 100, and <span class="math inline">\(10^5\)</span></li>
+<li>Compare to linear fit (no polynomial features)</li>
+</ul>
+<p><strong>Important</strong> - Baseline: linear model - This uses <code>LinearModel</code> and scales input features with <code>StandardScaler</code> - Ridge regression: try multiple regularization strength values - Use a pipeline object to apply both a <code>StandardScaler</code> and <code>PolynomialFeatures(degree=3)</code> pre-processing to features</p>
+<p>Set up a grid of GDP per capita points to make predictions for:</p>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The values we want to predict (ranging from our min to max GDP per capita)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>gdp_pred <span class="op">=</span> np.linspace(<span class="fl">1e3</span>, <span class="fl">1.1e5</span>, <span class="dv">100</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sklearn needs the second axis!</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>X_pred <span class="op">=</span> gdp_pred[:, np.newaxis]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pre-processing pipeline</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This scales and adds polynomial features up to degree = 3</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> make_pipeline(StandardScaler(), PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>))</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># BASELINE: Setup and fit a linear model (with scaled features)</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>linear <span class="op">=</span> LinearRegression()</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>linear.fit(scaler.fit_transform(X_train), y_train)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> plt.style.context(<span class="st">"fivethirtyeight"</span>):</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Plot the data</span></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    ax.scatter(</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"gdp_per_capita"</span>] <span class="op">/</span> <span class="fl">1e5</span>,</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"life_satisfaction"</span>],</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">"Data"</span>,</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>        s<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>        zorder<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"#666666"</span>,</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Evaluate the linear fit</span></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Linear fit"</span>)</span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>    training_score <span class="op">=</span> linear.score(scaler.fit_transform(X_train), y_train)</span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Training Score = </span><span class="sc">{</span>training_score<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a>    test_score <span class="op">=</span> linear.score(scaler.fit_transform(X_test), y_test)</span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Test Score = </span><span class="sc">{</span>test_score<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Plot the linear fit</span></span>
+<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a>    ax.plot(</span>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a>        X_pred <span class="op">/</span> <span class="fl">1e5</span>,</span>
+<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a>        linear.predict(scaler.fit_transform(X_pred)),</span>
+<span id="cb39-39"><a href="#cb39-39" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"k"</span>,</span>
+<span id="cb39-40"><a href="#cb39-40" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">"Linear fit"</span>,</span>
+<span id="cb39-41"><a href="#cb39-41" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb39-42"><a href="#cb39-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Ridge regression: linear model with regularization </span></span>
+<span id="cb39-44"><a href="#cb39-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the predicted values for each alpha</span></span>
+<span id="cb39-45"><a href="#cb39-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> alpha <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="fl">1e5</span>]:</span>
+<span id="cb39-46"><a href="#cb39-46" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"alpha = </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-47"><a href="#cb39-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-48"><a href="#cb39-48" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create out Ridge model with this alpha</span></span>
+<span id="cb39-49"><a href="#cb39-49" aria-hidden="true" tabindex="-1"></a>        ridge <span class="op">=</span> Ridge(alpha<span class="op">=</span>alpha)</span>
+<span id="cb39-50"><a href="#cb39-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-51"><a href="#cb39-51" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fit the model on the training set</span></span>
+<span id="cb39-52"><a href="#cb39-52" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">NOTE</span><span class="co">: Use the pipeline that includes polynomial features</span></span>
+<span id="cb39-53"><a href="#cb39-53" aria-hidden="true" tabindex="-1"></a>        ridge.fit(pipe.fit_transform(X_train), y_train)</span>
+<span id="cb39-54"><a href="#cb39-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-55"><a href="#cb39-55" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Evaluate on the training set</span></span>
+<span id="cb39-56"><a href="#cb39-56" aria-hidden="true" tabindex="-1"></a>        training_score <span class="op">=</span> ridge.score(pipe.fit_transform(X_train), y_train)</span>
+<span id="cb39-57"><a href="#cb39-57" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Training Score = </span><span class="sc">{</span>training_score<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-58"><a href="#cb39-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-59"><a href="#cb39-59" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Evaluate on the test set</span></span>
+<span id="cb39-60"><a href="#cb39-60" aria-hidden="true" tabindex="-1"></a>        test_score <span class="op">=</span> ridge.score(pipe.fit_transform(X_test), y_test)</span>
+<span id="cb39-61"><a href="#cb39-61" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Test Score = </span><span class="sc">{</span>test_score<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-62"><a href="#cb39-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-63"><a href="#cb39-63" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot the ridge results</span></span>
+<span id="cb39-64"><a href="#cb39-64" aria-hidden="true" tabindex="-1"></a>        y_pred <span class="op">=</span> ridge.predict(pipe.fit_transform(X_pred))</span>
+<span id="cb39-65"><a href="#cb39-65" aria-hidden="true" tabindex="-1"></a>        ax.plot(X_pred <span class="op">/</span> <span class="fl">1e5</span>, y_pred, label<span class="op">=</span><span class="ss">f"alpha = </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-66"><a href="#cb39-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-67"><a href="#cb39-67" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>()</span>
+<span id="cb39-68"><a href="#cb39-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-69"><a href="#cb39-69" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot formatting</span></span>
+<span id="cb39-70"><a href="#cb39-70" aria-hidden="true" tabindex="-1"></a>    ax.legend(ncol<span class="op">=</span><span class="dv">2</span>, loc<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb39-71"><a href="#cb39-71" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="dv">4</span>, <span class="dv">8</span>)</span>
+<span id="cb39-72"><a href="#cb39-72" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"GDP Per Capita ($</span><span class="ch">\\</span><span class="st">times$ $10^5$)"</span>)</span>
+<span id="cb39-73"><a href="#cb39-73" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Life Satisfaction"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear fit
+Training Score = 0.4638100579740343
+Test Score = 0.35959585147159556
+
+alpha = 0
+Training Score = 0.6458898101593082
+Test Score = 0.5597457659851048
+
+alpha = 10
+Training Score = 0.5120282691427858
+Test Score = 0.38335642103788325
+
+alpha = 100
+Training Score = 0.1815398751108913
+Test Score = -0.05242399995626967
+
+alpha = 100000.0
+Training Score = 0.0020235571180508005
+Test Score = -0.26129559971586125
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="lecture-12A_files/figure-html/cell-40-output-2.png" class="img-fluid"></p>
+</div>
+</div>
 </section>
+<section id="takeaways" class="level3">
+<h3 class="anchored" data-anchor-id="takeaways">Takeaways</h3>
+<ul>
+<li>As we increase alpha, the fits become “simpler” and coefficients get closer and closer to zero — a straight line!</li>
+<li>When alpha = 0 (no regularization), we get the same result as when we ran <code>LinearRegression()</code> with the polynomial features</li>
+<li>In this case, regularization doesn’t improve the fit, and the base polynomial regression (degree=3) provides the best fit</li>
+</ul>
+</section>
+</section>
+<section id="recap-what-we-learned-so-far" class="level2">
+<h2 class="anchored" data-anchor-id="recap-what-we-learned-so-far">Recap: what we learned so far</h2>
+<ul>
+<li>The LinearRegression model</li>
+<li>The test/train split and evaluation</li>
+<li>Feature engineering: scaling and creating polynomial features</li>
+<li>The Ridge model and regularization</li>
+<li>Creating Pipeline() objects</li>
+</ul>
 </section>
 <section id="thats-it" class="level2">
 <h2 class="anchored" data-anchor-id="thats-it">That’s it!</h2>

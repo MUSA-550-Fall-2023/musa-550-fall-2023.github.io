@@ -195,66 +195,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#the-plan-for-today" id="toc-the-plan-for-today" class="nav-link active" data-scroll-target="#the-plan-for-today">The plan for today</a></li>
-  <li><a href="#supervised-learning-with-scikit-learn" id="toc-supervised-learning-with-scikit-learn" class="nav-link" data-scroll-target="#supervised-learning-with-scikit-learn">Supervised learning with scikit-learn</a>
-  <ul class="collapse">
-  <li><a href="#example-does-money-make-people-happier" id="toc-example-does-money-make-people-happier" class="nav-link" data-scroll-target="#example-does-money-make-people-happier">Example: does money make people happier?</a></li>
-  </ul></li>
-  <li><a href="#where-we-left-off-overfitting" id="toc-where-we-left-off-overfitting" class="nav-link" data-scroll-target="#where-we-left-off-overfitting">Where we left off: overfitting</a>
-  <ul class="collapse">
-  <li><a href="#regularization-to-the-rescue" id="toc-regularization-to-the-rescue" class="nav-link" data-scroll-target="#regularization-to-the-rescue">Regularization to the rescue?</a></li>
-  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
-  </ul></li>
-  <li><a href="#recap-what-we-learned-so-far" id="toc-recap-what-we-learned-so-far" class="nav-link" data-scroll-target="#recap-what-we-learned-so-far">Recap: what we learned so far</a></li>
-  <li><a href="#how-can-we-improve" id="toc-how-can-we-improve" class="nav-link" data-scroll-target="#how-can-we-improve">How can we improve?</a></li>
-  <li><a href="#decision-trees-a-more-sophisticated-modeling-algorithm" id="toc-decision-trees-a-more-sophisticated-modeling-algorithm" class="nav-link" data-scroll-target="#decision-trees-a-more-sophisticated-modeling-algorithm">Decision trees: a more sophisticated modeling algorithm</a></li>
-  <li><a href="#a-decision-tree-classifier-for-the-iris-data-set" id="toc-a-decision-tree-classifier-for-the-iris-data-set" class="nav-link" data-scroll-target="#a-decision-tree-classifier-for-the-iris-data-set">A decision tree classifier for the Iris data set</a></li>
-  <li><a href="#regression-with-decision-trees-is-similar" id="toc-regression-with-decision-trees-is-similar" class="nav-link" data-scroll-target="#regression-with-decision-trees-is-similar">Regression with decision trees is similar</a></li>
-  <li><a href="#decision-trees-suffer-from-overfitting" id="toc-decision-trees-suffer-from-overfitting" class="nav-link" data-scroll-target="#decision-trees-suffer-from-overfitting">Decision trees suffer from overfitting</a></li>
-  <li><a href="#random-forests-an-ensemble-solution-to-overfitting" id="toc-random-forests-an-ensemble-solution-to-overfitting" class="nav-link" data-scroll-target="#random-forests-an-ensemble-solution-to-overfitting">Random forests: an <em>ensemble</em> solution to overfitting</a></li>
-  <li><a href="#lets-check-for-correlations-in-our-input-data" id="toc-lets-check-for-correlations-in-our-input-data" class="nav-link" data-scroll-target="#lets-check-for-correlations-in-our-input-data">Let’s check for correlations in our input data</a></li>
-  <li><a href="#lets-do-some-fitting" id="toc-lets-do-some-fitting" class="nav-link" data-scroll-target="#lets-do-some-fitting">Let’s do some fitting…</a></li>
-  <li><a href="#which-variables-matter-the-most" id="toc-which-variables-matter-the-most" class="nav-link" data-scroll-target="#which-variables-matter-the-most">Which variables matter the most?</a></li>
-  <li><a href="#lets-improve-our-fitting-with-k-fold-cross-validation" id="toc-lets-improve-our-fitting-with-k-fold-cross-validation" class="nav-link" data-scroll-target="#lets-improve-our-fitting-with-k-fold-cross-validation">Let’s improve our fitting with <em>k</em>-fold cross validation</a></li>
-  <li><a href="#lets-do-3-fold-cross-validation" id="toc-lets-do-3-fold-cross-validation" class="nav-link" data-scroll-target="#lets-do-3-fold-cross-validation">Let’s do 3-fold cross validation</a>
-  <ul class="collapse">
-  <li><a href="#linear-pipeline-baseline" id="toc-linear-pipeline-baseline" class="nav-link" data-scroll-target="#linear-pipeline-baseline">Linear pipeline (baseline)</a></li>
-  <li><a href="#random-forest-model" id="toc-random-forest-model" class="nav-link" data-scroll-target="#random-forest-model">Random forest model</a></li>
-  <li><a href="#takeaway-the-random-forest-model-is-clearly-more-accurate" id="toc-takeaway-the-random-forest-model-is-clearly-more-accurate" class="nav-link" data-scroll-target="#takeaway-the-random-forest-model-is-clearly-more-accurate">Takeaway: the random forest model is clearly more accurate</a></li>
-  </ul></li>
-  <li><a href="#question-why-did-i-choose-to-use-100-estimators-in-the-rf-model" id="toc-question-why-did-i-choose-to-use-100-estimators-in-the-rf-model" class="nav-link" data-scroll-target="#question-why-did-i-choose-to-use-100-estimators-in-the-rf-model">Question: Why did I choose to use 100 estimators in the RF model?</a>
-  <ul class="collapse">
-  <li><a href="#enter-gridsearchcv" id="toc-enter-gridsearchcv" class="nav-link" data-scroll-target="#enter-gridsearchcv">Enter GridSearchCV</a></li>
-  <li><a href="#make-the-grid-of-parameters-to-search" id="toc-make-the-grid-of-parameters-to-search" class="nav-link" data-scroll-target="#make-the-grid-of-parameters-to-search">Make the grid of parameters to search</a></li>
-  <li><a href="#now-lets-evaluate" id="toc-now-lets-evaluate" class="nav-link" data-scroll-target="#now-lets-evaluate">Now let’s evaluate!</a></li>
-  </ul></li>
-  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
-  <li><a href="#part-2-modeling-residential-sales-in-philadelphia" id="toc-part-2-modeling-residential-sales-in-philadelphia" class="nav-link" data-scroll-target="#part-2-modeling-residential-sales-in-philadelphia">Part 2: Modeling residential sales in Philadelphia</a>
-  <ul class="collapse">
-  <li><a href="#machine-learning-models-are-increasingly-common-in-the-real-estate-industry" id="toc-machine-learning-models-are-increasingly-common-in-the-real-estate-industry" class="nav-link" data-scroll-target="#machine-learning-models-are-increasingly-common-in-the-real-estate-industry">Machine learning models are increasingly common in the real estate industry</a></li>
-  <li><a href="#the-hedonic-approach-to-housing-prices" id="toc-the-hedonic-approach-to-housing-prices" class="nav-link" data-scroll-target="#the-hedonic-approach-to-housing-prices">The hedonic approach to housing prices</a></li>
-  <li><a href="#what-contributes-to-the-price-of-a-house" id="toc-what-contributes-to-the-price-of-a-house" class="nav-link" data-scroll-target="#what-contributes-to-the-price-of-a-house">What contributes to the price of a house?</a></li>
-  <li><a href="#why-are-these-kinds-of-models-important" id="toc-why-are-these-kinds-of-models-important" class="nav-link" data-scroll-target="#why-are-these-kinds-of-models-important">Why are these kinds of models important?</a></li>
-  <li><a href="#philadelphias-assessments-arenot-good" id="toc-philadelphias-assessments-arenot-good" class="nav-link" data-scroll-target="#philadelphias-assessments-arenot-good">Philadelphia’s assessments are…not good</a></li>
-  <li><a href="#data-from-the-office-of-property-assessment" id="toc-data-from-the-office-of-property-assessment" class="nav-link" data-scroll-target="#data-from-the-office-of-property-assessment">Data from the Office of Property Assessment</a></li>
-  <li><a href="#the-opa-is-messy" id="toc-the-opa-is-messy" class="nav-link" data-scroll-target="#the-opa-is-messy">The OPA is messy</a></li>
-  <li><a href="#lets-focus-on-numerical-features-only-first" id="toc-lets-focus-on-numerical-features-only-first" class="nav-link" data-scroll-target="#lets-focus-on-numerical-features-only-first">Let’s focus on numerical features only first</a></li>
-  <li><a href="#which-variables-were-most-important" id="toc-which-variables-were-most-important" class="nav-link" data-scroll-target="#which-variables-were-most-important">Which variables were most important?</a></li>
-  </ul></li>
-  <li><a href="#to-be-continued-next-lecture" id="toc-to-be-continued-next-lecture" class="nav-link" data-scroll-target="#to-be-continued-next-lecture">To be continued next lecture…</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
