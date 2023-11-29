@@ -95,6 +95,8 @@ website:
       text: 11. Clustering Analysis in Python
     - file: content/week-12/index.qmd
       text: 12. Predictive Modeling with Scikit-Learn, Part 1
+    - file: content/week-13/index.qmd
+      text: 13. Predictive Modeling with Scikit-Learn, Part 2
     search: false
     style: docked
     title: Content

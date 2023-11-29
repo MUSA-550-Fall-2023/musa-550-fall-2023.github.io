@@ -1,0 +1,23 @@
+
+---
+title: "Week 13: Predictive Modeling Continued"
+execute: 
+  echo: false
+---
+
+{{< include ../_header.qmd >}}
+
+
+## Reference
+
+- [Bikeshares and subsidies](https://www.pewtrusts.org/en/research-and-analysis/blogs/stateline/2016/03/24/despite-popularity-bike-share-programs-often-need-subsidies)
+- [MUSA Practicum analysis on bikeshare demand](https://pennmusa.github.io/MUSA_801.io/project_2/index.html)
+- [Indego data](https://www.rideindego.com/about/data/)
+- Useful scikit-learn references:
+  - [Imputation of missing values](https://scikit-learn.org/stable/modules/impute.html)
+  - [Ensemble methods](https://scikit-learn.org/stable/modules/ensemble.html)
+  - [Metrics and scoring](https://scikit-learn.org/stable/modules/model_evaluation.html)
+- Other bike share data:
+  - [Boston](https://www.bluebikes.com/system-data)
+  - [Chicago](https://www.divvybikes.com/system-data)
+  - [Washington D.C](https://www.capitalbikeshare.com/system-data)
