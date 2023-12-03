@@ -97,6 +97,8 @@ website:
       text: 12. Predictive Modeling with Scikit-Learn, Part 1
     - file: content/week-13/index.qmd
       text: 13. Predictive Modeling with Scikit-Learn, Part 2
+    - file: content/week-14/index.qmd
+      text: 14. Advanced Raster Analysis
     search: false
     style: docked
     title: Content

@@ -1,0 +1,45 @@
+
+---
+title: "Week 14: Advanced Raster Analysis"
+execute: 
+  echo: false
+---
+
+{{< include ../_header.qmd >}}
+
+
+## Two Case Studies
+
+- Using satellite imagery to detect changes in lake volume
+- Detecting urban heat islands in Philadelphia
+
+## Interesting Readings and Maps
+
+- [Redlining and Urban Heat Islands (NYT)](https://www.nytimes.com/interactive/2020/08/24/climate/racism-redlining-cities-global-warming.html)
+- [Redlining in Philadelphia](https://controller.phila.gov/philadelphia-audits/mapping-the-legacy-of-structural-racism-in-philadelphia/)
+- [Redlining and Street Trees (NYT)](https://www.nytimes.com/interactive/2021/06/30/opinion/environmental-inequity-trees-critical-infrastructure.html)
+- [Mapping Inequality: Philadelphia](https://dsl.richmond.edu/panorama/redlining/#city=philadelphia-pa)
+
+## References
+
+- [EarthML](earthml.pyviz.org)
+- [The Disappearing Walker Lake](https://earthobservatory.nasa.gov/images/91921/disappearing-walker-lake)
+- [The Aral Sea](https://earthobservatory.nasa.gov/world-of-change/aral_sea.php)
+- [Lake Orumiyeh](https://earthobservatory.nasa.gov/images/76327/lake-orumiyeh-iran)
+- [Urban Heat Islands](http://urbanspatialanalysis.com/urban-heat-islands-street-trees-in-philadelphia/)
+- [EarthML Tutorial on Heat Island](http://earthml.pyviz.org/topics/Heat_and_Trees.html)
+- [Slicing with xarray](http://xarray.pydata.org/en/stable/indexing.html)
+- [Slicing in Python](https://www.w3schools.com/python/ref_func_slice.asp)
+- [rio-toa: Top Of Atmosphere (TOA) calculations for Landsat 8](https://github.com/mapbox/rio-toa)
+- [rioxarray](https://corteva.github.io/rioxarray/html/index.html)
+- [Landsat data on Google Cloud Storage](https://cloud.google.com/storage/docs/public-datasets/landsat)
+- Google Earth Engine (GEE):
+  - [Documentation](https://earthengine.google.com/)
+  - [Data Catalog](https://developers.google.com/earth-engine/datasets/catalog)
+  - [Landsat data on Google Earth Engine](https://developers.google.com/earth-engine/datasets/catalog/landsat/)
+  - [GEE Guides](https://developers.google.com/earth-engine/guides)
+  - [Examples of Python packages for GEE](https://github.com/giswqs/Awesome-GEE#python-api)
+- `geemap` package:
+  - [Documentation](https://geemap.org/)
+  - [GEE tutorials](https://tutorials.geemap.org/)
+  - [Example notebooks with videos](https://geemap.org/tutorials/)
